@@ -1,0 +1,6 @@
+apply from : '../build.gradle'
+apply plugin: 'java'
+
+dependencies {
+	compile( project(":cfmy-model") )
+}

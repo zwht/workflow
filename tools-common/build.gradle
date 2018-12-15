@@ -1,0 +1,2 @@
+apply from : '../build.gradle'
+apply plugin: 'java'

@@ -1,0 +1,65 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.1.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.zw'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    springBootVersion = "2.0.1.RELEASE"
+    gradleDependencyVersion = "1.0.4.RELEASE"
+    postgresqlVersion = "42.1.4"
+    HikariCPVersion = "2.7.4"
+    jooqVersion = "3.10.2"
+    flywayVersion = "4.2.0"
+    fastJsonVersion="1.2.12"
+    swagger2Version="2.6.1"
+    jwtVersion="0.7.0"
+    commonsBeanutilsVersion="1.8.3"
+    commonsIoVersion="1.3.2"
+    fileuploadVersion="1.3.2"
+    fastdfsClientVersion="1.26.1-RELEASE"
+    shiroVersion="1.3.2"
+    jsonVersion = "20160810"
+    webSocketClientVersion="2.3"
+    javaCSVVersion="2.0"
+    zip4jVersion="1.3.2"
+    phoenixVersion="4.13.0-HBase-1.3"
+    cronutilsVersion="7.0.0"
+    openCsvVersion="3.6"
+    poiVersion="3.12"
+    poiOoxmlVersion="3.12"
+    dom4jVersion="1.6.1"
+    mysqlVersion="5.1.24"
+    hiveJdbcVersion="1.2.2"
+    oracleVersion="12.1.0.2"
+    sqlServerVersion="4.0"
+    hadoopVersion="2.6.0"
+    mongodbVersion="3.6.0"
+    aspectjVersion="1.8.11"
+}
+
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter-actuator')
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    // runtimeOnly('org.postgresql:postgresql')
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+}

@@ -1,0 +1,8 @@
+apply from : '../build.gradle'
+apply plugin: 'java'
+
+dependencies {
+	compile( project(":tools-common") )
+	compile( project(":cfmy-model") )
+	// compile("org.springframework.boot:spring-boot-starter-jooq:${springBootVersion}")
+}

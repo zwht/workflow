@@ -1,0 +1,9 @@
+rootProject.name = 'boot-model'
+
+include 'tools-common'
+include 'cfmy-api'
+include 'cfmy-dao'
+include 'cfmy-model'
+include 'cfmy-service'
+include 'cfmy-controller'
+
