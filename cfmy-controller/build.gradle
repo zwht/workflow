@@ -2,6 +2,9 @@ apply plugin: 'java'
 apply plugin: 'war'
 apply from : '../build.gradle'
 
+bootWar {
+	archiveName "boot.war"
+}
 dependencies {
 	compile( project(":cfmy-service") )
 }

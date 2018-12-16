@@ -1,4 +1,4 @@
-package com.zw.config;
+package com.zw.common.config;
 
 import com.google.common.collect.Lists;
 import org.springframework.context.annotation.Bean;
@@ -9,7 +9,6 @@ import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.schema.ModelRef;
 import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Contact;
 import springfox.documentation.service.Parameter;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
@@ -84,11 +83,11 @@ public class Swagger2Config {
                 //页面标题
                 .title("gradle springboot 多模块项目构建RESTful API")
                 //创建人
-                .contact(new Contact("魏翼超然", "http://120.79.171.251:9876", ""))
+                // .contact(new Contact("魏翼超然", "http://120.79.171.251:9876", ""))
                 //版本号
-                .version("1.0")
+                // .version("1.0")
                 //描述
-                .description("API 描述")
+                // .description("API 描述")
                 .build();
     }
 }
