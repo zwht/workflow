@@ -1,6 +1,15 @@
-apply from : '../build.gradle'
+apply from: '../build.gradle'
 apply plugin: 'java'
-
+sourceSets {
+    main {
+        java {
+            srcDirs = [
+                    'src/main/java',
+                    '../tools-common/src/main/java',
+            ]
+        }
+    }
+}
 dependencies {
-	compile( project(":cfmy-model") )
+    compile project(":tools-common")
 }

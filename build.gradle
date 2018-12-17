@@ -41,9 +41,7 @@ dependencies {
 
     compile("io.springfox:springfox-swagger2:${swagger2Version}")
     compile("io.springfox:springfox-swagger-ui:${swagger2Version}")
-    // implementation("org.springframework.boot:spring-boot-starter-jooq:${jooqVersion}")
     runtimeOnly("org.postgresql:postgresql:${postgresqlVersion}")
-
 
     compile("com.zaxxer:HikariCP:${HikariCPVersion}")
     compile("org.jooq:jooq:${jooqVersion}")

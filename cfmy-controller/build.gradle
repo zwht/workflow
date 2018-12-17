@@ -9,13 +9,16 @@ sourceSets {
 	main {
 		java {
 			srcDirs = ['src/main/java',
+					   '../cfmy-service/src/main/java',
 					   '../tools-common/src/main/java',
+					   '../cfmy-model/src/main/java',
+					   '../cfmy-api/src/main/java',
 					   '../cfmy-dao/src/main/java',
-					   '../cfmy-model/src/main/java']
+					   ]
 		}
 	}
 }
 dependencies {
-	compile( project(":cfmy-service") )
-	compile( project(":cfmy-dao") )
+	compile project(":cfmy-service")
+	compile project(":tools-common")
 }

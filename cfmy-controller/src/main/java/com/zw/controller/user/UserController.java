@@ -1,6 +1,7 @@
 package com.zw.controller.user;
 
-import com.zw.dao.user.UserDao;
+import com.zw.api.UserService;
+import com.zw.common.vo.ResultVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +22,14 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/v1/user")
 @Api(value = "/v1/user", description = "用户")
 public class UserController {
+
     @Autowired
-    UserDao userDao;
+    private UserService userService;
 
     @GetMapping("/add")
     @ApiOperation(value = "添加用户", notes = "添加", httpMethod = "GET")
-    public String add(HttpServletRequest request) {
-
-        String sd=userDao.getNameByUserId(Long.parseLong("1"));
+    public ResultVo<String> add(HttpServletRequest request) {
+        ResultVo<String> sd=userService.findById(Long.parseLong("1"));
         return sd;
 
     }
