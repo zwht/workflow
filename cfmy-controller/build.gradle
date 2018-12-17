@@ -19,10 +19,8 @@ task copyYAML(type: Copy) {
 	}
 	def profileFileName=""
 	if (profile==null){
-		println("+++++++++++++++++")
 		profileFileName = "application-dev.yml"
 	}else{
-		println("-------------------")
 		profileFileName = "application-${profile}.yml"
 	}
 	from file("${rootProject.projectDir}/tools-common/src/main/resources/${profileFileName}")
