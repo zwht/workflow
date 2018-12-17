@@ -1,8 +1,16 @@
-apply from : '../build.gradle'
+apply from: '../build.gradle'
 apply plugin: 'java'
-
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java',
+                       '../tools-common/src/main/java',
+                       '../cfmy-model/src/main/java']
+        }
+    }
+}
 dependencies {
-	compile( project(":tools-common") )
-	compile( project(":cfmy-model") )
-	// compile("org.springframework.boot:spring-boot-starter-jooq:${springBootVersion}")
+    //compile project(":tools-common")
+    //compile project(":cfmy-model")
+    compile("org.springframework.boot:spring-boot-starter-jooq:${springBootVersion}")
 }
