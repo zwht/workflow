@@ -2,9 +2,14 @@ apply plugin: 'java'
 apply plugin: 'war'
 apply from : '../build.gradle'
 
-//拷贝配置文件
+/**
+ * 拷贝配置文件
+ * gradle copyYAML -Dprofile=local
+ * gradle build -Dprofile=local
+ **/
 task copyYAML(type: Copy) {
 	def profile = System.properties['profile']
+	println(profile+"===gradle copyYAML -Dprofile=local-----gradle build -Dprofile=local")
 	if (profile==null){
 		def key="spring.profiles.active"
 		Properties properties = new Properties();
