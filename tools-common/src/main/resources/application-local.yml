@@ -7,3 +7,13 @@ db:
   url: jdbc:postgresql://localhost:5432/boot
   username: zhaowei
   password: 123
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driverClassName: ${db.driverClassName}
+    url: ${db.url}
+    username: ${db.username}
+    password: ${db.password}
+    maxPoolSize: 30
+  jooq:
+    sql-dialect: POSTGRES

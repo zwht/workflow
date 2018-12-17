@@ -27,6 +27,7 @@ repositories {
 ext {
     springBootVersion = "2.1.1.RELEASE"
     swagger2Version = "2.9.2"
+    HikariCPVersion = "3.2.0"
     jooqVersion = "3.10.2"
     postgresqlVersion = "42.2.5"
 
@@ -43,6 +44,8 @@ dependencies {
     // implementation("org.springframework.boot:spring-boot-starter-jooq:${jooqVersion}")
     runtimeOnly("org.postgresql:postgresql:${postgresqlVersion}")
 
+
+    compile("com.zaxxer:HikariCP:${HikariCPVersion}")
     compile("org.jooq:jooq:${jooqVersion}")
     compile("org.jooq:jooq-codegen:${jooqVersion}")
     compile("org.jooq:jooq-meta:${jooqVersion}")

@@ -20,19 +20,19 @@ import static com.zw.model.tables.User.USER;
 
 
 @Repository
-public class UserDao{
-//
-//    @Autowired
-//    DSLContext dsl;
-//
-//    public UserDao() {
-//        super(USER);
-//    }
-//
-//    @Override
-//    public Configuration getConfiguration() {
-//        return dsl.configuration();
-//    }
+public class UserDao extends BaseDaoImpl<UserRecord, Long> {
+
+    @Autowired
+    DSLContext dsl;
+
+    public UserDao() {
+        super(USER);
+    }
+
+    @Override
+    public Configuration getConfiguration() {
+        return dsl.configuration();
+    }
 
     /**
      * 通过userId查询名字
@@ -40,16 +40,16 @@ public class UserDao{
      * @param userId
      * @return
      */
-//    public String getNameByUserId(Long userId) {
-//        String name = "";
-//        Record1<String> fetchAny = dsl
-//                .select(USER.NAME)
-//                .from(USER)
-//                .where(USER.ID.eq(userId))
-//                .fetchAny();
-//        if (fetchAny != null && fetchAny.size() > 0) {
-//            name = fetchAny.value1();
-//        }
-//        return name;
-//    }
+    public String getNameByUserId(Long userId) {
+        String name = "";
+        Record1<String> fetchAny = dsl
+                .select(USER.NAME)
+                .from(USER)
+                .where(USER.ID.eq(userId))
+                .fetchAny();
+        if (fetchAny != null && fetchAny.size() > 0) {
+            name = fetchAny.value1();
+        }
+        return name;
+    }
 }

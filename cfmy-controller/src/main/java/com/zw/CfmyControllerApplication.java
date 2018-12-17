@@ -18,8 +18,6 @@ public class CfmyControllerApplication extends SpringBootServletInitializer {
 	 */
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        /*UserController userController = SpringUtil.getBean(UserController.class);
-        System.out.println("拿到bean了，哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"+userController);*/
 		builder.sources(this.getClass());
 		return super.configure(builder);
 	}
