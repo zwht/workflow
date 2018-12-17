@@ -2,8 +2,6 @@ apply plugin: 'java'
 apply plugin: 'war'
 apply from : '../build.gradle'
 
-
-
 //拷贝配置文件
 task copyYAML(type: Copy) {
 	def profile = System.properties['profile']
