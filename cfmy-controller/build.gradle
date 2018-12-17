@@ -2,22 +2,39 @@ apply plugin: 'java'
 apply plugin: 'war'
 apply from : '../build.gradle'
 
+
+
+//拷贝配置文件
+task copyYAML(type: Copy) {
+	def profile = System.properties['profile']
+	if (profile==null){
+		def key="spring.profiles.active"
+		Properties properties = new Properties();
+		// 使用ClassLoader加载properties配置文件生成对应的输入流
+		FileInputStream input = new FileInputStream("${rootProject.projectDir}/cfmy-controller/src/main/resources/application.properties")
+		// 使用properties对象加载输入流
+		properties.load(input)
+		//获取key对应的value值
+		profile=properties.getProperty(key)
+	}
+	def profileFileName=""
+	if (profile==null){
+		println("+++++++++++++++++")
+		profileFileName = "application-dev.yml"
+	}else{
+		println("-------------------")
+		profileFileName = "application-${profile}.yml"
+	}
+	from file("${rootProject.projectDir}/tools-common/src/main/resources/${profileFileName}")
+	into file("${rootProject.projectDir}/cfmy-controller/build/classes/java/main/")
+	rename("${profileFileName}","application.yml")
+}
 bootWar {
+	dependsOn copyYAML
 	archiveName "boot.war"
 }
-sourceSets {
-	main {
-		java {
-			srcDirs = ['src/main/java',
-					   '../cfmy-service/src/main/java',
-					   '../tools-common/src/main/java',
-					   '../cfmy-model/src/main/java',
-					   '../cfmy-api/src/main/java',
-					   '../cfmy-dao/src/main/java',
-					   ]
-		}
-	}
-}
+build.dependsOn(bootWar)
+
 dependencies {
 	compile project(":cfmy-service")
 	compile project(":tools-common")
