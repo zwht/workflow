@@ -5,6 +5,17 @@ apply from : '../build.gradle'
 bootWar {
 	archiveName "boot.war"
 }
+sourceSets {
+	main {
+		java {
+			srcDirs = ['src/main/java',
+					   '../tools-common/src/main/java',
+					   '../cfmy-dao/src/main/java',
+					   '../cfmy-model/src/main/java']
+		}
+	}
+}
 dependencies {
 	compile( project(":cfmy-service") )
+	compile( project(":cfmy-dao") )
 }
