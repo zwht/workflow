@@ -30,7 +30,7 @@ public class UserController {
     @GetMapping("/detail")
     @ApiOperation(value = "添加用户", notes = "添加", httpMethod = "GET")
     public ResultVo<User> add(HttpServletRequest request) {
-        ResultVo<User> sd=userService.selectByPrimaryKey(Long.parseLong("1"));
+        ResultVo<User> sd=userService.selectByPrimaryKey(Long.parseLong("121"));
         return sd;
 
     }
