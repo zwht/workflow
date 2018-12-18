@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zw.dao.CodeMapper">
-  <resultMap id="BaseResultMap" type="com.zw.model.Code">
+<mapper namespace="com.zw.dao.mapper.CodeMapper">
+  <resultMap id="BaseResultMap" type="com.zw.dao.entity.Code">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="value" jdbcType="INTEGER" property="value" />
     <result column="type" jdbcType="VARCHAR" property="type" />
@@ -68,7 +68,7 @@
   <sql id="Base_Column_List">
     id, value, type, name
   </sql>
-  <select id="selectByExample" parameterType="com.zw.model.CodeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.zw.dao.entity.CodeExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -92,19 +92,19 @@
     delete from code
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.zw.model.CodeExample">
+  <delete id="deleteByExample" parameterType="com.zw.dao.entity.CodeExample">
     delete from code
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.zw.model.Code">
+  <insert id="insert" parameterType="com.zw.dao.entity.Code">
     insert into code (id, value, type, 
       name)
     values (#{id,jdbcType=BIGINT}, #{value,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, 
       #{name,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.zw.model.Code">
+  <insert id="insertSelective" parameterType="com.zw.dao.entity.Code">
     insert into code
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -135,7 +135,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.zw.model.CodeExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.zw.dao.entity.CodeExample" resultType="java.lang.Long">
     select count(*) from code
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -171,7 +171,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zw.model.Code">
+  <update id="updateByPrimaryKeySelective" parameterType="com.zw.dao.entity.Code">
     update code
     <set>
       <if test="value != null">
@@ -186,7 +186,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.zw.model.Code">
+  <update id="updateByPrimaryKey" parameterType="com.zw.dao.entity.Code">
     update code
     set value = #{value,jdbcType=INTEGER},
       type = #{type,jdbcType=VARCHAR},

@@ -1,7 +1,7 @@
-package com.zw.dao;
+package com.zw.dao.mapper;
 
-import com.zw.model.User;
-import com.zw.model.UserExample;
+import com.zw.dao.entity.User;
+import com.zw.dao.entity.UserExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

@@ -1,8 +1,8 @@
 package com.zw.controller.user;
 
-import com.zw.model.User;
-import com.zw.service.user.UserService;
 import com.zw.common.vo.ResultVo;
+import com.zw.dao.entity.User;
+import com.zw.service.user.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

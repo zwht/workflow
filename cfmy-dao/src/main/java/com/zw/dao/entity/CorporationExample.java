@@ -1,4 +1,4 @@
-package com.zw.model;
+package com.zw.dao.entity;
 
 import java.util.ArrayList;
 import java.util.List;

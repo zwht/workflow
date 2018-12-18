@@ -2,7 +2,7 @@ package com.zw.service.user;
 
 import com.zw.common.vo.ResultVo;
 import com.zw.common.vo.user.UserAddVo;
-import com.zw.model.User;
+import com.zw.dao.entity.User;
 
 /**
  * @author：zhaowei

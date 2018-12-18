@@ -1,10 +1,12 @@
 package com.zw;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
+@MapperScan("com.zw.dao.mapper")
 @SpringBootApplication
 public class CfmyControllerApplication extends SpringBootServletInitializer {
 

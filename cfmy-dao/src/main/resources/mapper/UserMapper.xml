@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zw.dao.UserMapper">
-  <resultMap id="BaseResultMap" type="com.zw.model.User">
+<mapper namespace="com.zw.dao.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.zw.dao.entity.User">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="login_name" jdbcType="VARCHAR" property="loginName" />
@@ -78,7 +78,7 @@
     id, name, login_name, state, ability, roles, password, password_key, corporation_id, 
     phone, avatar, address, address_id
   </sql>
-  <select id="selectByExample" parameterType="com.zw.model.UserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.zw.dao.entity.UserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -102,13 +102,13 @@
     delete from users
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.zw.model.UserExample">
+  <delete id="deleteByExample" parameterType="com.zw.dao.entity.UserExample">
     delete from users
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.zw.model.User">
+  <insert id="insert" parameterType="com.zw.dao.entity.User">
     insert into users (id, name, login_name, 
       state, ability, roles, 
       password, password_key, corporation_id, 
@@ -120,7 +120,7 @@
       #{phone,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
       #{addressId,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.zw.model.User">
+  <insert id="insertSelective" parameterType="com.zw.dao.entity.User">
     insert into users
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -205,7 +205,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.zw.model.UserExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.zw.dao.entity.UserExample" resultType="java.lang.Long">
     select count(*) from users
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -277,7 +277,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zw.model.User">
+  <update id="updateByPrimaryKeySelective" parameterType="com.zw.dao.entity.User">
     update users
     <set>
       <if test="name != null">
@@ -319,7 +319,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.zw.model.User">
+  <update id="updateByPrimaryKey" parameterType="com.zw.dao.entity.User">
     update users
     set name = #{name,jdbcType=VARCHAR},
       login_name = #{loginName,jdbcType=VARCHAR},

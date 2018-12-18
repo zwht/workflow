@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zw.dao.CorporationMapper">
-  <resultMap id="BaseResultMap" type="com.zw.model.Corporation">
+<mapper namespace="com.zw.dao.mapper.ErrCodeMapper">
+  <resultMap id="BaseResultMap" type="com.zw.dao.entity.ErrCode">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="state" jdbcType="INTEGER" property="state" />
-    <result column="boss" jdbcType="VARCHAR" property="boss" />
-    <result column="phone" jdbcType="VARCHAR" property="phone" />
-    <result column="img" jdbcType="VARCHAR" property="img" />
+    <result column="value" jdbcType="INTEGER" property="value" />
+    <result column="label" jdbcType="VARCHAR" property="label" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,15 +65,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, address, state, boss, phone, img
+    id, value, label
   </sql>
-  <select id="selectByExample" parameterType="com.zw.model.CorporationExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.zw.dao.entity.ErrCodeExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from corporation
+    from errCode
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -88,105 +84,67 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from corporation
+    from errCode
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from corporation
+    delete from errCode
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.zw.model.CorporationExample">
-    delete from corporation
+  <delete id="deleteByExample" parameterType="com.zw.dao.entity.ErrCodeExample">
+    delete from errCode
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.zw.model.Corporation">
-    insert into corporation (id, name, address, 
-      state, boss, phone, 
-      img)
-    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{state,jdbcType=INTEGER}, #{boss,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
-      #{img,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.zw.dao.entity.ErrCode">
+    insert into errCode (id, value, label
+      )
+    values (#{id,jdbcType=BIGINT}, #{value,jdbcType=INTEGER}, #{label,jdbcType=VARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.zw.model.Corporation">
-    insert into corporation
+  <insert id="insertSelective" parameterType="com.zw.dao.entity.ErrCode">
+    insert into errCode
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
-      <if test="name != null">
-        name,
+      <if test="value != null">
+        value,
       </if>
-      <if test="address != null">
-        address,
-      </if>
-      <if test="state != null">
-        state,
-      </if>
-      <if test="boss != null">
-        boss,
-      </if>
-      <if test="phone != null">
-        phone,
-      </if>
-      <if test="img != null">
-        img,
+      <if test="label != null">
+        label,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
+      <if test="value != null">
+        #{value,jdbcType=INTEGER},
       </if>
-      <if test="address != null">
-        #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="state != null">
-        #{state,jdbcType=INTEGER},
-      </if>
-      <if test="boss != null">
-        #{boss,jdbcType=VARCHAR},
-      </if>
-      <if test="phone != null">
-        #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="img != null">
-        #{img,jdbcType=VARCHAR},
+      <if test="label != null">
+        #{label,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.zw.model.CorporationExample" resultType="java.lang.Long">
-    select count(*) from corporation
+  <select id="countByExample" parameterType="com.zw.dao.entity.ErrCodeExample" resultType="java.lang.Long">
+    select count(*) from errCode
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update corporation
+    update errCode
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="record.value != null">
+        value = #{record.value,jdbcType=INTEGER},
       </if>
-      <if test="record.address != null">
-        address = #{record.address,jdbcType=VARCHAR},
-      </if>
-      <if test="record.state != null">
-        state = #{record.state,jdbcType=INTEGER},
-      </if>
-      <if test="record.boss != null">
-        boss = #{record.boss,jdbcType=VARCHAR},
-      </if>
-      <if test="record.phone != null">
-        phone = #{record.phone,jdbcType=VARCHAR},
-      </if>
-      <if test="record.img != null">
-        img = #{record.img,jdbcType=VARCHAR},
+      <if test="record.label != null">
+        label = #{record.label,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -194,50 +152,30 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update corporation
+    update errCode
     set id = #{record.id,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      address = #{record.address,jdbcType=VARCHAR},
-      state = #{record.state,jdbcType=INTEGER},
-      boss = #{record.boss,jdbcType=VARCHAR},
-      phone = #{record.phone,jdbcType=VARCHAR},
-      img = #{record.img,jdbcType=VARCHAR}
+      value = #{record.value,jdbcType=INTEGER},
+      label = #{record.label,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zw.model.Corporation">
-    update corporation
+  <update id="updateByPrimaryKeySelective" parameterType="com.zw.dao.entity.ErrCode">
+    update errCode
     <set>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
+      <if test="value != null">
+        value = #{value,jdbcType=INTEGER},
       </if>
-      <if test="address != null">
-        address = #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="state != null">
-        state = #{state,jdbcType=INTEGER},
-      </if>
-      <if test="boss != null">
-        boss = #{boss,jdbcType=VARCHAR},
-      </if>
-      <if test="phone != null">
-        phone = #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="img != null">
-        img = #{img,jdbcType=VARCHAR},
+      <if test="label != null">
+        label = #{label,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.zw.model.Corporation">
-    update corporation
-    set name = #{name,jdbcType=VARCHAR},
-      address = #{address,jdbcType=VARCHAR},
-      state = #{state,jdbcType=INTEGER},
-      boss = #{boss,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=VARCHAR},
-      img = #{img,jdbcType=VARCHAR}
+  <update id="updateByPrimaryKey" parameterType="com.zw.dao.entity.ErrCode">
+    update errCode
+    set value = #{value,jdbcType=INTEGER},
+      label = #{label,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

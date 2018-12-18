@@ -1,4 +1,4 @@
-package com.zw.model;
+package com.zw.dao.entity;
 
 public class Corporation {
     private Long id;

@@ -1,7 +1,7 @@
-package com.zw.dao;
+package com.zw.dao.mapper;
 
-import com.zw.model.ErrCode;
-import com.zw.model.ErrCodeExample;
+import com.zw.dao.entity.ErrCode;
+import com.zw.dao.entity.ErrCodeExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

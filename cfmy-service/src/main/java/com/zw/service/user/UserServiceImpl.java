@@ -2,8 +2,8 @@ package com.zw.service.user;
 
 import com.zw.common.vo.ResultVo;
 import com.zw.common.vo.user.UserAddVo;
-import com.zw.dao.UserMapper;
-import com.zw.model.User;
+import com.zw.dao.entity.User;
+import com.zw.dao.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

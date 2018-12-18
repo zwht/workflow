@@ -1,7 +1,7 @@
-package com.zw.dao;
+package com.zw.dao.mapper;
 
-import com.zw.model.Corporation;
-import com.zw.model.CorporationExample;
+import com.zw.dao.entity.Corporation;
+import com.zw.dao.entity.CorporationExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

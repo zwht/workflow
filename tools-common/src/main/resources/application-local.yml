@@ -3,17 +3,17 @@ db:
   url: jdbc:mysql://localhost:3306/cfmy?characterEncoding=utf-8
   username: root
   password: zw200813
-  model: com.zw.model
-  mapper: com.zw.mapper
-  xml: mybatis.xml
+
+mybatis:
+  mapperLocations: classpath*:mapper/**/*.xml
+  typeAliasesPackage: com.zw.dao.entity
+jdbc:
+  type: mysql
 spring:
   datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-    driverClassName: ${db.driverClassName}
     url: ${db.url}
     username: ${db.username}
     password: ${db.password}
+    driverClassName: ${db.driverClassName}
+    #type: com.zaxxer.hikari.HikariDataSource
     maxPoolSize: 30
-  jooq:
-    sql-dialect: POSTGRES
-
