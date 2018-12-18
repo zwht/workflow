@@ -1,6 +1,5 @@
 package com.zw.service.user;
 
-import com.zw.api.UserService;
 import com.zw.common.vo.ResultVo;
 import com.zw.common.vo.user.UserAddVo;
 import org.springframework.stereotype.Service;

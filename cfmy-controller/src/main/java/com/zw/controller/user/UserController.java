@@ -1,6 +1,6 @@
 package com.zw.controller.user;
 
-import com.zw.api.UserService;
+import com.zw.service.user.UserService;
 import com.zw.common.vo.ResultVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

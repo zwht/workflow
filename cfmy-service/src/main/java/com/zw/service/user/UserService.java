@@ -1,4 +1,4 @@
-package com.zw.api;
+package com.zw.service.user;
 
 import com.zw.common.vo.ResultVo;
 import com.zw.common.vo.user.UserAddVo;
