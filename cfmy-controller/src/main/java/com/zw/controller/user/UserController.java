@@ -24,9 +24,9 @@ public class UserController {
     private UserService userService;
 
 
-    @ResponseBody
-    @PostMapping("/user/add")
     @ApiOperation("新增")
+    @PostMapping("/user/add")
+    @ResponseBody
     public ResponseVo add(
             @ApiParam(required = true, value = "AddUserVo", name = "AddUserVo") @RequestBody UserAddVo userAddVo,
             HttpServletRequest request
@@ -37,9 +37,9 @@ public class UserController {
     }
 
 
-    @ResponseBody
-    @GetMapping("/user/getById")
     @ApiOperation("详情")
+    @GetMapping("/user/getById")
+    @ResponseBody
     public ResponseVo<User> selectByPrimaryKey(
             @ApiParam(value = "用户Id", defaultValue = "121") @RequestParam Long id
     ) {
@@ -47,9 +47,9 @@ public class UserController {
     }
 
 
-    @ResponseBody
-    @PostMapping("/user/update")
     @ApiOperation("更新")
+    @PostMapping("/user/update")
+    @ResponseBody
     public ResponseVo update(
             @ApiParam(required = true, value = "UserUpdateVo") @RequestBody User user
     ) {
@@ -71,9 +71,9 @@ public class UserController {
 //    }
 
 
-    @ResponseBody
-    @GetMapping("/user/del")
     @ApiOperation("删除")
+    @GetMapping("/user/del")
+    @ResponseBody
     public ResponseVo del(
             @ApiParam(required = true, value = "id") @RequestParam Long id
     ) {

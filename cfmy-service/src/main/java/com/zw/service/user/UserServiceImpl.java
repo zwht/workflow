@@ -72,7 +72,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseVo update(User user) {
+    public ResponseVo<String> update(User user) {
         ResponseVo response = new ResponseVo();
         try {
             UserExample userExample = new UserExample();
@@ -133,7 +133,7 @@ public class UserServiceImpl implements UserService {
 //    }
 
     @Override
-    public ResponseVo del(Long id) {
+    public ResponseVo<String> del(Long id) {
         ResponseVo response = new ResponseVo();
         try {
             return response.success(userMapper.deleteByPrimaryKey(Long.valueOf(id)));

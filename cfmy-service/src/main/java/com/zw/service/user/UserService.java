@@ -11,8 +11,8 @@ import com.zw.dao.entity.User;
  */
 public interface UserService {
     ResponseVo<String> add(UserAddVo userAddVo);
-    ResponseVo getById(Long id);
-    ResponseVo update(User user);
+    ResponseVo<User> getById(Long id);
+    ResponseVo<String> update(User user);
     // ResponseVo getList(Integer pageNum, Integer pageSize, UserListFind userListFind);
-    ResponseVo del(Long id);
+    ResponseVo<String> del(Long id);
 }
