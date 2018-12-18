@@ -49,8 +49,9 @@ dependencies {
     runtimeOnly("org.postgresql:postgresql:${postgresqlVersion}")
 }
 
-allprojects{
+allprojects {
     jar {
         enabled = true
     }
 }
+
