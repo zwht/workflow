@@ -1,12 +1,11 @@
 db:
-  database: boot
-  schema: public
-  ip: 127.0.0.1
-  port: 5432
-  driverClassName: org.postgresql.Driver
-  url: jdbc:postgresql://localhost:5432/boot
-  username: zhaowei
-  password:
+  driverClassName: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/cfmy?characterEncoding=utf-8
+  username: root
+  password: zw200813
+  model: com.zw.model
+  mapper: com.zw.mapper
+  xml: mybatis.xml
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource

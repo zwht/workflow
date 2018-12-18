@@ -2,6 +2,7 @@ package com.zw.service.user;
 
 import com.zw.common.vo.ResultVo;
 import com.zw.common.vo.user.UserAddVo;
+import com.zw.model.User;
 
 /**
  * @author：zhaowei
@@ -23,5 +24,5 @@ public interface UserService {
      * @param id
      * @return
      */
-    ResultVo<String> findById(Long id);
+    ResultVo<User> selectByPrimaryKey(Long id);
 }

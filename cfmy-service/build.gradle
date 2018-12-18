@@ -3,6 +3,6 @@ apply plugin: 'java'
 
 
 dependencies {
-    compile project(":cfmy-dao")
+    compile project(":cfmy-model")
 }
 

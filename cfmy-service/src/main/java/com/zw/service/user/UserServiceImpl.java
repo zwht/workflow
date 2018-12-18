@@ -2,6 +2,9 @@ package com.zw.service.user;
 
 import com.zw.common.vo.ResultVo;
 import com.zw.common.vo.user.UserAddVo;
+import com.zw.dao.UserMapper;
+import com.zw.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,6 +15,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
+    @Autowired
+    UserMapper userMapper;
 
     @Override
     public ResultVo<String> add(UserAddVo userAddVo, Long userId){
@@ -20,8 +25,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResultVo<String> findById(Long id){
-        return new ResultVo<>(0,"44");
+    public ResultVo<User> selectByPrimaryKey(Long id){
+        User user = userMapper.selectByPrimaryKey(id);
+        return new ResultVo<>(0,user);
     }
 
 }

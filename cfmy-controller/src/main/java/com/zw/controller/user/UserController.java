@@ -1,5 +1,6 @@
 package com.zw.controller.user;
 
+import com.zw.model.User;
 import com.zw.service.user.UserService;
 import com.zw.common.vo.ResultVo;
 import io.swagger.annotations.Api;
@@ -26,10 +27,10 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/add")
+    @GetMapping("/detail")
     @ApiOperation(value = "添加用户", notes = "添加", httpMethod = "GET")
-    public ResultVo<String> add(HttpServletRequest request) {
-        ResultVo<String> sd=userService.findById(Long.parseLong("1"));
+    public ResultVo<User> add(HttpServletRequest request) {
+        ResultVo<User> sd=userService.selectByPrimaryKey(Long.parseLong("1"));
         return sd;
 
     }
