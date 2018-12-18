@@ -10,19 +10,9 @@ import com.zw.dao.entity.User;
  * @Time：上午11:54
  */
 public interface UserService {
-    /**
-     * 添加用户
-     * @param userAddVo
-     * @param userId
-     * @return
-     * @throws Exception
-     */
-    ResponseVo<String> add(UserAddVo userAddVo, Long userId);
-
-    /**
-     * 根据id查询用户详情
-     * @param id
-     * @return
-     */
-    ResponseVo<User> selectByPrimaryKey(Long id);
+    ResponseVo<String> add(UserAddVo userAddVo);
+    ResponseVo getById(Long id);
+    ResponseVo update(User user);
+    // ResponseVo getList(Integer pageNum, Integer pageSize, UserListFind userListFind);
+    ResponseVo del(Long id);
 }

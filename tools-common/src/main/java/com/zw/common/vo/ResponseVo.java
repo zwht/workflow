@@ -15,7 +15,8 @@ public class ResponseVo<D> {
     private String msg;
     private List<Map<String, String>> msgObj;
 
-
+    public ResponseVo(){
+    }
     public ResponseVo(D response){
         this.setResponse(response);
     }
