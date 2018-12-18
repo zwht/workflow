@@ -11,7 +11,7 @@ buildscript {
 }
 
 apply plugin: "java"
-apply plugin: "eclipse"
+apply plugin: "idea"
 apply plugin: "org.springframework.boot"
 apply plugin: "io.spring.dependency-management"
 
@@ -41,16 +41,13 @@ dependencies {
 
     compile("io.springfox:springfox-swagger2:${swagger2Version}")
     compile("io.springfox:springfox-swagger-ui:${swagger2Version}")
-    runtimeOnly("org.postgresql:postgresql:${postgresqlVersion}")
 
     compile("com.zaxxer:HikariCP:${HikariCPVersion}")
     compile("org.jooq:jooq:${jooqVersion}")
     compile("org.jooq:jooq-codegen:${jooqVersion}")
     compile("org.jooq:jooq-meta:${jooqVersion}")
-
-
+    runtimeOnly("org.postgresql:postgresql:${postgresqlVersion}")
 }
-
 
 allprojects{
     jar {

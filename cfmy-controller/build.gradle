@@ -38,5 +38,4 @@ build.dependsOn(bootWar)
 
 dependencies {
 	compile project(":cfmy-service")
-	compile project(":tools-common")
 }
