@@ -32,7 +32,8 @@ public class JooqPgGen {
                 .withName("org.jooq.util.DefaultGenerator")
                 .withDatabase(database)
                 .withGenerate(new Generate())
-                .withTarget(new Target().withPackageName("com.zw.model").withDirectory("cfmy-model/src/main/java"));
+                .withTarget(new Target().withPackageName("com.zw.model")
+                        .withDirectory("cfmy-model/src/main/java"));
         Configuration conf = new Configuration()
                 .withJdbc(jdbc)
                 .withGenerator(generator);

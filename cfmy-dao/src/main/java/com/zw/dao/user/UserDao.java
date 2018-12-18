@@ -5,17 +5,14 @@ import com.zw.model.tables.records.UserRecord;
 import org.jooq.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 
 import static com.zw.model.tables.User.USER;
 
 /**
- * ========================
- * Created with IntelliJ IDEA.
- * User：zhaowei
- * Date：2018/12/16
- * Time：下午10:37
- * 魏翼超然：http://120.79.171.251:9876
- * ========================
+ * @author：zhaowei
+ * @Date：2018/12/18
+ * @Time：上午11:54
  */
 
 
@@ -36,7 +33,6 @@ public class UserDao extends BaseDaoImpl<UserRecord, Long> {
 
     /**
      * 通过userId查询名字
-     *
      * @param userId
      * @return
      */
@@ -47,7 +43,7 @@ public class UserDao extends BaseDaoImpl<UserRecord, Long> {
                 .from(USER)
                 .where(USER.ID.eq(userId))
                 .fetchAny();
-        if (fetchAny != null && fetchAny.size() > 0) {
+        if (!StringUtils.isEmpty(fetchAny)) {
             name = fetchAny.value1();
         }
         return name;
