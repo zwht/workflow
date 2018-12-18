@@ -1,6 +1,6 @@
 package com.zw.service.user;
 
-import com.zw.common.vo.ResultVo;
+import com.zw.common.vo.ResponseVo;
 import com.zw.common.vo.user.UserAddVo;
 import com.zw.dao.entity.User;
 import com.zw.dao.mapper.UserMapper;
@@ -19,15 +19,15 @@ public class UserServiceImpl implements UserService {
     UserMapper userMapper;
 
     @Override
-    public ResultVo<String> add(UserAddVo userAddVo, Long userId){
+    public ResponseVo<String> add(UserAddVo userAddVo, Long userId){
 
-        return new ResultVo<>("");
+        return new ResponseVo<>("");
     }
 
     @Override
-    public ResultVo<User> selectByPrimaryKey(Long id){
+    public ResponseVo<User> selectByPrimaryKey(Long id){
         User user = userMapper.selectByPrimaryKey(id);
-        return new ResultVo<>(0,user);
+        return new ResponseVo<>(0,user);
     }
 
 }

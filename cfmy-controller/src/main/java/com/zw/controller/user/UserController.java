@@ -1,6 +1,6 @@
 package com.zw.controller.user;
 
-import com.zw.common.vo.ResultVo;
+import com.zw.common.vo.ResponseVo;
 import com.zw.dao.entity.User;
 import com.zw.service.user.UserService;
 import io.swagger.annotations.Api;
@@ -29,8 +29,8 @@ public class UserController {
 
     @GetMapping("/detail")
     @ApiOperation(value = "添加用户", notes = "添加", httpMethod = "GET")
-    public ResultVo<User> add(HttpServletRequest request) {
-        ResultVo<User> sd=userService.selectByPrimaryKey(Long.parseLong("121"));
+    public ResponseVo<User> add(HttpServletRequest request) {
+        ResponseVo<User> sd=userService.selectByPrimaryKey(Long.parseLong("121"));
         return sd;
 
     }

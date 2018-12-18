@@ -1,6 +1,6 @@
 package com.zw.service.user;
 
-import com.zw.common.vo.ResultVo;
+import com.zw.common.vo.ResponseVo;
 import com.zw.common.vo.user.UserAddVo;
 import com.zw.dao.entity.User;
 
@@ -17,12 +17,12 @@ public interface UserService {
      * @return
      * @throws Exception
      */
-    ResultVo<String> add(UserAddVo userAddVo, Long userId);
+    ResponseVo<String> add(UserAddVo userAddVo, Long userId);
 
     /**
      * 根据id查询用户详情
      * @param id
      * @return
      */
-    ResultVo<User> selectByPrimaryKey(Long id);
+    ResponseVo<User> selectByPrimaryKey(Long id);
 }
