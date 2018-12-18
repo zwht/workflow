@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zw.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.zw.model.User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="login_name" jdbcType="VARCHAR" property="loginName" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="ability" jdbcType="VARCHAR" property="ability" />
+    <result column="roles" jdbcType="VARCHAR" property="roles" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="password_key" jdbcType="VARCHAR" property="passwordKey" />
+    <result column="corporation_id" jdbcType="VARCHAR" property="corporationId" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="address_id" jdbcType="VARCHAR" property="addressId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from users
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.zw.model.User">
+    insert into users (id, name, login_name, 
+      state, ability, roles, 
+      password, password_key, corporation_id, 
+      phone, avatar, address, 
+      address_id)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, 
+      #{state,jdbcType=INTEGER}, #{ability,jdbcType=VARCHAR}, #{roles,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{passwordKey,jdbcType=VARCHAR}, #{corporationId,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{addressId,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zw.model.User">
+    update users
+    set name = #{name,jdbcType=VARCHAR},
+      login_name = #{loginName,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      ability = #{ability,jdbcType=VARCHAR},
+      roles = #{roles,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      password_key = #{passwordKey,jdbcType=VARCHAR},
+      corporation_id = #{corporationId,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      address_id = #{addressId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, name, login_name, state, ability, roles, password, password_key, corporation_id, 
+    phone, avatar, address, address_id
+    from users
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, login_name, state, ability, roles, password, password_key, corporation_id, 
+    phone, avatar, address, address_id
+    from users
+  </select>
+</mapper>

@@ -33,6 +33,9 @@ ext {
 
 }
 
+configurations {
+    mybatisGenerator
+}
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
@@ -43,10 +46,7 @@ dependencies {
     compile("io.springfox:springfox-swagger-ui:${swagger2Version}")
 
     compile("com.zaxxer:HikariCP:${HikariCPVersion}")
-    compile("org.jooq:jooq:${jooqVersion}")
-    compile("org.jooq:jooq-codegen:${jooqVersion}")
-    compile("org.jooq:jooq-meta:${jooqVersion}")
-    runtimeOnly("org.postgresql:postgresql:${postgresqlVersion}")
+
 }
 
 allprojects {
@@ -54,4 +54,5 @@ allprojects {
         enabled = true
     }
 }
+
 
