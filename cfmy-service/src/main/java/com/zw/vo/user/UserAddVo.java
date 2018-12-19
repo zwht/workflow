@@ -9,34 +9,34 @@ import io.swagger.annotations.ApiModelProperty;
  */
 public class UserAddVo {
 
-    @ApiModelProperty(value="用户名")
+    @ApiModelProperty("用户名")
     private String name;
 
-    @ApiModelProperty(value="登录名")
+    @ApiModelProperty("登录名")
     private String loginName;
 
-    @ApiModelProperty(value="能力，权限")
+    @ApiModelProperty("能力，权限")
     private String ability;
 
-    @ApiModelProperty(value="角色")
+    @ApiModelProperty("角色")
     private String roles;
 
-    @ApiModelProperty(value="密码")
+    @ApiModelProperty("密码")
     private String password;
 
-    @ApiModelProperty(value="公司名")
+    @ApiModelProperty("公司名")
     private String corporationId;
 
-    @ApiModelProperty(value="手机号")
+    @ApiModelProperty("手机号")
     private String phone;
 
-    @ApiModelProperty(value="头像")
+    @ApiModelProperty("头像")
     private String avatar;
 
-    @ApiModelProperty(value="地址")
+    @ApiModelProperty("地址")
     private String address;
 
-    @ApiModelProperty(value="地址Id")
+    @ApiModelProperty("地址Id")
     private String addressId;
 
     public String getName() {
