@@ -1,4 +1,4 @@
-package com.zw.common.vo.user;
+package com.zw.vo.user;
 
 import io.swagger.annotations.ApiModelProperty;
 

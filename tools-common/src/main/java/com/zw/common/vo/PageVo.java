@@ -9,6 +9,9 @@ public class PageVo<T> {
     private Long pageCount;
     private T data;
 
+    public PageVo(){
+
+    }
     public PageVo(Integer pageNum, Integer pageSize, Long pageCount, T data) {
         this.pageNum = pageNum;
         this.pageSize = pageSize;

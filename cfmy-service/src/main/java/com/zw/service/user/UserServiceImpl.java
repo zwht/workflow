@@ -1,15 +1,20 @@
 package com.zw.service.user;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.zw.common.util.SnowFlake;
 import com.zw.common.util.ZwUtil;
+import com.zw.common.vo.PageVo;
 import com.zw.common.vo.ResponseVo;
-import com.zw.common.vo.user.UserAddVo;
+import com.zw.vo.user.UserAddVo;
 import com.zw.dao.entity.User;
 import com.zw.dao.entity.UserExample;
 import com.zw.dao.mapper.UserMapper;
+import com.zw.vo.user.UserSearchVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -34,7 +39,7 @@ public class UserServiceImpl implements UserService {
         ResponseVo response = new ResponseVo();
         try {
             User user = new User();
-            BeanUtils.copyProperties(userAddVo,user);
+            BeanUtils.copyProperties(userAddVo, user);
             UserExample userExample = new UserExample();
             UserExample.Criteria criteria = userExample.createCriteria();
             criteria.andLoginNameEqualTo(user.getLoginName());
@@ -105,32 +110,31 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-//    @Override
-//    public ResponseVo getList(Integer pageNum, Integer pageSize, UserListFind userListFind) {
-//        ResponseVo response = new ResponseVo();
-//        PageVo pageVo = new PageVo();
-//        //条件查询3句话
-//        UserExample example = new UserExample();
-//        UserExample.Criteria criteria = example.createCriteria();
-//        criteria.andCorporationIdEqualTo(userListFind.getCorporationId());
-//        if (!StringUtils.isEmpty(userListFind.getRoles())) {
-//            criteria.andRolesEqualTo(userListFind.getRoles());
-//        }
-//        if (!StringUtils.isEmpty(userListFind.getName())) {
-//            criteria.andNameEqualTo(userListFind.getName());
-//        }
-//        if (!StringUtils.isEmpty(userListFind.getLoginName())) {
-//            criteria.andLoginNameEqualTo(userListFind.getLoginName());
-//        }
-//        try {
-//            Page page = PageHelper.startPage(pageNum, pageSize);
-//            List list = userMapper.selectByExample(example);
-//            long count = page.getTotal();
-//            return response.success(pageVo.init(pageNum, pageSize, count, list));
-//        } catch (Exception e) {
-//            return response.failure(400, e.getMessage());
-//        }
-//    }
+    @Override
+    public ResponseVo getList(Integer pageNum, Integer pageSize, UserSearchVo userSearchVo) {
+        ResponseVo response = new ResponseVo();
+        //条件查询3句话
+        UserExample example = new UserExample();
+        UserExample.Criteria criteria = example.createCriteria();
+        criteria.andCorporationIdEqualTo(userSearchVo.getCorporationId());
+        if (!StringUtils.isEmpty(userSearchVo.getRoles())) {
+            criteria.andRolesEqualTo(userSearchVo.getRoles());
+        }
+        if (!StringUtils.isEmpty(userSearchVo.getName())) {
+            criteria.andNameEqualTo(userSearchVo.getName());
+        }
+        if (!StringUtils.isEmpty(userSearchVo.getLoginName())) {
+            criteria.andLoginNameEqualTo(userSearchVo.getLoginName());
+        }
+        try {
+            Page page = PageHelper.startPage(pageNum, pageSize);
+            List list = userMapper.selectByExample(example);
+            long count = page.getTotal();
+            return response.success(new PageVo(pageNum, pageSize, count, list));
+        } catch (Exception e) {
+            return response.failure(400, e.getMessage());
+        }
+    }
 
     @Override
     public ResponseVo<String> del(Long id) {
