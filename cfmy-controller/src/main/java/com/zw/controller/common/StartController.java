@@ -30,7 +30,6 @@ public class StartController {
             @ApiParam(required = true, value = "body内容") @RequestBody LoginRequestVo loginRequestVo,
             HttpServletRequest request
     ) {
-
         return startService.login(loginRequestVo);
     }
 }

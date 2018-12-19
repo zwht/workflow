@@ -47,7 +47,7 @@ dependencies {
     compile("io.springfox:springfox-swagger-ui:${swagger2Version}")
 
     // 数据库连接池
-    compile("com.zaxxer:HikariCP:${HikariCPVersion}")
+    compile group: 'com.alibaba', name: 'druid', version: '1.1.12'
 
     // jwt
     compile group: 'com.auth0', name: 'java-jwt', version: '2.2.0'

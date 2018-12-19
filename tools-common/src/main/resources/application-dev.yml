@@ -4,16 +4,18 @@ db:
   username: root
   password: zw200813
 
-mybatis:
-  mapperLocations: classpath*:mapper/**/*.xml
-  typeAliasesPackage: com.zw.dao.entity
-jdbc:
-  type: mysql
 spring:
   datasource:
     url: ${db.url}
     username: ${db.username}
     password: ${db.password}
     driverClassName: ${db.driverClassName}
-    #type: com.zaxxer.hikari.HikariDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
     maxPoolSize: 30
+
+mybatis:
+  mapperLocations: classpath*:mapper/**/*.xml
+  typeAliasesPackage: com.zw.dao.entity
+
+jdbc:
+  type: mysql
