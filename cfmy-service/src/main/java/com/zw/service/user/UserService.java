@@ -14,9 +14,9 @@ import java.util.List;
  * @Time：上午11:54
  */
 public interface UserService {
-    ResponseVo<String> add(UserAddVo userAddVo);
-    ResponseVo<User> getById(Long id);
-    ResponseVo<String> update(User user);
+    ResponseVo add(UserAddVo userAddVo);
+    ResponseVo getById(Long id);
+    ResponseVo update(User user);
     ResponseVo getList(Integer pageNum, Integer pageSize, UserSearchVo userSearchVo);
-    ResponseVo<String> del(Long id);
+    ResponseVo del(Long id);
 }

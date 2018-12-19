@@ -19,7 +19,7 @@ public class MyAdapter extends WebMvcConfigurerAdapter {
 
         //添加拦截器
         registry.addInterceptor(new MyInterceptor())
-                .addPathPatterns("/cfmy/**")
-                .excludePathPatterns("/cfmy/start/login");
+                .addPathPatterns("/cfmy/**");
+                // .excludePathPatterns("/cfmy/start/login");
     }
 }

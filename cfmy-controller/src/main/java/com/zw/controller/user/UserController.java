@@ -35,8 +35,8 @@ public class UserController {
             @ApiParam(required = true, value = "body内容") @RequestBody UserAddVo userAddVo,
             HttpServletRequest request
     ) {
-        // TokenVo tokenVo = (TokenVo) request.getAttribute("tokenVo");
-        // userAddVo.setCorporationId(tokenVo.getCorporationId());
+        TokenVo tokenVo = (TokenVo) request.getAttribute("tokenVo");
+        userAddVo.setCorporationId(tokenVo.getCorporationId());
         return userService.add(userAddVo);
     }
 
@@ -66,7 +66,7 @@ public class UserController {
     public ResponseVo<PageVo<List<User>>> getUserList(
             @ApiParam(required = true, value = "当前页面", example = "1") @RequestParam Integer pageNum,
             @ApiParam(required = true, value = "每页显示条数", example = "10") @RequestParam Integer pageSize,
-            @ApiParam(required = true, value = "UserSearchVo") @RequestBody UserSearchVo userListFind,
+            @ApiParam(value = "UserSearchVo") @RequestBody UserSearchVo userListFind,
             HttpServletRequest request
     ) {
         TokenVo tokenVo = (TokenVo) request.getAttribute("tokenVo");

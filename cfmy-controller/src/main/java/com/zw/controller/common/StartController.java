@@ -17,14 +17,14 @@ import javax.servlet.http.HttpServletRequest;
  * @Time：上午9:09
  */
 @RestController
-@RequestMapping("/cfmy/start")
+@RequestMapping("/cfmy")
 @Api(description = "启动(登录，注册)")
 public class StartController {
     @Autowired
     private StartService startService;
 
     @ApiOperation("登录")
-    @PostMapping("/login")
+    @PostMapping("/public/start/login")
     @ResponseBody
     public ResponseVo login(
             @ApiParam(required = true, value = "body内容") @RequestBody LoginRequestVo loginRequestVo,

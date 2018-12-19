@@ -77,7 +77,7 @@ public class MyInterceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
 
-        System.out.println("myinterc posthandler");
+        // System.out.println("myinterc posthandler");
     }
 
     /**
@@ -88,6 +88,6 @@ public class MyInterceptor implements HandlerInterceptor {
     @Override
     public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
 
-        System.out.println("myinterc aftercompletion");
+        // System.out.println("myinterc aftercompletion");
     }
 }
