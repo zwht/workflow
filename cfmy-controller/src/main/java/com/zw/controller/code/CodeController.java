@@ -44,7 +44,7 @@ public class CodeController {
     @GetMapping("/code/getById")
     @ResponseBody
     public ResponseVo<Code> selectByPrimaryKey(
-            @ApiParam(required = true, value = "用户Id", defaultValue = "121") @RequestParam Long id
+            @ApiParam(required = true, value = "用户Id") @RequestParam Long id
     ) {
         return codeService.getById(id);
     }
@@ -63,8 +63,8 @@ public class CodeController {
     @PostMapping("/public/code/list")
     @ApiOperation("查询列表")
     public ResponseVo<PageVo<List<Code>>> getCodeList(
-            @ApiParam(required = true, value = "当前页面", example = "1") @RequestParam Integer pageNum,
-            @ApiParam(required = true, value = "每页显示条数", example = "10") @RequestParam Integer pageSize,
+            @ApiParam(required = true, value = "当前页面", defaultValue = "1") @RequestParam Integer pageNum,
+            @ApiParam(required = true, value = "每页显示条数", defaultValue = "10") @RequestParam Integer pageSize,
             @ApiParam(value = "CodeSearchVo") @RequestBody CodeSearchVo codeListFind,
             HttpServletRequest request
     ) {

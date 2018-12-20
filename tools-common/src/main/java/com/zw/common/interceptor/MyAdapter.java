@@ -3,6 +3,7 @@ package com.zw.common.interceptor;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
@@ -16,10 +17,20 @@ public class MyAdapter extends WebMvcConfigurerAdapter {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-
-        //添加拦截器
+        //添加全部请求拦截器
+        registry.addInterceptor(new AllInterceptor())
+                .addPathPatterns("/**");
+        // .excludePathPatterns("/cfmy/public/start/login");
+        //添加接口请求拦截器
         registry.addInterceptor(new MyInterceptor())
                 .addPathPatterns("/cfmy/**");
                 // .excludePathPatterns("/cfmy/public/start/login");
+
+    }
+
+    @Override
+    public  void addResourceHandlers(ResourceHandlerRegistry registry){
+        registry.addResourceHandler("/assets/**")
+                .addResourceLocations("classpath:/static/frontend/assets/");
     }
 }

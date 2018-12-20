@@ -64,8 +64,8 @@ public class UserController {
     @PostMapping("/list")
     @ApiOperation("查询列表")
     public ResponseVo<PageVo<List<User>>> getUserList(
-            @ApiParam(required = true, value = "当前页面", example = "1") @RequestParam Integer pageNum,
-            @ApiParam(required = true, value = "每页显示条数", example = "10") @RequestParam Integer pageSize,
+            @ApiParam(required = true, value = "当前页面", defaultValue = "1") @RequestParam Integer pageNum,
+            @ApiParam(required = true, value = "每页显示条数", defaultValue = "10") @RequestParam Integer pageSize,
             @ApiParam(value = "UserSearchVo") @RequestBody UserSearchVo userListFind,
             HttpServletRequest request
     ) {

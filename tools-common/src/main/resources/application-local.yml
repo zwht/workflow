@@ -12,6 +12,10 @@ spring:
     driverClassName: ${db.driverClassName}
     type: com.alibaba.druid.pool.DruidDataSource
     maxPoolSize: 30
+  thymeleaf:
+    cache: false
+    prefix: classpath:/static/
+    suffix: .html
 
 mybatis:
   mapperLocations: classpath*:mapper/**/*.xml

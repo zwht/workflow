@@ -17,7 +17,7 @@ import java.io.PrintWriter;
  * @Time：上午10:55
  * @describe 一个简单的Interceptor拦截器类
  */
-public class MyInterceptor implements HandlerInterceptor {
+public class AllInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response,
@@ -26,40 +26,15 @@ public class MyInterceptor implements HandlerInterceptor {
         if ("GET".equalsIgnoreCase(request.getMethod())) {
             //RequestUtil.saveRequest();
         }
-
-        // 如果请求url包含/cfmy/public/，不需要token验证，直接通过拦截
-        String requestUri = request.getRequestURI();
-        if(requestUri.indexOf("/cfmy/public/") != -1){
-            return true;
-        }
-
-        // 默认token从http请求头里拿
-        String token = request.getHeader("token");
-        // 如果http请求头里没有，使用url参数名字为token的值
-        if (token == null) {
-            token = request.getParameter("token");
-        }
-
-        if(token!=null){
-            // 根据token字符串，获取tokenVo，如果返回不为null，验证通过
-            TokenVo tokenVo = TokenUtil.getTokenVo(token);
-            if ( tokenVo!= null) {
-                // 设置request属性tokenVo，在Controller里调用
-                // 使用方法如下：
-                // TokenVo tokenVo= (TokenVo) request.getAttribute("tokenVo");
-                request.setAttribute("tokenVo",tokenVo);
-                return true;
-            }
-        }
-
-        // 上面未返回true，返回401
-        ResponseVo response1 = new ResponseVo();
-        response1.failure(401, "未经授权,服务器拒绝响应。");
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("application/json; charset=utf-8");
-        PrintWriter out = response.getWriter();
-        out.print(JSON.toJSONString(response1));
-        return false;
+        // 跨越代码===start====
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Credentials", "true");
+        response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT, HEAD");
+        // 非常重要，如果前端http请求设置有自定义header一定要写在这里
+        response.addHeader("Access-Control-Allow-Headers", "Content-Type, token");
+        response.addHeader("Access-Control-Max-Age", "3600");
+        // 跨越代码===end====
+        return true;
     }
 
     /**

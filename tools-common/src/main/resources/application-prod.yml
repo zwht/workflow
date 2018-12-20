@@ -13,7 +13,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     maxPoolSize: 30
   Thymeleaf:
-    cache: false
+    cache: true
 mybatis:
   mapperLocations: classpath*:mapper/**/*.xml
   typeAliasesPackage: com.zw.dao.entity
