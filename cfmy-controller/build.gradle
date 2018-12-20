@@ -1,6 +1,6 @@
-apply plugin: 'java'
-apply plugin: 'war'
-apply from: '../build.gradle'
+apply plugin: "java"
+apply plugin: "war"
+apply from: "../build.gradle"
 
 /**
  * 拷贝配置文件
@@ -8,7 +8,7 @@ apply from: '../build.gradle'
  * gradle build -Dprofile=local
  **/
 task copyYAML(type: Copy) {
-    def profile = System.properties['profile']
+    def profile = System.properties["profile"]
     if (profile == null) {
         def key = "spring.profiles.active"
         Properties properties = new Properties();
@@ -40,5 +40,6 @@ bootJar {
 }
 
 dependencies {
+
     compile project(":cfmy-service")
 }

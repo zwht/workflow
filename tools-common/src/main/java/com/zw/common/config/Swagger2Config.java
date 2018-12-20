@@ -43,7 +43,7 @@ public class Swagger2Config {
                 .build();
         pars.add(tokenPar.build());
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("MapperApi接口")
+                .groupName("MapperApi")
                 .apiInfo(apiInfo())
                 .select()
                 // .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))

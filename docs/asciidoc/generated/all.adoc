@@ -1,0 +1,1233 @@
+= gradle springboot 多模块项目构建RESTful API
+
+
+[[_overview]]
+== 概览
+
+=== URI scheme
+[%hardbreaks]
+__域名__ : 127.0.0.1:8888
+__基础路径__ : /
+__方案__ : HTTP
+
+
+=== 标签
+
+* code-controller : 码表
+* start-controller : 启动(登录，注册)
+* user-controller : 用户
+
+
+
+
+[[_paths]]
+== 资源
+
+[[_code-controller_resource]]
+=== Code-controller
+码表
+
+
+[[_addusingpost]]
+==== 新增
+....
+POST /cfmy/code/add
+....
+
+
+===== 参数
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|token|string
+|**Body**|**codeAddVo** +
+__必填__|body内容|<<_codeaddvo,CodeAddVo>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_responsevo,ResponseVo>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `\*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/cfmy/code/add
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "msg" : "string",
+  "msgObj" : [ { } ],
+  "response" : "object",
+  "status" : 0
+}
+----
+
+
+[[_delusingget]]
+==== 删除
+....
+GET /cfmy/code/del
+....
+
+
+===== 参数
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|token|string
+|**Query**|**id** +
+__必填__|id|integer (int64)
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_responsevo,ResponseVo>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `\*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/cfmy/code/del?id=0
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "msg" : "string",
+  "msgObj" : [ { } ],
+  "response" : "object",
+  "status" : 0
+}
+----
+
+
+[[_selectbyprimarykeyusingget]]
+==== 详情
+....
+GET /cfmy/code/getById
+....
+
+
+===== 参数
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a,.^2a"]
+|===
+|类型|名称|说明|类型|默认值
+|**Header**|**token** +
+__可选__|token|string|
+|**Query**|**id** +
+__必填__|用户Id|integer (int64)|`121`
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_6f5f5101612faef3a7257e1f10b3001d,ResponseVo«Code»>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `\*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/cfmy/code/getById?id=0
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "msg" : "string",
+  "msgObj" : [ { } ],
+  "response" : {
+    "id" : 0,
+    "name" : "string",
+    "type" : "string",
+    "value" : 0
+  },
+  "status" : 0
+}
+----
+
+
+[[_updateusingpost]]
+==== 更新
+....
+POST /cfmy/code/update
+....
+
+
+===== 参数
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|token|string
+|**Body**|**code** +
+__必填__|CodeUpdateVo|<<_code,Code>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_responsevo,ResponseVo>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `\*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/cfmy/code/update
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "id" : 0,
+  "name" : "string",
+  "type" : "string",
+  "value" : 0
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "msg" : "string",
+  "msgObj" : [ { } ],
+  "response" : "object",
+  "status" : 0
+}
+----
+
+
+[[_getcodelistusingpost]]
+==== 查询列表
+....
+POST /cfmy/public/code/list
+....
+
+
+===== 参数
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|token|string
+|**Query**|**pageNum** +
+__必填__|当前页面|integer (int32)
+|**Query**|**pageSize** +
+__必填__|每页显示条数|integer (int32)
+|**Body**|**codeListFind** +
+__可选__|CodeSearchVo|<<_codesearchvo,CodeSearchVo>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_ec8bd93eab1fc621a673a21c5be9cd97,ResponseVo«PageVo«List«Code»»»>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `\*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/cfmy/public/code/list?pageNum=0&pageSize=0
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "name" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "msg" : "string",
+  "msgObj" : [ { } ],
+  "response" : {
+    "data" : [ {
+      "id" : 0,
+      "name" : "string",
+      "type" : "string",
+      "value" : 0
+    } ],
+    "pageCount" : 0,
+    "pageNum" : 0,
+    "pageSize" : 0
+  },
+  "status" : 0
+}
+----
+
+
+[[_start-controller_resource]]
+=== Start-controller
+启动(登录，注册)
+
+
+[[_loginusingpost]]
+==== 登录
+....
+POST /cfmy/public/start/login
+....
+
+
+===== 参数
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|token|string
+|**Body**|**loginRequestVo** +
+__必填__|body内容|<<_loginrequestvo,LoginRequestVo>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_responsevo,ResponseVo>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `\*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/cfmy/public/start/login
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "loginName" : "zw",
+  "password" : "MTIzNDU2"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "msg" : "string",
+  "msgObj" : [ { } ],
+  "response" : "object",
+  "status" : 0
+}
+----
+
+
+[[_user-controller_resource]]
+=== User-controller
+用户
+
+
+[[_addusingpost_1]]
+==== 新增
+....
+POST /cfmy/user/add
+....
+
+
+===== 参数
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|token|string
+|**Body**|**userAddVo** +
+__必填__|body内容|<<_useraddvo,UserAddVo>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_responsevo,ResponseVo>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `\*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/cfmy/user/add
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "ability" : "string",
+  "address" : "string",
+  "addressId" : "string",
+  "avatar" : "string",
+  "corporationId" : "string",
+  "loginName" : "string",
+  "name" : "string",
+  "password" : "string",
+  "phone" : "string",
+  "roles" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "msg" : "string",
+  "msgObj" : [ { } ],
+  "response" : "object",
+  "status" : 0
+}
+----
+
+
+[[_delusingget_1]]
+==== 删除
+....
+GET /cfmy/user/del
+....
+
+
+===== 参数
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|token|string
+|**Query**|**id** +
+__必填__|id|integer (int64)
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_responsevo,ResponseVo>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `\*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/cfmy/user/del?id=0
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "msg" : "string",
+  "msgObj" : [ { } ],
+  "response" : "object",
+  "status" : 0
+}
+----
+
+
+[[_selectbyprimarykeyusingget_1]]
+==== 详情
+....
+GET /cfmy/user/getById
+....
+
+
+===== 参数
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a,.^2a"]
+|===
+|类型|名称|说明|类型|默认值
+|**Header**|**token** +
+__可选__|token|string|
+|**Query**|**id** +
+__必填__|用户Id|integer (int64)|`121`
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_327bb6dccdc30e665d2934760538fd58,ResponseVo«User»>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `\*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/cfmy/user/getById?id=0
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "msg" : "string",
+  "msgObj" : [ { } ],
+  "response" : {
+    "ability" : "string",
+    "address" : "string",
+    "addressId" : "string",
+    "avatar" : "string",
+    "corporationId" : "string",
+    "id" : 0,
+    "loginName" : "string",
+    "name" : "string",
+    "password" : "string",
+    "passwordKey" : "string",
+    "phone" : "string",
+    "roles" : "string",
+    "state" : 0
+  },
+  "status" : 0
+}
+----
+
+
+[[_getuserlistusingpost]]
+==== 查询列表
+....
+POST /cfmy/user/list
+....
+
+
+===== 参数
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|token|string
+|**Query**|**pageNum** +
+__必填__|当前页面|integer (int32)
+|**Query**|**pageSize** +
+__必填__|每页显示条数|integer (int32)
+|**Body**|**userListFind** +
+__可选__|UserSearchVo|<<_usersearchvo,UserSearchVo>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_dce92fad97f2ee749ba085c3aa545515,ResponseVo«PageVo«List«User»»»>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `\*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/cfmy/user/list?pageNum=0&pageSize=0
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "corporationId" : "string",
+  "loginName" : "string",
+  "name" : "string",
+  "roles" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "msg" : "string",
+  "msgObj" : [ { } ],
+  "response" : {
+    "data" : [ {
+      "ability" : "string",
+      "address" : "string",
+      "addressId" : "string",
+      "avatar" : "string",
+      "corporationId" : "string",
+      "id" : 0,
+      "loginName" : "string",
+      "name" : "string",
+      "password" : "string",
+      "passwordKey" : "string",
+      "phone" : "string",
+      "roles" : "string",
+      "state" : 0
+    } ],
+    "pageCount" : 0,
+    "pageNum" : 0,
+    "pageSize" : 0
+  },
+  "status" : 0
+}
+----
+
+
+[[_updateusingpost_1]]
+==== 更新
+....
+POST /cfmy/user/update
+....
+
+
+===== 参数
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|token|string
+|**Body**|**user** +
+__必填__|UserUpdateVo|<<_user,User>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_responsevo,ResponseVo>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `\*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/cfmy/user/update
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "ability" : "string",
+  "address" : "string",
+  "addressId" : "string",
+  "avatar" : "string",
+  "corporationId" : "string",
+  "id" : 0,
+  "loginName" : "string",
+  "name" : "string",
+  "password" : "string",
+  "passwordKey" : "string",
+  "phone" : "string",
+  "roles" : "string",
+  "state" : 0
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "msg" : "string",
+  "msgObj" : [ { } ],
+  "response" : "object",
+  "status" : 0
+}
+----
+
+
+
+
+[[_definitions]]
+== 定义
+
+[[_code]]
+=== Code
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|名称|说明|类型
+|**id** +
+__可选__|**样例** : `0`|integer (int64)
+|**name** +
+__可选__|**样例** : `"string"`|string
+|**type** +
+__可选__|**样例** : `"string"`|string
+|**value** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_codeaddvo]]
+=== CodeAddVo
+__类型__ : object
+
+
+[[_codesearchvo]]
+=== CodeSearchVo
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|名称|说明|类型
+|**name** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+[[_loginrequestvo]]
+=== LoginRequestVo
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|名称|说明|类型
+|**loginName** +
+__可选__|登录名 +
+**样例** : `"zw"`|string
+|**password** +
+__可选__|密码 +
+**样例** : `"MTIzNDU2"`|string
+|===
+
+
+[[_fe5293b8150fdf81185174959d77609c]]
+=== Map«string,string»
+__类型__ : < string, string > map
+
+
+[[_48fa090ddb892ef18e0a86e7700253af]]
+=== PageVo«List«Code»»
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|**样例** : `[ "<<_code>>" ]`|< <<_code,Code>> > array
+|**pageCount** +
+__可选__|**样例** : `0`|integer (int64)
+|**pageNum** +
+__可选__|**样例** : `0`|integer (int32)
+|**pageSize** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_68927e613d3816370bf8d183bedd0d8e]]
+=== PageVo«List«User»»
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|名称|说明|类型
+|**data** +
+__可选__|**样例** : `[ "<<_user>>" ]`|< <<_user,User>> > array
+|**pageCount** +
+__可选__|**样例** : `0`|integer (int64)
+|**pageNum** +
+__可选__|**样例** : `0`|integer (int32)
+|**pageSize** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_responsevo]]
+=== ResponseVo
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|名称|说明|类型
+|**msg** +
+__可选__|**样例** : `"string"`|string
+|**msgObj** +
+__可选__|**样例** : `[ "<<_fe5293b8150fdf81185174959d77609c>>" ]`|< <<_fe5293b8150fdf81185174959d77609c,Map«string,string»>> > array
+|**response** +
+__可选__|**样例** : `"object"`|object
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_6f5f5101612faef3a7257e1f10b3001d]]
+=== ResponseVo«Code»
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|名称|说明|类型
+|**msg** +
+__可选__|**样例** : `"string"`|string
+|**msgObj** +
+__可选__|**样例** : `[ "<<_fe5293b8150fdf81185174959d77609c>>" ]`|< <<_fe5293b8150fdf81185174959d77609c,Map«string,string»>> > array
+|**response** +
+__可选__|**样例** : <<_code>>|<<_code,Code>>
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_ec8bd93eab1fc621a673a21c5be9cd97]]
+=== ResponseVo«PageVo«List«Code»»»
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|名称|说明|类型
+|**msg** +
+__可选__|**样例** : `"string"`|string
+|**msgObj** +
+__可选__|**样例** : `[ "<<_fe5293b8150fdf81185174959d77609c>>" ]`|< <<_fe5293b8150fdf81185174959d77609c,Map«string,string»>> > array
+|**response** +
+__可选__|**样例** : <<_48fa090ddb892ef18e0a86e7700253af>>|<<_48fa090ddb892ef18e0a86e7700253af,PageVo«List«Code»»>>
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_dce92fad97f2ee749ba085c3aa545515]]
+=== ResponseVo«PageVo«List«User»»»
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|名称|说明|类型
+|**msg** +
+__可选__|**样例** : `"string"`|string
+|**msgObj** +
+__可选__|**样例** : `[ "<<_fe5293b8150fdf81185174959d77609c>>" ]`|< <<_fe5293b8150fdf81185174959d77609c,Map«string,string»>> > array
+|**response** +
+__可选__|**样例** : <<_68927e613d3816370bf8d183bedd0d8e>>|<<_68927e613d3816370bf8d183bedd0d8e,PageVo«List«User»»>>
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_327bb6dccdc30e665d2934760538fd58]]
+=== ResponseVo«User»
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|名称|说明|类型
+|**msg** +
+__可选__|**样例** : `"string"`|string
+|**msgObj** +
+__可选__|**样例** : `[ "<<_fe5293b8150fdf81185174959d77609c>>" ]`|< <<_fe5293b8150fdf81185174959d77609c,Map«string,string»>> > array
+|**response** +
+__可选__|**样例** : <<_user>>|<<_user,User>>
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_user]]
+=== User
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|名称|说明|类型
+|**ability** +
+__可选__|**样例** : `"string"`|string
+|**address** +
+__可选__|**样例** : `"string"`|string
+|**addressId** +
+__可选__|**样例** : `"string"`|string
+|**avatar** +
+__可选__|**样例** : `"string"`|string
+|**corporationId** +
+__可选__|**样例** : `"string"`|string
+|**id** +
+__可选__|**样例** : `0`|integer (int64)
+|**loginName** +
+__可选__|**样例** : `"string"`|string
+|**name** +
+__可选__|**样例** : `"string"`|string
+|**password** +
+__可选__|**样例** : `"string"`|string
+|**passwordKey** +
+__可选__|**样例** : `"string"`|string
+|**phone** +
+__可选__|**样例** : `"string"`|string
+|**roles** +
+__可选__|**样例** : `"string"`|string
+|**state** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_useraddvo]]
+=== UserAddVo
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|名称|说明|类型
+|**ability** +
+__可选__|能力，权限 +
+**样例** : `"string"`|string
+|**address** +
+__可选__|地址 +
+**样例** : `"string"`|string
+|**addressId** +
+__可选__|地址Id +
+**样例** : `"string"`|string
+|**avatar** +
+__可选__|头像 +
+**样例** : `"string"`|string
+|**corporationId** +
+__可选__|公司名 +
+**样例** : `"string"`|string
+|**loginName** +
+__可选__|登录名 +
+**样例** : `"string"`|string
+|**name** +
+__可选__|用户名 +
+**样例** : `"string"`|string
+|**password** +
+__可选__|密码 +
+**样例** : `"string"`|string
+|**phone** +
+__可选__|手机号 +
+**样例** : `"string"`|string
+|**roles** +
+__可选__|角色 +
+**样例** : `"string"`|string
+|===
+
+
+[[_usersearchvo]]
+=== UserSearchVo
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|名称|说明|类型
+|**corporationId** +
+__可选__|**样例** : `"string"`|string
+|**loginName** +
+__可选__|**样例** : `"string"`|string
+|**name** +
+__可选__|**样例** : `"string"`|string
+|**roles** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+
+
+
