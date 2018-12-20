@@ -3,7 +3,8 @@ db:
   url: jdbc:mysql://localhost:3306/cfmy?characterEncoding=utf-8
   username: root
   password: zw200813
-
+fileUpload:
+  url: /Users/zhaowei/projects/java/boot-model/images/
 spring:
   datasource:
     url: ${db.url}
