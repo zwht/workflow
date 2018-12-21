@@ -22,7 +22,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/cfmy")
-@Api(description = "码表")
+@Api(description = "码表组")
 public class CodeGroupController {
 
     @Autowired
