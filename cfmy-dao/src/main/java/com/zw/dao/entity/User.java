@@ -21,11 +21,7 @@ public class User {
 
     private String phone;
 
-    private String avatar;
-
-    private String address;
-
-    private String addressId;
+    private String imgId;
 
     public Long getId() {
         return id;
@@ -107,27 +103,11 @@ public class User {
         this.phone = phone == null ? null : phone.trim();
     }
 
-    public String getAvatar() {
-        return avatar;
+    public String getImgId() {
+        return imgId;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar == null ? null : avatar.trim();
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
-    }
-
-    public String getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(String addressId) {
-        this.addressId = addressId == null ? null : addressId.trim();
+    public void setImgId(String imgId) {
+        this.imgId = imgId == null ? null : imgId.trim();
     }
 }

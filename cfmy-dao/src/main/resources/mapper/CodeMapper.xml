@@ -3,8 +3,8 @@
 <mapper namespace="com.zw.dao.mapper.CodeMapper">
   <resultMap id="BaseResultMap" type="com.zw.dao.entity.Code">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="value" jdbcType="INTEGER" property="value" />
-    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="value" jdbcType="SMALLINT" property="value" />
+    <result column="group_id" jdbcType="BIGINT" property="groupId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -66,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, value, type, name
+    id, value, group_id, name
   </sql>
   <select id="selectByExample" parameterType="com.zw.dao.entity.CodeExample" resultMap="BaseResultMap">
     select
@@ -74,7 +74,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from code
+    from cm_code
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -85,27 +85,27 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from code
+    from cm_code
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from code
+    delete from cm_code
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.zw.dao.entity.CodeExample">
-    delete from code
+    delete from cm_code
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.zw.dao.entity.Code">
-    insert into code (id, value, type, 
+    insert into cm_code (id, value, group_id, 
       name)
-    values (#{id,jdbcType=BIGINT}, #{value,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=BIGINT}, #{value,jdbcType=SMALLINT}, #{groupId,jdbcType=BIGINT}, 
       #{name,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zw.dao.entity.Code">
-    insert into code
+    insert into cm_code
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -113,8 +113,8 @@
       <if test="value != null">
         value,
       </if>
-      <if test="type != null">
-        type,
+      <if test="groupId != null">
+        group_id,
       </if>
       <if test="name != null">
         name,
@@ -125,10 +125,10 @@
         #{id,jdbcType=BIGINT},
       </if>
       <if test="value != null">
-        #{value,jdbcType=INTEGER},
+        #{value,jdbcType=SMALLINT},
       </if>
-      <if test="type != null">
-        #{type,jdbcType=VARCHAR},
+      <if test="groupId != null">
+        #{groupId,jdbcType=BIGINT},
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
@@ -136,22 +136,22 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.zw.dao.entity.CodeExample" resultType="java.lang.Long">
-    select count(*) from code
+    select count(*) from cm_code
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update code
+    update cm_code
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.value != null">
-        value = #{record.value,jdbcType=INTEGER},
+        value = #{record.value,jdbcType=SMALLINT},
       </if>
-      <if test="record.type != null">
-        type = #{record.type,jdbcType=VARCHAR},
+      <if test="record.groupId != null">
+        group_id = #{record.groupId,jdbcType=BIGINT},
       </if>
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
@@ -162,23 +162,23 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update code
+    update cm_code
     set id = #{record.id,jdbcType=BIGINT},
-      value = #{record.value,jdbcType=INTEGER},
-      type = #{record.type,jdbcType=VARCHAR},
+      value = #{record.value,jdbcType=SMALLINT},
+      group_id = #{record.groupId,jdbcType=BIGINT},
       name = #{record.name,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.zw.dao.entity.Code">
-    update code
+    update cm_code
     <set>
       <if test="value != null">
-        value = #{value,jdbcType=INTEGER},
+        value = #{value,jdbcType=SMALLINT},
       </if>
-      <if test="type != null">
-        type = #{type,jdbcType=VARCHAR},
+      <if test="groupId != null">
+        group_id = #{groupId,jdbcType=BIGINT},
       </if>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
@@ -187,9 +187,9 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.zw.dao.entity.Code">
-    update code
-    set value = #{value,jdbcType=INTEGER},
-      type = #{type,jdbcType=VARCHAR},
+    update cm_code
+    set value = #{value,jdbcType=SMALLINT},
+      group_id = #{groupId,jdbcType=BIGINT},
       name = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>

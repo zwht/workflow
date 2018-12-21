@@ -1,15 +1,15 @@
-package com.zw.service.file;
+package com.zw.service.codeGroup;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.zw.common.util.SnowFlake;
 import com.zw.common.vo.PageVo;
 import com.zw.common.vo.ResponseVo;
-import com.zw.dao.entity.File;
-import com.zw.dao.entity.FileExample;
-import com.zw.dao.mapper.FileMapper;
-import com.zw.vo.file.FileAddVo;
-import com.zw.vo.file.FileSearchVo;
+import com.zw.dao.entity.CodeGroup;
+import com.zw.dao.entity.CodeGroupExample;
+import com.zw.dao.mapper.CodeGroupMapper;
+import com.zw.vo.codeGroup.CodeGroupAddVo;
+import com.zw.vo.codeGroup.CodeGroupSearchVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,34 +24,35 @@ import java.util.Set;
 
 /**
  * @author：zhaowei
- * @Date：2018/12/20
- * @Time：下午3:21
+ * @Date：2018/12/19
+ * @Time：下午2:04
  */
 @Service
-public class FileServiceImpl implements FileService {
+public class CodeGroupServiceImpl implements CodeGroupService {
+
     @Autowired
-    FileMapper fileMapper;
+    CodeGroupMapper codeGroupMapper;
 
     @Override
-    public ResponseVo add(FileAddVo fileAddVo) {
+    public ResponseVo add(CodeGroupAddVo codeGroupAddVo) {
         ResponseVo response = new ResponseVo();
         try {
-            File file = new File();
-            BeanUtils.copyProperties(fileAddVo, file);
-            FileExample fileExample = new FileExample();
-            FileExample.Criteria criteria = fileExample.createCriteria();
-            criteria.andUrlEqualTo(file.getUrl());
+            CodeGroup codeGroup = new CodeGroup();
+            BeanUtils.copyProperties(codeGroupAddVo, codeGroup);
+            CodeGroupExample codeGroupExample = new CodeGroupExample();
+            CodeGroupExample.Criteria criteria = codeGroupExample.createCriteria();
+            criteria.andValueEqualTo(codeGroup.getValue());
             // 查询是否有相同
-            List<File> files = fileMapper.selectByExample(fileExample);
-            if (files.size() == 0) {
-                file.setId(new SnowFlake(1, 1).nextId());
+            List<CodeGroup> codeGroups = codeGroupMapper.selectByExample(codeGroupExample);
+            if (codeGroups.size() == 0) {
+                codeGroup.setId(new SnowFlake(1, 1).nextId());
                 ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
                 Validator validator = factory.getValidator();
-                Set<ConstraintViolation<File>> constraintViolations = validator.validate(file);
+                Set<ConstraintViolation<CodeGroup>> constraintViolations = validator.validate(codeGroup);
                 if (constraintViolations.size() != 0) {
                     return response.validation(constraintViolations);
                 } else {
-                    fileMapper.insert(file);
+                    codeGroupMapper.insert(codeGroup);
                     return response.success("添加成功");
                 }
             } else {
@@ -64,40 +65,41 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public ResponseVo getById(Long id) {
-        ResponseVo<File> response = new ResponseVo();
+        ResponseVo<CodeGroup> response = new ResponseVo();
         try {
-            return response.success(fileMapper.selectByPrimaryKey(Long.valueOf(id)));
+            return response.success(codeGroupMapper.selectByPrimaryKey(Long.valueOf(id)));
         } catch (Exception e) {
             return response.failure(501, e.getMessage());
         }
     }
 
     @Override
-    public ResponseVo update(File file) {
+    public ResponseVo update(CodeGroup codeGroup) {
         ResponseVo response = new ResponseVo();
         try {
-            FileExample fileExample = new FileExample();
-            FileExample.Criteria criteria = fileExample.createCriteria();
-            criteria.andIdNotEqualTo(file.getId());
+            CodeGroupExample codeGroupExample = new CodeGroupExample();
+            CodeGroupExample.Criteria criteria = codeGroupExample.createCriteria();
+            criteria.andValueEqualTo(codeGroup.getValue());
+            criteria.andIdNotEqualTo(codeGroup.getId());
             // 查询是否有相同
-            List<File> corporations = fileMapper.selectByExample(fileExample);
+            List<CodeGroup> corporations = codeGroupMapper.selectByExample(codeGroupExample);
             if (corporations.size() == 0) {
                 ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
                 Validator validator = factory.getValidator();
-                Set<ConstraintViolation<File>> constraintViolations = validator.validate(file);
+                Set<ConstraintViolation<CodeGroup>> constraintViolations = validator.validate(codeGroup);
 
                 if (constraintViolations.size() != 0) {
                     return response.validation(constraintViolations);
                 } else {
-                    FileExample example = new FileExample();
-                    FileExample.Criteria criteria1 = example.createCriteria();
-                    criteria1.andIdEqualTo(file.getId());
-                    fileMapper.updateByExampleSelective(file, example);
+                    CodeGroupExample example = new CodeGroupExample();
+                    CodeGroupExample.Criteria criteria1 = example.createCriteria();
+                    criteria1.andIdEqualTo(codeGroup.getId());
+                    codeGroupMapper.updateByExampleSelective(codeGroup, example);
                     return response.success("修改成功");
                 }
 
             } else {
-                return response.failure(400, "名字重复！");
+                return response.failure(400, "数据重复！");
             }
         } catch (Exception e) {
             return response.failure(400, e.toString());
@@ -105,17 +107,17 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
-    public ResponseVo getList(Integer pageNum, Integer pageSize, FileSearchVo fileSearchVo) {
+    public ResponseVo getList(Integer pageNum, Integer pageSize, CodeGroupSearchVo codeGroupSearchVo) {
         ResponseVo response = new ResponseVo();
         //条件查询3句话
-        FileExample example = new FileExample();
-        FileExample.Criteria criteria = example.createCriteria();
-        if (!StringUtils.isEmpty(fileSearchVo.getType())) {
-            criteria.andTypeEqualTo(fileSearchVo.getType());
+        CodeGroupExample example = new CodeGroupExample();
+        CodeGroupExample.Criteria criteria = example.createCriteria();
+        if (!StringUtils.isEmpty(codeGroupSearchVo.getName())) {
+            criteria.andNameLike("%"+codeGroupSearchVo.getName()+"%");
         }
         try {
             Page page = PageHelper.startPage(pageNum, pageSize);
-            List list = fileMapper.selectByExample(example);
+            List list = codeGroupMapper.selectByExample(example);
             long count = page.getTotal();
             return response.success(new PageVo(pageNum, pageSize, count, list));
         } catch (Exception e) {
@@ -127,9 +129,10 @@ public class FileServiceImpl implements FileService {
     public ResponseVo del(Long id) {
         ResponseVo response = new ResponseVo();
         try {
-            return response.success(fileMapper.deleteByPrimaryKey(Long.valueOf(id)));
+            return response.success(codeGroupMapper.deleteByPrimaryKey(Long.valueOf(id)));
         } catch (Exception e) {
             return response.failure(501, e.getMessage());
         }
     }
+
 }

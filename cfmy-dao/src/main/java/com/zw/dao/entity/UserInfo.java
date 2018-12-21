@@ -1,15 +1,9 @@
 package com.zw.dao.entity;
 
-public class Corporation {
+public class UserInfo {
     private Long id;
 
-    private String name;
-
-    private Short state;
-
-    private Long bossId;
-
-    private Long logoId;
+    private Long userId;
 
     private Short provinceId;
 
@@ -19,8 +13,6 @@ public class Corporation {
 
     private String address;
 
-    private String ability;
-
     public Long getId() {
         return id;
     }
@@ -29,36 +21,12 @@ public class Corporation {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
-
-    public Short getState() {
-        return state;
-    }
-
-    public void setState(Short state) {
-        this.state = state;
-    }
-
-    public Long getBossId() {
-        return bossId;
-    }
-
-    public void setBossId(Long bossId) {
-        this.bossId = bossId;
-    }
-
-    public Long getLogoId() {
-        return logoId;
-    }
-
-    public void setLogoId(Long logoId) {
-        this.logoId = logoId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public Short getProvinceId() {
@@ -91,13 +59,5 @@ public class Corporation {
 
     public void setAddress(String address) {
         this.address = address == null ? null : address.trim();
-    }
-
-    public String getAbility() {
-        return ability;
-    }
-
-    public void setAbility(String ability) {
-        this.ability = ability == null ? null : ability.trim();
     }
 }

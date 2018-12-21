@@ -36,11 +36,20 @@
         </javaClientGenerator>
 
         <!-- table表生成对应的DoaminObject -->
-        <table tableName="code" domainObjectName="Code"></table>
-        <table tableName="users" domainObjectName="User"></table>
-        <table tableName="token" domainObjectName="Token"></table>
+        <table tableName="cm_code" domainObjectName="Code"></table>
+        <table tableName="cm_code_group" domainObjectName="CodeGroup"></table>
+
+        <table tableName="cm_user" domainObjectName="User"></table>
+        <table tableName="cm_user_info" domainObjectName="UserInfo"></table>
+
+        <table tableName="cm_file" domainObjectName="File"></table>
+        <table tableName="cm_corporation" domainObjectName="Corporation"></table>
+        <table tableName="cm_err_code" domainObjectName="ErrCode"></table>
+
+
+
+
         <table tableName="color" domainObjectName="Color"></table>
-        <table tableName="corporation" domainObjectName="Corporation"></table>
         <table tableName="door" domainObjectName="Door"></table>
         <table tableName="gx" domainObjectName="Gx"></table>
         <table tableName="process" domainObjectName="Process"></table>
@@ -48,6 +57,5 @@
         <table tableName="ticket" domainObjectName="Ticket"></table>
         <table tableName="line" domainObjectName="Line"></table>
         <table tableName="userTie" domainObjectName="UserTie"></table>
-        <table tableName="errCode" domainObjectName="ErrCode"></table>
     </context>
 </generatorConfiguration>

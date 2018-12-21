@@ -1,11 +1,9 @@
 package com.zw.dao.entity;
 
-public class Code {
+public class CodeGroup {
     private Long id;
 
     private Short value;
-
-    private Long groupId;
 
     private String name;
 
@@ -23,14 +21,6 @@ public class Code {
 
     public void setValue(Short value) {
         this.value = value;
-    }
-
-    public Long getGroupId() {
-        return groupId;
-    }
-
-    public void setGroupId(Long groupId) {
-        this.groupId = groupId;
     }
 
     public String getName() {

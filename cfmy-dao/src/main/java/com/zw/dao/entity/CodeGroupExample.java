@@ -3,14 +3,14 @@ package com.zw.dao.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ErrCodeExample {
+public class CodeGroupExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public ErrCodeExample() {
+    public CodeGroupExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -174,52 +174,52 @@ public class ErrCodeExample {
             return (Criteria) this;
         }
 
-        public Criteria andValueEqualTo(Integer value) {
+        public Criteria andValueEqualTo(Short value) {
             addCriterion("value =", value, "value");
             return (Criteria) this;
         }
 
-        public Criteria andValueNotEqualTo(Integer value) {
+        public Criteria andValueNotEqualTo(Short value) {
             addCriterion("value <>", value, "value");
             return (Criteria) this;
         }
 
-        public Criteria andValueGreaterThan(Integer value) {
+        public Criteria andValueGreaterThan(Short value) {
             addCriterion("value >", value, "value");
             return (Criteria) this;
         }
 
-        public Criteria andValueGreaterThanOrEqualTo(Integer value) {
+        public Criteria andValueGreaterThanOrEqualTo(Short value) {
             addCriterion("value >=", value, "value");
             return (Criteria) this;
         }
 
-        public Criteria andValueLessThan(Integer value) {
+        public Criteria andValueLessThan(Short value) {
             addCriterion("value <", value, "value");
             return (Criteria) this;
         }
 
-        public Criteria andValueLessThanOrEqualTo(Integer value) {
+        public Criteria andValueLessThanOrEqualTo(Short value) {
             addCriterion("value <=", value, "value");
             return (Criteria) this;
         }
 
-        public Criteria andValueIn(List<Integer> values) {
+        public Criteria andValueIn(List<Short> values) {
             addCriterion("value in", values, "value");
             return (Criteria) this;
         }
 
-        public Criteria andValueNotIn(List<Integer> values) {
+        public Criteria andValueNotIn(List<Short> values) {
             addCriterion("value not in", values, "value");
             return (Criteria) this;
         }
 
-        public Criteria andValueBetween(Integer value1, Integer value2) {
+        public Criteria andValueBetween(Short value1, Short value2) {
             addCriterion("value between", value1, value2, "value");
             return (Criteria) this;
         }
 
-        public Criteria andValueNotBetween(Integer value1, Integer value2) {
+        public Criteria andValueNotBetween(Short value1, Short value2) {
             addCriterion("value not between", value1, value2, "value");
             return (Criteria) this;
         }

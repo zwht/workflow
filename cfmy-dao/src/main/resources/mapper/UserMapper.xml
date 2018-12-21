@@ -12,9 +12,7 @@
     <result column="password_key" jdbcType="VARCHAR" property="passwordKey" />
     <result column="corporation_id" jdbcType="VARCHAR" property="corporationId" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
-    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
-    <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="address_id" jdbcType="VARCHAR" property="addressId" />
+    <result column="img_id" jdbcType="VARCHAR" property="imgId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -76,7 +74,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, name, login_name, state, ability, roles, password, password_key, corporation_id, 
-    phone, avatar, address, address_id
+    phone, img_id
   </sql>
   <select id="selectByExample" parameterType="com.zw.dao.entity.UserExample" resultMap="BaseResultMap">
     select
@@ -84,7 +82,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from users
+    from cm_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -95,33 +93,31 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from users
+    from cm_user
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from users
+    delete from cm_user
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.zw.dao.entity.UserExample">
-    delete from users
+    delete from cm_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.zw.dao.entity.User">
-    insert into users (id, name, login_name, 
+    insert into cm_user (id, name, login_name, 
       state, ability, roles, 
       password, password_key, corporation_id, 
-      phone, avatar, address, 
-      address_id)
+      phone, img_id)
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, 
       #{state,jdbcType=INTEGER}, #{ability,jdbcType=VARCHAR}, #{roles,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{passwordKey,jdbcType=VARCHAR}, #{corporationId,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{addressId,jdbcType=VARCHAR})
+      #{phone,jdbcType=VARCHAR}, #{imgId,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zw.dao.entity.User">
-    insert into users
+    insert into cm_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -153,14 +149,8 @@
       <if test="phone != null">
         phone,
       </if>
-      <if test="avatar != null">
-        avatar,
-      </if>
-      <if test="address != null">
-        address,
-      </if>
-      <if test="addressId != null">
-        address_id,
+      <if test="imgId != null">
+        img_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -194,25 +184,19 @@
       <if test="phone != null">
         #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="avatar != null">
-        #{avatar,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null">
-        #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="addressId != null">
-        #{addressId,jdbcType=VARCHAR},
+      <if test="imgId != null">
+        #{imgId,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.zw.dao.entity.UserExample" resultType="java.lang.Long">
-    select count(*) from users
+    select count(*) from cm_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update users
+    update cm_user
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
@@ -244,14 +228,8 @@
       <if test="record.phone != null">
         phone = #{record.phone,jdbcType=VARCHAR},
       </if>
-      <if test="record.avatar != null">
-        avatar = #{record.avatar,jdbcType=VARCHAR},
-      </if>
-      <if test="record.address != null">
-        address = #{record.address,jdbcType=VARCHAR},
-      </if>
-      <if test="record.addressId != null">
-        address_id = #{record.addressId,jdbcType=VARCHAR},
+      <if test="record.imgId != null">
+        img_id = #{record.imgId,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -259,7 +237,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update users
+    update cm_user
     set id = #{record.id,jdbcType=BIGINT},
       name = #{record.name,jdbcType=VARCHAR},
       login_name = #{record.loginName,jdbcType=VARCHAR},
@@ -270,15 +248,13 @@
       password_key = #{record.passwordKey,jdbcType=VARCHAR},
       corporation_id = #{record.corporationId,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
-      avatar = #{record.avatar,jdbcType=VARCHAR},
-      address = #{record.address,jdbcType=VARCHAR},
-      address_id = #{record.addressId,jdbcType=VARCHAR}
+      img_id = #{record.imgId,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.zw.dao.entity.User">
-    update users
+    update cm_user
     <set>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
@@ -307,20 +283,14 @@
       <if test="phone != null">
         phone = #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="avatar != null">
-        avatar = #{avatar,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null">
-        address = #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="addressId != null">
-        address_id = #{addressId,jdbcType=VARCHAR},
+      <if test="imgId != null">
+        img_id = #{imgId,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.zw.dao.entity.User">
-    update users
+    update cm_user
     set name = #{name,jdbcType=VARCHAR},
       login_name = #{loginName,jdbcType=VARCHAR},
       state = #{state,jdbcType=INTEGER},
@@ -330,9 +300,7 @@
       password_key = #{passwordKey,jdbcType=VARCHAR},
       corporation_id = #{corporationId,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
-      avatar = #{avatar,jdbcType=VARCHAR},
-      address = #{address,jdbcType=VARCHAR},
-      address_id = #{addressId,jdbcType=VARCHAR}
+      img_id = #{imgId,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

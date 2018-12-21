@@ -5,7 +5,7 @@ public class ErrCode {
 
     private Integer value;
 
-    private String label;
+    private String name;
 
     public Long getId() {
         return id;
@@ -23,11 +23,11 @@ public class ErrCode {
         this.value = value;
     }
 
-    public String getLabel() {
-        return label;
+    public String getName() {
+        return name;
     }
 
-    public void setLabel(String label) {
-        this.label = label == null ? null : label.trim();
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 }
