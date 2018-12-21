@@ -12,7 +12,6 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -59,13 +58,12 @@ public class CodeGroupController {
     }
 
     @ResponseBody
-    @PostMapping("/public/codeGroup/list")
+    @PostMapping("/codeGroup/list")
     @ApiOperation("查询列表")
     public ResponseVo<PageVo<List<CodeGroup>>> getCodeGroupList(
             @ApiParam(required = true, value = "当前页面", defaultValue = "1") @RequestParam Integer pageNum,
             @ApiParam(required = true, value = "每页显示条数", defaultValue = "10") @RequestParam Integer pageSize,
-            @ApiParam(value = "CodeGroupSearchVo") @RequestBody CodeGroupSearchVo codeGroupListFind,
-            HttpServletRequest request
+            @ApiParam(value = "CodeGroupSearchVo") @RequestBody CodeGroupSearchVo codeGroupListFind
     ) {
         return codeGroupService.getList(pageNum, pageSize, codeGroupListFind);
     }
