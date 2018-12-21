@@ -115,6 +115,9 @@ public class CodeServiceImpl implements CodeService {
         if (!StringUtils.isEmpty(codeSearchVo.getName())) {
             criteria.andNameLike("%"+codeSearchVo.getName()+"%");
         }
+        if (!StringUtils.isEmpty(codeSearchVo.getGroupId())) {
+            criteria.andGroupIdEqualTo(codeSearchVo.getGroupId());
+        }
         try {
             Page page = PageHelper.startPage(pageNum, pageSize);
             List list = codeMapper.selectByExample(example);

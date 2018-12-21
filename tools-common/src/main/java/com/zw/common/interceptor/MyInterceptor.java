@@ -1,6 +1,6 @@
 package com.zw.common.interceptor;
 
-import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zw.common.util.TokenUtil;
 import com.zw.common.vo.ResponseVo;
 import com.zw.common.vo.TokenVo;
@@ -55,10 +55,14 @@ public class MyInterceptor implements HandlerInterceptor {
         // 上面未返回true，返回401
         ResponseVo response1 = new ResponseVo();
         response1.failure(401, "未经授权,服务器拒绝响应。");
+
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(response1);
+
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json; charset=utf-8");
         PrintWriter out = response.getWriter();
-        out.print(JSON.toJSONString(response1));
+        out.print(json);
         return false;
     }
 

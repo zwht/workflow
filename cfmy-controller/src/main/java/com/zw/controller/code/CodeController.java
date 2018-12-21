@@ -33,8 +33,7 @@ public class CodeController {
     @PostMapping("/code/add")
     @ResponseBody
     public ResponseVo add(
-            @ApiParam(required = true, value = "body内容") @RequestBody CodeAddVo codeAddVo,
-            HttpServletRequest request
+            @ApiParam(required = true, value = "body内容") @RequestBody CodeAddVo codeAddVo
     ) {
         return codeService.add(codeAddVo);
     }
@@ -48,7 +47,6 @@ public class CodeController {
     ) {
         return codeService.getById(id);
     }
-
 
     @ApiOperation("更新")
     @PostMapping("/code/update")

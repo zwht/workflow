@@ -1,15 +1,11 @@
 package com.zw.common.interceptor;
 
-import com.alibaba.fastjson.JSON;
-import com.zw.common.util.TokenUtil;
-import com.zw.common.vo.ResponseVo;
-import com.zw.common.vo.TokenVo;
+
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.PrintWriter;
 
 /**
  * @author：zhaowei
