@@ -8,6 +8,7 @@ import com.zw.common.vo.ResponseVo;
 import com.zw.dao.entity.Code;
 import com.zw.dao.entity.CodeExample;
 import com.zw.dao.mapper.generate.CodeMapper;
+import com.zw.dao.mapper.my.MyCodeMapper;
 import com.zw.vo.code.CodeAddVo;
 import com.zw.vo.code.CodeSearchVo;
 import org.springframework.beans.BeanUtils;
@@ -32,6 +33,9 @@ public class CodeServiceImpl implements CodeService {
 
     @Autowired
     CodeMapper codeMapper;
+
+    @Autowired
+    MyCodeMapper myCodeMapper;
 
     @Override
     public ResponseVo add(CodeAddVo codeAddVo) {
@@ -120,7 +124,7 @@ public class CodeServiceImpl implements CodeService {
         }
         try {
             Page page = PageHelper.startPage(pageNum, pageSize);
-            List list = codeMapper.selectByExample(example);
+            List list = myCodeMapper.selectByExample(example);
             long count = page.getTotal();
             return response.success(new PageVo(pageNum, pageSize, count, list));
         } catch (Exception e) {

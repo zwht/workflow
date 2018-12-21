@@ -6,10 +6,14 @@ import com.zw.dao.entity.CodeExample;
 import java.util.List;
 
 /**
+ * MyCodeMapper接口，处理code关联查询
  * @author：zhaowei
- * @Date：2018/12/21
- * @Time：下午5:21
  */
 public interface MyCodeMapper {
+    /**
+     * 关联查询code列表
+     *  @param example 查询对象
+     *  @return Code
+     */
     List<Code> selectByExample(CodeExample example);
 }

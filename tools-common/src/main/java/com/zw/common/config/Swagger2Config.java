@@ -44,7 +44,7 @@ public class Swagger2Config {
                 .build();
         pars.add(tokenPar.build());
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("MapperApi")
+                .groupName("前端接口文档")
                 .apiInfo(apiInfo())
                 .select()
                 // .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
@@ -61,20 +61,20 @@ public class Swagger2Config {
     @Bean
     public Docket PersonApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("PersonApi接口")
+                .groupName("后端mybatis接口")
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.example.demo18.Person"))
+                .apis(RequestHandlerSelectors.basePackage("com.zw.dao.mapper.my"))
                 .paths(PathSelectors.any()).build();
     }
 
     @Bean
     public Docket ServiceApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("Service接口")
+                .groupName("后端Service接口")
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.example.demo18.Service"))
+                .apis(RequestHandlerSelectors.basePackage("com.zw.service"))
                 .paths(PathSelectors.any()).build();
     }
 
