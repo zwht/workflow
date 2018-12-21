@@ -3,7 +3,7 @@ package com.zw.dao.entity;
 public class CodeGroup {
     private Long id;
 
-    private Short value;
+    private Byte value;
 
     private String name;
 
@@ -15,11 +15,11 @@ public class CodeGroup {
         this.id = id;
     }
 
-    public Short getValue() {
+    public Byte getValue() {
         return value;
     }
 
-    public void setValue(Short value) {
+    public void setValue(Byte value) {
         this.value = value;
     }
 

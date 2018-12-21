@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zw.dao.mapper.ErrCodeMapper">
-  <resultMap id="BaseResultMap" type="com.zw.dao.entity.ErrCode">
+<mapper namespace="com.zw.dao.mapper.generate.CodeGroupMapper">
+  <resultMap id="BaseResultMap" type="com.zw.dao.entity.CodeGroup">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="value" jdbcType="INTEGER" property="value" />
+    <result column="value" jdbcType="TINYINT" property="value" />
     <result column="name" jdbcType="VARCHAR" property="name" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -67,13 +67,13 @@
   <sql id="Base_Column_List">
     id, value, name
   </sql>
-  <select id="selectByExample" parameterType="com.zw.dao.entity.ErrCodeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.zw.dao.entity.CodeGroupExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from cm_err_code
+    from cm_code_group
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,27 +84,27 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from cm_err_code
+    from cm_code_group
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from cm_err_code
+    delete from cm_code_group
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.zw.dao.entity.ErrCodeExample">
-    delete from cm_err_code
+  <delete id="deleteByExample" parameterType="com.zw.dao.entity.CodeGroupExample">
+    delete from cm_code_group
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.zw.dao.entity.ErrCode">
-    insert into cm_err_code (id, value, name
+  <insert id="insert" parameterType="com.zw.dao.entity.CodeGroup">
+    insert into cm_code_group (id, value, name
       )
-    values (#{id,jdbcType=BIGINT}, #{value,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}
+    values (#{id,jdbcType=BIGINT}, #{value,jdbcType=TINYINT}, #{name,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.zw.dao.entity.ErrCode">
-    insert into cm_err_code
+  <insert id="insertSelective" parameterType="com.zw.dao.entity.CodeGroup">
+    insert into cm_code_group
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -121,27 +121,27 @@
         #{id,jdbcType=BIGINT},
       </if>
       <if test="value != null">
-        #{value,jdbcType=INTEGER},
+        #{value,jdbcType=TINYINT},
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.zw.dao.entity.ErrCodeExample" resultType="java.lang.Long">
-    select count(*) from cm_err_code
+  <select id="countByExample" parameterType="com.zw.dao.entity.CodeGroupExample" resultType="java.lang.Long">
+    select count(*) from cm_code_group
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update cm_err_code
+    update cm_code_group
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.value != null">
-        value = #{record.value,jdbcType=INTEGER},
+        value = #{record.value,jdbcType=TINYINT},
       </if>
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
@@ -152,19 +152,19 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update cm_err_code
+    update cm_code_group
     set id = #{record.id,jdbcType=BIGINT},
-      value = #{record.value,jdbcType=INTEGER},
+      value = #{record.value,jdbcType=TINYINT},
       name = #{record.name,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zw.dao.entity.ErrCode">
-    update cm_err_code
+  <update id="updateByPrimaryKeySelective" parameterType="com.zw.dao.entity.CodeGroup">
+    update cm_code_group
     <set>
       <if test="value != null">
-        value = #{value,jdbcType=INTEGER},
+        value = #{value,jdbcType=TINYINT},
       </if>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
@@ -172,9 +172,9 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.zw.dao.entity.ErrCode">
-    update cm_err_code
-    set value = #{value,jdbcType=INTEGER},
+  <update id="updateByPrimaryKey" parameterType="com.zw.dao.entity.CodeGroup">
+    update cm_code_group
+    set value = #{value,jdbcType=TINYINT},
       name = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>

@@ -7,7 +7,7 @@ import com.zw.common.vo.PageVo;
 import com.zw.common.vo.ResponseVo;
 import com.zw.dao.entity.File;
 import com.zw.dao.entity.FileExample;
-import com.zw.dao.mapper.FileMapper;
+import com.zw.dao.mapper.generate.FileMapper;
 import com.zw.vo.file.FileAddVo;
 import com.zw.vo.file.FileSearchVo;
 import org.springframework.beans.BeanUtils;

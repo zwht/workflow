@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zw.dao.mapper.UserInfoMapper">
-  <resultMap id="BaseResultMap" type="com.zw.dao.entity.UserInfo">
-    <result column="id" jdbcType="BIGINT" property="id" />
-    <result column="user_id" jdbcType="BIGINT" property="userId" />
+<mapper namespace="com.zw.dao.mapper.generate.CorporationMapper">
+  <resultMap id="BaseResultMap" type="com.zw.dao.entity.Corporation">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="state" jdbcType="SMALLINT" property="state" />
+    <result column="boss_id" jdbcType="BIGINT" property="bossId" />
+    <result column="logo_id" jdbcType="BIGINT" property="logoId" />
     <result column="province_id" jdbcType="SMALLINT" property="provinceId" />
     <result column="city_id" jdbcType="SMALLINT" property="cityId" />
     <result column="county_id" jdbcType="SMALLINT" property="countyId" />
     <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="ability" jdbcType="VARCHAR" property="ability" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,15 +72,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_id, province_id, city_id, county_id, address
+    id, name, state, boss_id, logo_id, province_id, city_id, county_id, address, ability
   </sql>
-  <select id="selectByExample" parameterType="com.zw.dao.entity.UserInfoExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.zw.dao.entity.CorporationExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from cm_user_info
+    from cm_corporation
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,28 +88,49 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.zw.dao.entity.UserInfoExample">
-    delete from cm_user_info
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cm_corporation
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from cm_corporation
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zw.dao.entity.CorporationExample">
+    delete from cm_corporation
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.zw.dao.entity.UserInfo">
-    insert into cm_user_info (id, user_id, province_id, 
-      city_id, county_id, address
-      )
-    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{provinceId,jdbcType=SMALLINT}, 
-      #{cityId,jdbcType=SMALLINT}, #{countyId,jdbcType=SMALLINT}, #{address,jdbcType=VARCHAR}
-      )
+  <insert id="insert" parameterType="com.zw.dao.entity.Corporation">
+    insert into cm_corporation (id, name, state, 
+      boss_id, logo_id, province_id, 
+      city_id, county_id, address, 
+      ability)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{state,jdbcType=SMALLINT}, 
+      #{bossId,jdbcType=BIGINT}, #{logoId,jdbcType=BIGINT}, #{provinceId,jdbcType=SMALLINT}, 
+      #{cityId,jdbcType=SMALLINT}, #{countyId,jdbcType=SMALLINT}, #{address,jdbcType=VARCHAR}, 
+      #{ability,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.zw.dao.entity.UserInfo">
-    insert into cm_user_info
+  <insert id="insertSelective" parameterType="com.zw.dao.entity.Corporation">
+    insert into cm_corporation
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
-      <if test="userId != null">
-        user_id,
+      <if test="name != null">
+        name,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="bossId != null">
+        boss_id,
+      </if>
+      <if test="logoId != null">
+        logo_id,
       </if>
       <if test="provinceId != null">
         province_id,
@@ -119,13 +144,25 @@
       <if test="address != null">
         address,
       </if>
+      <if test="ability != null">
+        ability,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="userId != null">
-        #{userId,jdbcType=BIGINT},
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="bossId != null">
+        #{bossId,jdbcType=BIGINT},
+      </if>
+      <if test="logoId != null">
+        #{logoId,jdbcType=BIGINT},
       </if>
       <if test="provinceId != null">
         #{provinceId,jdbcType=SMALLINT},
@@ -139,22 +176,34 @@
       <if test="address != null">
         #{address,jdbcType=VARCHAR},
       </if>
+      <if test="ability != null">
+        #{ability,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.zw.dao.entity.UserInfoExample" resultType="java.lang.Long">
-    select count(*) from cm_user_info
+  <select id="countByExample" parameterType="com.zw.dao.entity.CorporationExample" resultType="java.lang.Long">
+    select count(*) from cm_corporation
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update cm_user_info
+    update cm_corporation
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.userId != null">
-        user_id = #{record.userId,jdbcType=BIGINT},
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=SMALLINT},
+      </if>
+      <if test="record.bossId != null">
+        boss_id = #{record.bossId,jdbcType=BIGINT},
+      </if>
+      <if test="record.logoId != null">
+        logo_id = #{record.logoId,jdbcType=BIGINT},
       </if>
       <if test="record.provinceId != null">
         province_id = #{record.provinceId,jdbcType=SMALLINT},
@@ -168,21 +217,74 @@
       <if test="record.address != null">
         address = #{record.address,jdbcType=VARCHAR},
       </if>
+      <if test="record.ability != null">
+        ability = #{record.ability,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update cm_user_info
+    update cm_corporation
     set id = #{record.id,jdbcType=BIGINT},
-      user_id = #{record.userId,jdbcType=BIGINT},
+      name = #{record.name,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=SMALLINT},
+      boss_id = #{record.bossId,jdbcType=BIGINT},
+      logo_id = #{record.logoId,jdbcType=BIGINT},
       province_id = #{record.provinceId,jdbcType=SMALLINT},
       city_id = #{record.cityId,jdbcType=SMALLINT},
       county_id = #{record.countyId,jdbcType=SMALLINT},
-      address = #{record.address,jdbcType=VARCHAR}
+      address = #{record.address,jdbcType=VARCHAR},
+      ability = #{record.ability,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zw.dao.entity.Corporation">
+    update cm_corporation
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="bossId != null">
+        boss_id = #{bossId,jdbcType=BIGINT},
+      </if>
+      <if test="logoId != null">
+        logo_id = #{logoId,jdbcType=BIGINT},
+      </if>
+      <if test="provinceId != null">
+        province_id = #{provinceId,jdbcType=SMALLINT},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=SMALLINT},
+      </if>
+      <if test="countyId != null">
+        county_id = #{countyId,jdbcType=SMALLINT},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="ability != null">
+        ability = #{ability,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zw.dao.entity.Corporation">
+    update cm_corporation
+    set name = #{name,jdbcType=VARCHAR},
+      state = #{state,jdbcType=SMALLINT},
+      boss_id = #{bossId,jdbcType=BIGINT},
+      logo_id = #{logoId,jdbcType=BIGINT},
+      province_id = #{provinceId,jdbcType=SMALLINT},
+      city_id = #{cityId,jdbcType=SMALLINT},
+      county_id = #{countyId,jdbcType=SMALLINT},
+      address = #{address,jdbcType=VARCHAR},
+      ability = #{ability,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -1,4 +1,4 @@
-package com.zw.dao.mapper;
+package com.zw.dao.mapper.generate;
 
 import com.zw.dao.entity.User;
 import com.zw.dao.entity.UserExample;

@@ -7,7 +7,7 @@ import com.zw.common.vo.PageVo;
 import com.zw.common.vo.ResponseVo;
 import com.zw.dao.entity.CodeGroup;
 import com.zw.dao.entity.CodeGroupExample;
-import com.zw.dao.mapper.CodeGroupMapper;
+import com.zw.dao.mapper.generate.CodeGroupMapper;
 import com.zw.vo.codeGroup.CodeGroupAddVo;
 import com.zw.vo.codeGroup.CodeGroupSearchVo;
 import org.springframework.beans.BeanUtils;

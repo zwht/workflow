@@ -1,4 +1,4 @@
-package com.zw.dao.mapper;
+package com.zw.dao.mapper.generate;
 
 import com.zw.dao.entity.ErrCode;
 import com.zw.dao.entity.ErrCodeExample;

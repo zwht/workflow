@@ -1,4 +1,4 @@
-package com.zw.dao.mapper;
+package com.zw.dao.mapper.generate;
 
 import com.zw.dao.entity.Corporation;
 import com.zw.dao.entity.CorporationExample;

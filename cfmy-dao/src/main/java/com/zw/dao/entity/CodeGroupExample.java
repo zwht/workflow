@@ -174,52 +174,52 @@ public class CodeGroupExample {
             return (Criteria) this;
         }
 
-        public Criteria andValueEqualTo(Short value) {
+        public Criteria andValueEqualTo(Byte value) {
             addCriterion("value =", value, "value");
             return (Criteria) this;
         }
 
-        public Criteria andValueNotEqualTo(Short value) {
+        public Criteria andValueNotEqualTo(Byte value) {
             addCriterion("value <>", value, "value");
             return (Criteria) this;
         }
 
-        public Criteria andValueGreaterThan(Short value) {
+        public Criteria andValueGreaterThan(Byte value) {
             addCriterion("value >", value, "value");
             return (Criteria) this;
         }
 
-        public Criteria andValueGreaterThanOrEqualTo(Short value) {
+        public Criteria andValueGreaterThanOrEqualTo(Byte value) {
             addCriterion("value >=", value, "value");
             return (Criteria) this;
         }
 
-        public Criteria andValueLessThan(Short value) {
+        public Criteria andValueLessThan(Byte value) {
             addCriterion("value <", value, "value");
             return (Criteria) this;
         }
 
-        public Criteria andValueLessThanOrEqualTo(Short value) {
+        public Criteria andValueLessThanOrEqualTo(Byte value) {
             addCriterion("value <=", value, "value");
             return (Criteria) this;
         }
 
-        public Criteria andValueIn(List<Short> values) {
+        public Criteria andValueIn(List<Byte> values) {
             addCriterion("value in", values, "value");
             return (Criteria) this;
         }
 
-        public Criteria andValueNotIn(List<Short> values) {
+        public Criteria andValueNotIn(List<Byte> values) {
             addCriterion("value not in", values, "value");
             return (Criteria) this;
         }
 
-        public Criteria andValueBetween(Short value1, Short value2) {
+        public Criteria andValueBetween(Byte value1, Byte value2) {
             addCriterion("value between", value1, value2, "value");
             return (Criteria) this;
         }
 
-        public Criteria andValueNotBetween(Short value1, Short value2) {
+        public Criteria andValueNotBetween(Byte value1, Byte value2) {
             addCriterion("value not between", value1, value2, "value");
             return (Criteria) this;
         }

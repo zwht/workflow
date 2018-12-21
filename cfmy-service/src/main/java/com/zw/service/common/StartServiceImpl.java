@@ -1,13 +1,12 @@
 package com.zw.service.common;
 
 import com.zw.common.util.JwtUtils;
-import com.zw.common.util.TokenUtil;
 import com.zw.common.util.ZwUtil;
 import com.zw.common.vo.ResponseVo;
 import com.zw.common.vo.TokenVo;
 import com.zw.dao.entity.User;
 import com.zw.dao.entity.UserExample;
-import com.zw.dao.mapper.UserMapper;
+import com.zw.dao.mapper.generate.UserMapper;
 import com.zw.vo.common.LoginRequestVo;
 import com.zw.vo.common.LoginResponseVo;
 import org.springframework.beans.BeanUtils;
