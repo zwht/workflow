@@ -12,7 +12,7 @@ public class CodeGroupAddVo {
     private String name;
 
     @ApiModelProperty("码组值")
-    private Short value;
+    private Byte value;
 
     public String getName() {
         return name;
@@ -22,11 +22,11 @@ public class CodeGroupAddVo {
         this.name = name;
     }
 
-    public Short getValue() {
+    public Byte getValue() {
         return value;
     }
 
-    public void setValue(Short value) {
+    public void setValue(Byte value) {
         this.value = value;
     }
 }
