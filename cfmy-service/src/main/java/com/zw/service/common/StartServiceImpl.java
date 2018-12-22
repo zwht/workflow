@@ -43,11 +43,10 @@ public class StartServiceImpl implements StartService {
             //使用登录名查询是否有相同用户名
             List<User> users = userMapper.selectByExample(userExample);
 
-
             ZwUtil zwUtil = new ZwUtil();
             if (users.size() == 0) {
                 return response.failure(400, "登录名或者密码错误！");
-            } else if (users.get(0).getPassword().equals(zwUtil.EncoderByMd5(loginRequestVo.getPassword()))) {
+            } else if (users.get(0).getPassword().equals(zwUtil.EncoderByMd5(loginRequestVo.getPassword()+users.get(0).getPasswordKey()))) {
                 User userOne = users.get(0);
                 TokenVo tokenVo = new TokenVo();
                 // 把user对象属性赋值给tokenVo对象

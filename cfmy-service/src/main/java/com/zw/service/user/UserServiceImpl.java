@@ -7,9 +7,11 @@ import com.zw.common.util.ZwUtil;
 import com.zw.common.vo.PageVo;
 import com.zw.common.vo.ResponseVo;
 import com.zw.dao.mapper.generate.UserMapper;
+import com.zw.dao.mapper.my.MyUserMapper;
 import com.zw.vo.user.UserAddVo;
 import com.zw.dao.entity.User;
 import com.zw.dao.entity.UserExample;
+import com.zw.vo.user.UserResponseVo;
 import com.zw.vo.user.UserSearchVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +36,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserMapper userMapper;
 
+    @Autowired
+    MyUserMapper myUserMapper;
+
     @Override
     public ResponseVo add(UserAddVo userAddVo) {
         ResponseVo response = new ResponseVo();
@@ -48,7 +53,9 @@ public class UserServiceImpl implements UserService {
             if (users.size() == 0) {
                 user.setId(new SnowFlake(1, 1).nextId());
                 ZwUtil zwUtil = new ZwUtil();
-                user.setPassword(zwUtil.EncoderByMd5(user.getPassword()));
+                String passwordKey = zwUtil.getStringRandom(4);
+                user.setPasswordKey(passwordKey);
+                user.setPassword(zwUtil.EncoderByMd5(user.getPassword()+passwordKey));
                 ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
                 Validator validator = factory.getValidator();
                 Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
@@ -68,9 +75,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResponseVo getById(Long id) {
-        ResponseVo<User> response = new ResponseVo();
+        ResponseVo<UserResponseVo> response = new ResponseVo();
         try {
-            return response.success(userMapper.selectByPrimaryKey(Long.valueOf(id)));
+            User user = userMapper.selectByPrimaryKey(Long.valueOf(id));
+            UserResponseVo userResponseVo = new UserResponseVo();
+            BeanUtils.copyProperties(user, userResponseVo);
+            return response.success(userResponseVo);
         } catch (Exception e) {
             return response.failure(501, e.getMessage());
         }
@@ -128,7 +138,7 @@ public class UserServiceImpl implements UserService {
         }
         try {
             Page page = PageHelper.startPage(pageNum, pageSize);
-            List list = userMapper.selectByExample(example);
+            List list = myUserMapper.selectByExample(example);
             long count = page.getTotal();
             return response.success(new PageVo(pageNum, pageSize, count, list));
         } catch (Exception e) {

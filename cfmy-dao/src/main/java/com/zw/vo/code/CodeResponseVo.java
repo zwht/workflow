@@ -7,7 +7,7 @@ import com.zw.dao.entity.Code;
  * @Date：2018/12/21
  * @Time：下午6:00
  */
-public class CodeResponseListVo extends Code {
+public class CodeResponseVo extends Code {
 
     private String groupName;
 

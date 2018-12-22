@@ -1,12 +1,9 @@
 package com.zw.service.user;
 
-import com.zw.common.vo.PageVo;
 import com.zw.common.vo.ResponseVo;
 import com.zw.vo.user.UserAddVo;
 import com.zw.dao.entity.User;
 import com.zw.vo.user.UserSearchVo;
-
-import java.util.List;
 
 /**
  * @author：zhaowei

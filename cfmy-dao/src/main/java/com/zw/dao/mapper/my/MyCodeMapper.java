@@ -1,7 +1,7 @@
 package com.zw.dao.mapper.my;
 
-import com.zw.dao.entity.Code;
 import com.zw.dao.entity.CodeExample;
+import com.zw.vo.code.CodeResponseVo;
 
 import java.util.List;
 
@@ -15,5 +15,5 @@ public interface MyCodeMapper {
      *  @param example 查询对象
      *  @return Code
      */
-    List<Code> selectByExample(CodeExample example);
+    List<CodeResponseVo> selectByExample(CodeExample example);
 }

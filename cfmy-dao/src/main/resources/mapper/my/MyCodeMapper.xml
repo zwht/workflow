@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zw.dao.mapper.my.MyCodeMapper">
-  <resultMap id="BaseResultMap" type="com.zw.vo.code.CodeResponseListVo">
+  <resultMap id="BaseResultMap" type="com.zw.vo.code.CodeResponseVo">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="value" jdbcType="SMALLINT" property="value" />
     <result column="group_id" jdbcType="BIGINT" property="groupId" />
