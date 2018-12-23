@@ -14,6 +14,28 @@ public class CodeSearchVo {
     @ApiModelProperty("码组ID")
     private Long groupId;
 
+    @ApiModelProperty("值开始")
+    private Short valueStart;
+
+    @ApiModelProperty("值开结束")
+    private Short valueEnd;
+
+    public Short getValueStart() {
+        return valueStart;
+    }
+
+    public void setValueStart(Short valueStart) {
+        this.valueStart = valueStart;
+    }
+
+    public Short getValueEnd() {
+        return valueEnd;
+    }
+
+    public void setValueEnd(Short valueEnd) {
+        this.valueEnd = valueEnd;
+    }
+
     public Long getGroupId() {
         return groupId;
     }

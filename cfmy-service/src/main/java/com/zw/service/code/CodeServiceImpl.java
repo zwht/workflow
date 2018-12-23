@@ -117,11 +117,15 @@ public class CodeServiceImpl implements CodeService {
         CodeExample example = new CodeExample();
         CodeExample.Criteria criteria = example.createCriteria();
         if (!StringUtils.isEmpty(codeSearchVo.getName())) {
-            criteria.andNameLike("%"+codeSearchVo.getName()+"%");
+            criteria.andNameLike("%" + codeSearchVo.getName() + "%");
         }
         if (!StringUtils.isEmpty(codeSearchVo.getGroupId())) {
             criteria.andGroupIdEqualTo(codeSearchVo.getGroupId());
         }
+        if (!StringUtils.isEmpty(codeSearchVo.getValueStart())&&!StringUtils.isEmpty(codeSearchVo.getValueEnd())&&codeSearchVo.getValueEnd()>codeSearchVo.getValueStart()) {
+            criteria.andValueBetween(codeSearchVo.getValueStart(),codeSearchVo.getValueEnd());
+        }
+
         try {
             Page page = PageHelper.startPage(pageNum, pageSize);
             List list = myCodeMapper.selectByExample(example);
