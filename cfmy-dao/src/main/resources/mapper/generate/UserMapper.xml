@@ -5,7 +5,7 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="login_name" jdbcType="VARCHAR" property="loginName" />
-    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="state" jdbcType="SMALLINT" property="state" />
     <result column="ability" jdbcType="VARCHAR" property="ability" />
     <result column="roles" jdbcType="VARCHAR" property="roles" />
     <result column="password" jdbcType="VARCHAR" property="password" />
@@ -112,7 +112,7 @@
       password, password_key, corporation_id, 
       phone, img_id)
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, 
-      #{state,jdbcType=INTEGER}, #{ability,jdbcType=VARCHAR}, #{roles,jdbcType=VARCHAR}, 
+      #{state,jdbcType=SMALLINT}, #{ability,jdbcType=VARCHAR}, #{roles,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{passwordKey,jdbcType=VARCHAR}, #{corporationId,jdbcType=VARCHAR}, 
       #{phone,jdbcType=VARCHAR}, #{imgId,jdbcType=VARCHAR})
   </insert>
@@ -164,7 +164,7 @@
         #{loginName,jdbcType=VARCHAR},
       </if>
       <if test="state != null">
-        #{state,jdbcType=INTEGER},
+        #{state,jdbcType=SMALLINT},
       </if>
       <if test="ability != null">
         #{ability,jdbcType=VARCHAR},
@@ -208,7 +208,7 @@
         login_name = #{record.loginName,jdbcType=VARCHAR},
       </if>
       <if test="record.state != null">
-        state = #{record.state,jdbcType=INTEGER},
+        state = #{record.state,jdbcType=SMALLINT},
       </if>
       <if test="record.ability != null">
         ability = #{record.ability,jdbcType=VARCHAR},
@@ -241,7 +241,7 @@
     set id = #{record.id,jdbcType=BIGINT},
       name = #{record.name,jdbcType=VARCHAR},
       login_name = #{record.loginName,jdbcType=VARCHAR},
-      state = #{record.state,jdbcType=INTEGER},
+      state = #{record.state,jdbcType=SMALLINT},
       ability = #{record.ability,jdbcType=VARCHAR},
       roles = #{record.roles,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
@@ -263,7 +263,7 @@
         login_name = #{loginName,jdbcType=VARCHAR},
       </if>
       <if test="state != null">
-        state = #{state,jdbcType=INTEGER},
+        state = #{state,jdbcType=SMALLINT},
       </if>
       <if test="ability != null">
         ability = #{ability,jdbcType=VARCHAR},
@@ -293,7 +293,7 @@
     update cm_user
     set name = #{name,jdbcType=VARCHAR},
       login_name = #{loginName,jdbcType=VARCHAR},
-      state = #{state,jdbcType=INTEGER},
+      state = #{state,jdbcType=SMALLINT},
       ability = #{ability,jdbcType=VARCHAR},
       roles = #{roles,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},

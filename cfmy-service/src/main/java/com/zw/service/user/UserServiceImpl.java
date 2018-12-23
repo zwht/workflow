@@ -56,6 +56,7 @@ public class UserServiceImpl implements UserService {
                 String passwordKey = zwUtil.getStringRandom(4);
                 user.setPasswordKey(passwordKey);
                 user.setPassword(zwUtil.EncoderByMd5(user.getPassword()+passwordKey));
+                user.setState(Short.parseShort("1001"));
                 ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
                 Validator validator = factory.getValidator();
                 Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);

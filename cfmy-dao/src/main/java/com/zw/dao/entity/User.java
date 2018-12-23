@@ -7,7 +7,7 @@ public class User {
 
     private String loginName;
 
-    private Integer state;
+    private Short state;
 
     private String ability;
 
@@ -47,11 +47,11 @@ public class User {
         this.loginName = loginName == null ? null : loginName.trim();
     }
 
-    public Integer getState() {
+    public Short getState() {
         return state;
     }
 
-    public void setState(Integer state) {
+    public void setState(Short state) {
         this.state = state;
     }
 
