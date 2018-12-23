@@ -68,7 +68,8 @@ dependencies {
     compile group: 'com.auth0', name: 'java-jwt', version: '2.2.0'
 
     // 分页插件
-    compile group: 'com.github.pagehelper', name: 'pagehelper', version: '5.0.4'
+    compile group: 'com.github.pagehelper', name: 'pagehelper-spring-boot-starter', version: '1.2.10'
+
 
 }
 
