@@ -48,6 +48,7 @@ public class UserServiceImpl implements UserService {
             UserExample userExample = new UserExample();
             UserExample.Criteria criteria = userExample.createCriteria();
             criteria.andLoginNameEqualTo(user.getLoginName());
+            criteria.andRolesNotEqualTo("888888");
             // 查询是否有相同
             List<User> users = userMapper.selectByExample(userExample);
             if (users.size() == 0) {
@@ -127,7 +128,9 @@ public class UserServiceImpl implements UserService {
         //条件查询3句话
         UserExample example = new UserExample();
         UserExample.Criteria criteria = example.createCriteria();
-        criteria.andCorporationIdEqualTo(userSearchVo.getCorporationId());
+        if (!StringUtils.isEmpty(userSearchVo.getCorporationId())) {
+            criteria.andCorporationIdEqualTo(userSearchVo.getCorporationId());
+        }
         if (!StringUtils.isEmpty(userSearchVo.getRoles())) {
             criteria.andRolesEqualTo(userSearchVo.getRoles());
         }

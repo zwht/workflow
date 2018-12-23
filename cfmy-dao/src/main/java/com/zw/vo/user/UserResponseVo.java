@@ -1,6 +1,10 @@
 package com.zw.vo.user;
 
+import com.zw.dao.entity.Corporation;
+import com.zw.vo.code.CodeResponseVo;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.util.List;
 
 /**
  * @author：zhaowei
@@ -26,8 +30,14 @@ public class UserResponseVo{
     @ApiModelProperty("角色")
     private String roles;
 
+    @ApiModelProperty("角色对象数组")
+    private List<CodeResponseVo> rolesVo;
+
     @ApiModelProperty("公司Id")
     private String corporationId;
+
+    @ApiModelProperty("公司")
+    private Corporation corporationVo;
 
     @ApiModelProperty("手机号")
     private String phone;
@@ -40,6 +50,22 @@ public class UserResponseVo{
 
     @ApiModelProperty("地址Id")
     private String addressId;
+
+    public Corporation getCorporationVo() {
+        return corporationVo;
+    }
+
+    public void setCorporationVo(Corporation corporationVo) {
+        this.corporationVo = corporationVo;
+    }
+
+    public List<CodeResponseVo> getRolesVo() {
+        return rolesVo;
+    }
+
+    public void setRolesVo(List<CodeResponseVo> rolesVo) {
+        this.rolesVo = rolesVo;
+    }
 
     public Long getId() {
         return id;

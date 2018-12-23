@@ -8,7 +8,9 @@ import com.zw.dao.entity.User;
 import com.zw.service.user.UserService;
 import com.zw.vo.user.UserSearchVo;
 import io.swagger.annotations.*;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,8 +37,10 @@ public class UserController {
             @ApiParam(required = true, value = "body内容") @RequestBody UserAddVo userAddVo,
             HttpServletRequest request
     ) {
-        TokenVo tokenVo = (TokenVo) request.getAttribute("tokenVo");
-        userAddVo.setCorporationId(tokenVo.getCorporationId());
+        if (StringUtils.isEmpty(userAddVo.getCorporationId())) {
+            TokenVo tokenVo = (TokenVo) request.getAttribute("tokenVo");
+            userAddVo.setCorporationId(tokenVo.getCorporationId());
+        }
         return userService.add(userAddVo);
     }
 
@@ -70,7 +74,11 @@ public class UserController {
             HttpServletRequest request
     ) {
         TokenVo tokenVo = (TokenVo) request.getAttribute("tokenVo");
-        userListFind.setCorporationId(tokenVo.getCorporationId());
+        if(!StringUtils.isEmpty(tokenVo.getRoles())&&tokenVo.getRoles().indexOf("888888")!=-1){
+
+        }else{
+            userListFind.setCorporationId(tokenVo.getCorporationId());
+        }
         return userService.getList(pageNum, pageSize, userListFind);
     }
 

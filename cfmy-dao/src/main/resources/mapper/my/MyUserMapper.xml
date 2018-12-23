@@ -11,7 +11,24 @@
     <result column="corporation_id" jdbcType="VARCHAR" property="corporationId" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="img_id" jdbcType="VARCHAR" property="imgId" />
+    <association property="corporationVo" column="corporation_id" javaType="com.zw.dao.entity.Corporation" select="getCorporation"></association>
+    <collection property="rolesVo" ofType="com.zw.vo.code.CodeResponseVo" column="roles" select="getCode"></collection>
   </resultMap>
+
+  <select id="getCorporation" parameterType="long" resultType="com.zw.dao.entity.Corporation">
+    SELECT * FROM cm_corporation WHERE id=#{id}
+  </select>
+
+  <select id="getCode" parameterType="String" resultType="com.zw.vo.code.CodeResponseVo">
+    SELECT * FROM cm_code WHERE value IN (
+      <if test="_parameter != null and _parameter !=''">
+        <foreach collection="_parameter.split(',')" item="item" index="index" separator=",">
+          #{item}
+        </foreach>
+      </if>
+    )
+  </select>
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -41,44 +58,14 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
+
   <sql id="Base_Column_List">
     id, name, login_name, state, ability, roles,  corporation_id,
     phone, img_id
   </sql>
+
   <select id="selectByExample" parameterType="com.zw.vo.user.UserResponseVo" resultMap="BaseResultMap">
     select
-    <if test="distinct">
-      distinct
-    </if>
     <include refid="Base_Column_List" />
     from cm_user
     <if test="_parameter != null">
