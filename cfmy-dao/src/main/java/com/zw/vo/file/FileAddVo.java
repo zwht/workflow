@@ -5,4 +5,49 @@ package com.zw.vo.file;
  * @Time：下午2:03
  */
 public class FileAddVo {
+    private String type;
+    private Long otherId;
+    private String fileType;
+    private Long id;
+    private String url;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String fileUrl) {
+        this.url = fileUrl;
+    }
+
+    public String getFileType() {
+        return fileType;
+    }
+
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Long getOtherId() {
+        return otherId;
+    }
+
+    public void setOtherId(Long otherId) {
+        this.otherId = otherId;
+    }
 }

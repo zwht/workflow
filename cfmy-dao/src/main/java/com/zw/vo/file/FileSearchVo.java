@@ -5,13 +5,13 @@ package com.zw.vo.file;
  * @Time：下午2:00
  */
 public class FileSearchVo {
-    public Short type;
+    public String type;
 
-    public Short getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(Short type) {
+    public void setType(String type) {
         this.type = type;
     }
 }

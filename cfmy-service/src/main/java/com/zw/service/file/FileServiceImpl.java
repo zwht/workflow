@@ -12,13 +12,16 @@ import com.zw.vo.file.FileAddVo;
 import com.zw.vo.file.FileSearchVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
@@ -29,34 +32,79 @@ import java.util.Set;
  */
 @Service
 public class FileServiceImpl implements FileService {
+
+    @Value("${fileUpload.url}")
+    private String fileUrl;
+
     @Autowired
     FileMapper fileMapper;
 
     @Override
-    public ResponseVo add(FileAddVo fileAddVo) {
+    public ResponseVo add( MultipartFile multipartFile, FileAddVo fileAddVo) {
+        ResponseVo response = new ResponseVo();
+
+        if (multipartFile.isEmpty()) {
+            return response.failure(400, "没有文件！");
+        }
+
+        int size = (int) multipartFile.getSize();
+        if(size>10 * 1024 * 1024){
+            return response.failure(500, "文件最大10M！");
+        }
+
+        String filetType = multipartFile.getContentType();
+        if(!StringUtils.isEmpty(filetType)){
+            filetType = filetType.split("/")[1];
+            fileAddVo.setFileType(filetType);
+        }else{
+            return response.failure(400, "文件类型很奇怪！");
+        }
+
+        Long id = new SnowFlake(1, 1).nextId();
+        String fileName = id+ "." + filetType;
+        fileAddVo.setId(id);
+        fileAddVo.setUrl(fileName);
+
+        String type = fileAddVo.getType();
+        if(StringUtils.isEmpty(type)){
+            type = "common";
+            fileAddVo.setType(type);
+        }
+
+        java.io.File dest = new java.io.File(fileUrl + type + "/" + fileName);
+        if (!dest.getParentFile().exists()) { //判断文件父目录是否存在
+            dest.getParentFile().mkdirs();
+        }
+        try {
+            multipartFile.transferTo(dest); //保存文件
+            return addFileToTable(fileAddVo);
+        } catch (IllegalStateException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return response.failure(500, e.toString());
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return response.failure(500, e.toString());
+        }
+
+    }
+
+    public ResponseVo addFileToTable(FileAddVo fileAddVo){
         ResponseVo response = new ResponseVo();
         try {
             File file = new File();
             BeanUtils.copyProperties(fileAddVo, file);
-            FileExample fileExample = new FileExample();
-            FileExample.Criteria criteria = fileExample.createCriteria();
-            criteria.andUrlEqualTo(file.getUrl());
-            // 查询是否有相同
-            List<File> files = fileMapper.selectByExample(fileExample);
-            if (files.size() == 0) {
-                file.setId(new SnowFlake(1, 1).nextId());
-                ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-                Validator validator = factory.getValidator();
-                Set<ConstraintViolation<File>> constraintViolations = validator.validate(file);
-                if (constraintViolations.size() != 0) {
-                    return response.validation(constraintViolations);
-                } else {
-                    fileMapper.insert(file);
-                    return response.success("添加成功");
-                }
+            ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+            Validator validator = factory.getValidator();
+            Set<ConstraintViolation<File>> constraintViolations = validator.validate(file);
+            if (constraintViolations.size() != 0) {
+                return response.validation(constraintViolations);
             } else {
-                return response.failure(400, "数据重复！");
+                fileMapper.insert(file);
+                return response.success("添加成功");
             }
+
         } catch (Exception e) {
             return response.failure(400, e.toString());
         }

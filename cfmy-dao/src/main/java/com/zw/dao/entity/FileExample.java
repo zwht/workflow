@@ -424,53 +424,193 @@ public class FileExample {
             return (Criteria) this;
         }
 
-        public Criteria andTypeEqualTo(Short value) {
+        public Criteria andTypeEqualTo(String value) {
             addCriterion("type =", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotEqualTo(Short value) {
+        public Criteria andTypeNotEqualTo(String value) {
             addCriterion("type <>", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeGreaterThan(Short value) {
+        public Criteria andTypeGreaterThan(String value) {
             addCriterion("type >", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeGreaterThanOrEqualTo(Short value) {
+        public Criteria andTypeGreaterThanOrEqualTo(String value) {
             addCriterion("type >=", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeLessThan(Short value) {
+        public Criteria andTypeLessThan(String value) {
             addCriterion("type <", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeLessThanOrEqualTo(Short value) {
+        public Criteria andTypeLessThanOrEqualTo(String value) {
             addCriterion("type <=", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeIn(List<Short> values) {
+        public Criteria andTypeLike(String value) {
+            addCriterion("type like", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeNotLike(String value) {
+            addCriterion("type not like", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeIn(List<String> values) {
             addCriterion("type in", values, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotIn(List<Short> values) {
+        public Criteria andTypeNotIn(List<String> values) {
             addCriterion("type not in", values, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeBetween(Short value1, Short value2) {
+        public Criteria andTypeBetween(String value1, String value2) {
             addCriterion("type between", value1, value2, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotBetween(Short value1, Short value2) {
+        public Criteria andTypeNotBetween(String value1, String value2) {
             addCriterion("type not between", value1, value2, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherIdIsNull() {
+            addCriterion("other_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherIdIsNotNull() {
+            addCriterion("other_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherIdEqualTo(Long value) {
+            addCriterion("other_id =", value, "otherId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherIdNotEqualTo(Long value) {
+            addCriterion("other_id <>", value, "otherId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherIdGreaterThan(Long value) {
+            addCriterion("other_id >", value, "otherId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("other_id >=", value, "otherId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherIdLessThan(Long value) {
+            addCriterion("other_id <", value, "otherId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherIdLessThanOrEqualTo(Long value) {
+            addCriterion("other_id <=", value, "otherId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherIdIn(List<Long> values) {
+            addCriterion("other_id in", values, "otherId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherIdNotIn(List<Long> values) {
+            addCriterion("other_id not in", values, "otherId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherIdBetween(Long value1, Long value2) {
+            addCriterion("other_id between", value1, value2, "otherId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOtherIdNotBetween(Long value1, Long value2) {
+            addCriterion("other_id not between", value1, value2, "otherId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileTypeIsNull() {
+            addCriterion("file_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileTypeIsNotNull() {
+            addCriterion("file_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileTypeEqualTo(String value) {
+            addCriterion("file_type =", value, "fileType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileTypeNotEqualTo(String value) {
+            addCriterion("file_type <>", value, "fileType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileTypeGreaterThan(String value) {
+            addCriterion("file_type >", value, "fileType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileTypeGreaterThanOrEqualTo(String value) {
+            addCriterion("file_type >=", value, "fileType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileTypeLessThan(String value) {
+            addCriterion("file_type <", value, "fileType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileTypeLessThanOrEqualTo(String value) {
+            addCriterion("file_type <=", value, "fileType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileTypeLike(String value) {
+            addCriterion("file_type like", value, "fileType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileTypeNotLike(String value) {
+            addCriterion("file_type not like", value, "fileType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileTypeIn(List<String> values) {
+            addCriterion("file_type in", values, "fileType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileTypeNotIn(List<String> values) {
+            addCriterion("file_type not in", values, "fileType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileTypeBetween(String value1, String value2) {
+            addCriterion("file_type between", value1, value2, "fileType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileTypeNotBetween(String value1, String value2) {
+            addCriterion("file_type not between", value1, value2, "fileType");
             return (Criteria) this;
         }
     }

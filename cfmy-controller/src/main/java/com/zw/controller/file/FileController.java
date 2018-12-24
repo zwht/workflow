@@ -1,13 +1,20 @@
 package com.zw.controller.file;
 
 import com.zw.common.vo.ResponseVo;
+import com.zw.dao.entity.*;
+import com.zw.service.file.FileService;
+import com.zw.vo.file.FileAddVo;
 import io.swagger.annotations.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.io.File;
 
 /**
  * @author：zhaowei
@@ -22,6 +29,10 @@ public class FileController {
 
     @Value("${fileUpload.url}")
     private String fileUrl;
+
+    @Autowired
+    FileService fileService;
+
     /*
      * 通过流的方式上传文件
      * @RequestParam("file") 将name=file控件得到的文件封装成CommonsMultipartFile 对象
@@ -32,34 +43,68 @@ public class FileController {
     public ResponseVo add(
             @ApiParam(required = true, value = "选择文件") MultipartFile multipartFile,
             @ApiParam(value = "文件类型") @RequestParam String type,
-            HttpServletRequest request
+            @ApiParam(value = "关联Id") @RequestParam Long id
     ) throws IllegalStateException, IOException {
-        ResponseVo response = new ResponseVo();
 
-        if (multipartFile.isEmpty()) {
-            return response.failure(400, "没有文件！");
+        FileAddVo fileAddVo = new FileAddVo();
+        if (!StringUtils.isEmpty(type)) {
+            fileAddVo.setType(type);
         }
-        String fileName = multipartFile.getOriginalFilename();
-        int size = (int) multipartFile.getSize();
-        if(size>10 * 1024 * 1024){
-            return response.failure(500, "文件最大10M！");
+        if (!StringUtils.isEmpty(id)) {
+            fileAddVo.setOtherId(id);
         }
+        return fileService.add(multipartFile, fileAddVo);
+    }
 
-        File dest = new File(fileUrl + type + "/" + fileName);
-        if (!dest.getParentFile().exists()) { //判断文件父目录是否存在
-            dest.getParentFile().mkdirs();
+    @ApiOperation("详情")
+    @GetMapping("/public/file/getById")
+    @ResponseBody
+    public String selectByPrimaryKey(
+            @ApiParam(required = true, value = "文件Id") @RequestParam Long id,
+            HttpServletResponse response
+    ) {
+        ResponseVo<com.zw.dao.entity.File> responseVo = fileService.getById(id);
+        if (responseVo.getStatus() == 200) {
+            com.zw.dao.entity.File file1 = responseVo.getResponse();
+            File file = new File(fileUrl + file1.getType() + "/" + file1.getId() + "." + file1.getFileType());
+            if (file.exists()) {
+                response.setContentType("application/force-download");// 设置强制下载不打开
+                response.addHeader("Content-Disposition", "attachment;fileName=" + file1.getId() + "." + file1.getFileType());// 设置文件名
+                byte[] buffer = new byte[1024];
+                FileInputStream fis = null;
+                BufferedInputStream bis = null;
+                try {
+                    fis = new FileInputStream(file);
+                    bis = new BufferedInputStream(fis);
+                    OutputStream os = response.getOutputStream();
+                    int i = bis.read(buffer);
+                    while (i != -1) {
+                        os.write(buffer, 0, i);
+                        i = bis.read(buffer);
+                    }
+                    return "下载成功";
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return "失败";
+                } finally {
+                    if (bis != null) {
+                        try {
+                            bis.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if (fis != null) {
+                        try {
+                            fis.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    return "失败";
+                }
+            }
         }
-        try {
-            multipartFile.transferTo(dest); //保存文件
-            return response.success();
-        } catch (IllegalStateException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return response.failure(500, e.toString());
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return response.failure(500, e.toString());
-        }
+        return "失败";
     }
 }

@@ -7,7 +7,9 @@
     <result column="state" jdbcType="SMALLINT" property="state" />
     <result column="user_id" jdbcType="BIGINT" property="userId" />
     <result column="corporation_id" jdbcType="BIGINT" property="corporationId" />
-    <result column="type" jdbcType="SMALLINT" property="type" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="other_id" jdbcType="BIGINT" property="otherId" />
+    <result column="file_type" jdbcType="VARCHAR" property="fileType" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, url, state, user_id, corporation_id, type
+    id, url, state, user_id, corporation_id, type, other_id, file_type
   </sql>
   <select id="selectByExample" parameterType="com.zw.dao.entity.FileExample" resultMap="BaseResultMap">
     select
@@ -102,11 +104,11 @@
   </delete>
   <insert id="insert" parameterType="com.zw.dao.entity.File">
     insert into cm_file (id, url, state, 
-      user_id, corporation_id, type
-      )
+      user_id, corporation_id, type, 
+      other_id, file_type)
     values (#{id,jdbcType=BIGINT}, #{url,jdbcType=VARCHAR}, #{state,jdbcType=SMALLINT}, 
-      #{userId,jdbcType=BIGINT}, #{corporationId,jdbcType=BIGINT}, #{type,jdbcType=SMALLINT}
-      )
+      #{userId,jdbcType=BIGINT}, #{corporationId,jdbcType=BIGINT}, #{type,jdbcType=VARCHAR}, 
+      #{otherId,jdbcType=BIGINT}, #{fileType,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zw.dao.entity.File">
     insert into cm_file
@@ -129,6 +131,12 @@
       <if test="type != null">
         type,
       </if>
+      <if test="otherId != null">
+        other_id,
+      </if>
+      <if test="fileType != null">
+        file_type,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -147,7 +155,13 @@
         #{corporationId,jdbcType=BIGINT},
       </if>
       <if test="type != null">
-        #{type,jdbcType=SMALLINT},
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="otherId != null">
+        #{otherId,jdbcType=BIGINT},
+      </if>
+      <if test="fileType != null">
+        #{fileType,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -176,7 +190,13 @@
         corporation_id = #{record.corporationId,jdbcType=BIGINT},
       </if>
       <if test="record.type != null">
-        type = #{record.type,jdbcType=SMALLINT},
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.otherId != null">
+        other_id = #{record.otherId,jdbcType=BIGINT},
+      </if>
+      <if test="record.fileType != null">
+        file_type = #{record.fileType,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -190,7 +210,9 @@
       state = #{record.state,jdbcType=SMALLINT},
       user_id = #{record.userId,jdbcType=BIGINT},
       corporation_id = #{record.corporationId,jdbcType=BIGINT},
-      type = #{record.type,jdbcType=SMALLINT}
+      type = #{record.type,jdbcType=VARCHAR},
+      other_id = #{record.otherId,jdbcType=BIGINT},
+      file_type = #{record.fileType,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -211,7 +233,13 @@
         corporation_id = #{corporationId,jdbcType=BIGINT},
       </if>
       <if test="type != null">
-        type = #{type,jdbcType=SMALLINT},
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="otherId != null">
+        other_id = #{otherId,jdbcType=BIGINT},
+      </if>
+      <if test="fileType != null">
+        file_type = #{fileType,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -222,7 +250,9 @@
       state = #{state,jdbcType=SMALLINT},
       user_id = #{userId,jdbcType=BIGINT},
       corporation_id = #{corporationId,jdbcType=BIGINT},
-      type = #{type,jdbcType=SMALLINT}
+      type = #{type,jdbcType=VARCHAR},
+      other_id = #{otherId,jdbcType=BIGINT},
+      file_type = #{fileType,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -4,6 +4,7 @@ import com.zw.common.vo.ResponseVo;
 import com.zw.dao.entity.File;
 import com.zw.vo.file.FileAddVo;
 import com.zw.vo.file.FileSearchVo;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author：zhaowei
@@ -11,7 +12,7 @@ import com.zw.vo.file.FileSearchVo;
  * @Time：下午3:20
  */
 public interface FileService {
-    ResponseVo add(FileAddVo fileAddVo);
+    ResponseVo add(MultipartFile multipartFile, FileAddVo fileAddVo);
     ResponseVo getById(Long id);
     ResponseVo update(File file);
     ResponseVo getList(Integer pageNum, Integer pageSize, FileSearchVo fileSearchVo);

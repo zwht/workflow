@@ -11,7 +11,11 @@ public class File {
 
     private Long corporationId;
 
-    private Short type;
+    private String type;
+
+    private Long otherId;
+
+    private String fileType;
 
     public Long getId() {
         return id;
@@ -53,11 +57,27 @@ public class File {
         this.corporationId = corporationId;
     }
 
-    public Short getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(Short type) {
-        this.type = type;
+    public void setType(String type) {
+        this.type = type == null ? null : type.trim();
+    }
+
+    public Long getOtherId() {
+        return otherId;
+    }
+
+    public void setOtherId(Long otherId) {
+        this.otherId = otherId;
+    }
+
+    public String getFileType() {
+        return fileType;
+    }
+
+    public void setFileType(String fileType) {
+        this.fileType = fileType == null ? null : fileType.trim();
     }
 }
