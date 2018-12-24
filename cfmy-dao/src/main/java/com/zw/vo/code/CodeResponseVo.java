@@ -10,6 +10,15 @@ import com.zw.dao.entity.Code;
 public class CodeResponseVo extends Code {
 
     private String groupName;
+    private Short groupValue;
+
+    public Short getGroupValue() {
+        return groupValue;
+    }
+
+    public void setGroupValue(Short groupValue) {
+        this.groupValue = groupValue;
+    }
 
     public String getGroupName() {
         return groupName;

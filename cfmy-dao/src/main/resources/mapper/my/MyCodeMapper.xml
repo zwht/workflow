@@ -7,6 +7,7 @@
     <result column="group_id" jdbcType="BIGINT" property="groupId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="group_name" jdbcType="VARCHAR" property="groupName" />
+    <result column="group_value" jdbcType="VARCHAR" property="groupValue" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -38,7 +39,7 @@
     </where>
   </sql>
   <select id="selectByExample" parameterType="com.zw.dao.entity.CodeExample" resultMap="BaseResultMap">
-    select c.*, g.name group_name from cm_code c INNER JOIN cm_code_group g ON c.group_id = g.id
+    select c.*, g.name group_name,g.value group_value from cm_code c INNER JOIN cm_code_group g ON c.group_id = g.id
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>

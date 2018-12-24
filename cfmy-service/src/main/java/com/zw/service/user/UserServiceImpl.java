@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
             UserExample userExample = new UserExample();
             UserExample.Criteria criteria = userExample.createCriteria();
             criteria.andLoginNameEqualTo(user.getLoginName());
-            criteria.andRolesNotEqualTo("888888");
+
             // 查询是否有相同
             List<User> users = userMapper.selectByExample(userExample);
             if (users.size() == 0) {
@@ -140,6 +140,7 @@ public class UserServiceImpl implements UserService {
         if (!StringUtils.isEmpty(userSearchVo.getLoginName())) {
             criteria.andLoginNameEqualTo(userSearchVo.getLoginName());
         }
+        criteria.andRolesNotEqualTo("888888");
         try {
             Page page = PageHelper.startPage(pageNum, pageSize);
             List list = myUserMapper.selectByExample(example);
