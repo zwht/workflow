@@ -36,7 +36,7 @@ public class Swagger2Markup {
                 .withoutInlineSchema()
                 .build();
 
-        Swagger2MarkupConverter.from(new URL("http://127.0.0.1:8888/v2/api-docs?group=MapperApi"))
+        Swagger2MarkupConverter.from(new URL("http://127.0.0.1:8888/v2/api-docs?group=前端接口文档"))
                 .withConfig(config)
                 .build()
                 .toFile(Paths.get("../docs/asciidoc/generated/all"));
@@ -58,7 +58,7 @@ public class Swagger2Markup {
                 .withoutInlineSchema()
                 .build();
 
-        Swagger2MarkupConverter.from(new URL("http://127.0.0.1:8888/v2/api-docs?group=MapperApi"))
+        Swagger2MarkupConverter.from(new URL("http://127.0.0.1:8888/v2/api-docs?group=前端接口文档"))
                 .withConfig(config)
                 .build()
                 .toFile(Paths.get("../docs/markdown/generated/all"));
