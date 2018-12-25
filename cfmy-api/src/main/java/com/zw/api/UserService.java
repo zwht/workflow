@@ -16,7 +16,7 @@ public interface UserService {
      * @return
      * @throws Exception
      */
-    ResultVo<String> add(UserAddVo userAddVo, Long userId);
+    // ResultVo<String> add(UserAddVo userAddVo, Long userId);
 
     /**
      * 根据id查询用户详情
