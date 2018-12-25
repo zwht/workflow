@@ -1,9 +1,11 @@
 package com.zw.controller.file;
 
+import com.zw.common.vo.PageVo;
 import com.zw.common.vo.ResponseVo;
 import com.zw.dao.entity.*;
 import com.zw.service.file.FileService;
 import com.zw.vo.file.FileAddVo;
+import com.zw.vo.file.FileSearchVo;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.io.File;
+import java.util.List;
 
 /**
  * @author：zhaowei
@@ -106,5 +109,17 @@ public class FileController {
             }
         }
         return "失败";
+    }
+
+
+    @ResponseBody
+    @PostMapping("/file/list")
+    @ApiOperation("查询列表")
+    public ResponseVo<PageVo<List<CodeGroup>>> getCodeGroupList(
+            @ApiParam(required = true, value = "当前页面", defaultValue = "1") @RequestParam Integer pageNum,
+            @ApiParam(required = true, value = "每页显示条数", defaultValue = "10") @RequestParam Integer pageSize,
+            @ApiParam(value = "CodeGroupSearchVo") @RequestBody FileSearchVo fileSearchVo
+    ) {
+        return fileService.getList(pageNum, pageSize, fileSearchVo);
     }
 }

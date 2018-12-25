@@ -63,7 +63,7 @@ public class FileServiceImpl implements FileService {
         Long id = new SnowFlake(1, 1).nextId();
         String fileName = id+ "." + filetType;
         fileAddVo.setId(id);
-        fileAddVo.setUrl(fileName);
+        // fileAddVo.setUrl(fileName);
 
         String type = fileAddVo.getType();
         if(StringUtils.isEmpty(type)){
