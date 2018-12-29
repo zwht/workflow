@@ -1,0 +1,81 @@
+{
+  "app": {
+    "name": "通用基础系统",
+    "description": "通用基础系统"
+  },
+  "menu": [
+    {
+      "text": "系统01",
+      "group": false,
+      "hideInBreadcrumb": true,
+      "children": [
+        {
+          "text": "仪表盘",
+          "link": "/admin/dashboard",
+          "hideInBreadcrumb": true,
+          "icon": "anticon anticon-appstore"
+        },
+        {
+          "text": "用户管理",
+          "icon": "anticon anticon-team",
+          "permission":{
+            "roles":["888888" ,100],
+            "ability":[]
+          },
+          "children": [
+            {
+              "text": "用户列表",
+              "link": "/admin/user/index"
+            }
+          ]
+        },
+        {
+          "text": "基础数据模块",
+          "icon": "anticon anticon-build",
+          "children": [
+            {
+              "text": "文件列表",
+              "link": "/admin/base/file",
+              "permission":{
+                "roles":["888888"],
+                "ability":[]
+              }
+            },
+            {
+              "text": "公司列表",
+              "link": "/admin/base/corporation",
+              "permission":{
+                "roles":["888888"],
+                "ability":[]
+              }
+            },
+            {
+              "text": "码表列表",
+              "link": "/admin/base/code",
+              "permission":{
+                "roles":["888888"],
+                "ability":[]
+              }
+            },
+            {
+              "text": "码表组列表",
+              "link": "/admin/base/codeGroup",
+              "permission":{
+                "roles":["888888"],
+                "ability":[]
+              }
+            },
+            {
+              "text": "icon图标",
+              "link": "/admin/base/icon",
+              "permission":{
+                "roles":["888888"],
+                "ability":[]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

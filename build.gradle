@@ -70,6 +70,9 @@ dependencies {
     // 分页插件
     compile group: 'com.github.pagehelper', name: 'pagehelper-spring-boot-starter', version: '1.2.10'
 
+    // Flyway是一款开源的数据库版本管理工具
+    compile group: 'org.flywaydb', name: 'flyway-core', version: '5.2.4'
+
 
 }
 
