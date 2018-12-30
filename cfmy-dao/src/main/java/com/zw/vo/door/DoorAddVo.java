@@ -1,0 +1,68 @@
+package com.zw.vo.door;
+
+import io.swagger.annotations.ApiModelProperty;
+
+/**
+ * @author：zhaowei
+ * @Date：2018/12/19
+ * @Time：下午2:03
+ */
+public class DoorAddVo {
+    @ApiModelProperty("产品名")
+    private String name;
+
+    @ApiModelProperty("状态")
+    private Short state;
+
+    @ApiModelProperty("产品工序id数组")
+    private String gxIds;
+
+    @ApiModelProperty("产品工序价格数组")
+    private String gxValues;
+
+    @ApiModelProperty("产品图片")
+    private String img;
+
+    @ApiModelProperty("产品类型，1301门，1302线条")
+    private Short type;
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Short getState() {
+        return state;
+    }
+
+    public void setState(Short state) {
+        this.state = state;
+    }
+
+    public String getGxIds() {
+        return gxIds;
+    }
+
+    public void setGxIds(String gxIds) {
+        this.gxIds = gxIds;
+    }
+
+    public String getGxValues() {
+        return gxValues;
+    }
+
+    public void setGxValues(String gxValues) {
+        this.gxValues = gxValues;
+    }
+}

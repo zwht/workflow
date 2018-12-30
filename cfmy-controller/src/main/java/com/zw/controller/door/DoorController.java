@@ -1,12 +1,12 @@
-package com.zw.controller.gx;
+package com.zw.controller.door;
 
 import com.zw.common.vo.PageVo;
 import com.zw.common.vo.ResponseVo;
 import com.zw.common.vo.TokenVo;
-import com.zw.dao.entity.Gx;
-import com.zw.service.gx.GxService;
-import com.zw.vo.gx.GxAddVo;
-import com.zw.vo.gx.GxSearchVo;
+import com.zw.dao.entity.Door;
+import com.zw.service.door.DoorService;
+import com.zw.vo.door.DoorAddVo;
+import com.zw.vo.door.DoorSearchVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -24,78 +24,78 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/cfmy")
-@Api(description = "工序")
-public class GxController {
+@Api(description = "门")
+public class DoorController {
 
     @Autowired
-    private GxService gxService;
+    private DoorService doorService;
 
 
     @ApiOperation("新增")
-    @PostMapping("/gx/add")
+    @PostMapping("/door/add")
     @ResponseBody
     public ResponseVo add(
-            @ApiParam(required = true, value = "body内容") @RequestBody GxAddVo gxAddVo,
+            @ApiParam(required = true, value = "body内容") @RequestBody DoorAddVo doorAddVo,
             HttpServletRequest request
     ) {
         TokenVo tokenVo = (TokenVo) request.getAttribute("tokenVo");
-        return gxService.add(gxAddVo, tokenVo.getCorporationId());
+        return doorService.add(doorAddVo, tokenVo);
     }
 
 
     @ApiOperation("详情")
-    @GetMapping("/gx/getById")
+    @GetMapping("/door/getById")
     @ResponseBody
-    public ResponseVo<Gx> selectByPrimaryKey(
+    public ResponseVo<Door> selectByPrimaryKey(
             @ApiParam(required = true, value = "用户Id") @RequestParam Long id
     ) {
-        return gxService.getById(id);
+        return doorService.getById(id);
     }
 
 
     @ApiOperation("更新")
-    @PostMapping("/gx/update")
+    @PostMapping("/door/update")
     @ResponseBody
     public ResponseVo update(
-            @ApiParam(required = true, value = "GxUpdateVo") @RequestBody Gx gx
+            @ApiParam(required = true, value = "DoorUpdateVo") @RequestBody Door door
     ) {
-        return gxService.update(gx);
+        return doorService.update(door);
     }
 
     @ResponseBody
-    @PostMapping("/gx/list")
+    @PostMapping("/door/list")
     @ApiOperation("查询列表")
-    public ResponseVo<PageVo<List<Gx>>> getGxList(
+    public ResponseVo<PageVo<List<Door>>> getDoorList(
             @ApiParam(required = true, value = "当前页面", defaultValue = "1") @RequestParam Integer pageNum,
             @ApiParam(required = true, value = "每页显示条数", defaultValue = "10") @RequestParam Integer pageSize,
-            @ApiParam(value = "GxSearchVo") @RequestBody GxSearchVo gxSearchVo,
+            @ApiParam(value = "DoorSearchVo") @RequestBody DoorSearchVo doorSearchVo,
             HttpServletRequest request
     ) {
-        if (StringUtils.isEmpty(gxSearchVo.getCorporationId())) {
+        if (StringUtils.isEmpty(doorSearchVo.getCorporationId())) {
             TokenVo tokenVo = (TokenVo) request.getAttribute("tokenVo");
-            gxSearchVo.setCorporationId(Long.parseLong(tokenVo.getCorporationId()));
+            doorSearchVo.setCorporationId(Long.parseLong(tokenVo.getCorporationId()));
         }
-        return gxService.getList(pageNum, pageSize, gxSearchVo);
+        return doorService.getList(pageNum, pageSize, doorSearchVo);
     }
 
 
     @ApiOperation("删除")
-    @GetMapping("/gx/del")
+    @GetMapping("/door/del")
     @ResponseBody
     public ResponseVo del(
             @ApiParam(required = true, value = "id") @RequestParam Long id
     ) {
-        return gxService.del(id);
+        return doorService.del(id);
     }
 
     @ApiOperation("修改状态")
-    @GetMapping("/gx/updateState")
+    @GetMapping("/door/updateState")
     @ResponseBody
     public ResponseVo updateState(
             @ApiParam(required = true, value = "id") @RequestParam Long id,
             @ApiParam(required = true, value = "state") @RequestParam Short state
     ) {
-        return gxService.updateState(id, state);
+        return doorService.updateState(id, state);
     }
 
 }

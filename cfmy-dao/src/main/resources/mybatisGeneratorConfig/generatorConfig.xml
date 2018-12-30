@@ -47,11 +47,11 @@
         <table tableName="cm_err_code" domainObjectName="ErrCode"></table>
 
         <table tableName="bs_gx" domainObjectName="Gx"></table>
-
+        <table tableName="bs_door" domainObjectName="Door"></table>
 
 
         <table tableName="color" domainObjectName="Color"></table>
-        <table tableName="door" domainObjectName="Door"></table>
+
         <table tableName="gx" domainObjectName="Gx"></table>
         <table tableName="process" domainObjectName="Process"></table>
         <table tableName="product" domainObjectName="Product"></table>

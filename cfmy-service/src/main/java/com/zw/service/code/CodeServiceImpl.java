@@ -115,6 +115,7 @@ public class CodeServiceImpl implements CodeService {
         ResponseVo response = new ResponseVo();
         //条件查询3句话
         CodeExample example = new CodeExample();
+        example.setOrderByClause("`value` DESC");
         CodeExample.Criteria criteria = example.createCriteria();
         if (!StringUtils.isEmpty(codeSearchVo.getName())) {
             criteria.andNameLike("%" + codeSearchVo.getName() + "%");

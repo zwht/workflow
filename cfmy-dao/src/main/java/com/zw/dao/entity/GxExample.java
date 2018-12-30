@@ -413,6 +413,66 @@ public class GxExample {
             addCriterion("price not between", value1, value2, "price");
             return (Criteria) this;
         }
+
+        public Criteria andIndexKeyIsNull() {
+            addCriterion("index_key is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexKeyIsNotNull() {
+            addCriterion("index_key is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexKeyEqualTo(Short value) {
+            addCriterion("index_key =", value, "indexKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexKeyNotEqualTo(Short value) {
+            addCriterion("index_key <>", value, "indexKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexKeyGreaterThan(Short value) {
+            addCriterion("index_key >", value, "indexKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexKeyGreaterThanOrEqualTo(Short value) {
+            addCriterion("index_key >=", value, "indexKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexKeyLessThan(Short value) {
+            addCriterion("index_key <", value, "indexKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexKeyLessThanOrEqualTo(Short value) {
+            addCriterion("index_key <=", value, "indexKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexKeyIn(List<Short> values) {
+            addCriterion("index_key in", values, "indexKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexKeyNotIn(List<Short> values) {
+            addCriterion("index_key not in", values, "indexKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexKeyBetween(Short value1, Short value2) {
+            addCriterion("index_key between", value1, value2, "indexKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexKeyNotBetween(Short value1, Short value2) {
+            addCriterion("index_key not between", value1, value2, "indexKey");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

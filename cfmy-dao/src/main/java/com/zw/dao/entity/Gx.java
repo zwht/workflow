@@ -11,6 +11,8 @@ public class Gx {
 
     private Float price;
 
+    private Short indexKey;
+
     public Long getId() {
         return id;
     }
@@ -49,5 +51,13 @@ public class Gx {
 
     public void setPrice(Float price) {
         this.price = price;
+    }
+
+    public Short getIndexKey() {
+        return indexKey;
+    }
+
+    public void setIndexKey(Short indexKey) {
+        this.indexKey = indexKey;
     }
 }

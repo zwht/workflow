@@ -1,15 +1,16 @@
-package com.zw.service.gx;
+package com.zw.service.door;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.zw.common.util.SnowFlake;
 import com.zw.common.vo.PageVo;
 import com.zw.common.vo.ResponseVo;
-import com.zw.dao.entity.Gx;
-import com.zw.dao.entity.GxExample;
-import com.zw.dao.mapper.generate.GxMapper;
-import com.zw.vo.gx.GxAddVo;
-import com.zw.vo.gx.GxSearchVo;
+import com.zw.common.vo.TokenVo;
+import com.zw.dao.entity.Door;
+import com.zw.dao.entity.DoorExample;
+import com.zw.dao.mapper.generate.DoorMapper;
+import com.zw.vo.door.DoorAddVo;
+import com.zw.vo.door.DoorSearchVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,35 +29,34 @@ import java.util.Set;
  * @Time：下午2:04
  */
 @Service
-public class GxServiceImpl implements GxService {
+public class DoorServiceImpl implements DoorService {
 
     @Autowired
-    GxMapper gxMapper;
+    DoorMapper doorMapper;
 
     @Override
-    public ResponseVo add(GxAddVo gxAddVo, String corporationId) {
+    public ResponseVo add(DoorAddVo doorAddVo, TokenVo tokenVo) {
         ResponseVo response = new ResponseVo();
         try {
-            Gx gx = new Gx();
-            BeanUtils.copyProperties(gxAddVo, gx);
-            gx.setCorporationId(Long.parseLong(corporationId));
-            GxExample gxExample = new GxExample();
-            GxExample.Criteria criteria = gxExample.createCriteria();
-            criteria.andNameEqualTo(gx.getName());
-            criteria.andStateNotEqualTo(Short.parseShort("1200"));
-            criteria.andCorporationIdEqualTo(gx.getCorporationId());
+            Door door = new Door();
+            BeanUtils.copyProperties(doorAddVo, door);
+            door.setCorporationId(Long.parseLong(tokenVo.getCorporationId()));
+
+            DoorExample doorExample = new DoorExample();
+            DoorExample.Criteria criteria = doorExample.createCriteria();
+            criteria.andNameEqualTo(door.getName());
+            criteria.andCorporationIdEqualTo(door.getCorporationId());
             // 查询是否有相同
-            List<Gx> gxs = gxMapper.selectByExample(gxExample);
-            if (gxs.size() == 0) {
-                gx.setId(new SnowFlake(1, 1).nextId());
-                gx.setState(Short.parseShort("1201"));
+            List<Door> doors = doorMapper.selectByExample(doorExample);
+            if (doors.size() == 0) {
+                door.setId(new SnowFlake(1, 1).nextId());
                 ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
                 Validator validator = factory.getValidator();
-                Set<ConstraintViolation<Gx>> constraintViolations = validator.validate(gx);
+                Set<ConstraintViolation<Door>> constraintViolations = validator.validate(door);
                 if (constraintViolations.size() != 0) {
                     return response.validation(constraintViolations);
                 } else {
-                    gxMapper.insert(gx);
+                    doorMapper.insert(door);
                     return response.success("添加成功");
                 }
             } else {
@@ -69,38 +69,38 @@ public class GxServiceImpl implements GxService {
 
     @Override
     public ResponseVo getById(Long id) {
-        ResponseVo<Gx> response = new ResponseVo();
+        ResponseVo<Door> response = new ResponseVo();
         try {
-            return response.success(gxMapper.selectByPrimaryKey(Long.valueOf(id)));
+            return response.success(doorMapper.selectByPrimaryKey(Long.valueOf(id)));
         } catch (Exception e) {
             return response.failure(501, e.getMessage());
         }
     }
 
     @Override
-    public ResponseVo update(Gx gx) {
+    public ResponseVo update(Door door) {
         ResponseVo response = new ResponseVo();
         try {
-            GxExample gxExample = new GxExample();
-            GxExample.Criteria criteria = gxExample.createCriteria();
-            criteria.andNameEqualTo(gx.getName());
+            DoorExample doorExample = new DoorExample();
+            DoorExample.Criteria criteria = doorExample.createCriteria();
+            criteria.andNameEqualTo(door.getName());
             criteria.andStateNotEqualTo(Short.parseShort("1200"));
-            criteria.andCorporationIdEqualTo(gx.getCorporationId());
-            criteria.andIdNotEqualTo(gx.getId());
+            criteria.andCorporationIdEqualTo(door.getCorporationId());
+            criteria.andIdNotEqualTo(door.getId());
             // 查询是否有相同
-            List<Gx> corporations = gxMapper.selectByExample(gxExample);
+            List<Door> corporations = doorMapper.selectByExample(doorExample);
             if (corporations.size() == 0) {
                 ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
                 Validator validator = factory.getValidator();
-                Set<ConstraintViolation<Gx>> constraintViolations = validator.validate(gx);
+                Set<ConstraintViolation<Door>> constraintViolations = validator.validate(door);
 
                 if (constraintViolations.size() != 0) {
                     return response.validation(constraintViolations);
                 } else {
-                    GxExample example = new GxExample();
-                    GxExample.Criteria criteria1 = example.createCriteria();
-                    criteria1.andIdEqualTo(gx.getId());
-                    gxMapper.updateByExampleSelective(gx, example);
+                    DoorExample example = new DoorExample();
+                    DoorExample.Criteria criteria1 = example.createCriteria();
+                    criteria1.andIdEqualTo(door.getId());
+                    doorMapper.updateByExampleSelective(door, example);
                     return response.success("修改成功");
                 }
 
@@ -113,22 +113,23 @@ public class GxServiceImpl implements GxService {
     }
 
     @Override
-    public ResponseVo getList(Integer pageNum, Integer pageSize, GxSearchVo gxSearchVo) {
+    public ResponseVo getList(Integer pageNum, Integer pageSize, DoorSearchVo doorSearchVo) {
         ResponseVo response = new ResponseVo();
         //条件查询3句话
-        GxExample example = new GxExample();
+        DoorExample example = new DoorExample();
+
         example.setOrderByClause("`index_key` ASC");
-        GxExample.Criteria criteria = example.createCriteria();
+        DoorExample.Criteria criteria = example.createCriteria();
         criteria.andStateNotEqualTo(Short.parseShort("1200"));
-        if (!StringUtils.isEmpty(gxSearchVo.getName())) {
-            criteria.andNameLike("%" + gxSearchVo.getName() + "%");
+        if (!StringUtils.isEmpty(doorSearchVo.getName())) {
+            criteria.andNameLike("%" + doorSearchVo.getName() + "%");
         }
-        if (!StringUtils.isEmpty(gxSearchVo.getCorporationId())) {
-            criteria.andCorporationIdEqualTo(gxSearchVo.getCorporationId());
+        if (!StringUtils.isEmpty(doorSearchVo.getCorporationId())) {
+            criteria.andCorporationIdEqualTo(doorSearchVo.getCorporationId());
         }
         try {
             Page page = PageHelper.startPage(pageNum, pageSize);
-            List list = gxMapper.selectByExample(example);
+            List list = doorMapper.selectByExample(example);
             long count = page.getTotal();
             return response.success(new PageVo(pageNum, pageSize, count, list));
         } catch (Exception e) {
@@ -140,7 +141,7 @@ public class GxServiceImpl implements GxService {
     public ResponseVo del(Long id) {
         ResponseVo response = new ResponseVo();
         try {
-            return response.success(gxMapper.deleteByPrimaryKey(Long.valueOf(id)));
+            return response.success(doorMapper.deleteByPrimaryKey(Long.valueOf(id)));
         } catch (Exception e) {
             return response.failure(501, e.getMessage());
         }
@@ -149,20 +150,20 @@ public class GxServiceImpl implements GxService {
     @Override
     public ResponseVo updateState(Long id, Short state) {
         ResponseVo response = new ResponseVo();
-        Gx gx = gxMapper.selectByPrimaryKey(id);
-        gx.setState(state);
+        Door door = doorMapper.selectByPrimaryKey(id);
+        door.setState(state);
         try {
             ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
             Validator validator = factory.getValidator();
-            Set<ConstraintViolation<Gx>> constraintViolations = validator.validate(gx);
+            Set<ConstraintViolation<Door>> constraintViolations = validator.validate(door);
 
             if (constraintViolations.size() != 0) {
                 return response.validation(constraintViolations);
             } else {
-                GxExample example = new GxExample();
-                GxExample.Criteria criteria1 = example.createCriteria();
-                criteria1.andIdEqualTo(gx.getId());
-                gxMapper.updateByExampleSelective(gx, example);
+                DoorExample example = new DoorExample();
+                DoorExample.Criteria criteria1 = example.createCriteria();
+                criteria1.andIdEqualTo(door.getId());
+                doorMapper.updateByExampleSelective(door, example);
                 return response.success("修改成功");
             }
         } catch (Exception e) {

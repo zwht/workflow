@@ -14,17 +14,8 @@ public class GxAddVo {
     @ApiModelProperty("默认价格")
     private Float price;
 
-    @ApiModelProperty("公司id")
-    private Long corporationId;
-
-
-    public Long getCorporationId() {
-        return corporationId;
-    }
-
-    public void setCorporationId(Long corporationId) {
-        this.corporationId = corporationId;
-    }
+    @ApiModelProperty("排序")
+    private Short indexKey;
 
     public String getName() {
         return name;
@@ -40,5 +31,13 @@ public class GxAddVo {
 
     public void setPrice(Float price) {
         this.price = price;
+    }
+
+    public Short getIndexKey() {
+        return indexKey;
+    }
+
+    public void setIndexKey(Short indexKey) {
+        this.indexKey = indexKey;
     }
 }
