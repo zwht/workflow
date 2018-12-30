@@ -102,7 +102,7 @@ public class FileServiceImpl implements FileService {
                 return response.validation(constraintViolations);
             } else {
                 fileMapper.insert(file);
-                return response.success("添加成功");
+                return response.success(file);
             }
 
         } catch (Exception e) {

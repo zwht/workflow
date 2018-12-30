@@ -45,8 +45,8 @@ public class FileController {
     @ApiOperation("上传文件")
     public ResponseVo add(
             @ApiParam(required = true, value = "选择文件") MultipartFile multipartFile,
-            @ApiParam(value = "文件类型") @RequestParam String type,
-            @ApiParam(value = "关联Id") @RequestParam Long id
+            @ApiParam(value = "文件类型") @RequestParam(required=false) String type,
+            @ApiParam(value = "关联Id") @RequestParam(required=false) Long id
     ) throws IllegalStateException, IOException {
 
         FileAddVo fileAddVo = new FileAddVo();

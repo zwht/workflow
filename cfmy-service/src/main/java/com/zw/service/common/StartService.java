@@ -1,6 +1,7 @@
 package com.zw.service.common;
 
 import com.zw.common.vo.ResponseVo;
+import com.zw.common.vo.TokenVo;
 import com.zw.vo.common.LoginRequestVo;
 import com.zw.vo.common.LoginResponseVo;
 
@@ -10,5 +11,6 @@ import com.zw.vo.common.LoginResponseVo;
  * @Time：上午9:52
  */
 public interface StartService {
-    ResponseVo<LoginResponseVo> login(LoginRequestVo loginRequestVo);
+    ResponseVo login(LoginRequestVo loginRequestVo, Integer time);
+    ResponseVo newToken(TokenVo tokenVo, Integer time);
 }

@@ -27,7 +27,7 @@ public class StartServiceImpl implements StartService {
     UserMapper userMapper;
 
     @Override
-    public ResponseVo<LoginResponseVo> login(LoginRequestVo loginRequestVo){
+    public ResponseVo<LoginResponseVo> login(LoginRequestVo loginRequestVo, Integer time){
 
         ResponseVo<LoginResponseVo> response = new ResponseVo();
         try {
@@ -52,7 +52,7 @@ public class StartServiceImpl implements StartService {
                 // 把user对象属性赋值给tokenVo对象
                 BeanUtils.copyProperties(userOne, tokenVo);
                 // 设置jwt过期时间为2小时
-                String token = JwtUtils.sign(tokenVo, 1000 * 60 * 60 * 2);
+                String token = JwtUtils.sign(tokenVo, 1000 * 60 * 60 * time);
                 LoginResponseVo loginResponseVo=new LoginResponseVo();
                 BeanUtils.copyProperties(userOne, loginResponseVo);
                 loginResponseVo.setToken(token);
@@ -62,6 +62,19 @@ public class StartServiceImpl implements StartService {
                 return response.failure(400, "密码错误！");
             }
 
+        } catch (Exception e) {
+            return response.failure(400, e.getMessage());
+        }
+    }
+
+    @Override
+    public ResponseVo newToken(TokenVo tokenVo, Integer time){
+
+        ResponseVo<String> response = new ResponseVo();
+        try {
+            // 设置jwt过期时间为2小时
+            String token = JwtUtils.sign(tokenVo, 1000 * 60 * 60 * time);
+            return response.success(token);
         } catch (Exception e) {
             return response.failure(400, e.getMessage());
         }
