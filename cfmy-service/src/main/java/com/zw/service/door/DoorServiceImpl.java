@@ -20,6 +20,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Set;
 
@@ -50,6 +51,8 @@ public class DoorServiceImpl implements DoorService {
             List<Door> doors = doorMapper.selectByExample(doorExample);
             if (doors.size() == 0) {
                 door.setId(new SnowFlake(1, 1).nextId());
+                door.setCreateTime(new Timestamp(System.currentTimeMillis()));
+                door.setState(Short.parseShort("1401"));
                 ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
                 Validator validator = factory.getValidator();
                 Set<ConstraintViolation<Door>> constraintViolations = validator.validate(door);
@@ -84,7 +87,7 @@ public class DoorServiceImpl implements DoorService {
             DoorExample doorExample = new DoorExample();
             DoorExample.Criteria criteria = doorExample.createCriteria();
             criteria.andNameEqualTo(door.getName());
-            criteria.andStateNotEqualTo(Short.parseShort("1200"));
+            criteria.andStateNotEqualTo(Short.parseShort("1400"));
             criteria.andCorporationIdEqualTo(door.getCorporationId());
             criteria.andIdNotEqualTo(door.getId());
             // 查询是否有相同
@@ -118,7 +121,7 @@ public class DoorServiceImpl implements DoorService {
         //条件查询3句话
         DoorExample example = new DoorExample();
 
-        example.setOrderByClause("`index_key` ASC");
+        example.setOrderByClause("`create_time` ASC");
         DoorExample.Criteria criteria = example.createCriteria();
         criteria.andStateNotEqualTo(Short.parseShort("1200"));
         if (!StringUtils.isEmpty(doorSearchVo.getName())) {

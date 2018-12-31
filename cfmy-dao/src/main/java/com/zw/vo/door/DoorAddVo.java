@@ -26,6 +26,25 @@ public class DoorAddVo {
     @ApiModelProperty("产品类型，1301门，1302线条")
     private Short type;
 
+    @ApiModelProperty("产品产品编号")
+    private String number;
+
+    public Short getType() {
+        return type;
+    }
+
+    public void setType(Short type) {
+        this.type = type;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
     public String getImg() {
         return img;
     }
