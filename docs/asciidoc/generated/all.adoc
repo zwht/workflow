@@ -31,7 +31,7 @@ __方案__ : HTTP
 [[_addusingpost]]
 ==== 新增
 ....
-POST /cfmy/code/add
+POST /v1/code/add
 ....
 
 
@@ -74,7 +74,7 @@ __必填__|body内容|<<_codeaddvo,CodeAddVo>>
 
 ====== 请求 path
 ----
-/cfmy/code/add
+/v1/code/add
 ----
 
 
@@ -109,7 +109,7 @@ __必填__|body内容|<<_codeaddvo,CodeAddVo>>
 [[_delusingget]]
 ==== 删除
 ....
-GET /cfmy/code/del
+GET /v1/code/del
 ....
 
 
@@ -151,7 +151,7 @@ __必填__|id|integer (int64)
 
 ====== 请求 path
 ----
-/cfmy/code/del?id=0
+/v1/code/del?id=0
 ----
 
 
@@ -179,7 +179,7 @@ __必填__|id|integer (int64)
 [[_selectbyprimarykeyusingget]]
 ==== 详情
 ....
-GET /cfmy/code/getById
+GET /v1/code/getById
 ....
 
 
@@ -221,7 +221,7 @@ __必填__|用户Id|integer (int64)|`121`
 
 ====== 请求 path
 ----
-/cfmy/code/getById?id=0
+/v1/code/getById?id=0
 ----
 
 
@@ -254,7 +254,7 @@ __必填__|用户Id|integer (int64)|`121`
 [[_updateusingpost]]
 ==== 更新
 ....
-POST /cfmy/code/update
+POST /v1/code/update
 ....
 
 
@@ -297,7 +297,7 @@ __必填__|CodeUpdateVo|<<_code,Code>>
 
 ====== 请求 path
 ----
-/cfmy/code/update
+/v1/code/update
 ----
 
 
@@ -337,7 +337,7 @@ __必填__|CodeUpdateVo|<<_code,Code>>
 [[_getcodelistusingpost]]
 ==== 查询列表
 ....
-POST /cfmy/public/code/list
+POST /v1/public/code/list
 ....
 
 
@@ -384,7 +384,7 @@ __可选__|CodeSearchVo|<<_codesearchvo,CodeSearchVo>>
 
 ====== 请求 path
 ----
-/cfmy/public/code/list?pageNum=0&pageSize=0
+/v1/public/code/list?pageNum=0&pageSize=0
 ----
 
 
@@ -436,7 +436,7 @@ __可选__|CodeSearchVo|<<_codesearchvo,CodeSearchVo>>
 [[_loginusingpost]]
 ==== 登录
 ....
-POST /cfmy/public/start/login
+POST /v1/public/start/login
 ....
 
 
@@ -479,7 +479,7 @@ __必填__|body内容|<<_loginrequestvo,LoginRequestVo>>
 
 ====== 请求 path
 ----
-/cfmy/public/start/login
+/v1/public/start/login
 ----
 
 
@@ -522,7 +522,7 @@ __必填__|body内容|<<_loginrequestvo,LoginRequestVo>>
 [[_addusingpost_1]]
 ==== 新增
 ....
-POST /cfmy/user/add
+POST /v1/user/add
 ....
 
 
@@ -565,7 +565,7 @@ __必填__|body内容|<<_useraddvo,UserAddVo>>
 
 ====== 请求 path
 ----
-/cfmy/user/add
+/v1/user/add
 ----
 
 
@@ -611,7 +611,7 @@ __必填__|body内容|<<_useraddvo,UserAddVo>>
 [[_delusingget_1]]
 ==== 删除
 ....
-GET /cfmy/user/del
+GET /v1/user/del
 ....
 
 
@@ -653,7 +653,7 @@ __必填__|id|integer (int64)
 
 ====== 请求 path
 ----
-/cfmy/user/del?id=0
+/v1/user/del?id=0
 ----
 
 
@@ -681,7 +681,7 @@ __必填__|id|integer (int64)
 [[_selectbyprimarykeyusingget_1]]
 ==== 详情
 ....
-GET /cfmy/user/getById
+GET /v1/user/getById
 ....
 
 
@@ -723,7 +723,7 @@ __必填__|用户Id|integer (int64)|`121`
 
 ====== 请求 path
 ----
-/cfmy/user/getById?id=0
+/v1/user/getById?id=0
 ----
 
 
@@ -765,7 +765,7 @@ __必填__|用户Id|integer (int64)|`121`
 [[_getuserlistusingpost]]
 ==== 查询列表
 ....
-POST /cfmy/user/list
+POST /v1/user/list
 ....
 
 
@@ -812,7 +812,7 @@ __可选__|UserSearchVo|<<_usersearchvo,UserSearchVo>>
 
 ====== 请求 path
 ----
-/cfmy/user/list?pageNum=0&pageSize=0
+/v1/user/list?pageNum=0&pageSize=0
 ----
 
 
@@ -871,7 +871,7 @@ __可选__|UserSearchVo|<<_usersearchvo,UserSearchVo>>
 [[_updateusingpost_1]]
 ==== 更新
 ....
-POST /cfmy/user/update
+POST /v1/user/update
 ....
 
 
@@ -914,7 +914,7 @@ __必填__|UserUpdateVo|<<_user,User>>
 
 ====== 请求 path
 ----
-/cfmy/user/update
+/v1/user/update
 ----
 
 

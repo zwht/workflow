@@ -30,7 +30,7 @@
 <a name="addusingpost"></a>
 #### 新增
 ```
-POST /cfmy/code/add
+POST /v1/code/add
 ```
 
 
@@ -67,7 +67,7 @@ POST /cfmy/code/add
 
 ###### 请求 path
 ```
-/cfmy/code/add
+/v1/code/add
 ```
 
 
@@ -99,7 +99,7 @@ POST /cfmy/code/add
 <a name="delusingget"></a>
 #### 删除
 ```
-GET /cfmy/code/del
+GET /v1/code/del
 ```
 
 
@@ -135,7 +135,7 @@ GET /cfmy/code/del
 
 ###### 请求 path
 ```
-/cfmy/code/del?id=0
+/v1/code/del?id=0
 ```
 
 
@@ -161,7 +161,7 @@ GET /cfmy/code/del
 <a name="selectbyprimarykeyusingget"></a>
 #### 详情
 ```
-GET /cfmy/code/getById
+GET /v1/code/getById
 ```
 
 
@@ -197,7 +197,7 @@ GET /cfmy/code/getById
 
 ###### 请求 path
 ```
-/cfmy/code/getById?id=0
+/v1/code/getById?id=0
 ```
 
 
@@ -228,7 +228,7 @@ GET /cfmy/code/getById
 <a name="updateusingpost"></a>
 #### 更新
 ```
-POST /cfmy/code/update
+POST /v1/code/update
 ```
 
 
@@ -265,7 +265,7 @@ POST /cfmy/code/update
 
 ###### 请求 path
 ```
-/cfmy/code/update
+/v1/code/update
 ```
 
 
@@ -302,7 +302,7 @@ POST /cfmy/code/update
 <a name="getcodelistusingpost"></a>
 #### 查询列表
 ```
-POST /cfmy/public/code/list
+POST /v1/public/code/list
 ```
 
 
@@ -341,7 +341,7 @@ POST /cfmy/public/code/list
 
 ###### 请求 path
 ```
-/cfmy/public/code/list?pageNum=0&pageSize=0
+/v1/public/code/list?pageNum=0&pageSize=0
 ```
 
 
@@ -390,7 +390,7 @@ POST /cfmy/public/code/list
 <a name="loginusingpost"></a>
 #### 登录
 ```
-POST /cfmy/public/start/login
+POST /v1/public/start/login
 ```
 
 
@@ -427,7 +427,7 @@ POST /cfmy/public/start/login
 
 ###### 请求 path
 ```
-/cfmy/public/start/login
+/v1/public/start/login
 ```
 
 
@@ -467,7 +467,7 @@ POST /cfmy/public/start/login
 <a name="addusingpost_1"></a>
 #### 新增
 ```
-POST /cfmy/user/add
+POST /v1/user/add
 ```
 
 
@@ -504,7 +504,7 @@ POST /cfmy/user/add
 
 ###### 请求 path
 ```
-/cfmy/user/add
+/v1/user/add
 ```
 
 
@@ -547,7 +547,7 @@ POST /cfmy/user/add
 <a name="delusingget_1"></a>
 #### 删除
 ```
-GET /cfmy/user/del
+GET /v1/user/del
 ```
 
 
@@ -583,7 +583,7 @@ GET /cfmy/user/del
 
 ###### 请求 path
 ```
-/cfmy/user/del?id=0
+/v1/user/del?id=0
 ```
 
 
@@ -609,7 +609,7 @@ GET /cfmy/user/del
 <a name="selectbyprimarykeyusingget_1"></a>
 #### 详情
 ```
-GET /cfmy/user/getById
+GET /v1/user/getById
 ```
 
 
@@ -645,7 +645,7 @@ GET /cfmy/user/getById
 
 ###### 请求 path
 ```
-/cfmy/user/getById?id=0
+/v1/user/getById?id=0
 ```
 
 
@@ -685,7 +685,7 @@ GET /cfmy/user/getById
 <a name="getuserlistusingpost"></a>
 #### 查询列表
 ```
-POST /cfmy/user/list
+POST /v1/user/list
 ```
 
 
@@ -724,7 +724,7 @@ POST /cfmy/user/list
 
 ###### 请求 path
 ```
-/cfmy/user/list?pageNum=0&pageSize=0
+/v1/user/list?pageNum=0&pageSize=0
 ```
 
 
@@ -780,7 +780,7 @@ POST /cfmy/user/list
 <a name="updateusingpost_1"></a>
 #### 更新
 ```
-POST /cfmy/user/update
+POST /v1/user/update
 ```
 
 
@@ -817,7 +817,7 @@ POST /cfmy/user/update
 
 ###### 请求 path
 ```
-/cfmy/user/update
+/v1/user/update
 ```
 
 

@@ -1,7 +1,6 @@
-rootProject.name = 'boot-model'
+rootProject.name = 'main-model'
 
-include 'tools-common'
-include 'cfmy-dao'
-include 'cfmy-service'
-include 'cfmy-controller'
-
+include 'v1-common'
+include 'v1-dao'
+include 'v1-service'
+include 'v1-controller'
