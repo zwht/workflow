@@ -1,4 +1,4 @@
-rootProject.name = 'main-model'
+rootProject.name = 'workflow'
 
 include 'v1-common'
 include 'v1-dao'
