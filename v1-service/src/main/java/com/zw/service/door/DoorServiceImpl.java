@@ -123,7 +123,7 @@ public class DoorServiceImpl implements DoorService {
 
         example.setOrderByClause("`create_time` ASC");
         DoorExample.Criteria criteria = example.createCriteria();
-        criteria.andStateNotEqualTo(Short.parseShort("1200"));
+        criteria.andStateNotEqualTo(Short.parseShort("1400"));
         if (!StringUtils.isEmpty(doorSearchVo.getName())) {
             criteria.andNameLike("%" + doorSearchVo.getName() + "%");
         }
