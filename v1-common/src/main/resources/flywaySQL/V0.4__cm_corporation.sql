@@ -32,6 +32,7 @@ CREATE TABLE `cm_corporation` (
   `county_id` smallint(6) DEFAULT NULL COMMENT '县',
   `address` varchar(100) DEFAULT NULL COMMENT '详细地址',
   `ability` varchar(255) DEFAULT NULL COMMENT '权限能力',
+  `flag` smallint(6) DEFAULT NULL COMMENT '逻辑删除',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -39,7 +40,7 @@ CREATE TABLE `cm_corporation` (
 --  Records of `cm_corporation`
 -- ----------------------------
 BEGIN;
-INSERT INTO `cm_corporation` VALUES ('274257007794589696', '重庆川峰门业', '1101', null, null, null, null, null, null, '201,202,203,204,205'), ('274260031111827456', '测试3', '1101', null, null, null, null, null, null, '202');
+INSERT INTO `cm_corporation` VALUES ('274257007794589696', '重庆川峰门业', '1101', null, null, null, null, null, null, '201,202,203,204,205', null), ('274260031111827456', '测试3', '1101', null, null, null, null, null, null, '202', null);
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

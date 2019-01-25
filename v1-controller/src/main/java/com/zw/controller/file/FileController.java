@@ -13,7 +13,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.io.File;
@@ -30,8 +29,11 @@ import java.util.List;
 @Api(description = "文件管理")
 public class FileController {
 
-    @Value("${fileUpload.url}")
-    private String fileUrl;
+    @Value("${web.windowsFilePath}")
+    private String windowsFilePath;
+
+    @Value("${web.linuxFilePath}")
+    private String linuxFilePath;
 
     @Autowired
     FileService fileService;
@@ -40,23 +42,50 @@ public class FileController {
      * 通过流的方式上传文件
      * @RequestParam("file") 将name=file控件得到的文件封装成CommonsMultipartFile 对象
      */
-    @ResponseBody
-    @PostMapping(value = "/file/add", consumes = "multipart/*")
     @ApiOperation("上传文件")
+    @PostMapping(value = "/file/add", consumes = "multipart/*")
+    @ResponseBody
     public ResponseVo add(
             @ApiParam(required = true, value = "选择文件") MultipartFile multipartFile,
-            @ApiParam(value = "文件类型") @RequestParam(required=false) String type,
-            @ApiParam(value = "关联Id") @RequestParam(required=false) Long id
+            @ApiParam(value = "文件存放文件夹名字，如：img") @RequestParam(required = false) String type,
+            @ApiParam(value = "关联Id") @RequestParam(required = false) Long id
     ) throws IllegalStateException, IOException {
 
         FileAddVo fileAddVo = new FileAddVo();
-        if (!StringUtils.isEmpty(type)) {
-            fileAddVo.setType(type);
+        if (StringUtils.isEmpty(type)) {
+            type = "common";
         }
+        fileAddVo.setType(type);
         if (!StringUtils.isEmpty(id)) {
             fileAddVo.setOtherId(id);
         }
         return fileService.add(multipartFile, fileAddVo);
+    }
+
+    /**
+     * 添加多个文件
+     *
+     * @param id
+     * @param type
+     * @return
+     */
+    @ApiOperation("添加多个文件")
+    @RequestMapping(value = "/adds", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseVo adds(
+            @ApiParam(required = true, value = "选择文件") MultipartFile[] files,
+            @ApiParam(value = "文件存放文件夹名字，如：img") @RequestParam(required = false) String type,
+            @ApiParam(value = "关联Id") @RequestParam(required = false) Long id
+    ) {
+        FileAddVo fileAddVo = new FileAddVo();
+        if (StringUtils.isEmpty(type)) {
+            type = "common";
+        }
+        fileAddVo.setType(type);
+        if (!StringUtils.isEmpty(id)) {
+            fileAddVo.setOtherId(id);
+        }
+        return fileService.adds(files, fileAddVo);
     }
 
     @ApiOperation("详情")
@@ -69,10 +98,17 @@ public class FileController {
         ResponseVo<com.zw.dao.entity.File> responseVo = fileService.getById(id);
         if (responseVo.getStatus() == 200) {
             com.zw.dao.entity.File file1 = responseVo.getResponse();
-            File file = new File(fileUrl + file1.getType() + "/" + file1.getId() + "." + file1.getFileType());
+
+            String os2 = System.getProperty("os.name");
+            String fileUrl = linuxFilePath;
+            if (os2.toLowerCase().startsWith("win")) {
+                fileUrl = windowsFilePath;
+            }
+
+            File file = new File(fileUrl + file1.getType() + "/" + file1.getId() + file1.getFileType());
             if (file.exists()) {
                 response.setContentType("application/force-download");// 设置强制下载不打开
-                response.addHeader("Content-Disposition", "attachment;fileName=" + file1.getId() + "." + file1.getFileType());// 设置文件名
+                response.addHeader("Content-Disposition", "attachment;fileName=" + file1.getName());// 设置文件名
                 byte[] buffer = new byte[1024];
                 FileInputStream fis = null;
                 BufferedInputStream bis = null;

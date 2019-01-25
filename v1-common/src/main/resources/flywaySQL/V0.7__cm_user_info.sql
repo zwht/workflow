@@ -22,12 +22,14 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `cm_user_info`;
 CREATE TABLE `cm_user_info` (
-  `id` bigint(20) DEFAULT NULL,
+  `id` bigint(20) NOT NULL,
   `user_id` bigint(20) DEFAULT NULL,
   `province_id` smallint(6) DEFAULT NULL COMMENT '省',
   `city_id` smallint(6) DEFAULT NULL COMMENT '市',
   `county_id` smallint(6) DEFAULT NULL COMMENT '区县',
-  `address` varchar(255) DEFAULT NULL COMMENT '详细地址'
+  `address` varchar(255) DEFAULT NULL COMMENT '详细地址',
+  `flag` smallint(6) DEFAULT NULL COMMENT '逻辑删除',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 SET FOREIGN_KEY_CHECKS = 1;

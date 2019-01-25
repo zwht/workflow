@@ -32,6 +32,7 @@
     <result column="sum" jdbcType="INTEGER" property="sum" />
     <result column="line_length" jdbcType="INTEGER" property="lineLength" />
     <result column="ticket_id" jdbcType="VARCHAR" property="ticketId" />
+    <result column="flag" jdbcType="SMALLINT" property="flag" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -95,7 +96,7 @@
     id, name, door_id, process_ids, img, mark, start_time, end_time, corporation_id, 
     cover_width, cover_height, cover_depth, width, height, lb_width, lb_height, db_width, 
     db_height, color_id, line_id, line_sum, productcol, type, module_id, state, lb_sum, 
-    db_sum, sum, line_length, ticket_id
+    db_sum, sum, line_length, ticket_id, flag
   </sql>
   <select id="selectByExample" parameterType="com.zw.dao.entity.ProductExample" resultMap="BaseResultMap">
     select
@@ -137,8 +138,8 @@
       color_id, line_id, line_sum, 
       productcol, type, module_id, 
       state, lb_sum, db_sum, 
-      sum, line_length, ticket_id
-      )
+      sum, line_length, ticket_id, 
+      flag)
     values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{doorId,jdbcType=VARCHAR}, 
       #{processIds,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}, #{mark,jdbcType=VARCHAR}, 
       #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{corporationId,jdbcType=VARCHAR}, 
@@ -148,8 +149,8 @@
       #{colorId,jdbcType=VARCHAR}, #{lineId,jdbcType=VARCHAR}, #{lineSum,jdbcType=INTEGER}, 
       #{productcol,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{moduleId,jdbcType=VARCHAR}, 
       #{state,jdbcType=INTEGER}, #{lbSum,jdbcType=INTEGER}, #{dbSum,jdbcType=INTEGER}, 
-      #{sum,jdbcType=INTEGER}, #{lineLength,jdbcType=INTEGER}, #{ticketId,jdbcType=VARCHAR}
-      )
+      #{sum,jdbcType=INTEGER}, #{lineLength,jdbcType=INTEGER}, #{ticketId,jdbcType=VARCHAR}, 
+      #{flag,jdbcType=SMALLINT})
   </insert>
   <insert id="insertSelective" parameterType="com.zw.dao.entity.Product">
     insert into zs_product
@@ -244,6 +245,9 @@
       <if test="ticketId != null">
         ticket_id,
       </if>
+      <if test="flag != null">
+        flag,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -335,6 +339,9 @@
       </if>
       <if test="ticketId != null">
         #{ticketId,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=SMALLINT},
       </if>
     </trim>
   </insert>
@@ -437,6 +444,9 @@
       <if test="record.ticketId != null">
         ticket_id = #{record.ticketId,jdbcType=VARCHAR},
       </if>
+      <if test="record.flag != null">
+        flag = #{record.flag,jdbcType=SMALLINT},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -473,7 +483,8 @@
       db_sum = #{record.dbSum,jdbcType=INTEGER},
       sum = #{record.sum,jdbcType=INTEGER},
       line_length = #{record.lineLength,jdbcType=INTEGER},
-      ticket_id = #{record.ticketId,jdbcType=VARCHAR}
+      ticket_id = #{record.ticketId,jdbcType=VARCHAR},
+      flag = #{record.flag,jdbcType=SMALLINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -568,6 +579,9 @@
       <if test="ticketId != null">
         ticket_id = #{ticketId,jdbcType=VARCHAR},
       </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=SMALLINT},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -601,7 +615,8 @@
       db_sum = #{dbSum,jdbcType=INTEGER},
       sum = #{sum,jdbcType=INTEGER},
       line_length = #{lineLength,jdbcType=INTEGER},
-      ticket_id = #{ticketId,jdbcType=VARCHAR}
+      ticket_id = #{ticketId,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=SMALLINT}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

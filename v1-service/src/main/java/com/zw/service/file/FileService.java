@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 public interface FileService {
     ResponseVo add(MultipartFile multipartFile, FileAddVo fileAddVo);
+    ResponseVo adds(MultipartFile[] files, FileAddVo fileAddVo);
     ResponseVo getById(Long id);
     ResponseVo update(File file);
     ResponseVo getList(Integer pageNum, Integer pageSize, FileSearchVo fileSearchVo);

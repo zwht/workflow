@@ -13,6 +13,8 @@ public class Gx {
 
     private Short indexKey;
 
+    private Short flag;
+
     public Long getId() {
         return id;
     }
@@ -59,5 +61,13 @@ public class Gx {
 
     public void setIndexKey(Short indexKey) {
         this.indexKey = indexKey;
+    }
+
+    public Short getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Short flag) {
+        this.flag = flag;
     }
 }

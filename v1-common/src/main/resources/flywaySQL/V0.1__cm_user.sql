@@ -33,6 +33,7 @@ CREATE TABLE `cm_user` (
   `corporation_id` varchar(45) DEFAULT NULL COMMENT '公司ID',
   `phone` varchar(11) DEFAULT NULL,
   `img_id` varchar(100) DEFAULT NULL COMMENT '头像',
+  `flag` smallint(6) DEFAULT NULL COMMENT '逻辑删除',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -40,7 +41,7 @@ CREATE TABLE `cm_user` (
 --  Records of `cm_user`
 -- ----------------------------
 BEGIN;
-INSERT INTO `cm_user` VALUES ('273817093102596096', '赵伟', 'zw', '1001', '1', '888888', 'gOuIeVBcEKg2bWDor0A2MA==', '99lC', '', '13540416116', null), ('273827093102596096', '何婷', 'ht', '1001', null, '103,101', 'FjvRDmxMD2A3DcnnsNfIjQ==', '1Qy3', '274257007794589696', '13540416116', null), ('274345799314444288', '赵静', 'zhaojing', '1001', null, '100', 'vT7jWpXyK8Gvzg8TfyGx2Q==', 'D14Q', '274257007794589696', '13540416116', null), ('274346273346293760', '销售', 'xiaoshou', '1001', null, '101', 'YBfZaw1GVKMnsGIAD1fcRg==', '4L9p', '274257007794589696', '13540416116', null);
+INSERT INTO `cm_user` VALUES ('273817093102596096', '赵伟', 'zw', '1001', '1', '888888', 'gOuIeVBcEKg2bWDor0A2MA==', '99lC', '', '13540416116', null, null), ('273827093102596096', '何婷', 'ht', '1001', null, '103,101', 'FjvRDmxMD2A3DcnnsNfIjQ==', '1Qy3', '274257007794589696', '13540416116', null, null), ('274345799314444288', '赵静', 'zhaojing', '1001', null, '100', 'vT7jWpXyK8Gvzg8TfyGx2Q==', 'D14Q', '274257007794589696', '13540416116', null, null), ('274346273346293760', '销售', 'xiaoshou', '1001', null, '101', 'YBfZaw1GVKMnsGIAD1fcRg==', '4L9p', '274257007794589696', '13540416116', null, null);
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -23,6 +23,8 @@ public class User {
 
     private String imgId;
 
+    private Short flag;
+
     public Long getId() {
         return id;
     }
@@ -109,5 +111,13 @@ public class User {
 
     public void setImgId(String imgId) {
         this.imgId = imgId == null ? null : imgId.trim();
+    }
+
+    public Short getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Short flag) {
+        this.flag = flag;
     }
 }

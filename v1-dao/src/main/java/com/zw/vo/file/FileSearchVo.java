@@ -7,6 +7,16 @@ package com.zw.vo.file;
 public class FileSearchVo {
     public String type;
 
+    public Long otherId;
+
+    public Long getOtherId() {
+        return otherId;
+    }
+
+    public void setOtherId(Long otherId) {
+        this.otherId = otherId;
+    }
+
     public String getType() {
         return type;
     }

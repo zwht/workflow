@@ -27,7 +27,8 @@ CREATE TABLE `bs_gx` (
   `state` smallint(6) NOT NULL COMMENT '状态',
   `corporation_id` bigint(20) NOT NULL COMMENT '公司id',
   `price` float NOT NULL COMMENT '工序价格',
-  `index_key` smallint(6) DEFAULT NULL COMMENT '排序',
+  `index_key` smallint(6) DEFAULT NULL COMMENT '顺序',
+  `flag` smallint(6) DEFAULT NULL COMMENT '逻辑删除',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

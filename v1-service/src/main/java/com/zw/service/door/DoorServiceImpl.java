@@ -123,7 +123,7 @@ public class DoorServiceImpl implements DoorService {
 
         example.setOrderByClause("`create_time` ASC");
         DoorExample.Criteria criteria = example.createCriteria();
-        criteria.andStateNotEqualTo(Short.parseShort("1400"));
+        criteria.andFlagIsNull();
         if (!StringUtils.isEmpty(doorSearchVo.getName())) {
             criteria.andNameLike("%" + doorSearchVo.getName() + "%");
         }
@@ -143,13 +143,14 @@ public class DoorServiceImpl implements DoorService {
     @Override
     public ResponseVo del(Long id) {
         ResponseVo response = new ResponseVo();
-        try {
-            return response.success(doorMapper.deleteByPrimaryKey(Long.valueOf(id)));
-        } catch (Exception e) {
-            return response.failure(501, e.getMessage());
-        }
+        Door door = doorMapper.selectByPrimaryKey(id);
+        door.setFlag((short)1);
+        DoorExample example = new DoorExample();
+        DoorExample.Criteria criteria1 = example.createCriteria();
+        criteria1.andIdEqualTo(door.getId());
+        doorMapper.updateByExampleSelective(door, example);
+        return response.success("删除成功");
     }
-
     @Override
     public ResponseVo updateState(Long id, Short state) {
         ResponseVo response = new ResponseVo();

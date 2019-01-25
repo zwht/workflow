@@ -27,6 +27,7 @@ CREATE TABLE `bs_color` (
   `corporation_id` bigint(20) DEFAULT NULL,
   `img` varchar(45) DEFAULT NULL,
   `value` varchar(10) DEFAULT NULL,
+  `flag` smallint(6) DEFAULT NULL COMMENT '逻辑删除',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

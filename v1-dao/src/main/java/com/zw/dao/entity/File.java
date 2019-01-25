@@ -9,13 +9,15 @@ public class File {
 
     private Long userId;
 
-    private Long corporationId;
-
     private String type;
 
     private Long otherId;
 
     private String fileType;
+
+    private String name;
+
+    private Long size;
 
     public Long getId() {
         return id;
@@ -49,14 +51,6 @@ public class File {
         this.userId = userId;
     }
 
-    public Long getCorporationId() {
-        return corporationId;
-    }
-
-    public void setCorporationId(Long corporationId) {
-        this.corporationId = corporationId;
-    }
-
     public String getType() {
         return type;
     }
@@ -79,5 +73,21 @@ public class File {
 
     public void setFileType(String fileType) {
         this.fileType = fileType == null ? null : fileType.trim();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+    }
+
+    public Long getSize() {
+        return size;
+    }
+
+    public void setSize(Long size) {
+        this.size = size;
     }
 }

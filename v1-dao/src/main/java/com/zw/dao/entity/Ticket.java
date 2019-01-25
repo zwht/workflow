@@ -47,6 +47,8 @@ public class Ticket {
 
     private Float sumLine;
 
+    private Short flag;
+
     public Long getId() {
         return id;
     }
@@ -221,5 +223,13 @@ public class Ticket {
 
     public void setSumLine(Float sumLine) {
         this.sumLine = sumLine;
+    }
+
+    public Short getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Short flag) {
+        this.flag = flag;
     }
 }

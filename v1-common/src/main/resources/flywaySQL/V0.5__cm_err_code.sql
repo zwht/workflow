@@ -25,6 +25,7 @@ CREATE TABLE `cm_err_code` (
   `id` bigint(20) NOT NULL,
   `value` int(4) NOT NULL,
   `name` varchar(45) NOT NULL,
+  `flag` smallint(6) DEFAULT NULL COMMENT '逻辑删除',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 

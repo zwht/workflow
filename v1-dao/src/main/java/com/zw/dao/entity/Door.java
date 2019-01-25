@@ -27,6 +27,8 @@ public class Door {
 
     private Short type;
 
+    private Short flag;
+
     public Long getId() {
         return id;
     }
@@ -121,5 +123,13 @@ public class Door {
 
     public void setType(Short type) {
         this.type = type;
+    }
+
+    public Short getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Short flag) {
+        this.flag = flag;
     }
 }

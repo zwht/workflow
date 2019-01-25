@@ -354,66 +354,6 @@ public class FileExample {
             return (Criteria) this;
         }
 
-        public Criteria andCorporationIdIsNull() {
-            addCriterion("corporation_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCorporationIdIsNotNull() {
-            addCriterion("corporation_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCorporationIdEqualTo(Long value) {
-            addCriterion("corporation_id =", value, "corporationId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCorporationIdNotEqualTo(Long value) {
-            addCriterion("corporation_id <>", value, "corporationId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCorporationIdGreaterThan(Long value) {
-            addCriterion("corporation_id >", value, "corporationId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCorporationIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("corporation_id >=", value, "corporationId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCorporationIdLessThan(Long value) {
-            addCriterion("corporation_id <", value, "corporationId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCorporationIdLessThanOrEqualTo(Long value) {
-            addCriterion("corporation_id <=", value, "corporationId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCorporationIdIn(List<Long> values) {
-            addCriterion("corporation_id in", values, "corporationId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCorporationIdNotIn(List<Long> values) {
-            addCriterion("corporation_id not in", values, "corporationId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCorporationIdBetween(Long value1, Long value2) {
-            addCriterion("corporation_id between", value1, value2, "corporationId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCorporationIdNotBetween(Long value1, Long value2) {
-            addCriterion("corporation_id not between", value1, value2, "corporationId");
-            return (Criteria) this;
-        }
-
         public Criteria andTypeIsNull() {
             addCriterion("type is null");
             return (Criteria) this;
@@ -611,6 +551,136 @@ public class FileExample {
 
         public Criteria andFileTypeNotBetween(String value1, String value2) {
             addCriterion("file_type not between", value1, value2, "fileType");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameIsNull() {
+            addCriterion("name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameIsNotNull() {
+            addCriterion("name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameEqualTo(String value) {
+            addCriterion("name =", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameNotEqualTo(String value) {
+            addCriterion("name <>", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameGreaterThan(String value) {
+            addCriterion("name >", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameGreaterThanOrEqualTo(String value) {
+            addCriterion("name >=", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameLessThan(String value) {
+            addCriterion("name <", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameLessThanOrEqualTo(String value) {
+            addCriterion("name <=", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameLike(String value) {
+            addCriterion("name like", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameNotLike(String value) {
+            addCriterion("name not like", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameIn(List<String> values) {
+            addCriterion("name in", values, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameNotIn(List<String> values) {
+            addCriterion("name not in", values, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameBetween(String value1, String value2) {
+            addCriterion("name between", value1, value2, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameNotBetween(String value1, String value2) {
+            addCriterion("name not between", value1, value2, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andSizeIsNull() {
+            addCriterion("size is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSizeIsNotNull() {
+            addCriterion("size is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSizeEqualTo(Long value) {
+            addCriterion("size =", value, "size");
+            return (Criteria) this;
+        }
+
+        public Criteria andSizeNotEqualTo(Long value) {
+            addCriterion("size <>", value, "size");
+            return (Criteria) this;
+        }
+
+        public Criteria andSizeGreaterThan(Long value) {
+            addCriterion("size >", value, "size");
+            return (Criteria) this;
+        }
+
+        public Criteria andSizeGreaterThanOrEqualTo(Long value) {
+            addCriterion("size >=", value, "size");
+            return (Criteria) this;
+        }
+
+        public Criteria andSizeLessThan(Long value) {
+            addCriterion("size <", value, "size");
+            return (Criteria) this;
+        }
+
+        public Criteria andSizeLessThanOrEqualTo(Long value) {
+            addCriterion("size <=", value, "size");
+            return (Criteria) this;
+        }
+
+        public Criteria andSizeIn(List<Long> values) {
+            addCriterion("size in", values, "size");
+            return (Criteria) this;
+        }
+
+        public Criteria andSizeNotIn(List<Long> values) {
+            addCriterion("size not in", values, "size");
+            return (Criteria) this;
+        }
+
+        public Criteria andSizeBetween(Long value1, Long value2) {
+            addCriterion("size between", value1, value2, "size");
+            return (Criteria) this;
+        }
+
+        public Criteria andSizeNotBetween(Long value1, Long value2) {
+            addCriterion("size not between", value1, value2, "size");
             return (Criteria) this;
         }
     }

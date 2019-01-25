@@ -13,6 +13,8 @@ public class UserInfo {
 
     private String address;
 
+    private Short flag;
+
     public Long getId() {
         return id;
     }
@@ -59,5 +61,13 @@ public class UserInfo {
 
     public void setAddress(String address) {
         this.address = address == null ? null : address.trim();
+    }
+
+    public Short getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Short flag) {
+        this.flag = flag;
     }
 }

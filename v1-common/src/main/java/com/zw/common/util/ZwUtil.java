@@ -1,6 +1,6 @@
 package com.zw.common.util;
 
-import sun.misc.BASE64Encoder;
+import org.apache.commons.codec.binary.Base64;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
@@ -25,9 +25,8 @@ public class ZwUtil {
     public String EncoderByMd5(String str) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         //确定计算方法
         MessageDigest md5 = MessageDigest.getInstance("MD5");
-        BASE64Encoder base64en = new BASE64Encoder();
         //加密后的字符串
-        String newstr = base64en.encode(md5.digest(str.getBytes("utf-8")));
+        String newstr = Base64.encodeBase64String(md5.digest(str.getBytes("utf-8")));
         return newstr;
     }
 

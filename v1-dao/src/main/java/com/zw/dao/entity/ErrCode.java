@@ -7,6 +7,8 @@ public class ErrCode {
 
     private String name;
 
+    private Short flag;
+
     public Long getId() {
         return id;
     }
@@ -29,5 +31,13 @@ public class ErrCode {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
+    }
+
+    public Short getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Short flag) {
+        this.flag = flag;
     }
 }

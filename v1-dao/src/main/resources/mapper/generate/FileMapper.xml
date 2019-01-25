@@ -6,10 +6,11 @@
     <result column="url" jdbcType="VARCHAR" property="url" />
     <result column="state" jdbcType="SMALLINT" property="state" />
     <result column="user_id" jdbcType="BIGINT" property="userId" />
-    <result column="corporation_id" jdbcType="BIGINT" property="corporationId" />
     <result column="type" jdbcType="VARCHAR" property="type" />
     <result column="other_id" jdbcType="BIGINT" property="otherId" />
     <result column="file_type" jdbcType="VARCHAR" property="fileType" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="size" jdbcType="BIGINT" property="size" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -70,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, url, state, user_id, corporation_id, type, other_id, file_type
+    id, url, state, user_id, type, other_id, file_type, name, size
   </sql>
   <select id="selectByExample" parameterType="com.zw.dao.entity.FileExample" resultMap="BaseResultMap">
     select
@@ -104,11 +105,13 @@
   </delete>
   <insert id="insert" parameterType="com.zw.dao.entity.File">
     insert into cm_file (id, url, state, 
-      user_id, corporation_id, type, 
-      other_id, file_type)
+      user_id, type, other_id, 
+      file_type, name, size
+      )
     values (#{id,jdbcType=BIGINT}, #{url,jdbcType=VARCHAR}, #{state,jdbcType=SMALLINT}, 
-      #{userId,jdbcType=BIGINT}, #{corporationId,jdbcType=BIGINT}, #{type,jdbcType=VARCHAR}, 
-      #{otherId,jdbcType=BIGINT}, #{fileType,jdbcType=VARCHAR})
+      #{userId,jdbcType=BIGINT}, #{type,jdbcType=VARCHAR}, #{otherId,jdbcType=BIGINT}, 
+      #{fileType,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{size,jdbcType=BIGINT}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.zw.dao.entity.File">
     insert into cm_file
@@ -125,9 +128,6 @@
       <if test="userId != null">
         user_id,
       </if>
-      <if test="corporationId != null">
-        corporation_id,
-      </if>
       <if test="type != null">
         type,
       </if>
@@ -136,6 +136,12 @@
       </if>
       <if test="fileType != null">
         file_type,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="size != null">
+        size,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -151,9 +157,6 @@
       <if test="userId != null">
         #{userId,jdbcType=BIGINT},
       </if>
-      <if test="corporationId != null">
-        #{corporationId,jdbcType=BIGINT},
-      </if>
       <if test="type != null">
         #{type,jdbcType=VARCHAR},
       </if>
@@ -162,6 +165,12 @@
       </if>
       <if test="fileType != null">
         #{fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -186,9 +195,6 @@
       <if test="record.userId != null">
         user_id = #{record.userId,jdbcType=BIGINT},
       </if>
-      <if test="record.corporationId != null">
-        corporation_id = #{record.corporationId,jdbcType=BIGINT},
-      </if>
       <if test="record.type != null">
         type = #{record.type,jdbcType=VARCHAR},
       </if>
@@ -197,6 +203,12 @@
       </if>
       <if test="record.fileType != null">
         file_type = #{record.fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.size != null">
+        size = #{record.size,jdbcType=BIGINT},
       </if>
     </set>
     <if test="_parameter != null">
@@ -209,10 +221,11 @@
       url = #{record.url,jdbcType=VARCHAR},
       state = #{record.state,jdbcType=SMALLINT},
       user_id = #{record.userId,jdbcType=BIGINT},
-      corporation_id = #{record.corporationId,jdbcType=BIGINT},
       type = #{record.type,jdbcType=VARCHAR},
       other_id = #{record.otherId,jdbcType=BIGINT},
-      file_type = #{record.fileType,jdbcType=VARCHAR}
+      file_type = #{record.fileType,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      size = #{record.size,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -229,9 +242,6 @@
       <if test="userId != null">
         user_id = #{userId,jdbcType=BIGINT},
       </if>
-      <if test="corporationId != null">
-        corporation_id = #{corporationId,jdbcType=BIGINT},
-      </if>
       <if test="type != null">
         type = #{type,jdbcType=VARCHAR},
       </if>
@@ -241,6 +251,12 @@
       <if test="fileType != null">
         file_type = #{fileType,jdbcType=VARCHAR},
       </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        size = #{size,jdbcType=BIGINT},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -249,10 +265,11 @@
     set url = #{url,jdbcType=VARCHAR},
       state = #{state,jdbcType=SMALLINT},
       user_id = #{userId,jdbcType=BIGINT},
-      corporation_id = #{corporationId,jdbcType=BIGINT},
       type = #{type,jdbcType=VARCHAR},
       other_id = #{otherId,jdbcType=BIGINT},
-      file_type = #{fileType,jdbcType=VARCHAR}
+      file_type = #{fileType,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      size = #{size,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

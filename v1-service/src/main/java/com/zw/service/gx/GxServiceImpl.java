@@ -119,7 +119,7 @@ public class GxServiceImpl implements GxService {
         GxExample example = new GxExample();
         example.setOrderByClause("`index_key` ASC");
         GxExample.Criteria criteria = example.createCriteria();
-        criteria.andStateNotEqualTo(Short.parseShort("1200"));
+        criteria.andFlagIsNull();
         if (!StringUtils.isEmpty(gxSearchVo.getName())) {
             criteria.andNameLike("%" + gxSearchVo.getName() + "%");
         }
@@ -139,11 +139,13 @@ public class GxServiceImpl implements GxService {
     @Override
     public ResponseVo del(Long id) {
         ResponseVo response = new ResponseVo();
-        try {
-            return response.success(gxMapper.deleteByPrimaryKey(Long.valueOf(id)));
-        } catch (Exception e) {
-            return response.failure(501, e.getMessage());
-        }
+        Gx gx = gxMapper.selectByPrimaryKey(id);
+        gx.setFlag((short)1);
+        GxExample example = new GxExample();
+        GxExample.Criteria criteria1 = example.createCriteria();
+        criteria1.andIdEqualTo(gx.getId());
+        gxMapper.updateByExampleSelective(gx, example);
+        return response.success("删除成功");
     }
 
     @Override

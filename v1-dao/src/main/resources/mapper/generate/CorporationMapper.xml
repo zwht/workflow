@@ -12,6 +12,7 @@
     <result column="county_id" jdbcType="SMALLINT" property="countyId" />
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="ability" jdbcType="VARCHAR" property="ability" />
+    <result column="flag" jdbcType="SMALLINT" property="flag" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -72,7 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, state, boss_id, logo_id, province_id, city_id, county_id, address, ability
+    id, name, state, boss_id, logo_id, province_id, city_id, county_id, address, ability, 
+    flag
   </sql>
   <select id="selectByExample" parameterType="com.zw.dao.entity.CorporationExample" resultMap="BaseResultMap">
     select
@@ -108,11 +110,11 @@
     insert into cm_corporation (id, name, state, 
       boss_id, logo_id, province_id, 
       city_id, county_id, address, 
-      ability)
+      ability, flag)
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{state,jdbcType=SMALLINT}, 
       #{bossId,jdbcType=BIGINT}, #{logoId,jdbcType=BIGINT}, #{provinceId,jdbcType=SMALLINT}, 
       #{cityId,jdbcType=SMALLINT}, #{countyId,jdbcType=SMALLINT}, #{address,jdbcType=VARCHAR}, 
-      #{ability,jdbcType=VARCHAR})
+      #{ability,jdbcType=VARCHAR}, #{flag,jdbcType=SMALLINT})
   </insert>
   <insert id="insertSelective" parameterType="com.zw.dao.entity.Corporation">
     insert into cm_corporation
@@ -147,6 +149,9 @@
       <if test="ability != null">
         ability,
       </if>
+      <if test="flag != null">
+        flag,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -178,6 +183,9 @@
       </if>
       <if test="ability != null">
         #{ability,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=SMALLINT},
       </if>
     </trim>
   </insert>
@@ -220,6 +228,9 @@
       <if test="record.ability != null">
         ability = #{record.ability,jdbcType=VARCHAR},
       </if>
+      <if test="record.flag != null">
+        flag = #{record.flag,jdbcType=SMALLINT},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -236,7 +247,8 @@
       city_id = #{record.cityId,jdbcType=SMALLINT},
       county_id = #{record.countyId,jdbcType=SMALLINT},
       address = #{record.address,jdbcType=VARCHAR},
-      ability = #{record.ability,jdbcType=VARCHAR}
+      ability = #{record.ability,jdbcType=VARCHAR},
+      flag = #{record.flag,jdbcType=SMALLINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -271,6 +283,9 @@
       <if test="ability != null">
         ability = #{ability,jdbcType=VARCHAR},
       </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=SMALLINT},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -284,7 +299,8 @@
       city_id = #{cityId,jdbcType=SMALLINT},
       county_id = #{countyId,jdbcType=SMALLINT},
       address = #{address,jdbcType=VARCHAR},
-      ability = #{ability,jdbcType=VARCHAR}
+      ability = #{ability,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=SMALLINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

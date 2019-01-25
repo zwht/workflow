@@ -21,6 +21,8 @@ public class Corporation {
 
     private String ability;
 
+    private Short flag;
+
     public Long getId() {
         return id;
     }
@@ -99,5 +101,13 @@ public class Corporation {
 
     public void setAbility(String ability) {
         this.ability = ability == null ? null : ability.trim();
+    }
+
+    public Short getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Short flag) {
+        this.flag = flag;
     }
 }

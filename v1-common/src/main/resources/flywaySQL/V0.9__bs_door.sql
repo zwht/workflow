@@ -34,6 +34,7 @@ CREATE TABLE `bs_door` (
   `colors` varchar(250) DEFAULT NULL,
   `info_id` bigint(20) DEFAULT NULL,
   `type` smallint(6) DEFAULT NULL,
+  `flag` smallint(6) DEFAULT NULL COMMENT '逻辑删除',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

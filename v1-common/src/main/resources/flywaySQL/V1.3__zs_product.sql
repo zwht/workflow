@@ -52,6 +52,7 @@ CREATE TABLE `zs_product` (
   `sum` int(11) DEFAULT NULL,
   `line_length` int(11) DEFAULT NULL,
   `ticket_id` varchar(45) DEFAULT NULL,
+  `flag` smallint(6) DEFAULT NULL COMMENT '逻辑删除',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

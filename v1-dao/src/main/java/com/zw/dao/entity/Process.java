@@ -25,6 +25,8 @@ public class Process {
 
     private String ticketId;
 
+    private Short flag;
+
     public String getId() {
         return id;
     }
@@ -111,5 +113,13 @@ public class Process {
 
     public void setTicketId(String ticketId) {
         this.ticketId = ticketId == null ? null : ticketId.trim();
+    }
+
+    public Short getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Short flag) {
+        this.flag = flag;
     }
 }

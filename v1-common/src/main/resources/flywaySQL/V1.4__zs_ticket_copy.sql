@@ -44,6 +44,7 @@ CREATE TABLE `zs_ticket_copy` (
   `sum_door` float DEFAULT NULL,
   `sum_taoban` float DEFAULT NULL,
   `sum_line` float DEFAULT NULL,
+  `flag` smallint(6) DEFAULT NULL COMMENT '逻辑删除',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

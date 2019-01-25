@@ -26,7 +26,8 @@ CREATE TABLE `bs_door_gx` (
   `gx_id` bigint(20) DEFAULT NULL,
   `door_id` bigint(20) DEFAULT NULL,
   `price` float DEFAULT NULL,
-  `index_key` smallint(6) DEFAULT NULL,
+  `index_key` smallint(6) DEFAULT NULL COMMENT '顺序',
+  `flag` smallint(6) DEFAULT NULL COMMENT '逻辑删除',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

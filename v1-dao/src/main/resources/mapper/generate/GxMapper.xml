@@ -8,6 +8,7 @@
     <result column="corporation_id" jdbcType="BIGINT" property="corporationId" />
     <result column="price" jdbcType="REAL" property="price" />
     <result column="index_key" jdbcType="SMALLINT" property="indexKey" />
+    <result column="flag" jdbcType="SMALLINT" property="flag" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, state, corporation_id, price, index_key
+    id, name, state, corporation_id, price, index_key, flag
   </sql>
   <select id="selectByExample" parameterType="com.zw.dao.entity.GxExample" resultMap="BaseResultMap">
     select
@@ -102,11 +103,11 @@
   </delete>
   <insert id="insert" parameterType="com.zw.dao.entity.Gx">
     insert into bs_gx (id, name, state, 
-      corporation_id, price, index_key
-      )
+      corporation_id, price, index_key, 
+      flag)
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{state,jdbcType=SMALLINT}, 
-      #{corporationId,jdbcType=BIGINT}, #{price,jdbcType=REAL}, #{indexKey,jdbcType=SMALLINT}
-      )
+      #{corporationId,jdbcType=BIGINT}, #{price,jdbcType=REAL}, #{indexKey,jdbcType=SMALLINT}, 
+      #{flag,jdbcType=SMALLINT})
   </insert>
   <insert id="insertSelective" parameterType="com.zw.dao.entity.Gx">
     insert into bs_gx
@@ -129,6 +130,9 @@
       <if test="indexKey != null">
         index_key,
       </if>
+      <if test="flag != null">
+        flag,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -148,6 +152,9 @@
       </if>
       <if test="indexKey != null">
         #{indexKey,jdbcType=SMALLINT},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=SMALLINT},
       </if>
     </trim>
   </insert>
@@ -178,6 +185,9 @@
       <if test="record.indexKey != null">
         index_key = #{record.indexKey,jdbcType=SMALLINT},
       </if>
+      <if test="record.flag != null">
+        flag = #{record.flag,jdbcType=SMALLINT},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -190,7 +200,8 @@
       state = #{record.state,jdbcType=SMALLINT},
       corporation_id = #{record.corporationId,jdbcType=BIGINT},
       price = #{record.price,jdbcType=REAL},
-      index_key = #{record.indexKey,jdbcType=SMALLINT}
+      index_key = #{record.indexKey,jdbcType=SMALLINT},
+      flag = #{record.flag,jdbcType=SMALLINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -213,6 +224,9 @@
       <if test="indexKey != null">
         index_key = #{indexKey,jdbcType=SMALLINT},
       </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=SMALLINT},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -222,7 +236,8 @@
       state = #{state,jdbcType=SMALLINT},
       corporation_id = #{corporationId,jdbcType=BIGINT},
       price = #{price,jdbcType=REAL},
-      index_key = #{indexKey,jdbcType=SMALLINT}
+      index_key = #{indexKey,jdbcType=SMALLINT},
+      flag = #{flag,jdbcType=SMALLINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -14,6 +14,7 @@
     <result column="colors" jdbcType="VARCHAR" property="colors" />
     <result column="info_id" jdbcType="BIGINT" property="infoId" />
     <result column="type" jdbcType="SMALLINT" property="type" />
+    <result column="flag" jdbcType="SMALLINT" property="flag" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -75,7 +76,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, name, img, corporation_id, gx_ids, create_time, state, gx_values, number, colors, 
-    info_id, type
+    info_id, type, flag
   </sql>
   <select id="selectByExample" parameterType="com.zw.dao.entity.DoorExample" resultMap="BaseResultMap">
     select
@@ -111,13 +112,13 @@
     insert into bs_door (id, name, img, 
       corporation_id, gx_ids, create_time, 
       state, gx_values, number, 
-      colors, info_id, type
-      )
+      colors, info_id, type, 
+      flag)
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}, 
       #{corporationId,jdbcType=BIGINT}, #{gxIds,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{state,jdbcType=SMALLINT}, #{gxValues,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, 
-      #{colors,jdbcType=VARCHAR}, #{infoId,jdbcType=BIGINT}, #{type,jdbcType=SMALLINT}
-      )
+      #{colors,jdbcType=VARCHAR}, #{infoId,jdbcType=BIGINT}, #{type,jdbcType=SMALLINT}, 
+      #{flag,jdbcType=SMALLINT})
   </insert>
   <insert id="insertSelective" parameterType="com.zw.dao.entity.Door">
     insert into bs_door
@@ -158,6 +159,9 @@
       <if test="type != null">
         type,
       </if>
+      <if test="flag != null">
+        flag,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -195,6 +199,9 @@
       </if>
       <if test="type != null">
         #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=SMALLINT},
       </if>
     </trim>
   </insert>
@@ -243,6 +250,9 @@
       <if test="record.type != null">
         type = #{record.type,jdbcType=SMALLINT},
       </if>
+      <if test="record.flag != null">
+        flag = #{record.flag,jdbcType=SMALLINT},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -261,7 +271,8 @@
       number = #{record.number,jdbcType=VARCHAR},
       colors = #{record.colors,jdbcType=VARCHAR},
       info_id = #{record.infoId,jdbcType=BIGINT},
-      type = #{record.type,jdbcType=SMALLINT}
+      type = #{record.type,jdbcType=SMALLINT},
+      flag = #{record.flag,jdbcType=SMALLINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -302,6 +313,9 @@
       <if test="type != null">
         type = #{type,jdbcType=SMALLINT},
       </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=SMALLINT},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -317,7 +331,8 @@
       number = #{number,jdbcType=VARCHAR},
       colors = #{colors,jdbcType=VARCHAR},
       info_id = #{infoId,jdbcType=BIGINT},
-      type = #{type,jdbcType=SMALLINT}
+      type = #{type,jdbcType=SMALLINT},
+      flag = #{flag,jdbcType=SMALLINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -4,9 +4,12 @@ db:
   username: root
   password: zw200813
 
+
 #上传文件配置
-fileUpload:
-  url: /Users/zhaowei/projects/java/workflow/images/
+web:
+  linuxFilePath: /opt/cfmyImage/
+  windowsFilePath: C:/tmp/cfmyImage
+
 spring:
   datasource:
     url: ${db.url}

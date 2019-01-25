@@ -5,6 +5,7 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="value" jdbcType="INTEGER" property="value" />
     <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="flag" jdbcType="SMALLINT" property="flag" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, value, name
+    id, value, name, flag
   </sql>
   <select id="selectByExample" parameterType="com.zw.dao.entity.ErrCodeExample" resultMap="BaseResultMap">
     select
@@ -98,10 +99,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.zw.dao.entity.ErrCode">
-    insert into cm_err_code (id, value, name
-      )
-    values (#{id,jdbcType=BIGINT}, #{value,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}
-      )
+    insert into cm_err_code (id, value, name, 
+      flag)
+    values (#{id,jdbcType=BIGINT}, #{value,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{flag,jdbcType=SMALLINT})
   </insert>
   <insert id="insertSelective" parameterType="com.zw.dao.entity.ErrCode">
     insert into cm_err_code
@@ -115,6 +116,9 @@
       <if test="name != null">
         name,
       </if>
+      <if test="flag != null">
+        flag,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -125,6 +129,9 @@
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=SMALLINT},
       </if>
     </trim>
   </insert>
@@ -146,6 +153,9 @@
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
       </if>
+      <if test="record.flag != null">
+        flag = #{record.flag,jdbcType=SMALLINT},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -155,7 +165,8 @@
     update cm_err_code
     set id = #{record.id,jdbcType=BIGINT},
       value = #{record.value,jdbcType=INTEGER},
-      name = #{record.name,jdbcType=VARCHAR}
+      name = #{record.name,jdbcType=VARCHAR},
+      flag = #{record.flag,jdbcType=SMALLINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -169,13 +180,17 @@
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=SMALLINT},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.zw.dao.entity.ErrCode">
     update cm_err_code
     set value = #{value,jdbcType=INTEGER},
-      name = #{name,jdbcType=VARCHAR}
+      name = #{name,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=SMALLINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

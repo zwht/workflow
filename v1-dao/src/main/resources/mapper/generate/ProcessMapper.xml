@@ -13,6 +13,7 @@
     <result column="state" jdbcType="INTEGER" property="state" />
     <result column="product_id" jdbcType="VARCHAR" property="productId" />
     <result column="ticket_id" jdbcType="VARCHAR" property="ticketId" />
+    <result column="flag" jdbcType="SMALLINT" property="flag" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -74,7 +75,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, gx_id, user_id, corporation_id, price, type, start_time, end_time, state, product_id, 
-    ticket_id
+    ticket_id, flag
   </sql>
   <select id="selectByExample" parameterType="com.zw.dao.entity.ProcessExample" resultMap="BaseResultMap">
     select
@@ -110,11 +111,13 @@
     insert into zs_process (id, gx_id, user_id, 
       corporation_id, price, type, 
       start_time, end_time, state, 
-      product_id, ticket_id)
+      product_id, ticket_id, flag
+      )
     values (#{id,jdbcType=VARCHAR}, #{gxId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
       #{corporationId,jdbcType=VARCHAR}, #{price,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, 
       #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER}, 
-      #{productId,jdbcType=VARCHAR}, #{ticketId,jdbcType=VARCHAR})
+      #{productId,jdbcType=VARCHAR}, #{ticketId,jdbcType=VARCHAR}, #{flag,jdbcType=SMALLINT}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.zw.dao.entity.Process">
     insert into zs_process
@@ -152,6 +155,9 @@
       <if test="ticketId != null">
         ticket_id,
       </if>
+      <if test="flag != null">
+        flag,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -186,6 +192,9 @@
       </if>
       <if test="ticketId != null">
         #{ticketId,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=SMALLINT},
       </if>
     </trim>
   </insert>
@@ -231,6 +240,9 @@
       <if test="record.ticketId != null">
         ticket_id = #{record.ticketId,jdbcType=VARCHAR},
       </if>
+      <if test="record.flag != null">
+        flag = #{record.flag,jdbcType=SMALLINT},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -248,7 +260,8 @@
       end_time = #{record.endTime,jdbcType=TIMESTAMP},
       state = #{record.state,jdbcType=INTEGER},
       product_id = #{record.productId,jdbcType=VARCHAR},
-      ticket_id = #{record.ticketId,jdbcType=VARCHAR}
+      ticket_id = #{record.ticketId,jdbcType=VARCHAR},
+      flag = #{record.flag,jdbcType=SMALLINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -286,6 +299,9 @@
       <if test="ticketId != null">
         ticket_id = #{ticketId,jdbcType=VARCHAR},
       </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=SMALLINT},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -300,7 +316,8 @@
       end_time = #{endTime,jdbcType=TIMESTAMP},
       state = #{state,jdbcType=INTEGER},
       product_id = #{productId,jdbcType=VARCHAR},
-      ticket_id = #{ticketId,jdbcType=VARCHAR}
+      ticket_id = #{ticketId,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=SMALLINT}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

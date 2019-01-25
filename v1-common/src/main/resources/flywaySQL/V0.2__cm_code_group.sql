@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : v1
+ Source Server         : cfmy
  Source Server Type    : MySQL
  Source Server Version : 50718
  Source Host           : localhost
- Source Database       : v1
+ Source Database       : cfmy
 
  Target Server Type    : MySQL
  Target Server Version : 50718
  File Encoding         : utf-8
 
- Date: 12/29/2018 22:14:33 PM
+ Date: 01/25/2019 10:47:47 AM
 */
 
 SET NAMES utf8;
@@ -32,7 +32,7 @@ CREATE TABLE `cm_code_group` (
 --  Records of `cm_code_group`
 -- ----------------------------
 BEGIN;
-INSERT INTO `cm_code_group` VALUES ('273239076856008704', '1', '角色'), ('273239464485195776', '2', '权限'), ('274257288099926016', '10', '用户状态'), ('274257342596517888', '11', '公司状态');
+INSERT INTO `cm_code_group` VALUES ('273239076856008704', '1', '角色'), ('273239464485195776', '2', '权限'), ('274257288099926016', '10', '用户状态'), ('274257342596517888', '11', '公司状态'), ('286121853485977600', '12', '工序状态');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -33,6 +33,7 @@ CREATE TABLE `zs_process` (
   `state` int(4) DEFAULT NULL,
   `product_id` varchar(45) DEFAULT NULL,
   `ticket_id` varchar(45) DEFAULT NULL,
+  `flag` smallint(6) DEFAULT NULL COMMENT '逻辑删除',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

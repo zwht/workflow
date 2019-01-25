@@ -16,12 +16,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
+import org.apache.tika.mime.MimeType;
+import org.apache.tika.mime.MimeTypes;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -33,65 +36,17 @@ import java.util.Set;
 @Service
 public class FileServiceImpl implements FileService {
 
-    @Value("${fileUpload.url}")
-    private String fileUrl;
+    @Value("${web.windowsFilePath}")
+    private String windowsFilePath;
+
+    @Value("${web.linuxFilePath}")
+    private String linuxFilePath;
 
     @Autowired
     FileMapper fileMapper;
 
-    @Override
-    public ResponseVo add( MultipartFile multipartFile, FileAddVo fileAddVo) {
-        ResponseVo response = new ResponseVo();
-
-        if (multipartFile.isEmpty()) {
-            return response.failure(400, "没有文件！");
-        }
-
-        int size = (int) multipartFile.getSize();
-        if(size>10 * 1024 * 1024){
-            return response.failure(500, "文件最大10M！");
-        }
-
-        String filetType = multipartFile.getContentType();
-        if(!StringUtils.isEmpty(filetType)){
-            filetType = filetType.split("/")[1];
-            fileAddVo.setFileType(filetType);
-        }else{
-            return response.failure(400, "文件类型很奇怪！");
-        }
-
-        Long id = new SnowFlake(1, 1).nextId();
-        String fileName = id+ "." + filetType;
-        fileAddVo.setId(id);
-        // fileAddVo.setUrl(fileName);
-
-        String type = fileAddVo.getType();
-        if(StringUtils.isEmpty(type)){
-            type = "common";
-            fileAddVo.setType(type);
-        }
-
-        java.io.File dest = new java.io.File(fileUrl + type + "/" + fileName);
-        if (!dest.getParentFile().exists()) { //判断文件父目录是否存在
-            dest.getParentFile().mkdirs();
-        }
-        try {
-            multipartFile.transferTo(dest); //保存文件
-            return addFileToTable(fileAddVo);
-        } catch (IllegalStateException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return response.failure(500, e.toString());
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return response.failure(500, e.toString());
-        }
-
-    }
-
-    public ResponseVo addFileToTable(FileAddVo fileAddVo){
-        ResponseVo response = new ResponseVo();
+    // 上传数据添加到表
+    public Boolean addFileToTable(FileAddVo fileAddVo) {
         try {
             File file = new File();
             BeanUtils.copyProperties(fileAddVo, file);
@@ -99,16 +54,161 @@ public class FileServiceImpl implements FileService {
             Validator validator = factory.getValidator();
             Set<ConstraintViolation<File>> constraintViolations = validator.validate(file);
             if (constraintViolations.size() != 0) {
-                return response.validation(constraintViolations);
+                return false;
             } else {
                 fileMapper.insert(file);
-                return response.success(file);
+                return true;
             }
 
         } catch (Exception e) {
-            return response.failure(400, e.toString());
+            return false;
         }
     }
+
+
+    @Override
+    public ResponseVo add(MultipartFile file, FileAddVo fileAddVo) {
+        ResponseVo response = new ResponseVo();
+
+        if (file.isEmpty()) {
+            return response.failure(400, "没有文件！");
+        }
+        Long size = file.getSize();
+        if (size > 100 * 1048576) {
+            return response.failure(400, "文件太大！");
+        }
+        try {
+            String filetType = file.getContentType();
+            if (!StringUtils.isEmpty(filetType)) {
+                MimeTypes allTypes = MimeTypes.getDefaultMimeTypes();
+                MimeType type = allTypes.forName(filetType);
+                filetType = type.getExtension();
+                fileAddVo.setFileType(filetType);
+            } else {
+                return response.failure(400, "文件类型很奇怪！");
+            }
+
+            Long id = new SnowFlake(1, 1).nextId();
+            String fileName = id + filetType;
+            fileAddVo.setId(id);
+            fileAddVo.setUrl(fileName);
+            fileAddVo.setName(file.getOriginalFilename());
+            fileAddVo.setSize(Long.valueOf(size));
+
+            String os2 = System.getProperty("os.name");
+            String fileUrl = linuxFilePath;
+            if (os2.toLowerCase().startsWith("win")) {
+                fileUrl = windowsFilePath;
+            }
+
+            java.io.File dest = new java.io.File(fileUrl + "/" + fileAddVo.getType() + "/" + fileName);
+            if (!dest.getParentFile().exists()) { //判断文件父目录是否存在
+                dest.getParentFile().mkdirs();
+            }
+
+            file.transferTo(dest); //保存文件
+            Boolean s = addFileToTable(fileAddVo);
+            if (s) {
+                return response.success(fileAddVo);
+            } else {
+                return response.failure(500, "插入数据库错误");
+            }
+        } catch (IllegalStateException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return response.failure(500, e.toString());
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return response.failure(500, e.toString());
+        }
+    }
+
+
+    /**
+     * 添加
+     *
+     * @param files
+     * @param fileAddVo1
+     * @return
+     */
+    @Override
+    public ResponseVo adds(MultipartFile[] files,
+                           FileAddVo fileAddVo1) {
+        ResponseVo responseVo = new ResponseVo();
+        if (files.length == 0) {
+            responseVo.setStatus(400);
+            responseVo.setMsg("没有文件！");
+            return responseVo;
+        }
+        ArrayList<FileAddVo> listVo = new ArrayList<>();
+        //循环获取file数组中得文件
+        for (int i = 0; i < files.length; i++) {
+            MultipartFile file = files[i];
+
+            FileAddVo fileAddVo = new FileAddVo();
+            BeanUtils.copyProperties(fileAddVo1, fileAddVo);
+
+            if (!file.isEmpty()) {
+                try {
+                    String filetType = file.getContentType();
+                    if (!StringUtils.isEmpty(filetType)) {
+                        MimeTypes allTypes = MimeTypes.getDefaultMimeTypes();
+                        MimeType type = allTypes.forName(filetType);
+                        filetType = type.getExtension();
+                        fileAddVo.setFileType(filetType);
+                    } else {
+                        //return response.failure(400, "文件类型很奇怪！");
+                    }
+
+                    Long size = file.getSize();
+                    if (size > 100 * 1048576) {
+                        continue;
+                    }
+
+                    Long id = new SnowFlake(1, 1).nextId();
+                    String fileName = id + filetType;
+                    fileAddVo.setId(id);
+                    fileAddVo.setUrl(fileName);
+                    fileAddVo.setName(file.getOriginalFilename());
+                    fileAddVo.setSize(Long.valueOf(size));
+
+                    String os2 = System.getProperty("os.name");
+                    String fileUrl = linuxFilePath;
+                    if (os2.toLowerCase().startsWith("win")) {
+                        fileUrl = windowsFilePath;
+                    }
+
+                    java.io.File dest = new java.io.File(fileUrl + "/" + fileAddVo.getType() + "/" + fileName);
+                    if (!dest.getParentFile().exists()) { //判断文件父目录是否存在
+                        dest.getParentFile().mkdirs();
+                    }
+
+                    try {
+                        file.transferTo(dest); //保存文件
+                        Boolean s = addFileToTable(fileAddVo);
+                        if (s) {
+                            listVo.add(fileAddVo);
+                        }
+                    } catch (IllegalStateException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                        //return response.failure(500, e.toString());
+                    } catch (IOException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                        //return response.failure(500, e.toString());
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        responseVo.setResponse(listVo);
+        return responseVo;
+    }
+
 
     @Override
     public ResponseVo getById(Long id) {
@@ -128,8 +228,8 @@ public class FileServiceImpl implements FileService {
             FileExample.Criteria criteria = fileExample.createCriteria();
             criteria.andIdNotEqualTo(file.getId());
             // 查询是否有相同
-            List<File> corporations = fileMapper.selectByExample(fileExample);
-            if (corporations.size() == 0) {
+            List<File> departments = fileMapper.selectByExample(fileExample);
+            if (departments.size() == 0) {
                 ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
                 Validator validator = factory.getValidator();
                 Set<ConstraintViolation<File>> constraintViolations = validator.validate(file);
@@ -160,6 +260,9 @@ public class FileServiceImpl implements FileService {
         FileExample.Criteria criteria = example.createCriteria();
         if (!StringUtils.isEmpty(fileSearchVo.getType())) {
             criteria.andTypeEqualTo(fileSearchVo.getType());
+        }
+        if (!StringUtils.isEmpty(fileSearchVo.getOtherId())) {
+            criteria.andOtherIdEqualTo(fileSearchVo.getOtherId());
         }
         try {
             Page page = PageHelper.startPage(pageNum, pageSize);
