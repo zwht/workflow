@@ -87,7 +87,6 @@ public class DoorServiceImpl implements DoorService {
             DoorExample doorExample = new DoorExample();
             DoorExample.Criteria criteria = doorExample.createCriteria();
             criteria.andNameEqualTo(door.getName());
-            criteria.andStateNotEqualTo(Short.parseShort("1400"));
             criteria.andCorporationIdEqualTo(door.getCorporationId());
             criteria.andIdNotEqualTo(door.getId());
             // 查询是否有相同
