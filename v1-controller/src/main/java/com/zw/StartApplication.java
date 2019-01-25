@@ -15,9 +15,9 @@ import java.util.Properties;
 
 @MapperScan("com.zw.dao.mapper")
 @SpringBootApplication
-public class CfmyControllerApplication extends SpringBootServletInitializer {
+public class StartApplication extends SpringBootServletInitializer {
 
-    // SpringBoot中使用Jackson导致Long型数据精度丢失问题
+    // SpringBoot中使用Jackson解决Long型数据精度丢失问题
     @Bean("jackson2ObjectMapperBuilderCustomizer")
     public Jackson2ObjectMapperBuilderCustomizer jackson2ObjectMapperBuilderCustomizer() {
         Jackson2ObjectMapperBuilderCustomizer customizer = new Jackson2ObjectMapperBuilderCustomizer() {
@@ -54,7 +54,7 @@ public class CfmyControllerApplication extends SpringBootServletInitializer {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(CfmyControllerApplication.class, args);
+        SpringApplication.run(StartApplication.class, args);
     }
 
 }
