@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zw.dao.mapper.my.MyUserMapper">
+  <resultMap id="BaseResultMap" type="com.zw.vo.user.UserResponseVo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="login_name" jdbcType="VARCHAR" property="loginName" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="ability" jdbcType="VARCHAR" property="ability" />
+    <result column="roles" jdbcType="VARCHAR" property="roles" />
+    <result column="corporation_id" jdbcType="VARCHAR" property="corporationId" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="img_id" jdbcType="VARCHAR" property="imgId" />
+    <association property="corporationVo" column="corporation_id" javaType="com.zw.dao.entity.Corporation" select="getCorporation"></association>
+    <collection property="rolesVo" ofType="com.zw.vo.code.CodeResponseVo" column="roles" select="getCode"></collection>
+  </resultMap>
+
+  <select id="getCorporation" parameterType="long" resultType="com.zw.dao.entity.Corporation">
+    SELECT * FROM cm_corporation WHERE id=#{id}
+  </select>
+
+  <select id="getCode" parameterType="String" resultType="com.zw.vo.code.CodeResponseVo">
+    SELECT * FROM cm_code WHERE value IN (
+      <if test="_parameter != null and _parameter !=''">
+        <foreach collection="_parameter.split(',')" item="item" index="index" separator=",">
+          #{item}
+        </foreach>
+      </if>
+    )
+  </select>
+
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+
+  <sql id="Base_Column_List">
+    id, name, login_name, state, ability, roles,  corporation_id,
+    phone, img_id
+  </sql>
+
+  <select id="selectByExample" parameterType="com.zw.vo.user.UserResponseVo" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from cm_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

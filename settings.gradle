@@ -1,0 +1,6 @@
+rootProject.name = 'workflow'
+
+include 'v1-common'
+include 'v1-dao'
+include 'v1-service'
+include 'v1-controller'

@@ -1,0 +1,40 @@
+db:
+  driverClassName: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/workflow?characterEncoding=utf-8
+  username: root
+  password: zw200813
+
+
+#上传文件配置
+web:
+  linuxFilePath: /opt/workflowImage/
+  windowsFilePath: C:/tmp/workflowImage
+
+spring:
+  datasource:
+    url: ${db.url}
+    username: ${db.username}
+    password: ${db.password}
+    driverClassName: ${db.driverClassName}
+    type: com.alibaba.druid.pool.DruidDataSource
+    maxPoolSize: 30
+  thymeleaf:
+    cache: false
+    prefix: classpath:/static/
+    suffix: .html
+  flyway:
+    locations: classpath:flywaySQL
+
+mybatis:
+  mapperLocations: classpath*:mapper/**/*.xml
+  typeAliasesPackage: com.zw.dao.entity
+
+jdbc:
+  type: mysql
+
+#pagehelper分页插件配置
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params=count: countSql

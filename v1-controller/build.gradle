@@ -1,0 +1,83 @@
+apply plugin: "java"
+apply plugin: "war"
+apply from: "../build.gradle"
+
+/**
+ * 拷贝配置文件
+ * gradle copyYAML -Dprofile=local
+ * gradle build -Dprofile=local
+ **/
+task copyYAML(type: Copy) {
+    def profile = System.properties["profile"]
+    if (profile == null) {
+        def key = "spring.profiles.active"
+        Properties properties = new Properties();
+        // 使用ClassLoader加载properties配置文件生成对应的输入流
+        FileInputStream input = new FileInputStream("${rootProject.projectDir}/v1-controller/src/main/resources/application.properties")
+        // 使用properties对象加载输入流
+        properties.load(input)
+        //获取key对应的value值
+        profile = properties.getProperty(key)
+    }
+    def profileFileName = ""
+    if (profile == null) {
+        profileFileName = "application-dev.yml"
+    } else {
+        profileFileName = "application-${profile}.yml"
+    }
+    println(profile + "运行打包命令===gradle bootWar -Dprofile=dev-----gradle build -Dprofile=local")
+
+    from file("${rootProject.projectDir}/v1-common/src/main/resources/${profileFileName}")
+    into file("${rootProject.projectDir}/v1-controller/build/classes/java/main/")
+    rename("${profileFileName}", "application.yml")
+}
+
+/**
+ * 拷贝war包到指定位置
+ * gradle copyYAML -Dprofile=local
+ * gradle build -Dprofile=local
+ **/
+task copyWar(type: Copy) {
+    def profile = System.properties["profile"]
+
+    Properties properties = new Properties();
+    // 使用ClassLoader加载properties配置文件生成对应的输入流
+    FileInputStream input = new FileInputStream("${rootProject.projectDir}/v1-controller/src/main/resources/application.properties")
+    // 使用properties对象加载输入流
+    properties.load(input)
+    def active=profile
+    if(active == null){
+        properties.getProperty("spring.profiles.active")
+    }
+    //获取key对应的value值
+    def warPath = properties.getProperty("warpath.${active}")
+
+    println(warPath)
+    if (warPath == null) {
+        warPath = "${rootProject.projectDir}"
+    }
+    from file("${rootProject.projectDir}/v1-controller/build/libs/workflow.war")
+    into file("${warPath}")
+}
+
+build.dependsOn(bootWar)
+
+//在war之前执行，将申明配置文件的application.properties先删掉
+project.bootWar.doFirst {
+    delete("${rootProject.projectDir}/v1-controller/build/resources/main/application.properties")
+}
+// 打包完成后copyWar，然后clean
+project.bootWar.finalizedBy copyWar
+copyWar.finalizedBy clean
+
+bootWar {
+    dependsOn copyYAML
+    archiveName="workflow.war"
+}
+bootJar {
+    archiveName="workflow.jar"
+}
+
+dependencies {
+    compile project(":v1-service")
+}
