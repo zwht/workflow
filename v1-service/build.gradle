@@ -1,9 +1,0 @@
-apply from: '../build.gradle'
-apply plugin: 'java'
-
-
-dependencies {
-
-    compile project(":v1-dao")
-}
-
