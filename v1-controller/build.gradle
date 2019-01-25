@@ -34,8 +34,7 @@ task copyYAML(type: Copy) {
 
 /**
  * 拷贝war包到指定位置
- * gradle copyYAML -Dprofile=local
- * gradle build -Dprofile=local
+ * gradle copyWar -Dprofile=local
  **/
 task copyWar(type: Copy) {
     def profile = System.properties["profile"]
