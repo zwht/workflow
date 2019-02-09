@@ -15,6 +15,17 @@ public class DoorSearchVo {
     @ApiModelProperty("公司id")
     private Long corporationId;
 
+    @ApiModelProperty("编号")
+    private String number;
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
     public Long getCorporationId() {
         return corporationId;
     }

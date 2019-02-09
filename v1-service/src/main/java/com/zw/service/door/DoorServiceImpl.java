@@ -126,6 +126,9 @@ public class DoorServiceImpl implements DoorService {
         if (!StringUtils.isEmpty(doorSearchVo.getName())) {
             criteria.andNameLike("%" + doorSearchVo.getName() + "%");
         }
+        if (!StringUtils.isEmpty(doorSearchVo.getNumber())) {
+            criteria.andNumberLike("%" + doorSearchVo.getNumber() + "%");
+        }
         if (!StringUtils.isEmpty(doorSearchVo.getCorporationId())) {
             criteria.andCorporationIdEqualTo(doorSearchVo.getCorporationId());
         }

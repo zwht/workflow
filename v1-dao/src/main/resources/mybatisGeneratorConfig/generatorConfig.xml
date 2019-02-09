@@ -49,6 +49,8 @@
         <table tableName="bs_gx" domainObjectName="Gx"></table>
         <table tableName="bs_door" domainObjectName="Door"></table>
         <table tableName="bs_door_gx" domainObjectName="DoorGx"></table>
+        <table tableName="bs_color" domainObjectName="Color"></table>
+        <table tableName="bs_material" domainObjectName="Material"></table>
 
         <table tableName="zs_process" domainObjectName="Process"></table>
         <table tableName="zs_product" domainObjectName="Product"></table>
