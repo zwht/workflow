@@ -23,7 +23,7 @@ public class DoorAddVo {
     @ApiModelProperty("产品图片")
     private String img;
 
-    @ApiModelProperty("产品类型，1301门，1302线条")
+    @ApiModelProperty("产品类型，1301门，1302窗户")
     private Short type;
 
     @ApiModelProperty("产品产品编号")

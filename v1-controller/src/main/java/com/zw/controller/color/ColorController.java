@@ -23,7 +23,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/v1")
-@Api(description = "工序")
+@Api(description = "颜色")
 public class ColorController {
 
     @Autowired

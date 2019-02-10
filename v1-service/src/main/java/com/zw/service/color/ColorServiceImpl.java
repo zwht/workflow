@@ -113,7 +113,7 @@ public class ColorServiceImpl implements ColorService {
         ResponseVo response = new ResponseVo();
         //条件查询3句话
         ColorExample example = new ColorExample();
-        example.setOrderByClause("`index_key` ASC");
+        // example.setOrderByClause("`index_key` ASC");
         ColorExample.Criteria criteria = example.createCriteria();
         criteria.andFlagIsNull();
         if (!StringUtils.isEmpty(colorSearchVo.getName())) {

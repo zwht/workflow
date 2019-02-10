@@ -132,7 +132,7 @@ public class UserServiceImpl implements UserService {
             criteria.andCorporationIdEqualTo(userSearchVo.getCorporationId());
         }
         if (!StringUtils.isEmpty(userSearchVo.getRoles())) {
-            criteria.andRolesEqualTo(userSearchVo.getRoles());
+            criteria.andRolesLike("%"+userSearchVo.getRoles()+"%");
         }
         if (!StringUtils.isEmpty(userSearchVo.getName())) {
             criteria.andNameEqualTo(userSearchVo.getName());

@@ -113,7 +113,7 @@ public class MaterialServiceImpl implements MaterialService {
         ResponseVo response = new ResponseVo();
         //条件查询3句话
         MaterialExample example = new MaterialExample();
-        example.setOrderByClause("`index_key` ASC");
+        // example.setOrderByClause("`index_key` ASC");
         MaterialExample.Criteria criteria = example.createCriteria();
         criteria.andFlagIsNull();
         if (!StringUtils.isEmpty(materialSearchVo.getName())) {

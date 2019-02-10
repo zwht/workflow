@@ -119,8 +119,7 @@ public class DoorServiceImpl implements DoorService {
         ResponseVo response = new ResponseVo();
         //条件查询3句话
         DoorExample example = new DoorExample();
-
-        example.setOrderByClause("`create_time` ASC");
+        example.setOrderByClause("`sum` DESC");
         DoorExample.Criteria criteria = example.createCriteria();
         criteria.andFlagIsNull();
         if (!StringUtils.isEmpty(doorSearchVo.getName())) {
@@ -131,6 +130,9 @@ public class DoorServiceImpl implements DoorService {
         }
         if (!StringUtils.isEmpty(doorSearchVo.getCorporationId())) {
             criteria.andCorporationIdEqualTo(doorSearchVo.getCorporationId());
+        }
+        if (!StringUtils.isEmpty(doorSearchVo.getType())) {
+            criteria.andTypeEqualTo(doorSearchVo.getType());
         }
         try {
             Page page = PageHelper.startPage(pageNum, pageSize);

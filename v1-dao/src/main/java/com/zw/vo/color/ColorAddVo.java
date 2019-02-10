@@ -14,6 +14,17 @@ public class ColorAddVo {
     @ApiModelProperty("img")
     private String img;
 
+    @ApiModelProperty("value")
+    private String value;
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
     public String getImg() {
         return img;
     }

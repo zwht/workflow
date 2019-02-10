@@ -29,6 +29,8 @@ public class Door {
 
     private Short flag;
 
+    private Integer sum;
+
     public Long getId() {
         return id;
     }
@@ -131,5 +133,13 @@ public class Door {
 
     public void setFlag(Short flag) {
         this.flag = flag;
+    }
+
+    public Integer getSum() {
+        return sum;
+    }
+
+    public void setSum(Integer sum) {
+        this.sum = sum;
     }
 }
