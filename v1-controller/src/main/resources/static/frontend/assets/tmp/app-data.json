@@ -48,8 +48,28 @@
           },
           "children": [
             {
-              "text": "门列表",
+              "text": "型号列表",
               "link": "/admin/baseCorporation/door",
+              "permission": {
+                "roles": [
+                  "100"
+                ],
+                "ability": []
+              }
+            },
+            {
+              "text": "颜色列表",
+              "link": "/admin/baseCorporation/color",
+              "permission": {
+                "roles": [
+                  "100"
+                ],
+                "ability": []
+              }
+            },
+            {
+              "text": "材质列表",
+              "link": "/admin/baseCorporation/material",
               "permission": {
                 "roles": [
                   "100"

@@ -21,6 +21,7 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -132,7 +133,12 @@ public class DoorServiceImpl implements DoorService {
             criteria.andCorporationIdEqualTo(doorSearchVo.getCorporationId());
         }
         if (!StringUtils.isEmpty(doorSearchVo.getType())) {
-            criteria.andTypeEqualTo(doorSearchVo.getType());
+            String[] l = doorSearchVo.getType().split(",");
+            List<Short> o = new ArrayList<>();
+            for (int i = 0 ; i <l.length ; i++ ) {
+                o.add(Short.parseShort(l[i]));
+            }
+            criteria.andTypeIn(o);
         }
         try {
             Page page = PageHelper.startPage(pageNum, pageSize);

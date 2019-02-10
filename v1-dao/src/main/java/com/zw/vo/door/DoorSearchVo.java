@@ -19,13 +19,13 @@ public class DoorSearchVo {
     private String number;
 
     @ApiModelProperty("类型")
-    private Short type;
+    private String type;
 
-    public Short getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(Short type) {
+    public void setType(String type) {
         this.type = type;
     }
 
