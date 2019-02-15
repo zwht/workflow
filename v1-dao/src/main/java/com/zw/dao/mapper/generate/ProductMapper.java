@@ -10,7 +10,7 @@ public interface ProductMapper {
 
     int deleteByExample(ProductExample example);
 
-    int deleteByPrimaryKey(String id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(Product record);
 
@@ -18,7 +18,7 @@ public interface ProductMapper {
 
     List<Product> selectByExample(ProductExample example);
 
-    Product selectByPrimaryKey(String id);
+    Product selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") Product record, @Param("example") ProductExample example);
 

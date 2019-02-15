@@ -1,8 +1,15 @@
-package com.zw.dao.entity;
+package com.zw.vo.product;
 
-public class Product {
-    private Long id;
+import io.swagger.annotations.ApiModelProperty;
 
+/**
+ * @author：zhaowei
+ * @Date：2018/12/19
+ * @Time：下午2:03
+ */
+public class ProductAddVo {
+
+    @ApiModelProperty("序号")
     private Short indexKey;
 
     private String coverSize;
@@ -39,14 +46,6 @@ public class Product {
 
     private String line;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Short getIndexKey() {
         return indexKey;
     }
@@ -60,7 +59,7 @@ public class Product {
     }
 
     public void setCoverSize(String coverSize) {
-        this.coverSize = coverSize == null ? null : coverSize.trim();
+        this.coverSize = coverSize;
     }
 
     public String getDoorSize() {
@@ -68,7 +67,7 @@ public class Product {
     }
 
     public void setDoorSize(String doorSize) {
-        this.doorSize = doorSize == null ? null : doorSize.trim();
+        this.doorSize = doorSize;
     }
 
     public String getLbSize() {
@@ -76,7 +75,7 @@ public class Product {
     }
 
     public void setLbSize(String lbSize) {
-        this.lbSize = lbSize == null ? null : lbSize.trim();
+        this.lbSize = lbSize;
     }
 
     public String getDbSize() {
@@ -84,7 +83,7 @@ public class Product {
     }
 
     public void setDbSize(String dbSize) {
-        this.dbSize = dbSize == null ? null : dbSize.trim();
+        this.dbSize = dbSize;
     }
 
     public Long getCorporationId() {
@@ -124,7 +123,7 @@ public class Product {
     }
 
     public void setDoor(String door) {
-        this.door = door == null ? null : door.trim();
+        this.door = door;
     }
 
     public Long getDoorId() {
@@ -140,7 +139,7 @@ public class Product {
     }
 
     public void setColor(String color) {
-        this.color = color == null ? null : color.trim();
+        this.color = color;
     }
 
     public Long getColorId() {
@@ -156,7 +155,7 @@ public class Product {
     }
 
     public void setMaterial(String material) {
-        this.material = material == null ? null : material.trim();
+        this.material = material;
     }
 
     public Long getMaterialId() {
@@ -172,7 +171,7 @@ public class Product {
     }
 
     public void setRemarks(String remarks) {
-        this.remarks = remarks == null ? null : remarks.trim();
+        this.remarks = remarks;
     }
 
     public Short getFlag() {
@@ -188,6 +187,6 @@ public class Product {
     }
 
     public void setLine(String line) {
-        this.line = line == null ? null : line.trim();
+        this.line = line;
     }
 }

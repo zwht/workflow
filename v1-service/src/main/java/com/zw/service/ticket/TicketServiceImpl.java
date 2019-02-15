@@ -45,7 +45,7 @@ public class TicketServiceImpl implements TicketService {
 
             TicketExample ticketExample = new TicketExample();
             TicketExample.Criteria criteria = ticketExample.createCriteria();
-            criteria.andNameEqualTo(ticket.getName());
+            criteria.andNumberEqualTo(ticket.getNumber());
             criteria.andCorporationIdEqualTo(ticket.getCorporationId());
             // 查询是否有相同
             List<Ticket> tickets = ticketMapper.selectByExample(ticketExample);

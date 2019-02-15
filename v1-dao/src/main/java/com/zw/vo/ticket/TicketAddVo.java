@@ -54,6 +54,26 @@ public class TicketAddVo {
 
     private Float sumLine;
 
+    private String remarks;
+
+    private String summary;
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
     public Long getId() {
         return id;
     }

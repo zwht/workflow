@@ -25,6 +25,8 @@
     <result column="sum_taoban" jdbcType="REAL" property="sumTaoban" />
     <result column="sum_line" jdbcType="REAL" property="sumLine" />
     <result column="flag" jdbcType="SMALLINT" property="flag" />
+    <result column="summary" jdbcType="VARCHAR" property="summary" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -87,7 +89,7 @@
   <sql id="Base_Column_List">
     id, name, number, corporation_id, dealers_id, market_id, edit_id, brand_id, product_ids, 
     odd, address, state, type, priority, start_time, end_time, create_time, over_time, 
-    pay, sum_door, sum_taoban, sum_line, flag
+    pay, sum_door, sum_taoban, sum_line, flag, summary, remarks
   </sql>
   <select id="selectByExample" parameterType="com.zw.dao.entity.TicketExample" resultMap="BaseResultMap">
     select
@@ -127,7 +129,8 @@
       type, priority, start_time, 
       end_time, create_time, over_time, 
       pay, sum_door, sum_taoban, sum_line, 
-      flag)
+      flag, summary, remarks
+      )
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, 
       #{corporationId,jdbcType=BIGINT}, #{dealersId,jdbcType=BIGINT}, #{marketId,jdbcType=BIGINT}, 
       #{editId,jdbcType=BIGINT}, #{brandId,jdbcType=BIGINT}, #{productIds,jdbcType=VARCHAR}, 
@@ -135,7 +138,8 @@
       #{type,jdbcType=SMALLINT}, #{priority,jdbcType=SMALLINT}, #{startTime,jdbcType=TIMESTAMP}, 
       #{endTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{overTime,jdbcType=TIMESTAMP}, 
       #{pay,jdbcType=REAL}, #{sumDoor,jdbcType=REAL}, #{sumTaoban,jdbcType=REAL}, #{sumLine,jdbcType=REAL}, 
-      #{flag,jdbcType=SMALLINT})
+      #{flag,jdbcType=SMALLINT}, #{summary,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.zw.dao.entity.Ticket">
     insert into zs_ticket
@@ -209,6 +213,12 @@
       <if test="flag != null">
         flag,
       </if>
+      <if test="summary != null">
+        summary,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -279,6 +289,12 @@
       </if>
       <if test="flag != null">
         #{flag,jdbcType=SMALLINT},
+      </if>
+      <if test="summary != null">
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -360,6 +376,12 @@
       <if test="record.flag != null">
         flag = #{record.flag,jdbcType=SMALLINT},
       </if>
+      <if test="record.summary != null">
+        summary = #{record.summary,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remarks != null">
+        remarks = #{record.remarks,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -389,7 +411,9 @@
       sum_door = #{record.sumDoor,jdbcType=REAL},
       sum_taoban = #{record.sumTaoban,jdbcType=REAL},
       sum_line = #{record.sumLine,jdbcType=REAL},
-      flag = #{record.flag,jdbcType=SMALLINT}
+      flag = #{record.flag,jdbcType=SMALLINT},
+      summary = #{record.summary,jdbcType=VARCHAR},
+      remarks = #{record.remarks,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -463,6 +487,12 @@
       <if test="flag != null">
         flag = #{flag,jdbcType=SMALLINT},
       </if>
+      <if test="summary != null">
+        summary = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -489,7 +519,9 @@
       sum_door = #{sumDoor,jdbcType=REAL},
       sum_taoban = #{sumTaoban,jdbcType=REAL},
       sum_line = #{sumLine,jdbcType=REAL},
-      flag = #{flag,jdbcType=SMALLINT}
+      flag = #{flag,jdbcType=SMALLINT},
+      summary = #{summary,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

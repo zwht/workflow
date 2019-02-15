@@ -49,6 +49,10 @@ public class Ticket {
 
     private Short flag;
 
+    private String summary;
+
+    private String remarks;
+
     public Long getId() {
         return id;
     }
@@ -231,5 +235,21 @@ public class Ticket {
 
     public void setFlag(Short flag) {
         this.flag = flag;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary == null ? null : summary.trim();
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks == null ? null : remarks.trim();
     }
 }
