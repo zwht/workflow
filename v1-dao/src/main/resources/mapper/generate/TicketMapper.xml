@@ -27,6 +27,7 @@
     <result column="flag" jdbcType="SMALLINT" property="flag" />
     <result column="summary" jdbcType="VARCHAR" property="summary" />
     <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="edit_name" jdbcType="VARCHAR" property="editName" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -89,7 +90,7 @@
   <sql id="Base_Column_List">
     id, name, number, corporation_id, dealers_id, market_id, edit_id, brand_id, product_ids, 
     odd, address, state, type, priority, start_time, end_time, create_time, over_time, 
-    pay, sum_door, sum_taoban, sum_line, flag, summary, remarks
+    pay, sum_door, sum_taoban, sum_line, flag, summary, remarks, edit_name
   </sql>
   <select id="selectByExample" parameterType="com.zw.dao.entity.TicketExample" resultMap="BaseResultMap">
     select
@@ -129,8 +130,8 @@
       type, priority, start_time, 
       end_time, create_time, over_time, 
       pay, sum_door, sum_taoban, sum_line, 
-      flag, summary, remarks
-      )
+      flag, summary, remarks, 
+      edit_name)
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, 
       #{corporationId,jdbcType=BIGINT}, #{dealersId,jdbcType=BIGINT}, #{marketId,jdbcType=BIGINT}, 
       #{editId,jdbcType=BIGINT}, #{brandId,jdbcType=BIGINT}, #{productIds,jdbcType=VARCHAR}, 
@@ -138,8 +139,8 @@
       #{type,jdbcType=SMALLINT}, #{priority,jdbcType=SMALLINT}, #{startTime,jdbcType=TIMESTAMP}, 
       #{endTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{overTime,jdbcType=TIMESTAMP}, 
       #{pay,jdbcType=REAL}, #{sumDoor,jdbcType=REAL}, #{sumTaoban,jdbcType=REAL}, #{sumLine,jdbcType=REAL}, 
-      #{flag,jdbcType=SMALLINT}, #{summary,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}
-      )
+      #{flag,jdbcType=SMALLINT}, #{summary,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, 
+      #{editName,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zw.dao.entity.Ticket">
     insert into zs_ticket
@@ -219,6 +220,9 @@
       <if test="remarks != null">
         remarks,
       </if>
+      <if test="editName != null">
+        edit_name,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -295,6 +299,9 @@
       </if>
       <if test="remarks != null">
         #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="editName != null">
+        #{editName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -382,6 +389,9 @@
       <if test="record.remarks != null">
         remarks = #{record.remarks,jdbcType=VARCHAR},
       </if>
+      <if test="record.editName != null">
+        edit_name = #{record.editName,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -413,7 +423,8 @@
       sum_line = #{record.sumLine,jdbcType=REAL},
       flag = #{record.flag,jdbcType=SMALLINT},
       summary = #{record.summary,jdbcType=VARCHAR},
-      remarks = #{record.remarks,jdbcType=VARCHAR}
+      remarks = #{record.remarks,jdbcType=VARCHAR},
+      edit_name = #{record.editName,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -493,6 +504,9 @@
       <if test="remarks != null">
         remarks = #{remarks,jdbcType=VARCHAR},
       </if>
+      <if test="editName != null">
+        edit_name = #{editName,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -521,7 +535,8 @@
       sum_line = #{sumLine,jdbcType=REAL},
       flag = #{flag,jdbcType=SMALLINT},
       summary = #{summary,jdbcType=VARCHAR},
-      remarks = #{remarks,jdbcType=VARCHAR}
+      remarks = #{remarks,jdbcType=VARCHAR},
+      edit_name = #{editName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

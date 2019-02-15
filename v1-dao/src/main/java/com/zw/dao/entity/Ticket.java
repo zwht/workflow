@@ -53,6 +53,8 @@ public class Ticket {
 
     private String remarks;
 
+    private String editName;
+
     public Long getId() {
         return id;
     }
@@ -251,5 +253,13 @@ public class Ticket {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks == null ? null : remarks.trim();
+    }
+
+    public String getEditName() {
+        return editName;
+    }
+
+    public void setEditName(String editName) {
+        this.editName = editName == null ? null : editName.trim();
     }
 }

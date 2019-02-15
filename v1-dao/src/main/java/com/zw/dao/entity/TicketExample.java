@@ -1674,6 +1674,76 @@ public class TicketExample {
             addCriterion("remarks not between", value1, value2, "remarks");
             return (Criteria) this;
         }
+
+        public Criteria andEditNameIsNull() {
+            addCriterion("edit_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditNameIsNotNull() {
+            addCriterion("edit_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditNameEqualTo(String value) {
+            addCriterion("edit_name =", value, "editName");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditNameNotEqualTo(String value) {
+            addCriterion("edit_name <>", value, "editName");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditNameGreaterThan(String value) {
+            addCriterion("edit_name >", value, "editName");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditNameGreaterThanOrEqualTo(String value) {
+            addCriterion("edit_name >=", value, "editName");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditNameLessThan(String value) {
+            addCriterion("edit_name <", value, "editName");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditNameLessThanOrEqualTo(String value) {
+            addCriterion("edit_name <=", value, "editName");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditNameLike(String value) {
+            addCriterion("edit_name like", value, "editName");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditNameNotLike(String value) {
+            addCriterion("edit_name not like", value, "editName");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditNameIn(List<String> values) {
+            addCriterion("edit_name in", values, "editName");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditNameNotIn(List<String> values) {
+            addCriterion("edit_name not in", values, "editName");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditNameBetween(String value1, String value2) {
+            addCriterion("edit_name between", value1, value2, "editName");
+            return (Criteria) this;
+        }
+
+        public Criteria andEditNameNotBetween(String value1, String value2) {
+            addCriterion("edit_name not between", value1, value2, "editName");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

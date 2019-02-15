@@ -15,6 +15,39 @@ public class TicketSearchVo {
     @ApiModelProperty("公司id")
     private Long corporationId;
 
+    @ApiModelProperty("经销商")
+    private Long dealersId;
+
+    @ApiModelProperty("销售")
+    private Long marketId;
+
+    @ApiModelProperty("制单人")
+    private Long editId;
+
+    public Long getDealersId() {
+        return dealersId;
+    }
+
+    public void setDealersId(Long dealersId) {
+        this.dealersId = dealersId;
+    }
+
+    public Long getMarketId() {
+        return marketId;
+    }
+
+    public void setMarketId(Long marketId) {
+        this.marketId = marketId;
+    }
+
+    public Long getEditId() {
+        return editId;
+    }
+
+    public void setEditId(Long editId) {
+        this.editId = editId;
+    }
+
     public Long getCorporationId() {
         return corporationId;
     }

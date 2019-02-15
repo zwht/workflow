@@ -1,15 +1,13 @@
 package com.zw.vo.ticket;
 
-import io.swagger.annotations.ApiModelProperty;
-
 import java.util.Date;
 
 /**
  * @author：zhaowei
- * @Date：2018/12/19
- * @Time：下午2:03
+ * @Date：2019/2/15
+ * @Time：下午12:55
  */
-public class TicketAddVo {
+public class TicketResponseVo {
     private Long id;
 
     private String name;
@@ -54,11 +52,18 @@ public class TicketAddVo {
 
     private Float sumLine;
 
-    private String remarks;
+    private Short flag;
 
     private String summary;
 
+    private String remarks;
+
+    private String marketName;
+
     private String editName;
+
+    private String dealersName;
+
 
     public String getEditName() {
         return editName;
@@ -68,20 +73,12 @@ public class TicketAddVo {
         this.editName = editName;
     }
 
-    public String getRemarks() {
-        return remarks;
+    public String getDealersName() {
+        return dealersName;
     }
 
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
-    }
-
-    public String getSummary() {
-        return summary;
-    }
-
-    public void setSummary(String summary) {
-        this.summary = summary;
+    public void setDealersName(String dealersName) {
+        this.dealersName = dealersName;
     }
 
     public Long getId() {
@@ -258,5 +255,37 @@ public class TicketAddVo {
 
     public void setSumLine(Float sumLine) {
         this.sumLine = sumLine;
+    }
+
+    public Short getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Short flag) {
+        this.flag = flag;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
+    public String getMarketName() {
+        return marketName;
+    }
+
+    public void setMarketName(String marketName) {
+        this.marketName = marketName;
     }
 }

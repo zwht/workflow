@@ -9,6 +9,7 @@ import com.zw.common.vo.TokenVo;
 import com.zw.dao.entity.Ticket;
 import com.zw.dao.entity.TicketExample;
 import com.zw.dao.mapper.generate.TicketMapper;
+import com.zw.dao.mapper.my.MyTicketMapper;
 import com.zw.vo.ticket.TicketAddVo;
 import com.zw.vo.ticket.TicketSearchVo;
 import org.springframework.beans.BeanUtils;
@@ -34,6 +35,8 @@ public class TicketServiceImpl implements TicketService {
 
     @Autowired
     TicketMapper ticketMapper;
+    @Autowired
+    MyTicketMapper myTicketMapper;
 
     @Override
     public ResponseVo add(TicketAddVo ticketAddVo, TokenVo tokenVo) {
@@ -60,7 +63,7 @@ public class TicketServiceImpl implements TicketService {
                     return response.validation(constraintViolations);
                 } else {
                     ticketMapper.insert(ticket);
-                    return response.success("添加成功");
+                    return response.success(ticket.getId());
                 }
             } else {
                 return response.failure(400, "数据重复！");
@@ -123,16 +126,25 @@ public class TicketServiceImpl implements TicketService {
 
         example.setOrderByClause("`create_time` ASC");
         TicketExample.Criteria criteria = example.createCriteria();
-        criteria.andStateNotEqualTo(Short.parseShort("1500"));
+        criteria.andFlagIsNull();
         if (!StringUtils.isEmpty(ticketSearchVo.getName())) {
             criteria.andNameLike("%" + ticketSearchVo.getName() + "%");
         }
         if (!StringUtils.isEmpty(ticketSearchVo.getCorporationId())) {
             criteria.andCorporationIdEqualTo(ticketSearchVo.getCorporationId());
         }
+        if (!StringUtils.isEmpty(ticketSearchVo.getDealersId())) {
+            criteria.andDealersIdEqualTo(ticketSearchVo.getDealersId());
+        }
+        if (!StringUtils.isEmpty(ticketSearchVo.getMarketId())) {
+            criteria.andMarketIdEqualTo(ticketSearchVo.getMarketId());
+        }
+        if (!StringUtils.isEmpty(ticketSearchVo.getEditId())) {
+            criteria.andEditIdEqualTo(ticketSearchVo.getEditId());
+        }
         try {
             Page page = PageHelper.startPage(pageNum, pageSize);
-            List list = ticketMapper.selectByExample(example);
+            List list = myTicketMapper.selectByExample(example);
             long count = page.getTotal();
             return response.success(new PageVo(pageNum, pageSize, count, list));
         } catch (Exception e) {
@@ -143,13 +155,15 @@ public class TicketServiceImpl implements TicketService {
     @Override
     public ResponseVo del(Long id) {
         ResponseVo response = new ResponseVo();
-        try {
-            return response.success(ticketMapper.deleteByPrimaryKey(Long.valueOf(id)));
-        } catch (Exception e) {
-            return response.failure(501, e.getMessage());
-        }
+        Ticket ticket = ticketMapper.selectByPrimaryKey(id);
+        ticket.setFlag((short)1);
+        TicketExample example = new TicketExample();
+        TicketExample.Criteria criteria1 = example.createCriteria();
+        criteria1.andIdEqualTo(ticket.getId());
+        ticketMapper.updateByExampleSelective(ticket, example);
+        return response.success("删除成功");
     }
-
+  
     @Override
     public ResponseVo updateState(Long id, Short state) {
         ResponseVo response = new ResponseVo();
