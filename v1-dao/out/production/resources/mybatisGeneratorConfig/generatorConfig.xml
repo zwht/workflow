@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="Mysql" targetRuntime="MyBatis3">
+
+        <!--不生成注释-->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <!-- 配置数据库连接 -->
+        <jdbcConnection driverClass="${driverClass}"
+                        connectionURL="${connectionURL}"
+                        userId="${userId}"
+                        password="${password}">
+        </jdbcConnection>
+
+        <!-- 指定javaBean生成的位置 -->
+        <javaModelGenerator targetPackage="${modelPackage}" targetProject="${src_main_java}">
+            <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
+            <property name="enableSubPackages" value="true"></property>
+            <!-- 设置是否在getter方法中，对String类型字段调用trim()方法 -->
+            <property name="trimStrings" value="true"></property>
+        </javaModelGenerator>
+
+        <!--指定sql映射文件生成的位置 -->
+        <sqlMapGenerator targetPackage="${sqlMapperPackage}" targetProject="${src_main_resources}">
+            <property name="enableSubPackages" value="true"></property>
+        </sqlMapGenerator>
+
+        <!-- 指定dao接口生成的位置，mapper接口 -->
+        <javaClientGenerator targetPackage="${mapperPackage}" targetProject="${src_main_java}" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- table表生成对应的DoaminObject -->
+        <table tableName="cm_code" domainObjectName="Code"></table>
+        <table tableName="cm_code_group" domainObjectName="CodeGroup"></table>
+
+        <table tableName="cm_user" domainObjectName="User"></table>
+        <table tableName="cm_user_info" domainObjectName="UserInfo"></table>
+
+        <table tableName="cm_file" domainObjectName="File"></table>
+        <table tableName="cm_corporation" domainObjectName="Corporation"></table>
+        <table tableName="cm_err_code" domainObjectName="ErrCode"></table>
+
+        <table tableName="bs_gx" domainObjectName="Gx"></table>
+        <table tableName="bs_door" domainObjectName="Door"></table>
+        <table tableName="bs_door_gx" domainObjectName="DoorGx"></table>
+        <table tableName="bs_color" domainObjectName="Color"></table>
+        <table tableName="bs_material" domainObjectName="Material"></table>
+
+        <table tableName="zs_process" domainObjectName="Process"></table>
+        <table tableName="zs_product" domainObjectName="Product"></table>
+        <table tableName="zs_ticket" domainObjectName="Ticket"></table>
+
+    </context>
+</generatorConfiguration>

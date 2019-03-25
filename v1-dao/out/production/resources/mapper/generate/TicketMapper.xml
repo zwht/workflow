@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zw.dao.mapper.generate.TicketMapper">
+  <resultMap id="BaseResultMap" type="com.zw.dao.entity.Ticket">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="number" jdbcType="VARCHAR" property="number" />
+    <result column="corporation_id" jdbcType="BIGINT" property="corporationId" />
+    <result column="dealers_id" jdbcType="BIGINT" property="dealersId" />
+    <result column="market_id" jdbcType="BIGINT" property="marketId" />
+    <result column="edit_id" jdbcType="BIGINT" property="editId" />
+    <result column="brand_id" jdbcType="BIGINT" property="brandId" />
+    <result column="product_ids" jdbcType="VARCHAR" property="productIds" />
+    <result column="odd" jdbcType="VARCHAR" property="odd" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="state" jdbcType="SMALLINT" property="state" />
+    <result column="type" jdbcType="SMALLINT" property="type" />
+    <result column="priority" jdbcType="SMALLINT" property="priority" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="over_time" jdbcType="TIMESTAMP" property="overTime" />
+    <result column="pay" jdbcType="REAL" property="pay" />
+    <result column="sum_door" jdbcType="REAL" property="sumDoor" />
+    <result column="sum_taoban" jdbcType="REAL" property="sumTaoban" />
+    <result column="sum_line" jdbcType="REAL" property="sumLine" />
+    <result column="flag" jdbcType="SMALLINT" property="flag" />
+    <result column="summary" jdbcType="VARCHAR" property="summary" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="edit_name" jdbcType="VARCHAR" property="editName" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, name, number, corporation_id, dealers_id, market_id, edit_id, brand_id, product_ids, 
+    odd, address, state, type, priority, start_time, end_time, create_time, over_time, 
+    pay, sum_door, sum_taoban, sum_line, flag, summary, remarks, edit_name
+  </sql>
+  <select id="selectByExample" parameterType="com.zw.dao.entity.TicketExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from zs_ticket
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from zs_ticket
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from zs_ticket
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zw.dao.entity.TicketExample">
+    delete from zs_ticket
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zw.dao.entity.Ticket">
+    insert into zs_ticket (id, name, number, 
+      corporation_id, dealers_id, market_id, 
+      edit_id, brand_id, product_ids, 
+      odd, address, state, 
+      type, priority, start_time, 
+      end_time, create_time, over_time, 
+      pay, sum_door, sum_taoban, sum_line, 
+      flag, summary, remarks, 
+      edit_name)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, 
+      #{corporationId,jdbcType=BIGINT}, #{dealersId,jdbcType=BIGINT}, #{marketId,jdbcType=BIGINT}, 
+      #{editId,jdbcType=BIGINT}, #{brandId,jdbcType=BIGINT}, #{productIds,jdbcType=VARCHAR}, 
+      #{odd,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{state,jdbcType=SMALLINT}, 
+      #{type,jdbcType=SMALLINT}, #{priority,jdbcType=SMALLINT}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{overTime,jdbcType=TIMESTAMP}, 
+      #{pay,jdbcType=REAL}, #{sumDoor,jdbcType=REAL}, #{sumTaoban,jdbcType=REAL}, #{sumLine,jdbcType=REAL}, 
+      #{flag,jdbcType=SMALLINT}, #{summary,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, 
+      #{editName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zw.dao.entity.Ticket">
+    insert into zs_ticket
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="corporationId != null">
+        corporation_id,
+      </if>
+      <if test="dealersId != null">
+        dealers_id,
+      </if>
+      <if test="marketId != null">
+        market_id,
+      </if>
+      <if test="editId != null">
+        edit_id,
+      </if>
+      <if test="brandId != null">
+        brand_id,
+      </if>
+      <if test="productIds != null">
+        product_ids,
+      </if>
+      <if test="odd != null">
+        odd,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="priority != null">
+        priority,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="overTime != null">
+        over_time,
+      </if>
+      <if test="pay != null">
+        pay,
+      </if>
+      <if test="sumDoor != null">
+        sum_door,
+      </if>
+      <if test="sumTaoban != null">
+        sum_taoban,
+      </if>
+      <if test="sumLine != null">
+        sum_line,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+      <if test="summary != null">
+        summary,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+      <if test="editName != null">
+        edit_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="corporationId != null">
+        #{corporationId,jdbcType=BIGINT},
+      </if>
+      <if test="dealersId != null">
+        #{dealersId,jdbcType=BIGINT},
+      </if>
+      <if test="marketId != null">
+        #{marketId,jdbcType=BIGINT},
+      </if>
+      <if test="editId != null">
+        #{editId,jdbcType=BIGINT},
+      </if>
+      <if test="brandId != null">
+        #{brandId,jdbcType=BIGINT},
+      </if>
+      <if test="productIds != null">
+        #{productIds,jdbcType=VARCHAR},
+      </if>
+      <if test="odd != null">
+        #{odd,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="priority != null">
+        #{priority,jdbcType=SMALLINT},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="overTime != null">
+        #{overTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pay != null">
+        #{pay,jdbcType=REAL},
+      </if>
+      <if test="sumDoor != null">
+        #{sumDoor,jdbcType=REAL},
+      </if>
+      <if test="sumTaoban != null">
+        #{sumTaoban,jdbcType=REAL},
+      </if>
+      <if test="sumLine != null">
+        #{sumLine,jdbcType=REAL},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=SMALLINT},
+      </if>
+      <if test="summary != null">
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="editName != null">
+        #{editName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zw.dao.entity.TicketExample" resultType="java.lang.Long">
+    select count(*) from zs_ticket
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update zs_ticket
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.number != null">
+        number = #{record.number,jdbcType=VARCHAR},
+      </if>
+      <if test="record.corporationId != null">
+        corporation_id = #{record.corporationId,jdbcType=BIGINT},
+      </if>
+      <if test="record.dealersId != null">
+        dealers_id = #{record.dealersId,jdbcType=BIGINT},
+      </if>
+      <if test="record.marketId != null">
+        market_id = #{record.marketId,jdbcType=BIGINT},
+      </if>
+      <if test="record.editId != null">
+        edit_id = #{record.editId,jdbcType=BIGINT},
+      </if>
+      <if test="record.brandId != null">
+        brand_id = #{record.brandId,jdbcType=BIGINT},
+      </if>
+      <if test="record.productIds != null">
+        product_ids = #{record.productIds,jdbcType=VARCHAR},
+      </if>
+      <if test="record.odd != null">
+        odd = #{record.odd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=SMALLINT},
+      </if>
+      <if test="record.type != null">
+        type = #{record.type,jdbcType=SMALLINT},
+      </if>
+      <if test="record.priority != null">
+        priority = #{record.priority,jdbcType=SMALLINT},
+      </if>
+      <if test="record.startTime != null">
+        start_time = #{record.startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.endTime != null">
+        end_time = #{record.endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.overTime != null">
+        over_time = #{record.overTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.pay != null">
+        pay = #{record.pay,jdbcType=REAL},
+      </if>
+      <if test="record.sumDoor != null">
+        sum_door = #{record.sumDoor,jdbcType=REAL},
+      </if>
+      <if test="record.sumTaoban != null">
+        sum_taoban = #{record.sumTaoban,jdbcType=REAL},
+      </if>
+      <if test="record.sumLine != null">
+        sum_line = #{record.sumLine,jdbcType=REAL},
+      </if>
+      <if test="record.flag != null">
+        flag = #{record.flag,jdbcType=SMALLINT},
+      </if>
+      <if test="record.summary != null">
+        summary = #{record.summary,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remarks != null">
+        remarks = #{record.remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.editName != null">
+        edit_name = #{record.editName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update zs_ticket
+    set id = #{record.id,jdbcType=BIGINT},
+      name = #{record.name,jdbcType=VARCHAR},
+      number = #{record.number,jdbcType=VARCHAR},
+      corporation_id = #{record.corporationId,jdbcType=BIGINT},
+      dealers_id = #{record.dealersId,jdbcType=BIGINT},
+      market_id = #{record.marketId,jdbcType=BIGINT},
+      edit_id = #{record.editId,jdbcType=BIGINT},
+      brand_id = #{record.brandId,jdbcType=BIGINT},
+      product_ids = #{record.productIds,jdbcType=VARCHAR},
+      odd = #{record.odd,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=SMALLINT},
+      type = #{record.type,jdbcType=SMALLINT},
+      priority = #{record.priority,jdbcType=SMALLINT},
+      start_time = #{record.startTime,jdbcType=TIMESTAMP},
+      end_time = #{record.endTime,jdbcType=TIMESTAMP},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      over_time = #{record.overTime,jdbcType=TIMESTAMP},
+      pay = #{record.pay,jdbcType=REAL},
+      sum_door = #{record.sumDoor,jdbcType=REAL},
+      sum_taoban = #{record.sumTaoban,jdbcType=REAL},
+      sum_line = #{record.sumLine,jdbcType=REAL},
+      flag = #{record.flag,jdbcType=SMALLINT},
+      summary = #{record.summary,jdbcType=VARCHAR},
+      remarks = #{record.remarks,jdbcType=VARCHAR},
+      edit_name = #{record.editName,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zw.dao.entity.Ticket">
+    update zs_ticket
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        number = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="corporationId != null">
+        corporation_id = #{corporationId,jdbcType=BIGINT},
+      </if>
+      <if test="dealersId != null">
+        dealers_id = #{dealersId,jdbcType=BIGINT},
+      </if>
+      <if test="marketId != null">
+        market_id = #{marketId,jdbcType=BIGINT},
+      </if>
+      <if test="editId != null">
+        edit_id = #{editId,jdbcType=BIGINT},
+      </if>
+      <if test="brandId != null">
+        brand_id = #{brandId,jdbcType=BIGINT},
+      </if>
+      <if test="productIds != null">
+        product_ids = #{productIds,jdbcType=VARCHAR},
+      </if>
+      <if test="odd != null">
+        odd = #{odd,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="priority != null">
+        priority = #{priority,jdbcType=SMALLINT},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="overTime != null">
+        over_time = #{overTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pay != null">
+        pay = #{pay,jdbcType=REAL},
+      </if>
+      <if test="sumDoor != null">
+        sum_door = #{sumDoor,jdbcType=REAL},
+      </if>
+      <if test="sumTaoban != null">
+        sum_taoban = #{sumTaoban,jdbcType=REAL},
+      </if>
+      <if test="sumLine != null">
+        sum_line = #{sumLine,jdbcType=REAL},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=SMALLINT},
+      </if>
+      <if test="summary != null">
+        summary = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="editName != null">
+        edit_name = #{editName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zw.dao.entity.Ticket">
+    update zs_ticket
+    set name = #{name,jdbcType=VARCHAR},
+      number = #{number,jdbcType=VARCHAR},
+      corporation_id = #{corporationId,jdbcType=BIGINT},
+      dealers_id = #{dealersId,jdbcType=BIGINT},
+      market_id = #{marketId,jdbcType=BIGINT},
+      edit_id = #{editId,jdbcType=BIGINT},
+      brand_id = #{brandId,jdbcType=BIGINT},
+      product_ids = #{productIds,jdbcType=VARCHAR},
+      odd = #{odd,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      state = #{state,jdbcType=SMALLINT},
+      type = #{type,jdbcType=SMALLINT},
+      priority = #{priority,jdbcType=SMALLINT},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      over_time = #{overTime,jdbcType=TIMESTAMP},
+      pay = #{pay,jdbcType=REAL},
+      sum_door = #{sumDoor,jdbcType=REAL},
+      sum_taoban = #{sumTaoban,jdbcType=REAL},
+      sum_line = #{sumLine,jdbcType=REAL},
+      flag = #{flag,jdbcType=SMALLINT},
+      summary = #{summary,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      edit_name = #{editName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
