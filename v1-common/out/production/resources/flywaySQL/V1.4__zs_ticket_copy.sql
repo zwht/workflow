@@ -45,6 +45,9 @@ CREATE TABLE `zs_ticket_copy` (
   `sum_taoban` float DEFAULT NULL,
   `sum_line` float DEFAULT NULL,
   `flag` smallint(6) DEFAULT NULL COMMENT '逻辑删除',
+  `summary` varchar(150) DEFAULT NULL COMMENT '总结',
+  `remarks` varchar(150) DEFAULT NULL COMMENT '备注',
+  `edit_name` varchar(20) DEFAULT NULL COMMENT '编辑人名字',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
