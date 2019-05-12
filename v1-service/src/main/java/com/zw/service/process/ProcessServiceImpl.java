@@ -51,7 +51,7 @@ public class ProcessServiceImpl implements ProcessService {
                 process.setCorporationId(Long.parseLong(tokenVo.getCorporationId()));
 
                 process.setId(new SnowFlake(1, 1).nextId());
-                process.setState(1501);
+                process.setState(1601);
                 ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
                 Validator validator = factory.getValidator();
                 Set<ConstraintViolation<Process>> constraintViolations = validator.validate(process);
@@ -117,9 +117,9 @@ public class ProcessServiceImpl implements ProcessService {
         ResponseVo response = new ResponseVo();
         //条件查询3句话
         ProcessExample example = new ProcessExample();
-        example.setOrderByClause("`sum` DESC");
+        // example.setOrderByClause("`sum` DESC");
         ProcessExample.Criteria criteria = example.createCriteria();
-        criteria.andFlagIsNull();
+        // criteria.andFlagIsNull();
         if (!StringUtils.isEmpty(processSearchVo.getTicketId())) {
             criteria.andTicketIdEqualTo(processSearchVo.getTicketId());
         }

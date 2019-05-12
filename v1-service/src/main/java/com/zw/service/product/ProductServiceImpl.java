@@ -40,20 +40,18 @@ public class ProductServiceImpl implements ProductService {
     public ResponseVo add(ProductAddVo[] productList, TokenVo tokenVo) {
         ResponseVo response = new ResponseVo();
         try {
-            // 修改成功，然后删除所有公司，在添加公司
+            // 修改成功，然后删除所有，在添加
             ProductExample productExample = new ProductExample();
             ProductExample.Criteria criteria2 = productExample.createCriteria();
             criteria2.andTicketIdEqualTo(productList[0].getTicketId());
             productMapper.deleteByExample(productExample);
-
-            
             for(int i=0;i<productList.length;i++){
                 Product product = new Product();
                 BeanUtils.copyProperties(productList[i], product);
                 product.setCorporationId(Long.parseLong(tokenVo.getCorporationId()));
 
                 product.setId(new SnowFlake(1, 1).nextId());
-                product.setState(1501);
+                // product.setState(1501);
                 ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
                 Validator validator = factory.getValidator();
                 Set<ConstraintViolation<Product>> constraintViolations = validator.validate(product);
