@@ -53,7 +53,7 @@ public class ProductServiceImpl implements ProductService {
                 product.setCorporationId(Long.parseLong(tokenVo.getCorporationId()));
 
                 product.setId(new SnowFlake(1, 1).nextId());
-                product.setState(Short.parseShort("1501"));
+                product.setState(1501);
                 ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
                 Validator validator = factory.getValidator();
                 Set<ConstraintViolation<Product>> constraintViolations = validator.validate(product);
@@ -150,7 +150,7 @@ public class ProductServiceImpl implements ProductService {
     public ResponseVo updateState(Long id, Short state) {
         ResponseVo response = new ResponseVo();
         Product product = productMapper.selectByPrimaryKey(id);
-        product.setState(state);
+        product.setState(Integer.valueOf(state));
         try {
             ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
             Validator validator = factory.getValidator();

@@ -3,15 +3,19 @@ package com.zw.dao.entity;
 import java.util.Date;
 
 public class Process {
-    private String id;
+    private Long id;
 
-    private String gxId;
+    private Long gxId;
 
-    private String userId;
+    private Long userId;
 
-    private String corporationId;
+    private Long corporationId;
 
     private Integer price;
+
+    private Integer priceAdd;
+
+    private Short indexKey;
 
     private Integer type;
 
@@ -19,44 +23,46 @@ public class Process {
 
     private Date endTime;
 
+    private Date updateTime;
+
     private Integer state;
 
-    private String productId;
+    private Long productId;
 
-    private String ticketId;
+    private Long ticketId;
 
     private Short flag;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getGxId() {
+    public Long getGxId() {
         return gxId;
     }
 
-    public void setGxId(String gxId) {
-        this.gxId = gxId == null ? null : gxId.trim();
+    public void setGxId(Long gxId) {
+        this.gxId = gxId;
     }
 
-    public String getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId == null ? null : userId.trim();
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public String getCorporationId() {
+    public Long getCorporationId() {
         return corporationId;
     }
 
-    public void setCorporationId(String corporationId) {
-        this.corporationId = corporationId == null ? null : corporationId.trim();
+    public void setCorporationId(Long corporationId) {
+        this.corporationId = corporationId;
     }
 
     public Integer getPrice() {
@@ -65,6 +71,22 @@ public class Process {
 
     public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    public Integer getPriceAdd() {
+        return priceAdd;
+    }
+
+    public void setPriceAdd(Integer priceAdd) {
+        this.priceAdd = priceAdd;
+    }
+
+    public Short getIndexKey() {
+        return indexKey;
+    }
+
+    public void setIndexKey(Short indexKey) {
+        this.indexKey = indexKey;
     }
 
     public Integer getType() {
@@ -91,6 +113,14 @@ public class Process {
         this.endTime = endTime;
     }
 
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
     public Integer getState() {
         return state;
     }
@@ -99,20 +129,20 @@ public class Process {
         this.state = state;
     }
 
-    public String getProductId() {
+    public Long getProductId() {
         return productId;
     }
 
-    public void setProductId(String productId) {
-        this.productId = productId == null ? null : productId.trim();
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
-    public String getTicketId() {
+    public Long getTicketId() {
         return ticketId;
     }
 
-    public void setTicketId(String ticketId) {
-        this.ticketId = ticketId == null ? null : ticketId.trim();
+    public void setTicketId(Long ticketId) {
+        this.ticketId = ticketId;
     }
 
     public Short getFlag() {

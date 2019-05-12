@@ -22,19 +22,20 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `zs_process`;
 CREATE TABLE `zs_process` (
-  `id` varchar(45) NOT NULL,
-  `gx_id` varchar(45) DEFAULT NULL,
-  `user_id` varchar(45) DEFAULT NULL,
-  `corporation_id` varchar(45) DEFAULT NULL,
+  `id` bigint(20) NOT NULL,
+  `gx_id` bigint(20) NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  `corporation_id` bigint(20) NOT NULL,
   `price` int(4) DEFAULT NULL,
-  `userPrice` int(4) DEFAULT NULL,
+  `price_add` int(4) DEFAULT NULL,
+  `index_key` smallint(6) DEFAULT NULL COMMENT '顺序',
   `type` int(4) DEFAULT NULL,
   `start_time` datetime DEFAULT NULL,
   `end_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   `state` int(4) DEFAULT NULL,
-  `product_id` varchar(45) DEFAULT NULL,
-  `ticket_id` varchar(45) DEFAULT NULL,
+  `product_id` bigint(20) NOT NULL,
+  `ticket_id` bigint(20) NOT NULL,
   `flag` smallint(6) DEFAULT NULL COMMENT '逻辑删除',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

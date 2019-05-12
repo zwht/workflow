@@ -10,7 +10,7 @@ public interface ProcessMapper {
 
     int deleteByExample(ProcessExample example);
 
-    int deleteByPrimaryKey(String id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(Process record);
 
@@ -18,7 +18,7 @@ public interface ProcessMapper {
 
     List<Process> selectByExample(ProcessExample example);
 
-    Process selectByPrimaryKey(String id);
+    Process selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") Process record, @Param("example") ProcessExample example);
 
