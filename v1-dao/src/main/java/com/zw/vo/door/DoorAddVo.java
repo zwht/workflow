@@ -29,6 +29,17 @@ public class DoorAddVo {
     @ApiModelProperty("产品产品编号")
     private String number;
 
+    @ApiModelProperty("算法")
+    private String arithmetic;
+
+    public String getArithmetic() {
+        return arithmetic;
+    }
+
+    public void setArithmetic(String arithmetic) {
+        this.arithmetic = arithmetic;
+    }
+
     public Short getType() {
         return type;
     }

@@ -11,6 +11,7 @@
     <result column="corporation_id" jdbcType="VARCHAR" property="corporationId" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="img_id" jdbcType="VARCHAR" property="imgId" />
+    <result column="gx_ids" jdbcType="VARCHAR" property="gxIds" />
     <association property="corporationVo" column="corporation_id" javaType="com.zw.dao.entity.Corporation" select="getCorporation"></association>
     <collection property="rolesVo" ofType="com.zw.vo.code.CodeResponseVo" column="roles" select="getCode"></collection>
   </resultMap>
@@ -61,7 +62,7 @@
 
   <sql id="Base_Column_List">
     id, name, login_name, state, ability, roles,  corporation_id,
-    phone, img_id
+    phone, img_id, gx_ids
   </sql>
 
   <select id="selectByExample" parameterType="com.zw.vo.user.UserResponseVo" resultMap="BaseResultMap">

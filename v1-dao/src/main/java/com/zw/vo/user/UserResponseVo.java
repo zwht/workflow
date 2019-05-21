@@ -51,6 +51,17 @@ public class UserResponseVo{
     @ApiModelProperty("地址Id")
     private String addressId;
 
+    @ApiModelProperty("工序ids")
+    private String gxIds;
+
+    public String getGxIds() {
+        return gxIds;
+    }
+
+    public void setGxIds(String gxIds) {
+        this.gxIds = gxIds;
+    }
+
     public Corporation getCorporationVo() {
         return corporationVo;
     }

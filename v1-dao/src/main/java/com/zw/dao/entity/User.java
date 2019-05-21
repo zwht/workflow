@@ -25,6 +25,8 @@ public class User {
 
     private Short flag;
 
+    private String gxIds;
+
     public Long getId() {
         return id;
     }
@@ -119,5 +121,13 @@ public class User {
 
     public void setFlag(Short flag) {
         this.flag = flag;
+    }
+
+    public String getGxIds() {
+        return gxIds;
+    }
+
+    public void setGxIds(String gxIds) {
+        this.gxIds = gxIds == null ? null : gxIds.trim();
     }
 }

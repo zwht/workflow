@@ -14,6 +14,7 @@
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="img_id" jdbcType="VARCHAR" property="imgId" />
     <result column="flag" jdbcType="SMALLINT" property="flag" />
+    <result column="gx_ids" jdbcType="VARCHAR" property="gxIds" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -75,7 +76,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, name, login_name, state, ability, roles, password, password_key, corporation_id, 
-    phone, img_id, flag
+    phone, img_id, flag, gx_ids
   </sql>
   <select id="selectByExample" parameterType="com.zw.dao.entity.UserExample" resultMap="BaseResultMap">
     select
@@ -111,13 +112,13 @@
     insert into cm_user (id, name, login_name, 
       state, ability, roles, 
       password, password_key, corporation_id, 
-      phone, img_id, flag
-      )
+      phone, img_id, flag, 
+      gx_ids)
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, 
       #{state,jdbcType=SMALLINT}, #{ability,jdbcType=VARCHAR}, #{roles,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{passwordKey,jdbcType=VARCHAR}, #{corporationId,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{imgId,jdbcType=VARCHAR}, #{flag,jdbcType=SMALLINT}
-      )
+      #{phone,jdbcType=VARCHAR}, #{imgId,jdbcType=VARCHAR}, #{flag,jdbcType=SMALLINT}, 
+      #{gxIds,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zw.dao.entity.User">
     insert into cm_user
@@ -158,6 +159,9 @@
       <if test="flag != null">
         flag,
       </if>
+      <if test="gxIds != null">
+        gx_ids,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -195,6 +199,9 @@
       </if>
       <if test="flag != null">
         #{flag,jdbcType=SMALLINT},
+      </if>
+      <if test="gxIds != null">
+        #{gxIds,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -243,6 +250,9 @@
       <if test="record.flag != null">
         flag = #{record.flag,jdbcType=SMALLINT},
       </if>
+      <if test="record.gxIds != null">
+        gx_ids = #{record.gxIds,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -261,7 +271,8 @@
       corporation_id = #{record.corporationId,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
       img_id = #{record.imgId,jdbcType=VARCHAR},
-      flag = #{record.flag,jdbcType=SMALLINT}
+      flag = #{record.flag,jdbcType=SMALLINT},
+      gx_ids = #{record.gxIds,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -302,6 +313,9 @@
       <if test="flag != null">
         flag = #{flag,jdbcType=SMALLINT},
       </if>
+      <if test="gxIds != null">
+        gx_ids = #{gxIds,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -317,7 +331,8 @@
       corporation_id = #{corporationId,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       img_id = #{imgId,jdbcType=VARCHAR},
-      flag = #{flag,jdbcType=SMALLINT}
+      flag = #{flag,jdbcType=SMALLINT},
+      gx_ids = #{gxIds,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
