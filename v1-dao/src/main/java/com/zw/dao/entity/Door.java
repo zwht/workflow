@@ -29,6 +29,8 @@ public class Door {
 
     private Short flag;
 
+    private String arithmetic;
+
     private Integer sum;
 
     public Long getId() {
@@ -133,6 +135,14 @@ public class Door {
 
     public void setFlag(Short flag) {
         this.flag = flag;
+    }
+
+    public String getArithmetic() {
+        return arithmetic;
+    }
+
+    public void setArithmetic(String arithmetic) {
+        this.arithmetic = arithmetic == null ? null : arithmetic.trim();
     }
 
     public Integer getSum() {

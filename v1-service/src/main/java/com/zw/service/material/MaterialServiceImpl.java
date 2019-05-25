@@ -34,7 +34,7 @@ public class MaterialServiceImpl implements MaterialService {
     MaterialMapper materialMapper;
 
     @Override
-    public ResponseVo add(MaterialAddVo materialAddVo, String corporationId) {
+    public ResponseVo add(MaterialAddVo materialAddVo, Long corporationId) {
         ResponseVo response = new ResponseVo();
         try {
             Material material = new Material();
@@ -47,7 +47,7 @@ public class MaterialServiceImpl implements MaterialService {
             List<Material> materials = materialMapper.selectByExample(materialExample);
             if (materials.size() == 0) {
                 material.setId(new SnowFlake(1, 1).nextId());
-                material.setCorporationId(Long.parseLong(corporationId));
+                material.setCorporationId(corporationId);
                 ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
                 Validator validator = factory.getValidator();
                 Set<ConstraintViolation<Material>> constraintViolations = validator.validate(material);

@@ -6,7 +6,7 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="state" jdbcType="SMALLINT" property="state" />
     <result column="corporation_id" jdbcType="BIGINT" property="corporationId" />
-    <result column="price" jdbcType="REAL" property="price" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
     <result column="index_key" jdbcType="SMALLINT" property="indexKey" />
     <result column="flag" jdbcType="SMALLINT" property="flag" />
   </resultMap>
@@ -106,7 +106,7 @@
       corporation_id, price, index_key, 
       flag)
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{state,jdbcType=SMALLINT}, 
-      #{corporationId,jdbcType=BIGINT}, #{price,jdbcType=REAL}, #{indexKey,jdbcType=SMALLINT}, 
+      #{corporationId,jdbcType=BIGINT}, #{price,jdbcType=DECIMAL}, #{indexKey,jdbcType=SMALLINT}, 
       #{flag,jdbcType=SMALLINT})
   </insert>
   <insert id="insertSelective" parameterType="com.zw.dao.entity.Gx">
@@ -148,7 +148,7 @@
         #{corporationId,jdbcType=BIGINT},
       </if>
       <if test="price != null">
-        #{price,jdbcType=REAL},
+        #{price,jdbcType=DECIMAL},
       </if>
       <if test="indexKey != null">
         #{indexKey,jdbcType=SMALLINT},
@@ -180,7 +180,7 @@
         corporation_id = #{record.corporationId,jdbcType=BIGINT},
       </if>
       <if test="record.price != null">
-        price = #{record.price,jdbcType=REAL},
+        price = #{record.price,jdbcType=DECIMAL},
       </if>
       <if test="record.indexKey != null">
         index_key = #{record.indexKey,jdbcType=SMALLINT},
@@ -199,7 +199,7 @@
       name = #{record.name,jdbcType=VARCHAR},
       state = #{record.state,jdbcType=SMALLINT},
       corporation_id = #{record.corporationId,jdbcType=BIGINT},
-      price = #{record.price,jdbcType=REAL},
+      price = #{record.price,jdbcType=DECIMAL},
       index_key = #{record.indexKey,jdbcType=SMALLINT},
       flag = #{record.flag,jdbcType=SMALLINT}
     <if test="_parameter != null">
@@ -219,7 +219,7 @@
         corporation_id = #{corporationId,jdbcType=BIGINT},
       </if>
       <if test="price != null">
-        price = #{price,jdbcType=REAL},
+        price = #{price,jdbcType=DECIMAL},
       </if>
       <if test="indexKey != null">
         index_key = #{indexKey,jdbcType=SMALLINT},
@@ -235,7 +235,7 @@
     set name = #{name,jdbcType=VARCHAR},
       state = #{state,jdbcType=SMALLINT},
       corporation_id = #{corporationId,jdbcType=BIGINT},
-      price = #{price,jdbcType=REAL},
+      price = #{price,jdbcType=DECIMAL},
       index_key = #{indexKey,jdbcType=SMALLINT},
       flag = #{flag,jdbcType=SMALLINT}
     where id = #{id,jdbcType=BIGINT}

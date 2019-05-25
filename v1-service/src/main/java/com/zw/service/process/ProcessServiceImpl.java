@@ -48,7 +48,7 @@ public class ProcessServiceImpl implements ProcessService {
             for(int i=0;i<processList.length;i++){
                 Process process = new Process();
                 BeanUtils.copyProperties(processList[i], process);
-                process.setCorporationId(Long.parseLong(tokenVo.getCorporationId()));
+                process.setCorporationId(tokenVo.getCorporationId());
 
                 process.setId(new SnowFlake(1, 1).nextId());
                 process.setState(1601);

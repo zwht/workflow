@@ -73,7 +73,7 @@ public class DoorController {
     ) {
         if (StringUtils.isEmpty(doorSearchVo.getCorporationId())) {
             TokenVo tokenVo = (TokenVo) request.getAttribute("tokenVo");
-            doorSearchVo.setCorporationId(Long.parseLong(tokenVo.getCorporationId()));
+            doorSearchVo.setCorporationId(tokenVo.getCorporationId());
         }
         return doorService.getList(pageNum, pageSize, doorSearchVo);
     }

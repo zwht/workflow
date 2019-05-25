@@ -48,7 +48,7 @@ public class ProductServiceImpl implements ProductService {
             for(int i=0;i<productList.length;i++){
                 Product product = new Product();
                 BeanUtils.copyProperties(productList[i], product);
-                product.setCorporationId(Long.parseLong(tokenVo.getCorporationId()));
+                product.setCorporationId(tokenVo.getCorporationId());
 
                 product.setId(new SnowFlake(1, 1).nextId());
                 // product.setState(1501);

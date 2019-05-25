@@ -945,6 +945,76 @@ public class DoorExample {
             return (Criteria) this;
         }
 
+        public Criteria andArithmeticIsNull() {
+            addCriterion("arithmetic is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andArithmeticIsNotNull() {
+            addCriterion("arithmetic is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andArithmeticEqualTo(String value) {
+            addCriterion("arithmetic =", value, "arithmetic");
+            return (Criteria) this;
+        }
+
+        public Criteria andArithmeticNotEqualTo(String value) {
+            addCriterion("arithmetic <>", value, "arithmetic");
+            return (Criteria) this;
+        }
+
+        public Criteria andArithmeticGreaterThan(String value) {
+            addCriterion("arithmetic >", value, "arithmetic");
+            return (Criteria) this;
+        }
+
+        public Criteria andArithmeticGreaterThanOrEqualTo(String value) {
+            addCriterion("arithmetic >=", value, "arithmetic");
+            return (Criteria) this;
+        }
+
+        public Criteria andArithmeticLessThan(String value) {
+            addCriterion("arithmetic <", value, "arithmetic");
+            return (Criteria) this;
+        }
+
+        public Criteria andArithmeticLessThanOrEqualTo(String value) {
+            addCriterion("arithmetic <=", value, "arithmetic");
+            return (Criteria) this;
+        }
+
+        public Criteria andArithmeticLike(String value) {
+            addCriterion("arithmetic like", value, "arithmetic");
+            return (Criteria) this;
+        }
+
+        public Criteria andArithmeticNotLike(String value) {
+            addCriterion("arithmetic not like", value, "arithmetic");
+            return (Criteria) this;
+        }
+
+        public Criteria andArithmeticIn(List<String> values) {
+            addCriterion("arithmetic in", values, "arithmetic");
+            return (Criteria) this;
+        }
+
+        public Criteria andArithmeticNotIn(List<String> values) {
+            addCriterion("arithmetic not in", values, "arithmetic");
+            return (Criteria) this;
+        }
+
+        public Criteria andArithmeticBetween(String value1, String value2) {
+            addCriterion("arithmetic between", value1, value2, "arithmetic");
+            return (Criteria) this;
+        }
+
+        public Criteria andArithmeticNotBetween(String value1, String value2) {
+            addCriterion("arithmetic not between", value1, value2, "arithmetic");
+            return (Criteria) this;
+        }
+
         public Criteria andSumIsNull() {
             addCriterion("sum is null");
             return (Criteria) this;

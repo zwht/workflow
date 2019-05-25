@@ -1245,52 +1245,52 @@ public class TicketExample {
             return (Criteria) this;
         }
 
-        public Criteria andPayEqualTo(Float value) {
+        public Criteria andPayEqualTo(Long value) {
             addCriterion("pay =", value, "pay");
             return (Criteria) this;
         }
 
-        public Criteria andPayNotEqualTo(Float value) {
+        public Criteria andPayNotEqualTo(Long value) {
             addCriterion("pay <>", value, "pay");
             return (Criteria) this;
         }
 
-        public Criteria andPayGreaterThan(Float value) {
+        public Criteria andPayGreaterThan(Long value) {
             addCriterion("pay >", value, "pay");
             return (Criteria) this;
         }
 
-        public Criteria andPayGreaterThanOrEqualTo(Float value) {
+        public Criteria andPayGreaterThanOrEqualTo(Long value) {
             addCriterion("pay >=", value, "pay");
             return (Criteria) this;
         }
 
-        public Criteria andPayLessThan(Float value) {
+        public Criteria andPayLessThan(Long value) {
             addCriterion("pay <", value, "pay");
             return (Criteria) this;
         }
 
-        public Criteria andPayLessThanOrEqualTo(Float value) {
+        public Criteria andPayLessThanOrEqualTo(Long value) {
             addCriterion("pay <=", value, "pay");
             return (Criteria) this;
         }
 
-        public Criteria andPayIn(List<Float> values) {
+        public Criteria andPayIn(List<Long> values) {
             addCriterion("pay in", values, "pay");
             return (Criteria) this;
         }
 
-        public Criteria andPayNotIn(List<Float> values) {
+        public Criteria andPayNotIn(List<Long> values) {
             addCriterion("pay not in", values, "pay");
             return (Criteria) this;
         }
 
-        public Criteria andPayBetween(Float value1, Float value2) {
+        public Criteria andPayBetween(Long value1, Long value2) {
             addCriterion("pay between", value1, value2, "pay");
             return (Criteria) this;
         }
 
-        public Criteria andPayNotBetween(Float value1, Float value2) {
+        public Criteria andPayNotBetween(Long value1, Long value2) {
             addCriterion("pay not between", value1, value2, "pay");
             return (Criteria) this;
         }

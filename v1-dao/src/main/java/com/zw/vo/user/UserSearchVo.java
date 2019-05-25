@@ -5,16 +5,16 @@ package com.zw.vo.user;
  * @Time：上午11:07
  */
 public class UserSearchVo {
-    private String corporationId;
+    private Long corporationId;
     private String roles;
     private String name;
     private String loginName;
 
-    public String getCorporationId() {
+    public Long getCorporationId() {
         return corporationId;
     }
 
-    public void setCorporationId(String corporationId) {
+    public void setCorporationId(Long corporationId) {
         this.corporationId = corporationId;
     }
 

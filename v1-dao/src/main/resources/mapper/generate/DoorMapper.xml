@@ -15,6 +15,7 @@
     <result column="info_id" jdbcType="BIGINT" property="infoId" />
     <result column="type" jdbcType="SMALLINT" property="type" />
     <result column="flag" jdbcType="SMALLINT" property="flag" />
+    <result column="arithmetic" jdbcType="VARCHAR" property="arithmetic" />
     <result column="sum" jdbcType="INTEGER" property="sum" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -77,7 +78,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, name, img, corporation_id, gx_ids, create_time, state, gx_values, number, colors, 
-    info_id, type, flag, sum
+    info_id, type, flag, arithmetic, sum
   </sql>
   <select id="selectByExample" parameterType="com.zw.dao.entity.DoorExample" resultMap="BaseResultMap">
     select
@@ -114,12 +115,14 @@
       corporation_id, gx_ids, create_time, 
       state, gx_values, number, 
       colors, info_id, type, 
-      flag, sum)
+      flag, arithmetic, sum
+      )
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}, 
       #{corporationId,jdbcType=BIGINT}, #{gxIds,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{state,jdbcType=SMALLINT}, #{gxValues,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, 
       #{colors,jdbcType=VARCHAR}, #{infoId,jdbcType=BIGINT}, #{type,jdbcType=SMALLINT}, 
-      #{flag,jdbcType=SMALLINT}, #{sum,jdbcType=INTEGER})
+      #{flag,jdbcType=SMALLINT}, #{arithmetic,jdbcType=VARCHAR}, #{sum,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.zw.dao.entity.Door">
     insert into bs_door
@@ -162,6 +165,9 @@
       </if>
       <if test="flag != null">
         flag,
+      </if>
+      <if test="arithmetic != null">
+        arithmetic,
       </if>
       <if test="sum != null">
         sum,
@@ -206,6 +212,9 @@
       </if>
       <if test="flag != null">
         #{flag,jdbcType=SMALLINT},
+      </if>
+      <if test="arithmetic != null">
+        #{arithmetic,jdbcType=VARCHAR},
       </if>
       <if test="sum != null">
         #{sum,jdbcType=INTEGER},
@@ -260,6 +269,9 @@
       <if test="record.flag != null">
         flag = #{record.flag,jdbcType=SMALLINT},
       </if>
+      <if test="record.arithmetic != null">
+        arithmetic = #{record.arithmetic,jdbcType=VARCHAR},
+      </if>
       <if test="record.sum != null">
         sum = #{record.sum,jdbcType=INTEGER},
       </if>
@@ -283,6 +295,7 @@
       info_id = #{record.infoId,jdbcType=BIGINT},
       type = #{record.type,jdbcType=SMALLINT},
       flag = #{record.flag,jdbcType=SMALLINT},
+      arithmetic = #{record.arithmetic,jdbcType=VARCHAR},
       sum = #{record.sum,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -327,6 +340,9 @@
       <if test="flag != null">
         flag = #{flag,jdbcType=SMALLINT},
       </if>
+      <if test="arithmetic != null">
+        arithmetic = #{arithmetic,jdbcType=VARCHAR},
+      </if>
       <if test="sum != null">
         sum = #{sum,jdbcType=INTEGER},
       </if>
@@ -347,6 +363,7 @@
       info_id = #{infoId,jdbcType=BIGINT},
       type = #{type,jdbcType=SMALLINT},
       flag = #{flag,jdbcType=SMALLINT},
+      arithmetic = #{arithmetic,jdbcType=VARCHAR},
       sum = #{sum,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>

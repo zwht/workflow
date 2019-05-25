@@ -2,6 +2,7 @@ package com.zw.vo.process;
 
 import io.swagger.annotations.ApiModelProperty;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -18,9 +19,9 @@ public class ProcessAddVo {
 
     private Long corporationId;
 
-    private Integer price;
+    private Long price;
 
-    private Integer priceAdd;
+    private Long priceAdd;
 
     private Short indexKey;
 
@@ -72,19 +73,19 @@ public class ProcessAddVo {
         this.corporationId = corporationId;
     }
 
-    public Integer getPrice() {
+    public Long getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Long price) {
         this.price = price;
     }
 
-    public Integer getPriceAdd() {
+    public Long getPriceAdd() {
         return priceAdd;
     }
 
-    public void setPriceAdd(Integer priceAdd) {
+    public void setPriceAdd(Long priceAdd) {
         this.priceAdd = priceAdd;
     }
 

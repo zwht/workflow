@@ -42,7 +42,7 @@ public class DoorServiceImpl implements DoorService {
         try {
             Door door = new Door();
             BeanUtils.copyProperties(doorAddVo, door);
-            door.setCorporationId(Long.parseLong(tokenVo.getCorporationId()));
+            door.setCorporationId(tokenVo.getCorporationId());
 
             DoorExample doorExample = new DoorExample();
             DoorExample.Criteria criteria = doorExample.createCriteria();

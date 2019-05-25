@@ -2,6 +2,8 @@ package com.zw.vo.gx;
 
 import io.swagger.annotations.ApiModelProperty;
 
+import java.math.BigDecimal;
+
 /**
  * @author：zhaowei
  * @Date：2018/12/19
@@ -12,7 +14,7 @@ public class GxAddVo {
     private String name;
 
     @ApiModelProperty("默认价格")
-    private Float price;
+    private Long price;
 
     @ApiModelProperty("排序")
     private Short indexKey;
@@ -25,11 +27,11 @@ public class GxAddVo {
         this.name = name;
     }
 
-    public Float getPrice() {
+    public Long getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(Long price) {
         this.price = price;
     }
 

@@ -39,7 +39,7 @@ public class Ticket {
 
     private Date overTime;
 
-    private Float pay;
+    private Long pay;
 
     private Float sumDoor;
 
@@ -199,11 +199,11 @@ public class Ticket {
         this.overTime = overTime;
     }
 
-    public Float getPay() {
+    public Long getPay() {
         return pay;
     }
 
-    public void setPay(Float pay) {
+    public void setPay(Long pay) {
         this.pay = pay;
     }
 

@@ -11,7 +11,7 @@ import com.zw.vo.material.MaterialSearchVo;
  * @Time：下午1:59
  */
 public interface MaterialService {
-    ResponseVo add(MaterialAddVo materialAddVo, String corporationId);
+    ResponseVo add(MaterialAddVo materialAddVo, Long corporationId);
     ResponseVo getById(Long id);
     ResponseVo update(Material material);
     ResponseVo getList(Integer pageNum, Integer pageSize, MaterialSearchVo materialSearchVo);

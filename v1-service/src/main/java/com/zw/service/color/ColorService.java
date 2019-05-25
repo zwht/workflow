@@ -11,7 +11,7 @@ import com.zw.vo.color.ColorSearchVo;
  * @Time：下午1:59
  */
 public interface ColorService {
-    ResponseVo add(ColorAddVo colorAddVo, String corporationId);
+    ResponseVo add(ColorAddVo colorAddVo, Long corporationId);
     ResponseVo getById(Long id);
     ResponseVo update(Color color);
     ResponseVo getList(Integer pageNum, Integer pageSize, ColorSearchVo colorSearchVo);

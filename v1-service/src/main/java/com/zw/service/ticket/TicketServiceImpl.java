@@ -24,6 +24,9 @@ import javax.validation.ValidatorFactory;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Set;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * @author：zhaowei
@@ -44,7 +47,7 @@ public class TicketServiceImpl implements TicketService {
         try {
             Ticket ticket = new Ticket();
             BeanUtils.copyProperties(ticketAddVo, ticket);
-            ticket.setCorporationId(Long.parseLong(tokenVo.getCorporationId()));
+            ticket.setCorporationId(tokenVo.getCorporationId());
 
             TicketExample ticketExample = new TicketExample();
             TicketExample.Criteria criteria = ticketExample.createCriteria();
@@ -124,7 +127,7 @@ public class TicketServiceImpl implements TicketService {
         //条件查询3句话
         TicketExample example = new TicketExample();
 
-        example.setOrderByClause("`create_time` ASC");
+        example.setOrderByClause("`create_time` DESC");
         TicketExample.Criteria criteria = example.createCriteria();
         criteria.andFlagIsNull();
         if (!StringUtils.isEmpty(ticketSearchVo.getName())) {
@@ -151,6 +154,65 @@ public class TicketServiceImpl implements TicketService {
             return response.failure(400, e.getMessage());
         }
     }
+
+    // 获得本月第一天0点时间
+    public static Date getTimesMonthmorning() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONDAY), cal.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
+        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMinimum(Calendar.DAY_OF_MONTH));
+        return cal.getTime();
+    }
+
+    // 获得本月最后一天24点时间
+    public static Date getTimesMonthnight() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONDAY), cal.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
+        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+        cal.set(Calendar.HOUR_OF_DAY, 24);
+        return cal.getTime();
+    }
+
+    @Override
+    public ResponseVo getCount(TicketSearchVo ticketSearchVo) {
+        ResponseVo response = new ResponseVo();
+        //条件查询3句话
+        TicketExample example = new TicketExample();
+
+        example.setOrderByClause("`create_time` DESC");
+        TicketExample.Criteria criteria = example.createCriteria();
+        criteria.andFlagIsNull();
+        if (!StringUtils.isEmpty(ticketSearchVo.getName())) {
+            criteria.andNameLike("%" + ticketSearchVo.getName() + "%");
+        }
+        if (!StringUtils.isEmpty(ticketSearchVo.getCorporationId())) {
+            criteria.andCorporationIdEqualTo(ticketSearchVo.getCorporationId());
+        }
+        if (!StringUtils.isEmpty(ticketSearchVo.getDealersId())) {
+            criteria.andDealersIdEqualTo(ticketSearchVo.getDealersId());
+        }
+        if (!StringUtils.isEmpty(ticketSearchVo.getMarketId())) {
+            criteria.andMarketIdEqualTo(ticketSearchVo.getMarketId());
+        }
+        if (!StringUtils.isEmpty(ticketSearchVo.getEditId())) {
+            criteria.andEditIdEqualTo(ticketSearchVo.getEditId());
+        }
+        if (!StringUtils.isEmpty(ticketSearchVo.getStartTime())) {
+            criteria.andCreateTimeBetween(ticketSearchVo.getStartTime(),ticketSearchVo.getEndTime());
+        }else{
+            criteria.andCreateTimeBetween(getTimesMonthmorning(),getTimesMonthnight());
+
+        }
+        try {
+            Page page = PageHelper.startPage(1, 1);
+            List list = myTicketMapper.selectByExample(example);
+            long count = page.getTotal();
+            return response.success(new PageVo(1, 1, count, list));
+        } catch (Exception e) {
+            return response.failure(400, e.getMessage());
+        }
+    }
+
+
 
     @Override
     public ResponseVo del(Long id) {

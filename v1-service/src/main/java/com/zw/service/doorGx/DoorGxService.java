@@ -11,7 +11,7 @@ import com.zw.vo.doorGx.DoorGxSearchVo;
  * @Time：下午1:59
  */
 public interface DoorGxService {
-    ResponseVo add(DoorGxAddVo doorGxAddVo, String corporationId);
+    ResponseVo add(DoorGxAddVo doorGxAddVo, Long corporationId);
     ResponseVo getById(Long id);
     ResponseVo update(DoorGx doorGx);
     ResponseVo getList(Integer pageNum, Integer pageSize, DoorGxSearchVo doorGxSearchVo);

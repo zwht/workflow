@@ -17,7 +17,7 @@ public class User {
 
     private String passwordKey;
 
-    private String corporationId;
+    private Long corporationId;
 
     private String phone;
 
@@ -91,12 +91,12 @@ public class User {
         this.passwordKey = passwordKey == null ? null : passwordKey.trim();
     }
 
-    public String getCorporationId() {
+    public Long getCorporationId() {
         return corporationId;
     }
 
-    public void setCorporationId(String corporationId) {
-        this.corporationId = corporationId == null ? null : corporationId.trim();
+    public void setCorporationId(Long corporationId) {
+        this.corporationId = corporationId;
     }
 
     public String getPhone() {

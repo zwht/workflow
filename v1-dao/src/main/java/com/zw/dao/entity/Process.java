@@ -11,9 +11,9 @@ public class Process {
 
     private Long corporationId;
 
-    private Integer price;
+    private Long price;
 
-    private Integer priceAdd;
+    private Long priceAdd;
 
     private Short indexKey;
 
@@ -65,19 +65,19 @@ public class Process {
         this.corporationId = corporationId;
     }
 
-    public Integer getPrice() {
+    public Long getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Long price) {
         this.price = price;
     }
 
-    public Integer getPriceAdd() {
+    public Long getPriceAdd() {
         return priceAdd;
     }
 
-    public void setPriceAdd(Integer priceAdd) {
+    public void setPriceAdd(Long priceAdd) {
         this.priceAdd = priceAdd;
     }
 

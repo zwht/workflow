@@ -16,6 +16,7 @@ public interface TicketService {
     ResponseVo getById(Long id);
     ResponseVo update(Ticket ticket);
     ResponseVo getList(Integer pageNum, Integer pageSize, TicketSearchVo ticketSearchVo);
+    ResponseVo getCount(TicketSearchVo ticketSearchVo);
     ResponseVo del(Long id);
     ResponseVo updateState(Long id, Short state);
 }

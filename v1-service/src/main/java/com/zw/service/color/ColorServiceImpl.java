@@ -34,7 +34,7 @@ public class ColorServiceImpl implements ColorService {
     ColorMapper colorMapper;
 
     @Override
-    public ResponseVo add(ColorAddVo colorAddVo, String corporationId) {
+    public ResponseVo add(ColorAddVo colorAddVo, Long corporationId) {
         ResponseVo response = new ResponseVo();
         try {
             Color color = new Color();
@@ -47,7 +47,7 @@ public class ColorServiceImpl implements ColorService {
             List<Color> colors = colorMapper.selectByExample(colorExample);
             if (colors.size() == 0) {
                 color.setId(new SnowFlake(1, 1).nextId());
-                color.setCorporationId(Long.parseLong(corporationId));
+                color.setCorporationId(corporationId);
                 ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
                 Validator validator = factory.getValidator();
                 Set<ConstraintViolation<Color>> constraintViolations = validator.validate(color);

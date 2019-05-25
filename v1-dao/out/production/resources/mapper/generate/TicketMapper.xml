@@ -20,7 +20,7 @@
     <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="over_time" jdbcType="TIMESTAMP" property="overTime" />
-    <result column="pay" jdbcType="REAL" property="pay" />
+    <result column="pay" jdbcType="DECIMAL" property="pay" />
     <result column="sum_door" jdbcType="REAL" property="sumDoor" />
     <result column="sum_taoban" jdbcType="REAL" property="sumTaoban" />
     <result column="sum_line" jdbcType="REAL" property="sumLine" />
@@ -129,18 +129,18 @@
       odd, address, state, 
       type, priority, start_time, 
       end_time, create_time, over_time, 
-      pay, sum_door, sum_taoban, sum_line, 
-      flag, summary, remarks, 
-      edit_name)
+      pay, sum_door, sum_taoban, 
+      sum_line, flag, summary, 
+      remarks, edit_name)
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, 
       #{corporationId,jdbcType=BIGINT}, #{dealersId,jdbcType=BIGINT}, #{marketId,jdbcType=BIGINT}, 
       #{editId,jdbcType=BIGINT}, #{brandId,jdbcType=BIGINT}, #{productIds,jdbcType=VARCHAR}, 
       #{odd,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{state,jdbcType=SMALLINT}, 
       #{type,jdbcType=SMALLINT}, #{priority,jdbcType=SMALLINT}, #{startTime,jdbcType=TIMESTAMP}, 
       #{endTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{overTime,jdbcType=TIMESTAMP}, 
-      #{pay,jdbcType=REAL}, #{sumDoor,jdbcType=REAL}, #{sumTaoban,jdbcType=REAL}, #{sumLine,jdbcType=REAL}, 
-      #{flag,jdbcType=SMALLINT}, #{summary,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, 
-      #{editName,jdbcType=VARCHAR})
+      #{pay,jdbcType=DECIMAL}, #{sumDoor,jdbcType=REAL}, #{sumTaoban,jdbcType=REAL}, 
+      #{sumLine,jdbcType=REAL}, #{flag,jdbcType=SMALLINT}, #{summary,jdbcType=VARCHAR}, 
+      #{remarks,jdbcType=VARCHAR}, #{editName,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zw.dao.entity.Ticket">
     insert into zs_ticket
@@ -280,7 +280,7 @@
         #{overTime,jdbcType=TIMESTAMP},
       </if>
       <if test="pay != null">
-        #{pay,jdbcType=REAL},
+        #{pay,jdbcType=DECIMAL},
       </if>
       <if test="sumDoor != null">
         #{sumDoor,jdbcType=REAL},
@@ -369,7 +369,7 @@
         over_time = #{record.overTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.pay != null">
-        pay = #{record.pay,jdbcType=REAL},
+        pay = #{record.pay,jdbcType=DECIMAL},
       </if>
       <if test="record.sumDoor != null">
         sum_door = #{record.sumDoor,jdbcType=REAL},
@@ -417,7 +417,7 @@
       end_time = #{record.endTime,jdbcType=TIMESTAMP},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       over_time = #{record.overTime,jdbcType=TIMESTAMP},
-      pay = #{record.pay,jdbcType=REAL},
+      pay = #{record.pay,jdbcType=DECIMAL},
       sum_door = #{record.sumDoor,jdbcType=REAL},
       sum_taoban = #{record.sumTaoban,jdbcType=REAL},
       sum_line = #{record.sumLine,jdbcType=REAL},
@@ -484,7 +484,7 @@
         over_time = #{overTime,jdbcType=TIMESTAMP},
       </if>
       <if test="pay != null">
-        pay = #{pay,jdbcType=REAL},
+        pay = #{pay,jdbcType=DECIMAL},
       </if>
       <if test="sumDoor != null">
         sum_door = #{sumDoor,jdbcType=REAL},
@@ -529,7 +529,7 @@
       end_time = #{endTime,jdbcType=TIMESTAMP},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       over_time = #{overTime,jdbcType=TIMESTAMP},
-      pay = #{pay,jdbcType=REAL},
+      pay = #{pay,jdbcType=DECIMAL},
       sum_door = #{sumDoor,jdbcType=REAL},
       sum_taoban = #{sumTaoban,jdbcType=REAL},
       sum_line = #{sumLine,jdbcType=REAL},

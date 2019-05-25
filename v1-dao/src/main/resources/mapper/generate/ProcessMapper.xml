@@ -6,8 +6,8 @@
     <result column="gx_id" jdbcType="BIGINT" property="gxId" />
     <result column="user_id" jdbcType="BIGINT" property="userId" />
     <result column="corporation_id" jdbcType="BIGINT" property="corporationId" />
-    <result column="price" jdbcType="INTEGER" property="price" />
-    <result column="price_add" jdbcType="INTEGER" property="priceAdd" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="price_add" jdbcType="DECIMAL" property="priceAdd" />
     <result column="index_key" jdbcType="SMALLINT" property="indexKey" />
     <result column="type" jdbcType="INTEGER" property="type" />
     <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
@@ -118,7 +118,7 @@
       product_id, ticket_id, flag
       )
     values (#{id,jdbcType=BIGINT}, #{gxId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
-      #{corporationId,jdbcType=BIGINT}, #{price,jdbcType=INTEGER}, #{priceAdd,jdbcType=INTEGER}, 
+      #{corporationId,jdbcType=BIGINT}, #{price,jdbcType=DECIMAL}, #{priceAdd,jdbcType=DECIMAL}, 
       #{indexKey,jdbcType=SMALLINT}, #{type,jdbcType=INTEGER}, #{startTime,jdbcType=TIMESTAMP}, 
       #{endTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER}, 
       #{productId,jdbcType=BIGINT}, #{ticketId,jdbcType=BIGINT}, #{flag,jdbcType=SMALLINT}
@@ -187,10 +187,10 @@
         #{corporationId,jdbcType=BIGINT},
       </if>
       <if test="price != null">
-        #{price,jdbcType=INTEGER},
+        #{price,jdbcType=DECIMAL},
       </if>
       <if test="priceAdd != null">
-        #{priceAdd,jdbcType=INTEGER},
+        #{priceAdd,jdbcType=DECIMAL},
       </if>
       <if test="indexKey != null">
         #{indexKey,jdbcType=SMALLINT},
@@ -243,10 +243,10 @@
         corporation_id = #{record.corporationId,jdbcType=BIGINT},
       </if>
       <if test="record.price != null">
-        price = #{record.price,jdbcType=INTEGER},
+        price = #{record.price,jdbcType=DECIMAL},
       </if>
       <if test="record.priceAdd != null">
-        price_add = #{record.priceAdd,jdbcType=INTEGER},
+        price_add = #{record.priceAdd,jdbcType=DECIMAL},
       </if>
       <if test="record.indexKey != null">
         index_key = #{record.indexKey,jdbcType=SMALLINT},
@@ -286,8 +286,8 @@
       gx_id = #{record.gxId,jdbcType=BIGINT},
       user_id = #{record.userId,jdbcType=BIGINT},
       corporation_id = #{record.corporationId,jdbcType=BIGINT},
-      price = #{record.price,jdbcType=INTEGER},
-      price_add = #{record.priceAdd,jdbcType=INTEGER},
+      price = #{record.price,jdbcType=DECIMAL},
+      price_add = #{record.priceAdd,jdbcType=DECIMAL},
       index_key = #{record.indexKey,jdbcType=SMALLINT},
       type = #{record.type,jdbcType=INTEGER},
       start_time = #{record.startTime,jdbcType=TIMESTAMP},
@@ -314,10 +314,10 @@
         corporation_id = #{corporationId,jdbcType=BIGINT},
       </if>
       <if test="price != null">
-        price = #{price,jdbcType=INTEGER},
+        price = #{price,jdbcType=DECIMAL},
       </if>
       <if test="priceAdd != null">
-        price_add = #{priceAdd,jdbcType=INTEGER},
+        price_add = #{priceAdd,jdbcType=DECIMAL},
       </if>
       <if test="indexKey != null">
         index_key = #{indexKey,jdbcType=SMALLINT},
@@ -354,8 +354,8 @@
     set gx_id = #{gxId,jdbcType=BIGINT},
       user_id = #{userId,jdbcType=BIGINT},
       corporation_id = #{corporationId,jdbcType=BIGINT},
-      price = #{price,jdbcType=INTEGER},
-      price_add = #{priceAdd,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      price_add = #{priceAdd,jdbcType=DECIMAL},
       index_key = #{indexKey,jdbcType=SMALLINT},
       type = #{type,jdbcType=INTEGER},
       start_time = #{startTime,jdbcType=TIMESTAMP},

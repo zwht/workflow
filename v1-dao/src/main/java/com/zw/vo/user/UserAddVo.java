@@ -25,7 +25,7 @@ public class UserAddVo {
     private String password;
 
     @ApiModelProperty("公司名")
-    private String corporationId;
+    private Long corporationId;
 
     @ApiModelProperty("手机号")
     private String phone;
@@ -90,11 +90,11 @@ public class UserAddVo {
         this.password = password;
     }
 
-    public String getCorporationId() {
+    public Long getCorporationId() {
         return corporationId;
     }
 
-    public void setCorporationId(String corporationId) {
+    public void setCorporationId(Long corporationId) {
         this.corporationId = corporationId;
     }
 

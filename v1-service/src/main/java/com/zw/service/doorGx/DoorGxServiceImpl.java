@@ -34,7 +34,7 @@ public class DoorGxServiceImpl implements DoorGxService {
     DoorGxMapper doorGxMapper;
 
     @Override
-    public ResponseVo add(DoorGxAddVo doorGxAddVo, String corporationId) {
+    public ResponseVo add(DoorGxAddVo doorGxAddVo, Long corporationId) {
         ResponseVo response = new ResponseVo();
         try {
             DoorGx doorGx = new DoorGx();

@@ -34,12 +34,12 @@ public class GxServiceImpl implements GxService {
     GxMapper gxMapper;
 
     @Override
-    public ResponseVo add(GxAddVo gxAddVo, String corporationId) {
+    public ResponseVo add(GxAddVo gxAddVo, Long corporationId) {
         ResponseVo response = new ResponseVo();
         try {
             Gx gx = new Gx();
             BeanUtils.copyProperties(gxAddVo, gx);
-            gx.setCorporationId(Long.parseLong(corporationId));
+            gx.setCorporationId(corporationId);
             GxExample gxExample = new GxExample();
             GxExample.Criteria criteria = gxExample.createCriteria();
             criteria.andNameEqualTo(gx.getName());

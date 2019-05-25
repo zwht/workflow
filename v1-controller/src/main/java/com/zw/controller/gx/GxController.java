@@ -73,7 +73,7 @@ public class GxController {
     ) {
         if (StringUtils.isEmpty(gxSearchVo.getCorporationId())) {
             TokenVo tokenVo = (TokenVo) request.getAttribute("tokenVo");
-            gxSearchVo.setCorporationId(Long.parseLong(tokenVo.getCorporationId()));
+            gxSearchVo.setCorporationId(tokenVo.getCorporationId());
         }
         return gxService.getList(pageNum, pageSize, gxSearchVo);
     }

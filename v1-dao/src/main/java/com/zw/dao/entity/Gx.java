@@ -9,7 +9,7 @@ public class Gx {
 
     private Long corporationId;
 
-    private Float price;
+    private Long price;
 
     private Short indexKey;
 
@@ -47,11 +47,11 @@ public class Gx {
         this.corporationId = corporationId;
     }
 
-    public Float getPrice() {
+    public Long getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(Long price) {
         this.price = price;
     }
 

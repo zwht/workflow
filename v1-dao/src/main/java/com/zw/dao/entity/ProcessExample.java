@@ -355,52 +355,52 @@ public class ProcessExample {
             return (Criteria) this;
         }
 
-        public Criteria andPriceEqualTo(Integer value) {
+        public Criteria andPriceEqualTo(Long value) {
             addCriterion("price =", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceNotEqualTo(Integer value) {
+        public Criteria andPriceNotEqualTo(Long value) {
             addCriterion("price <>", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceGreaterThan(Integer value) {
+        public Criteria andPriceGreaterThan(Long value) {
             addCriterion("price >", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceGreaterThanOrEqualTo(Integer value) {
+        public Criteria andPriceGreaterThanOrEqualTo(Long value) {
             addCriterion("price >=", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceLessThan(Integer value) {
+        public Criteria andPriceLessThan(Long value) {
             addCriterion("price <", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceLessThanOrEqualTo(Integer value) {
+        public Criteria andPriceLessThanOrEqualTo(Long value) {
             addCriterion("price <=", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceIn(List<Integer> values) {
+        public Criteria andPriceIn(List<Long> values) {
             addCriterion("price in", values, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceNotIn(List<Integer> values) {
+        public Criteria andPriceNotIn(List<Long> values) {
             addCriterion("price not in", values, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceBetween(Integer value1, Integer value2) {
+        public Criteria andPriceBetween(Long value1, Long value2) {
             addCriterion("price between", value1, value2, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceNotBetween(Integer value1, Integer value2) {
+        public Criteria andPriceNotBetween(Long value1, Long value2) {
             addCriterion("price not between", value1, value2, "price");
             return (Criteria) this;
         }
@@ -415,52 +415,52 @@ public class ProcessExample {
             return (Criteria) this;
         }
 
-        public Criteria andPriceAddEqualTo(Integer value) {
+        public Criteria andPriceAddEqualTo(Long value) {
             addCriterion("price_add =", value, "priceAdd");
             return (Criteria) this;
         }
 
-        public Criteria andPriceAddNotEqualTo(Integer value) {
+        public Criteria andPriceAddNotEqualTo(Long value) {
             addCriterion("price_add <>", value, "priceAdd");
             return (Criteria) this;
         }
 
-        public Criteria andPriceAddGreaterThan(Integer value) {
+        public Criteria andPriceAddGreaterThan(Long value) {
             addCriterion("price_add >", value, "priceAdd");
             return (Criteria) this;
         }
 
-        public Criteria andPriceAddGreaterThanOrEqualTo(Integer value) {
+        public Criteria andPriceAddGreaterThanOrEqualTo(Long value) {
             addCriterion("price_add >=", value, "priceAdd");
             return (Criteria) this;
         }
 
-        public Criteria andPriceAddLessThan(Integer value) {
+        public Criteria andPriceAddLessThan(Long value) {
             addCriterion("price_add <", value, "priceAdd");
             return (Criteria) this;
         }
 
-        public Criteria andPriceAddLessThanOrEqualTo(Integer value) {
+        public Criteria andPriceAddLessThanOrEqualTo(Long value) {
             addCriterion("price_add <=", value, "priceAdd");
             return (Criteria) this;
         }
 
-        public Criteria andPriceAddIn(List<Integer> values) {
+        public Criteria andPriceAddIn(List<Long> values) {
             addCriterion("price_add in", values, "priceAdd");
             return (Criteria) this;
         }
 
-        public Criteria andPriceAddNotIn(List<Integer> values) {
+        public Criteria andPriceAddNotIn(List<Long> values) {
             addCriterion("price_add not in", values, "priceAdd");
             return (Criteria) this;
         }
 
-        public Criteria andPriceAddBetween(Integer value1, Integer value2) {
+        public Criteria andPriceAddBetween(Long value1, Long value2) {
             addCriterion("price_add between", value1, value2, "priceAdd");
             return (Criteria) this;
         }
 
-        public Criteria andPriceAddNotBetween(Integer value1, Integer value2) {
+        public Criteria andPriceAddNotBetween(Long value1, Long value2) {
             addCriterion("price_add not between", value1, value2, "priceAdd");
             return (Criteria) this;
         }

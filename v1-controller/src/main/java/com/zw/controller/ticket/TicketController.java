@@ -73,9 +73,23 @@ public class TicketController {
     ) {
         if (StringUtils.isEmpty(ticketSearchVo.getCorporationId())) {
             TokenVo tokenVo = (TokenVo) request.getAttribute("tokenVo");
-            ticketSearchVo.setCorporationId(Long.parseLong(tokenVo.getCorporationId()));
+            ticketSearchVo.setCorporationId(tokenVo.getCorporationId());
         }
         return ticketService.getList(pageNum, pageSize, ticketSearchVo);
+    }
+
+    @ResponseBody
+    @PostMapping("/ticket/count")
+    @ApiOperation("查询条数")
+    public ResponseVo<PageVo<List<Ticket>>> getTicketCount(
+            @ApiParam(value = "TicketSearchVo") @RequestBody TicketSearchVo ticketSearchVo,
+            HttpServletRequest request
+    ) {
+        if (StringUtils.isEmpty(ticketSearchVo.getCorporationId())) {
+            TokenVo tokenVo = (TokenVo) request.getAttribute("tokenVo");
+            ticketSearchVo.setCorporationId(tokenVo.getCorporationId());
+        }
+        return ticketService.getCount(ticketSearchVo);
     }
 
 

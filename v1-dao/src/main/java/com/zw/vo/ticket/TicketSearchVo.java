@@ -2,6 +2,8 @@ package com.zw.vo.ticket;
 
 import io.swagger.annotations.ApiModelProperty;
 
+import java.util.Date;
+
 /**
  * @author：zhaowei
  * @Date：2018/12/19
@@ -23,6 +25,28 @@ public class TicketSearchVo {
 
     @ApiModelProperty("制单人")
     private Long editId;
+
+    @ApiModelProperty("开始时间")
+    private Date startTime;
+
+    @ApiModelProperty("结束时间")
+    private Date endTime;
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
 
     public Long getDealersId() {
         return dealersId;

@@ -10,7 +10,7 @@
     <result column="roles" jdbcType="VARCHAR" property="roles" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="password_key" jdbcType="VARCHAR" property="passwordKey" />
-    <result column="corporation_id" jdbcType="VARCHAR" property="corporationId" />
+    <result column="corporation_id" jdbcType="BIGINT" property="corporationId" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="img_id" jdbcType="VARCHAR" property="imgId" />
     <result column="flag" jdbcType="SMALLINT" property="flag" />
@@ -116,7 +116,7 @@
       gx_ids)
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, 
       #{state,jdbcType=SMALLINT}, #{ability,jdbcType=VARCHAR}, #{roles,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{passwordKey,jdbcType=VARCHAR}, #{corporationId,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{passwordKey,jdbcType=VARCHAR}, #{corporationId,jdbcType=BIGINT}, 
       #{phone,jdbcType=VARCHAR}, #{imgId,jdbcType=VARCHAR}, #{flag,jdbcType=SMALLINT}, 
       #{gxIds,jdbcType=VARCHAR})
   </insert>
@@ -189,7 +189,7 @@
         #{passwordKey,jdbcType=VARCHAR},
       </if>
       <if test="corporationId != null">
-        #{corporationId,jdbcType=VARCHAR},
+        #{corporationId,jdbcType=BIGINT},
       </if>
       <if test="phone != null">
         #{phone,jdbcType=VARCHAR},
@@ -239,7 +239,7 @@
         password_key = #{record.passwordKey,jdbcType=VARCHAR},
       </if>
       <if test="record.corporationId != null">
-        corporation_id = #{record.corporationId,jdbcType=VARCHAR},
+        corporation_id = #{record.corporationId,jdbcType=BIGINT},
       </if>
       <if test="record.phone != null">
         phone = #{record.phone,jdbcType=VARCHAR},
@@ -268,7 +268,7 @@
       roles = #{record.roles,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
       password_key = #{record.passwordKey,jdbcType=VARCHAR},
-      corporation_id = #{record.corporationId,jdbcType=VARCHAR},
+      corporation_id = #{record.corporationId,jdbcType=BIGINT},
       phone = #{record.phone,jdbcType=VARCHAR},
       img_id = #{record.imgId,jdbcType=VARCHAR},
       flag = #{record.flag,jdbcType=SMALLINT},
@@ -302,7 +302,7 @@
         password_key = #{passwordKey,jdbcType=VARCHAR},
       </if>
       <if test="corporationId != null">
-        corporation_id = #{corporationId,jdbcType=VARCHAR},
+        corporation_id = #{corporationId,jdbcType=BIGINT},
       </if>
       <if test="phone != null">
         phone = #{phone,jdbcType=VARCHAR},
@@ -328,7 +328,7 @@
       roles = #{roles,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       password_key = #{passwordKey,jdbcType=VARCHAR},
-      corporation_id = #{corporationId,jdbcType=VARCHAR},
+      corporation_id = #{corporationId,jdbcType=BIGINT},
       phone = #{phone,jdbcType=VARCHAR},
       img_id = #{imgId,jdbcType=VARCHAR},
       flag = #{flag,jdbcType=SMALLINT},

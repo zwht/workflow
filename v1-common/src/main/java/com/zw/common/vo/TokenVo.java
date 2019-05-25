@@ -8,7 +8,7 @@ public class TokenVo {
     private String loginName;
     private String ability;
     private String roles;
-    private String corporationId;
+    private Long corporationId;
 
     public Long getId() {
         return id;
@@ -42,11 +42,11 @@ public class TokenVo {
         this.roles = roles;
     }
 
-    public String getCorporationId() {
+    public Long getCorporationId() {
         return corporationId;
     }
 
-    public void setCorporationId(String corporationId) {
+    public void setCorporationId(Long corporationId) {
         this.corporationId = corporationId;
     }
 }
