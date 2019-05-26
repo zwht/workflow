@@ -1,14 +1,13 @@
 db:
   driverClassName: com.mysql.cj.jdbc.Driver
-  url: jdbc:mysql://localhost:3306/cfmy?characterEncoding=utf-8
+  url: jdbc:mysql://localhost:3306/workflowDev?characterEncoding=utf-8
   username: root
-  password: 12345678
-
-
+  password: 123456
+  Driver
 #上传文件配置
 web:
-  linuxFilePath: /opt/cfmyImage/
-  windowsFilePath: C:/tmp/cfmyImage
+  linuxFilePath: /opt/workflowImageDev/
+  windowsFilePath: C:/tmp/workflowImageDev
 
 spring:
   datasource:

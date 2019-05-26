@@ -38,28 +38,30 @@ public class ProcessServiceImpl implements ProcessService {
     public ResponseVo add(ProcessAddVo[] processList, TokenVo tokenVo) {
         ResponseVo response = new ResponseVo();
         try {
-            // 修改成功，然后删除所有公司，在添加公司
-            ProcessExample processExample = new ProcessExample();
-            ProcessExample.Criteria criteria2 = processExample.createCriteria();
-            criteria2.andTicketIdEqualTo(processList[0].getTicketId());
-            processMapper.deleteByExample(processExample);
-
-            
             for(int i=0;i<processList.length;i++){
-                Process process = new Process();
-                BeanUtils.copyProperties(processList[i], process);
-                process.setCorporationId(tokenVo.getCorporationId());
-
-                process.setId(new SnowFlake(1, 1).nextId());
-                process.setState(1601);
-                ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-                Validator validator = factory.getValidator();
-                Set<ConstraintViolation<Process>> constraintViolations = validator.validate(process);
-                if (constraintViolations.size() != 0) {
-                    // return response.validation(constraintViolations);
-                } else {
-                    processMapper.insert(process);
-                    // return response.success("添加成功");
+                if(StringUtils.isEmpty(processList[i].getId())){
+                    Process process = new Process();
+                    BeanUtils.copyProperties(processList[i], process);
+                    process.setCorporationId(tokenVo.getCorporationId());
+                    process.setId(new SnowFlake(1, 1).nextId());
+                    process.setState(1601);
+                    ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+                    Validator validator = factory.getValidator();
+                    Set<ConstraintViolation<Process>> constraintViolations = validator.validate(process);
+                    if (constraintViolations.size() != 0) {
+                        // return response.validation(constraintViolations);
+                    } else {
+                        processMapper.insert(process);
+                        // return response.success("添加成功");
+                    }
+                }else{
+                    ProcessExample example = new ProcessExample();
+                    ProcessExample.Criteria criteria1 = example.createCriteria();
+                    criteria1.andIdEqualTo(processList[i].getId());
+                    Process process = processMapper.selectByPrimaryKey(processList[i].getId());
+                    process.setPrice(processList[i].getPrice());
+                    process.setPriceAdd(processList[i].getPriceAdd());
+                    processMapper.updateByExampleSelective(process, example);
                 }
             }
             return response.success("添加成功");
