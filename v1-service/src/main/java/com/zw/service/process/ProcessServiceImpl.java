@@ -9,6 +9,7 @@ import com.zw.common.vo.TokenVo;
 import com.zw.dao.entity.Process;
 import com.zw.dao.entity.ProcessExample;
 import com.zw.dao.mapper.generate.ProcessMapper;
+import com.zw.dao.mapper.my.MyProcessMapper;
 import com.zw.vo.process.ProcessAddVo;
 import com.zw.vo.process.ProcessSearchVo;
 import org.springframework.beans.BeanUtils;
@@ -33,6 +34,8 @@ public class ProcessServiceImpl implements ProcessService {
 
     @Autowired
     ProcessMapper processMapper;
+    @Autowired
+    MyProcessMapper myProcessMapper;
 
     @Override
     public ResponseVo add(ProcessAddVo[] processList, TokenVo tokenVo) {
@@ -127,7 +130,7 @@ public class ProcessServiceImpl implements ProcessService {
         }
         try {
             Page page = PageHelper.startPage(pageNum, pageSize);
-            List list = processMapper.selectByExample(example);
+            List list = myProcessMapper.selectByExample(example);
             long count = page.getTotal();
             return response.success(new PageVo(pageNum, pageSize, count, list));
         } catch (Exception e) {
