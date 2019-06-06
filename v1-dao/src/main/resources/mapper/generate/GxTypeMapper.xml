@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zw.dao.mapper.generate.DoorGxMapper">
-  <resultMap id="BaseResultMap" type="com.zw.dao.entity.DoorGx">
+<mapper namespace="com.zw.dao.mapper.generate.GxTypeMapper">
+  <resultMap id="BaseResultMap" type="com.zw.dao.entity.GxType">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="gx_id" jdbcType="BIGINT" property="gxId" />
-    <result column="door_id" jdbcType="BIGINT" property="doorId" />
+    <result column="corporation_id" jdbcType="BIGINT" property="corporationId" />
     <result column="price" jdbcType="REAL" property="price" />
-    <result column="index_key" jdbcType="SMALLINT" property="indexKey" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="flag" jdbcType="SMALLINT" property="flag" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -68,15 +68,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, gx_id, door_id, price, index_key, flag
+    id, gx_id, corporation_id, price, name, flag
   </sql>
-  <select id="selectByExample" parameterType="com.zw.dao.entity.DoorGxExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.zw.dao.entity.GxTypeExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from bs_door_gx
+    from bs_gx_type
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -87,29 +87,27 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from bs_door_gx
+    from bs_gx_type
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from bs_door_gx
+    delete from bs_gx_type
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.zw.dao.entity.DoorGxExample">
-    delete from bs_door_gx
+  <delete id="deleteByExample" parameterType="com.zw.dao.entity.GxTypeExample">
+    delete from bs_gx_type
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.zw.dao.entity.DoorGx">
-    insert into bs_door_gx (id, gx_id, door_id, 
-      price, index_key, flag
-      )
-    values (#{id,jdbcType=BIGINT}, #{gxId,jdbcType=BIGINT}, #{doorId,jdbcType=BIGINT}, 
-      #{price,jdbcType=REAL}, #{indexKey,jdbcType=SMALLINT}, #{flag,jdbcType=SMALLINT}
-      )
+  <insert id="insert" parameterType="com.zw.dao.entity.GxType">
+    insert into bs_gx_type (id, gx_id, corporation_id, 
+      price, name, flag)
+    values (#{id,jdbcType=BIGINT}, #{gxId,jdbcType=BIGINT}, #{corporationId,jdbcType=BIGINT}, 
+      #{price,jdbcType=REAL}, #{name,jdbcType=VARCHAR}, #{flag,jdbcType=SMALLINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.zw.dao.entity.DoorGx">
-    insert into bs_door_gx
+  <insert id="insertSelective" parameterType="com.zw.dao.entity.GxType">
+    insert into bs_gx_type
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -117,14 +115,14 @@
       <if test="gxId != null">
         gx_id,
       </if>
-      <if test="doorId != null">
-        door_id,
+      <if test="corporationId != null">
+        corporation_id,
       </if>
       <if test="price != null">
         price,
       </if>
-      <if test="indexKey != null">
-        index_key,
+      <if test="name != null">
+        name,
       </if>
       <if test="flag != null">
         flag,
@@ -137,28 +135,28 @@
       <if test="gxId != null">
         #{gxId,jdbcType=BIGINT},
       </if>
-      <if test="doorId != null">
-        #{doorId,jdbcType=BIGINT},
+      <if test="corporationId != null">
+        #{corporationId,jdbcType=BIGINT},
       </if>
       <if test="price != null">
         #{price,jdbcType=REAL},
       </if>
-      <if test="indexKey != null">
-        #{indexKey,jdbcType=SMALLINT},
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
       </if>
       <if test="flag != null">
         #{flag,jdbcType=SMALLINT},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.zw.dao.entity.DoorGxExample" resultType="java.lang.Long">
-    select count(*) from bs_door_gx
+  <select id="countByExample" parameterType="com.zw.dao.entity.GxTypeExample" resultType="java.lang.Long">
+    select count(*) from bs_gx_type
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update bs_door_gx
+    update bs_gx_type
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
@@ -166,14 +164,14 @@
       <if test="record.gxId != null">
         gx_id = #{record.gxId,jdbcType=BIGINT},
       </if>
-      <if test="record.doorId != null">
-        door_id = #{record.doorId,jdbcType=BIGINT},
+      <if test="record.corporationId != null">
+        corporation_id = #{record.corporationId,jdbcType=BIGINT},
       </if>
       <if test="record.price != null">
         price = #{record.price,jdbcType=REAL},
       </if>
-      <if test="record.indexKey != null">
-        index_key = #{record.indexKey,jdbcType=SMALLINT},
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
       </if>
       <if test="record.flag != null">
         flag = #{record.flag,jdbcType=SMALLINT},
@@ -184,31 +182,31 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update bs_door_gx
+    update bs_gx_type
     set id = #{record.id,jdbcType=BIGINT},
       gx_id = #{record.gxId,jdbcType=BIGINT},
-      door_id = #{record.doorId,jdbcType=BIGINT},
+      corporation_id = #{record.corporationId,jdbcType=BIGINT},
       price = #{record.price,jdbcType=REAL},
-      index_key = #{record.indexKey,jdbcType=SMALLINT},
+      name = #{record.name,jdbcType=VARCHAR},
       flag = #{record.flag,jdbcType=SMALLINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zw.dao.entity.DoorGx">
-    update bs_door_gx
+  <update id="updateByPrimaryKeySelective" parameterType="com.zw.dao.entity.GxType">
+    update bs_gx_type
     <set>
       <if test="gxId != null">
         gx_id = #{gxId,jdbcType=BIGINT},
       </if>
-      <if test="doorId != null">
-        door_id = #{doorId,jdbcType=BIGINT},
+      <if test="corporationId != null">
+        corporation_id = #{corporationId,jdbcType=BIGINT},
       </if>
       <if test="price != null">
         price = #{price,jdbcType=REAL},
       </if>
-      <if test="indexKey != null">
-        index_key = #{indexKey,jdbcType=SMALLINT},
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
       </if>
       <if test="flag != null">
         flag = #{flag,jdbcType=SMALLINT},
@@ -216,12 +214,12 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.zw.dao.entity.DoorGx">
-    update bs_door_gx
+  <update id="updateByPrimaryKey" parameterType="com.zw.dao.entity.GxType">
+    update bs_gx_type
     set gx_id = #{gxId,jdbcType=BIGINT},
-      door_id = #{doorId,jdbcType=BIGINT},
+      corporation_id = #{corporationId,jdbcType=BIGINT},
       price = #{price,jdbcType=REAL},
-      index_key = #{indexKey,jdbcType=SMALLINT},
+      name = #{name,jdbcType=VARCHAR},
       flag = #{flag,jdbcType=SMALLINT}
     where id = #{id,jdbcType=BIGINT}
   </update>

@@ -3,14 +3,14 @@ package com.zw.dao.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DoorGxExample {
+public class GxTypeExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public DoorGxExample() {
+    public GxTypeExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -224,63 +224,63 @@ public class DoorGxExample {
             return (Criteria) this;
         }
 
-        public Criteria andDoorIdIsNull() {
-            addCriterion("door_id is null");
+        public Criteria andCorporationIdIsNull() {
+            addCriterion("corporation_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andDoorIdIsNotNull() {
-            addCriterion("door_id is not null");
+        public Criteria andCorporationIdIsNotNull() {
+            addCriterion("corporation_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andDoorIdEqualTo(Long value) {
-            addCriterion("door_id =", value, "doorId");
+        public Criteria andCorporationIdEqualTo(Long value) {
+            addCriterion("corporation_id =", value, "corporationId");
             return (Criteria) this;
         }
 
-        public Criteria andDoorIdNotEqualTo(Long value) {
-            addCriterion("door_id <>", value, "doorId");
+        public Criteria andCorporationIdNotEqualTo(Long value) {
+            addCriterion("corporation_id <>", value, "corporationId");
             return (Criteria) this;
         }
 
-        public Criteria andDoorIdGreaterThan(Long value) {
-            addCriterion("door_id >", value, "doorId");
+        public Criteria andCorporationIdGreaterThan(Long value) {
+            addCriterion("corporation_id >", value, "corporationId");
             return (Criteria) this;
         }
 
-        public Criteria andDoorIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("door_id >=", value, "doorId");
+        public Criteria andCorporationIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("corporation_id >=", value, "corporationId");
             return (Criteria) this;
         }
 
-        public Criteria andDoorIdLessThan(Long value) {
-            addCriterion("door_id <", value, "doorId");
+        public Criteria andCorporationIdLessThan(Long value) {
+            addCriterion("corporation_id <", value, "corporationId");
             return (Criteria) this;
         }
 
-        public Criteria andDoorIdLessThanOrEqualTo(Long value) {
-            addCriterion("door_id <=", value, "doorId");
+        public Criteria andCorporationIdLessThanOrEqualTo(Long value) {
+            addCriterion("corporation_id <=", value, "corporationId");
             return (Criteria) this;
         }
 
-        public Criteria andDoorIdIn(List<Long> values) {
-            addCriterion("door_id in", values, "doorId");
+        public Criteria andCorporationIdIn(List<Long> values) {
+            addCriterion("corporation_id in", values, "corporationId");
             return (Criteria) this;
         }
 
-        public Criteria andDoorIdNotIn(List<Long> values) {
-            addCriterion("door_id not in", values, "doorId");
+        public Criteria andCorporationIdNotIn(List<Long> values) {
+            addCriterion("corporation_id not in", values, "corporationId");
             return (Criteria) this;
         }
 
-        public Criteria andDoorIdBetween(Long value1, Long value2) {
-            addCriterion("door_id between", value1, value2, "doorId");
+        public Criteria andCorporationIdBetween(Long value1, Long value2) {
+            addCriterion("corporation_id between", value1, value2, "corporationId");
             return (Criteria) this;
         }
 
-        public Criteria andDoorIdNotBetween(Long value1, Long value2) {
-            addCriterion("door_id not between", value1, value2, "doorId");
+        public Criteria andCorporationIdNotBetween(Long value1, Long value2) {
+            addCriterion("corporation_id not between", value1, value2, "corporationId");
             return (Criteria) this;
         }
 
@@ -344,63 +344,73 @@ public class DoorGxExample {
             return (Criteria) this;
         }
 
-        public Criteria andIndexKeyIsNull() {
-            addCriterion("index_key is null");
+        public Criteria andNameIsNull() {
+            addCriterion("name is null");
             return (Criteria) this;
         }
 
-        public Criteria andIndexKeyIsNotNull() {
-            addCriterion("index_key is not null");
+        public Criteria andNameIsNotNull() {
+            addCriterion("name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIndexKeyEqualTo(Short value) {
-            addCriterion("index_key =", value, "indexKey");
+        public Criteria andNameEqualTo(String value) {
+            addCriterion("name =", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andIndexKeyNotEqualTo(Short value) {
-            addCriterion("index_key <>", value, "indexKey");
+        public Criteria andNameNotEqualTo(String value) {
+            addCriterion("name <>", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andIndexKeyGreaterThan(Short value) {
-            addCriterion("index_key >", value, "indexKey");
+        public Criteria andNameGreaterThan(String value) {
+            addCriterion("name >", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andIndexKeyGreaterThanOrEqualTo(Short value) {
-            addCriterion("index_key >=", value, "indexKey");
+        public Criteria andNameGreaterThanOrEqualTo(String value) {
+            addCriterion("name >=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andIndexKeyLessThan(Short value) {
-            addCriterion("index_key <", value, "indexKey");
+        public Criteria andNameLessThan(String value) {
+            addCriterion("name <", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andIndexKeyLessThanOrEqualTo(Short value) {
-            addCriterion("index_key <=", value, "indexKey");
+        public Criteria andNameLessThanOrEqualTo(String value) {
+            addCriterion("name <=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andIndexKeyIn(List<Short> values) {
-            addCriterion("index_key in", values, "indexKey");
+        public Criteria andNameLike(String value) {
+            addCriterion("name like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andIndexKeyNotIn(List<Short> values) {
-            addCriterion("index_key not in", values, "indexKey");
+        public Criteria andNameNotLike(String value) {
+            addCriterion("name not like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andIndexKeyBetween(Short value1, Short value2) {
-            addCriterion("index_key between", value1, value2, "indexKey");
+        public Criteria andNameIn(List<String> values) {
+            addCriterion("name in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andIndexKeyNotBetween(Short value1, Short value2) {
-            addCriterion("index_key not between", value1, value2, "indexKey");
+        public Criteria andNameNotIn(List<String> values) {
+            addCriterion("name not in", values, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameBetween(String value1, String value2) {
+            addCriterion("name between", value1, value2, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameNotBetween(String value1, String value2) {
+            addCriterion("name not between", value1, value2, "name");
             return (Criteria) this;
         }
 

@@ -1,4 +1,4 @@
-package com.zw.vo.doorGx;
+package com.zw.vo.gxType;
 
 import io.swagger.annotations.ApiModelProperty;
 
@@ -7,15 +7,23 @@ import io.swagger.annotations.ApiModelProperty;
  * @Date：2018/12/19
  * @Time：下午2:03
  */
-public class DoorGxAddVo {
+public class GxTypeAddVo {
     @ApiModelProperty("工序id")
     private Long gxId;
-    @ApiModelProperty("门id")
-    private Long doorId;
+    @ApiModelProperty("名字描述")
+    private String name;
     @ApiModelProperty("价格")
     private Float price;
     @ApiModelProperty("排序")
     private Short indexKey;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Long getGxId() {
         return gxId;
@@ -23,14 +31,6 @@ public class DoorGxAddVo {
 
     public void setGxId(Long gxId) {
         this.gxId = gxId;
-    }
-
-    public Long getDoorId() {
-        return doorId;
-    }
-
-    public void setDoorId(Long doorId) {
-        this.doorId = doorId;
     }
 
     public Float getPrice() {

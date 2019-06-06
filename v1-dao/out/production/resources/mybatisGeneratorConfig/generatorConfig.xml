@@ -47,8 +47,8 @@
         <table tableName="cm_err_code" domainObjectName="ErrCode"></table>
 
         <table tableName="bs_gx" domainObjectName="Gx"></table>
+        <table tableName="bs_gx_type" domainObjectName="GxType"></table>
         <table tableName="bs_door" domainObjectName="Door"></table>
-        <table tableName="bs_door_gx" domainObjectName="DoorGx"></table>
         <table tableName="bs_color" domainObjectName="Color"></table>
         <table tableName="bs_material" domainObjectName="Material"></table>
 

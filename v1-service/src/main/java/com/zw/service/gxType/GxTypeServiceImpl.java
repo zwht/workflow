@@ -1,15 +1,15 @@
-package com.zw.service.doorGx;
+package com.zw.service.gxType;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.zw.common.util.SnowFlake;
 import com.zw.common.vo.PageVo;
 import com.zw.common.vo.ResponseVo;
-import com.zw.dao.entity.DoorGx;
-import com.zw.dao.entity.DoorGxExample;
-import com.zw.dao.mapper.generate.DoorGxMapper;
-import com.zw.vo.doorGx.DoorGxAddVo;
-import com.zw.vo.doorGx.DoorGxSearchVo;
+import com.zw.dao.entity.GxType;
+import com.zw.dao.entity.GxTypeExample;
+import com.zw.dao.mapper.generate.GxTypeMapper;
+import com.zw.vo.gxType.GxTypeAddVo;
+import com.zw.vo.gxType.GxTypeSearchVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,33 +28,32 @@ import java.util.Set;
  * @Time：下午2:04
  */
 @Service
-public class DoorGxServiceImpl implements DoorGxService {
+public class GxTypeServiceImpl implements GxTypeService {
 
     @Autowired
-    DoorGxMapper doorGxMapper;
+    GxTypeMapper gxTypeMapper;
 
     @Override
-    public ResponseVo add(DoorGxAddVo doorGxAddVo, Long corporationId) {
+    public ResponseVo add(GxTypeAddVo gxTypeAddVo, Long corporationId) {
         ResponseVo response = new ResponseVo();
         try {
-            DoorGx doorGx = new DoorGx();
-            BeanUtils.copyProperties(doorGxAddVo, doorGx);
+            GxType gxType = new GxType();
+            BeanUtils.copyProperties(gxTypeAddVo, gxType);
 
-            DoorGxExample doorGxExample = new DoorGxExample();
-            DoorGxExample.Criteria criteria = doorGxExample.createCriteria();
-            criteria.andDoorIdEqualTo(doorGx.getDoorId());
-            criteria.andGxIdEqualTo(doorGx.getGxId());
+            GxTypeExample gxTypeExample = new GxTypeExample();
+            GxTypeExample.Criteria criteria = gxTypeExample.createCriteria();
+            criteria.andGxIdEqualTo(gxType.getGxId());
             // 查询是否有相同
-            List<DoorGx> doorGxs = doorGxMapper.selectByExample(doorGxExample);
-            if (doorGxs.size() == 0) {
-                doorGx.setId(new SnowFlake(1, 1).nextId());
+            List<GxType> gxTypes = gxTypeMapper.selectByExample(gxTypeExample);
+            if (gxTypes.size() == 0) {
+                gxType.setId(new SnowFlake(1, 1).nextId());
                 ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
                 Validator validator = factory.getValidator();
-                Set<ConstraintViolation<DoorGx>> constraintViolations = validator.validate(doorGx);
+                Set<ConstraintViolation<GxType>> constraintViolations = validator.validate(gxType);
                 if (constraintViolations.size() != 0) {
                     return response.validation(constraintViolations);
                 } else {
-                    doorGxMapper.insert(doorGx);
+                    gxTypeMapper.insert(gxType);
                     return response.success("添加成功");
                 }
             } else {
@@ -67,37 +66,36 @@ public class DoorGxServiceImpl implements DoorGxService {
 
     @Override
     public ResponseVo getById(Long id) {
-        ResponseVo<DoorGx> response = new ResponseVo();
+        ResponseVo<GxType> response = new ResponseVo();
         try {
-            return response.success(doorGxMapper.selectByPrimaryKey(Long.valueOf(id)));
+            return response.success(gxTypeMapper.selectByPrimaryKey(Long.valueOf(id)));
         } catch (Exception e) {
             return response.failure(501, e.getMessage());
         }
     }
 
     @Override
-    public ResponseVo update(DoorGx doorGx) {
+    public ResponseVo update(GxType gxType) {
         ResponseVo response = new ResponseVo();
         try {
-            DoorGxExample doorGxExample = new DoorGxExample();
-            DoorGxExample.Criteria criteria = doorGxExample.createCriteria();
-            criteria.andDoorIdEqualTo(doorGx.getDoorId());
-            criteria.andGxIdEqualTo(doorGx.getGxId());
-            criteria.andIdNotEqualTo(doorGx.getId());
+            GxTypeExample gxTypeExample = new GxTypeExample();
+            GxTypeExample.Criteria criteria = gxTypeExample.createCriteria();
+            criteria.andGxIdEqualTo(gxType.getGxId());
+            criteria.andIdNotEqualTo(gxType.getId());
             // 查询是否有相同
-            List<DoorGx> corporations = doorGxMapper.selectByExample(doorGxExample);
+            List<GxType> corporations = gxTypeMapper.selectByExample(gxTypeExample);
             if (corporations.size() == 0) {
                 ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
                 Validator validator = factory.getValidator();
-                Set<ConstraintViolation<DoorGx>> constraintViolations = validator.validate(doorGx);
+                Set<ConstraintViolation<GxType>> constraintViolations = validator.validate(gxType);
 
                 if (constraintViolations.size() != 0) {
                     return response.validation(constraintViolations);
                 } else {
-                    DoorGxExample example = new DoorGxExample();
-                    DoorGxExample.Criteria criteria1 = example.createCriteria();
-                    criteria1.andIdEqualTo(doorGx.getId());
-                    doorGxMapper.updateByExampleSelective(doorGx, example);
+                    GxTypeExample example = new GxTypeExample();
+                    GxTypeExample.Criteria criteria1 = example.createCriteria();
+                    criteria1.andIdEqualTo(gxType.getId());
+                    gxTypeMapper.updateByExampleSelective(gxType, example);
                     return response.success("修改成功");
                 }
 
@@ -110,19 +108,19 @@ public class DoorGxServiceImpl implements DoorGxService {
     }
 
     @Override
-    public ResponseVo getList(Integer pageNum, Integer pageSize, DoorGxSearchVo doorGxSearchVo) {
+    public ResponseVo getList(Integer pageNum, Integer pageSize, GxTypeSearchVo gxTypeSearchVo) {
         ResponseVo response = new ResponseVo();
         //条件查询3句话
-        DoorGxExample example = new DoorGxExample();
+        GxTypeExample example = new GxTypeExample();
         example.setOrderByClause("`index_key` ASC");
-        DoorGxExample.Criteria criteria = example.createCriteria();
+        GxTypeExample.Criteria criteria = example.createCriteria();
         criteria.andFlagIsNull();
-        if (!StringUtils.isEmpty(doorGxSearchVo.getDoorId())) {
-            criteria.andDoorIdEqualTo(doorGxSearchVo.getDoorId());
+        if (!StringUtils.isEmpty(gxTypeSearchVo.getGxId())) {
+            criteria.andGxIdEqualTo(gxTypeSearchVo.getGxId());
         }
         try {
             Page page = PageHelper.startPage(pageNum, pageSize);
-            List list = doorGxMapper.selectByExample(example);
+            List list = gxTypeMapper.selectByExample(example);
             long count = page.getTotal();
             return response.success(new PageVo(pageNum, pageSize, count, list));
         } catch (Exception e) {
@@ -133,12 +131,12 @@ public class DoorGxServiceImpl implements DoorGxService {
     @Override
     public ResponseVo del(Long id) {
         ResponseVo response = new ResponseVo();
-        DoorGx doorGx = doorGxMapper.selectByPrimaryKey(id);
-        doorGx.setFlag((short)1);
-        DoorGxExample example = new DoorGxExample();
-        DoorGxExample.Criteria criteria1 = example.createCriteria();
-        criteria1.andIdEqualTo(doorGx.getId());
-        doorGxMapper.updateByExampleSelective(doorGx, example);
+        GxType gxType = gxTypeMapper.selectByPrimaryKey(id);
+        gxType.setFlag((short)1);
+        GxTypeExample example = new GxTypeExample();
+        GxTypeExample.Criteria criteria1 = example.createCriteria();
+        criteria1.andIdEqualTo(gxType.getId());
+        gxTypeMapper.updateByExampleSelective(gxType, example);
         return response.success("删除成功");
     }
 }

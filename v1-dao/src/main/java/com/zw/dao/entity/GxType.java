@@ -1,15 +1,15 @@
 package com.zw.dao.entity;
 
-public class DoorGx {
+public class GxType {
     private Long id;
 
     private Long gxId;
 
-    private Long doorId;
+    private Long corporationId;
 
     private Float price;
 
-    private Short indexKey;
+    private String name;
 
     private Short flag;
 
@@ -29,12 +29,12 @@ public class DoorGx {
         this.gxId = gxId;
     }
 
-    public Long getDoorId() {
-        return doorId;
+    public Long getCorporationId() {
+        return corporationId;
     }
 
-    public void setDoorId(Long doorId) {
-        this.doorId = doorId;
+    public void setCorporationId(Long corporationId) {
+        this.corporationId = corporationId;
     }
 
     public Float getPrice() {
@@ -45,12 +45,12 @@ public class DoorGx {
         this.price = price;
     }
 
-    public Short getIndexKey() {
-        return indexKey;
+    public String getName() {
+        return name;
     }
 
-    public void setIndexKey(Short indexKey) {
-        this.indexKey = indexKey;
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
     public Short getFlag() {

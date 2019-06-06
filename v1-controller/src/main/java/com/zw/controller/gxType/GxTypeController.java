@@ -1,17 +1,16 @@
-package com.zw.controller.doorDoorGx;
+package com.zw.controller.gxType;
 
 import com.zw.common.vo.PageVo;
 import com.zw.common.vo.ResponseVo;
 import com.zw.common.vo.TokenVo;
-import com.zw.dao.entity.DoorGx;
-import com.zw.service.doorGx.DoorGxService;
-import com.zw.vo.doorGx.DoorGxAddVo;
-import com.zw.vo.doorGx.DoorGxSearchVo;
+import com.zw.dao.entity.GxType;
+import com.zw.service.gxType.GxTypeService;
+import com.zw.vo.gxType.GxTypeAddVo;
+import com.zw.vo.gxType.GxTypeSearchVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,61 +24,61 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1")
 @Api(description = "工序")
-public class DoorGxController {
+public class GxTypeController {
 
     @Autowired
-    private DoorGxService doorGxService;
+    private GxTypeService gxTypeService;
 
 
     @ApiOperation("新增")
-    @PostMapping("/doorGx/add")
+    @PostMapping("/gxType/add")
     @ResponseBody
     public ResponseVo add(
-            @ApiParam(required = true, value = "body内容") @RequestBody DoorGxAddVo doorGxAddVo,
+            @ApiParam(required = true, value = "body内容") @RequestBody GxTypeAddVo gxTypeAddVo,
             HttpServletRequest request
     ) {
         TokenVo tokenVo = (TokenVo) request.getAttribute("tokenVo");
-        return doorGxService.add(doorGxAddVo, tokenVo.getCorporationId());
+        return gxTypeService.add(gxTypeAddVo, tokenVo.getCorporationId());
     }
 
 
     @ApiOperation("详情")
-    @GetMapping("/doorGx/getById")
+    @GetMapping("/gxType/getById")
     @ResponseBody
-    public ResponseVo<DoorGx> selectByPrimaryKey(
+    public ResponseVo<GxType> selectByPrimaryKey(
             @ApiParam(required = true, value = "用户Id") @RequestParam Long id
     ) {
-        return doorGxService.getById(id);
+        return gxTypeService.getById(id);
     }
 
 
     @ApiOperation("更新")
-    @PostMapping("/doorGx/update")
+    @PostMapping("/gxType/update")
     @ResponseBody
     public ResponseVo update(
-            @ApiParam(required = true, value = "DoorGxUpdateVo") @RequestBody DoorGx doorGx
+            @ApiParam(required = true, value = "GxTypeUpdateVo") @RequestBody GxType gxType
     ) {
-        return doorGxService.update(doorGx);
+        return gxTypeService.update(gxType);
     }
 
     @ResponseBody
-    @PostMapping("/doorGx/list")
+    @PostMapping("/gxType/list")
     @ApiOperation("查询列表")
-    public ResponseVo<PageVo<List<DoorGx>>> getDoorGxList(
+    public ResponseVo<PageVo<List<GxType>>> getGxTypeList(
             @ApiParam(required = true, value = "当前页面", defaultValue = "1") @RequestParam Integer pageNum,
             @ApiParam(required = true, value = "每页显示条数", defaultValue = "10") @RequestParam Integer pageSize,
-            @ApiParam(value = "DoorGxSearchVo") @RequestBody DoorGxSearchVo doorGxSearchVo
+            @ApiParam(value = "GxTypeSearchVo") @RequestBody GxTypeSearchVo gxTypeSearchVo
     ) {
-        return doorGxService.getList(pageNum, pageSize, doorGxSearchVo);
+        return gxTypeService.getList(pageNum, pageSize, gxTypeSearchVo);
     }
 
 
     @ApiOperation("删除")
-    @GetMapping("/doorGx/del")
+    @GetMapping("/gxType/del")
     @ResponseBody
     public ResponseVo del(
             @ApiParam(required = true, value = "id") @RequestParam Long id
     ) {
-        return doorGxService.del(id);
+        return gxTypeService.del(id);
     }
 }
