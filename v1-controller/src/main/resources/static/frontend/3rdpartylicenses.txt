@@ -8,6 +8,10 @@ ng-zorro-antd/skeleton
 
 @delon/abc/table
 
+ng-zorro-antd/badge
+
+ng-zorro-antd/spin
+
 ng-zorro-antd/pagination
 
 @delon/abc/footer-toolbar
@@ -687,37 +691,24 @@ ng-zorro-antd/divider
 
 ng-zorro-antd/tabs
 
-ng-zorro-antd/input
-
 ng-zorro-antd/dropdown
-
-ng-zorro-antd/tag
-
-ng-zorro-antd/empty
-
-ng-zorro-antd/spin
-
-ng-zorro-antd/badge
-
-ng-zorro-antd/card
-
-screenfull
-MIT
-MIT License
-
-Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
 
 @angular/router
 MIT
 
 ng-zorro-antd/tooltip
+
+ng-zorro-antd/form
+
+ng-zorro-antd/input
+
+ng-zorro-antd/progress
+
+ng-zorro-antd/select
+
+ng-zorro-antd/empty
+
+ng-zorro-antd/popover
 
 @delon/theme
 MIT
@@ -743,16 +734,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
-ng-zorro-antd/form
-
-ng-zorro-antd/checkbox
-
-ng-zorro-antd/progress
-
-ng-zorro-antd/select
-
-ng-zorro-antd/popover
 
 e-ngx-print
 MIT
@@ -847,6 +828,19 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
+screenfull
+MIT
+MIT License
+
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
 ng-zorro-antd/popconfirm
 
 @delon/abc/reuse-tab
@@ -878,11 +872,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
+ng-zorro-antd/card
+
 ng-zorro-antd/date-picker
 
 ng-zorro-antd/time-picker
 
 ng-zorro-antd/radio
+
+ng-zorro-antd/checkbox
+
+ng-zorro-antd/tag
 
 ngx-contextmenu
 MIT
@@ -984,13 +984,7 @@ ng-zorro-antd/alert
 
 ng-zorro-antd/avatar
 
-ng-zorro-antd/list
-
-@delon/abc/notice-icon
-
 @delon/abc/sidebar-nav
-
-@delon/abc/global-footer
 
 @delon/abc/result
 
