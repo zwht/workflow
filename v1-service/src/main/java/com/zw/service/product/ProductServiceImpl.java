@@ -117,7 +117,7 @@ public class ProductServiceImpl implements ProductService {
         ResponseVo response = new ResponseVo();
         //条件查询3句话
         ProductExample example = new ProductExample();
-        example.setOrderByClause("`sum` DESC");
+        example.setOrderByClause("`index_key` ASC");
         ProductExample.Criteria criteria = example.createCriteria();
         criteria.andFlagIsNull();
         if (!StringUtils.isEmpty(productSearchVo.getTicketId())) {

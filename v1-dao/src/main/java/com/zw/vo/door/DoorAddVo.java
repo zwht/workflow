@@ -34,14 +34,14 @@ public class DoorAddVo {
 
 
     @ApiModelProperty("参数")
-    private String gx_params;
+    private String gxParams;
 
-    public String getGx_params() {
-        return gx_params;
+    public String getGxParams() {
+        return gxParams;
     }
 
-    public void setGx_params(String gx_params) {
-        this.gx_params = gx_params;
+    public void setGxParams(String gxParams) {
+        this.gxParams = gxParams;
     }
 
     public String getArithmetic() {
