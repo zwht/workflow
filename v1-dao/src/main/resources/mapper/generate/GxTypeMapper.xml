@@ -4,9 +4,9 @@
   <resultMap id="BaseResultMap" type="com.zw.dao.entity.GxType">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="gx_id" jdbcType="BIGINT" property="gxId" />
-    <result column="corporation_id" jdbcType="BIGINT" property="corporationId" />
-    <result column="price" jdbcType="REAL" property="price" />
     <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="corporation_id" jdbcType="BIGINT" property="corporationId" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
     <result column="flag" jdbcType="SMALLINT" property="flag" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -68,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, gx_id, corporation_id, price, name, flag
+    id, gx_id, name, corporation_id, price, flag
   </sql>
   <select id="selectByExample" parameterType="com.zw.dao.entity.GxTypeExample" resultMap="BaseResultMap">
     select
@@ -101,10 +101,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.zw.dao.entity.GxType">
-    insert into bs_gx_type (id, gx_id, corporation_id, 
-      price, name, flag)
-    values (#{id,jdbcType=BIGINT}, #{gxId,jdbcType=BIGINT}, #{corporationId,jdbcType=BIGINT}, 
-      #{price,jdbcType=REAL}, #{name,jdbcType=VARCHAR}, #{flag,jdbcType=SMALLINT})
+    insert into bs_gx_type (id, gx_id, name, 
+      corporation_id, price, flag
+      )
+    values (#{id,jdbcType=BIGINT}, #{gxId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{corporationId,jdbcType=BIGINT}, #{price,jdbcType=DECIMAL}, #{flag,jdbcType=SMALLINT}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.zw.dao.entity.GxType">
     insert into bs_gx_type
@@ -115,14 +117,14 @@
       <if test="gxId != null">
         gx_id,
       </if>
+      <if test="name != null">
+        name,
+      </if>
       <if test="corporationId != null">
         corporation_id,
       </if>
       <if test="price != null">
         price,
-      </if>
-      <if test="name != null">
-        name,
       </if>
       <if test="flag != null">
         flag,
@@ -135,14 +137,14 @@
       <if test="gxId != null">
         #{gxId,jdbcType=BIGINT},
       </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
       <if test="corporationId != null">
         #{corporationId,jdbcType=BIGINT},
       </if>
       <if test="price != null">
-        #{price,jdbcType=REAL},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
+        #{price,jdbcType=DECIMAL},
       </if>
       <if test="flag != null">
         #{flag,jdbcType=SMALLINT},
@@ -164,14 +166,14 @@
       <if test="record.gxId != null">
         gx_id = #{record.gxId,jdbcType=BIGINT},
       </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
       <if test="record.corporationId != null">
         corporation_id = #{record.corporationId,jdbcType=BIGINT},
       </if>
       <if test="record.price != null">
-        price = #{record.price,jdbcType=REAL},
-      </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
+        price = #{record.price,jdbcType=DECIMAL},
       </if>
       <if test="record.flag != null">
         flag = #{record.flag,jdbcType=SMALLINT},
@@ -185,9 +187,9 @@
     update bs_gx_type
     set id = #{record.id,jdbcType=BIGINT},
       gx_id = #{record.gxId,jdbcType=BIGINT},
-      corporation_id = #{record.corporationId,jdbcType=BIGINT},
-      price = #{record.price,jdbcType=REAL},
       name = #{record.name,jdbcType=VARCHAR},
+      corporation_id = #{record.corporationId,jdbcType=BIGINT},
+      price = #{record.price,jdbcType=DECIMAL},
       flag = #{record.flag,jdbcType=SMALLINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -199,14 +201,14 @@
       <if test="gxId != null">
         gx_id = #{gxId,jdbcType=BIGINT},
       </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
       <if test="corporationId != null">
         corporation_id = #{corporationId,jdbcType=BIGINT},
       </if>
       <if test="price != null">
-        price = #{price,jdbcType=REAL},
-      </if>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
+        price = #{price,jdbcType=DECIMAL},
       </if>
       <if test="flag != null">
         flag = #{flag,jdbcType=SMALLINT},
@@ -217,9 +219,9 @@
   <update id="updateByPrimaryKey" parameterType="com.zw.dao.entity.GxType">
     update bs_gx_type
     set gx_id = #{gxId,jdbcType=BIGINT},
-      corporation_id = #{corporationId,jdbcType=BIGINT},
-      price = #{price,jdbcType=REAL},
       name = #{name,jdbcType=VARCHAR},
+      corporation_id = #{corporationId,jdbcType=BIGINT},
+      price = #{price,jdbcType=DECIMAL},
       flag = #{flag,jdbcType=SMALLINT}
     where id = #{id,jdbcType=BIGINT}
   </update>

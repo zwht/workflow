@@ -5,11 +5,11 @@ public class GxType {
 
     private Long gxId;
 
+    private String name;
+
     private Long corporationId;
 
-    private Float price;
-
-    private String name;
+    private Long price;
 
     private Short flag;
 
@@ -29,6 +29,14 @@ public class GxType {
         this.gxId = gxId;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+    }
+
     public Long getCorporationId() {
         return corporationId;
     }
@@ -37,20 +45,12 @@ public class GxType {
         this.corporationId = corporationId;
     }
 
-    public Float getPrice() {
+    public Long getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(Long price) {
         this.price = price;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
     }
 
     public Short getFlag() {

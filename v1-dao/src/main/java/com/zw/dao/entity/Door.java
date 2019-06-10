@@ -33,6 +33,8 @@ public class Door {
 
     private Integer sum;
 
+    private String gxParams;
+
     public Long getId() {
         return id;
     }
@@ -151,5 +153,13 @@ public class Door {
 
     public void setSum(Integer sum) {
         this.sum = sum;
+    }
+
+    public String getGxParams() {
+        return gxParams;
+    }
+
+    public void setGxParams(String gxParams) {
+        this.gxParams = gxParams == null ? null : gxParams.trim();
     }
 }

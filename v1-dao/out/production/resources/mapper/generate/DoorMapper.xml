@@ -17,6 +17,7 @@
     <result column="flag" jdbcType="SMALLINT" property="flag" />
     <result column="arithmetic" jdbcType="VARCHAR" property="arithmetic" />
     <result column="sum" jdbcType="INTEGER" property="sum" />
+    <result column="gx_params" jdbcType="VARCHAR" property="gxParams" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -78,7 +79,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, name, img, corporation_id, gx_ids, create_time, state, gx_values, number, colors, 
-    info_id, type, flag, arithmetic, sum
+    info_id, type, flag, arithmetic, sum, gx_params
   </sql>
   <select id="selectByExample" parameterType="com.zw.dao.entity.DoorExample" resultMap="BaseResultMap">
     select
@@ -115,14 +116,14 @@
       corporation_id, gx_ids, create_time, 
       state, gx_values, number, 
       colors, info_id, type, 
-      flag, arithmetic, sum
-      )
+      flag, arithmetic, sum, 
+      gx_params)
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}, 
       #{corporationId,jdbcType=BIGINT}, #{gxIds,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{state,jdbcType=SMALLINT}, #{gxValues,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, 
       #{colors,jdbcType=VARCHAR}, #{infoId,jdbcType=BIGINT}, #{type,jdbcType=SMALLINT}, 
-      #{flag,jdbcType=SMALLINT}, #{arithmetic,jdbcType=VARCHAR}, #{sum,jdbcType=INTEGER}
-      )
+      #{flag,jdbcType=SMALLINT}, #{arithmetic,jdbcType=VARCHAR}, #{sum,jdbcType=INTEGER}, 
+      #{gxParams,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zw.dao.entity.Door">
     insert into bs_door
@@ -172,6 +173,9 @@
       <if test="sum != null">
         sum,
       </if>
+      <if test="gxParams != null">
+        gx_params,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -218,6 +222,9 @@
       </if>
       <if test="sum != null">
         #{sum,jdbcType=INTEGER},
+      </if>
+      <if test="gxParams != null">
+        #{gxParams,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -275,6 +282,9 @@
       <if test="record.sum != null">
         sum = #{record.sum,jdbcType=INTEGER},
       </if>
+      <if test="record.gxParams != null">
+        gx_params = #{record.gxParams,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -296,7 +306,8 @@
       type = #{record.type,jdbcType=SMALLINT},
       flag = #{record.flag,jdbcType=SMALLINT},
       arithmetic = #{record.arithmetic,jdbcType=VARCHAR},
-      sum = #{record.sum,jdbcType=INTEGER}
+      sum = #{record.sum,jdbcType=INTEGER},
+      gx_params = #{record.gxParams,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -346,6 +357,9 @@
       <if test="sum != null">
         sum = #{sum,jdbcType=INTEGER},
       </if>
+      <if test="gxParams != null">
+        gx_params = #{gxParams,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -364,7 +378,8 @@
       type = #{type,jdbcType=SMALLINT},
       flag = #{flag,jdbcType=SMALLINT},
       arithmetic = #{arithmetic,jdbcType=VARCHAR},
-      sum = #{sum,jdbcType=INTEGER}
+      sum = #{sum,jdbcType=INTEGER},
+      gx_params = #{gxParams,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

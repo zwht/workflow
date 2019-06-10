@@ -32,6 +32,18 @@ public class DoorAddVo {
     @ApiModelProperty("算法")
     private String arithmetic;
 
+
+    @ApiModelProperty("参数")
+    private String gx_params;
+
+    public String getGx_params() {
+        return gx_params;
+    }
+
+    public void setGx_params(String gx_params) {
+        this.gx_params = gx_params;
+    }
+
     public String getArithmetic() {
         return arithmetic;
     }

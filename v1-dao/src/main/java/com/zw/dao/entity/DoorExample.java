@@ -1074,6 +1074,76 @@ public class DoorExample {
             addCriterion("sum not between", value1, value2, "sum");
             return (Criteria) this;
         }
+
+        public Criteria andGxParamsIsNull() {
+            addCriterion("gx_params is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGxParamsIsNotNull() {
+            addCriterion("gx_params is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGxParamsEqualTo(String value) {
+            addCriterion("gx_params =", value, "gxParams");
+            return (Criteria) this;
+        }
+
+        public Criteria andGxParamsNotEqualTo(String value) {
+            addCriterion("gx_params <>", value, "gxParams");
+            return (Criteria) this;
+        }
+
+        public Criteria andGxParamsGreaterThan(String value) {
+            addCriterion("gx_params >", value, "gxParams");
+            return (Criteria) this;
+        }
+
+        public Criteria andGxParamsGreaterThanOrEqualTo(String value) {
+            addCriterion("gx_params >=", value, "gxParams");
+            return (Criteria) this;
+        }
+
+        public Criteria andGxParamsLessThan(String value) {
+            addCriterion("gx_params <", value, "gxParams");
+            return (Criteria) this;
+        }
+
+        public Criteria andGxParamsLessThanOrEqualTo(String value) {
+            addCriterion("gx_params <=", value, "gxParams");
+            return (Criteria) this;
+        }
+
+        public Criteria andGxParamsLike(String value) {
+            addCriterion("gx_params like", value, "gxParams");
+            return (Criteria) this;
+        }
+
+        public Criteria andGxParamsNotLike(String value) {
+            addCriterion("gx_params not like", value, "gxParams");
+            return (Criteria) this;
+        }
+
+        public Criteria andGxParamsIn(List<String> values) {
+            addCriterion("gx_params in", values, "gxParams");
+            return (Criteria) this;
+        }
+
+        public Criteria andGxParamsNotIn(List<String> values) {
+            addCriterion("gx_params not in", values, "gxParams");
+            return (Criteria) this;
+        }
+
+        public Criteria andGxParamsBetween(String value1, String value2) {
+            addCriterion("gx_params between", value1, value2, "gxParams");
+            return (Criteria) this;
+        }
+
+        public Criteria andGxParamsNotBetween(String value1, String value2) {
+            addCriterion("gx_params not between", value1, value2, "gxParams");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
