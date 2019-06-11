@@ -161,6 +161,7 @@ public class DoorServiceImpl implements DoorService {
         doorMapper.updateByExampleSelective(door, example);
         return response.success("删除成功");
     }
+
     @Override
     public ResponseVo updateState(Long id, Short state) {
         ResponseVo response = new ResponseVo();
