@@ -2,6 +2,7 @@ package com.zw.vo.ticket;
 
 import io.swagger.annotations.ApiModelProperty;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -46,7 +47,7 @@ public class TicketAddVo {
 
     private Date overTime;
 
-    private Float pay;
+    private BigDecimal pay;
 
     private Float sumDoor;
 
@@ -228,11 +229,11 @@ public class TicketAddVo {
         this.overTime = overTime;
     }
 
-    public Float getPay() {
+    public BigDecimal getPay() {
         return pay;
     }
 
-    public void setPay(Float pay) {
+    public void setPay(BigDecimal pay) {
         this.pay = pay;
     }
 

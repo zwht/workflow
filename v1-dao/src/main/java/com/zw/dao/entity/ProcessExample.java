@@ -1,5 +1,6 @@
 package com.zw.dao.entity;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -355,52 +356,52 @@ public class ProcessExample {
             return (Criteria) this;
         }
 
-        public Criteria andPriceEqualTo(Long value) {
+        public Criteria andPriceEqualTo(BigDecimal value) {
             addCriterion("price =", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceNotEqualTo(Long value) {
+        public Criteria andPriceNotEqualTo(BigDecimal value) {
             addCriterion("price <>", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceGreaterThan(Long value) {
+        public Criteria andPriceGreaterThan(BigDecimal value) {
             addCriterion("price >", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceGreaterThanOrEqualTo(Long value) {
+        public Criteria andPriceGreaterThanOrEqualTo(BigDecimal value) {
             addCriterion("price >=", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceLessThan(Long value) {
+        public Criteria andPriceLessThan(BigDecimal value) {
             addCriterion("price <", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceLessThanOrEqualTo(Long value) {
+        public Criteria andPriceLessThanOrEqualTo(BigDecimal value) {
             addCriterion("price <=", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceIn(List<Long> values) {
+        public Criteria andPriceIn(List<BigDecimal> values) {
             addCriterion("price in", values, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceNotIn(List<Long> values) {
+        public Criteria andPriceNotIn(List<BigDecimal> values) {
             addCriterion("price not in", values, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceBetween(Long value1, Long value2) {
+        public Criteria andPriceBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("price between", value1, value2, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceNotBetween(Long value1, Long value2) {
+        public Criteria andPriceNotBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("price not between", value1, value2, "price");
             return (Criteria) this;
         }
@@ -415,52 +416,52 @@ public class ProcessExample {
             return (Criteria) this;
         }
 
-        public Criteria andPriceAddEqualTo(Long value) {
+        public Criteria andPriceAddEqualTo(BigDecimal value) {
             addCriterion("price_add =", value, "priceAdd");
             return (Criteria) this;
         }
 
-        public Criteria andPriceAddNotEqualTo(Long value) {
+        public Criteria andPriceAddNotEqualTo(BigDecimal value) {
             addCriterion("price_add <>", value, "priceAdd");
             return (Criteria) this;
         }
 
-        public Criteria andPriceAddGreaterThan(Long value) {
+        public Criteria andPriceAddGreaterThan(BigDecimal value) {
             addCriterion("price_add >", value, "priceAdd");
             return (Criteria) this;
         }
 
-        public Criteria andPriceAddGreaterThanOrEqualTo(Long value) {
+        public Criteria andPriceAddGreaterThanOrEqualTo(BigDecimal value) {
             addCriterion("price_add >=", value, "priceAdd");
             return (Criteria) this;
         }
 
-        public Criteria andPriceAddLessThan(Long value) {
+        public Criteria andPriceAddLessThan(BigDecimal value) {
             addCriterion("price_add <", value, "priceAdd");
             return (Criteria) this;
         }
 
-        public Criteria andPriceAddLessThanOrEqualTo(Long value) {
+        public Criteria andPriceAddLessThanOrEqualTo(BigDecimal value) {
             addCriterion("price_add <=", value, "priceAdd");
             return (Criteria) this;
         }
 
-        public Criteria andPriceAddIn(List<Long> values) {
+        public Criteria andPriceAddIn(List<BigDecimal> values) {
             addCriterion("price_add in", values, "priceAdd");
             return (Criteria) this;
         }
 
-        public Criteria andPriceAddNotIn(List<Long> values) {
+        public Criteria andPriceAddNotIn(List<BigDecimal> values) {
             addCriterion("price_add not in", values, "priceAdd");
             return (Criteria) this;
         }
 
-        public Criteria andPriceAddBetween(Long value1, Long value2) {
+        public Criteria andPriceAddBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("price_add between", value1, value2, "priceAdd");
             return (Criteria) this;
         }
 
-        public Criteria andPriceAddNotBetween(Long value1, Long value2) {
+        public Criteria andPriceAddNotBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("price_add not between", value1, value2, "priceAdd");
             return (Criteria) this;
         }

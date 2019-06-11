@@ -40,7 +40,7 @@ CREATE TABLE `zs_ticket` (
   `end_time` timestamp NULL DEFAULT NULL,
   `create_time` timestamp NULL DEFAULT NULL,
   `over_time` timestamp NULL DEFAULT NULL,
-  `pay` decimal DEFAULT NULL,
+  `pay` decimal(20,4) DEFAULT NULL,
   `sum_door` float DEFAULT NULL,
   `sum_taoban` float DEFAULT NULL,
   `sum_line` float DEFAULT NULL,

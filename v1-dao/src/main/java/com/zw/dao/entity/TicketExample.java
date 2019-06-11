@@ -1,5 +1,6 @@
 package com.zw.dao.entity;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -1245,52 +1246,52 @@ public class TicketExample {
             return (Criteria) this;
         }
 
-        public Criteria andPayEqualTo(Long value) {
+        public Criteria andPayEqualTo(BigDecimal value) {
             addCriterion("pay =", value, "pay");
             return (Criteria) this;
         }
 
-        public Criteria andPayNotEqualTo(Long value) {
+        public Criteria andPayNotEqualTo(BigDecimal value) {
             addCriterion("pay <>", value, "pay");
             return (Criteria) this;
         }
 
-        public Criteria andPayGreaterThan(Long value) {
+        public Criteria andPayGreaterThan(BigDecimal value) {
             addCriterion("pay >", value, "pay");
             return (Criteria) this;
         }
 
-        public Criteria andPayGreaterThanOrEqualTo(Long value) {
+        public Criteria andPayGreaterThanOrEqualTo(BigDecimal value) {
             addCriterion("pay >=", value, "pay");
             return (Criteria) this;
         }
 
-        public Criteria andPayLessThan(Long value) {
+        public Criteria andPayLessThan(BigDecimal value) {
             addCriterion("pay <", value, "pay");
             return (Criteria) this;
         }
 
-        public Criteria andPayLessThanOrEqualTo(Long value) {
+        public Criteria andPayLessThanOrEqualTo(BigDecimal value) {
             addCriterion("pay <=", value, "pay");
             return (Criteria) this;
         }
 
-        public Criteria andPayIn(List<Long> values) {
+        public Criteria andPayIn(List<BigDecimal> values) {
             addCriterion("pay in", values, "pay");
             return (Criteria) this;
         }
 
-        public Criteria andPayNotIn(List<Long> values) {
+        public Criteria andPayNotIn(List<BigDecimal> values) {
             addCriterion("pay not in", values, "pay");
             return (Criteria) this;
         }
 
-        public Criteria andPayBetween(Long value1, Long value2) {
+        public Criteria andPayBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("pay between", value1, value2, "pay");
             return (Criteria) this;
         }
 
-        public Criteria andPayNotBetween(Long value1, Long value2) {
+        public Criteria andPayNotBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("pay not between", value1, value2, "pay");
             return (Criteria) this;
         }

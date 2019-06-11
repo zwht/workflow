@@ -4,6 +4,7 @@ import com.zw.dao.entity.Corporation;
 import com.zw.vo.code.CodeResponseVo;
 import io.swagger.annotations.ApiModelProperty;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -21,9 +22,9 @@ public class ProcessResponseVo {
 
     private Long corporationId;
 
-    private Long price;
+    private BigDecimal price;
 
-    private Long priceAdd;
+    private BigDecimal priceAdd;
 
     private Short indexKey;
 
@@ -77,19 +78,19 @@ public class ProcessResponseVo {
         this.corporationId = corporationId;
     }
 
-    public Long getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
-    public Long getPriceAdd() {
+    public BigDecimal getPriceAdd() {
         return priceAdd;
     }
 
-    public void setPriceAdd(Long priceAdd) {
+    public void setPriceAdd(BigDecimal priceAdd) {
         this.priceAdd = priceAdd;
     }
 

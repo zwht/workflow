@@ -1,5 +1,7 @@
 package com.zw.dao.entity;
 
+import java.math.BigDecimal;
+
 public class Gx {
     private Long id;
 
@@ -9,7 +11,7 @@ public class Gx {
 
     private Long corporationId;
 
-    private Long price;
+    private BigDecimal price;
 
     private Short indexKey;
 
@@ -47,11 +49,11 @@ public class Gx {
         this.corporationId = corporationId;
     }
 
-    public Long getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

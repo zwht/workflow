@@ -1,5 +1,6 @@
 package com.zw.dao.entity;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class Ticket {
@@ -39,7 +40,7 @@ public class Ticket {
 
     private Date overTime;
 
-    private Long pay;
+    private BigDecimal pay;
 
     private Float sumDoor;
 
@@ -199,11 +200,11 @@ public class Ticket {
         this.overTime = overTime;
     }
 
-    public Long getPay() {
+    public BigDecimal getPay() {
         return pay;
     }
 
-    public void setPay(Long pay) {
+    public void setPay(BigDecimal pay) {
         this.pay = pay;
     }
 

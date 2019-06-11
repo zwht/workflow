@@ -1,5 +1,6 @@
 package com.zw.dao.entity;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class Process {
@@ -11,9 +12,9 @@ public class Process {
 
     private Long corporationId;
 
-    private Long price;
+    private BigDecimal price;
 
-    private Long priceAdd;
+    private BigDecimal priceAdd;
 
     private Short indexKey;
 
@@ -65,19 +66,19 @@ public class Process {
         this.corporationId = corporationId;
     }
 
-    public Long getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
-    public Long getPriceAdd() {
+    public BigDecimal getPriceAdd() {
         return priceAdd;
     }
 
-    public void setPriceAdd(Long priceAdd) {
+    public void setPriceAdd(BigDecimal priceAdd) {
         this.priceAdd = priceAdd;
     }
 
