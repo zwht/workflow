@@ -83,7 +83,7 @@ public class StatisticsServiceImpl implements StatisticsService {
                 criteria.andCorporationIdEqualTo( sProcessSearchVo.getCorporationId());
             }
             if (!StringUtils.isEmpty(sProcessSearchVo.getStartTime())&&!StringUtils.isEmpty(sProcessSearchVo.getEndTime())) {
-                criteria.andEndTimeBetween(sProcessSearchVo.getStartTime(),sProcessSearchVo.getEndTime());
+                criteria.andUpdateTimeBetween(sProcessSearchVo.getStartTime(),sProcessSearchVo.getEndTime());
             }
             return response.success(statisticsMapper.getUserPriceSum(str, example));
         } catch (Exception e) {

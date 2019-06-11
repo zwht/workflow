@@ -39,7 +39,7 @@ public class StatisticsController {
 
 
     @ApiOperation("根据条件查询工单数量")
-    @PostMapping("/public/statistics/getTicketSum")
+    @PostMapping("/statistics/getTicketSum")
     @ResponseBody
     public ResponseVo<List<STicketResponseVo>> getTicketSum(
             @ApiParam(value = "DoorSearchVo") @RequestBody STicketSearchVo sTicketSearchVo,
@@ -53,7 +53,7 @@ public class StatisticsController {
     }
 
     @ApiOperation("根据条件查询员工工资")
-    @PostMapping("/public/statistics/getUserPriceSum")
+    @PostMapping("/statistics/getUserPriceSum")
     @ResponseBody
     public ResponseVo<List<SProcessResponseVo>> getUserPriceSum(
             @ApiParam(value = "DoorSearchVo") @RequestBody SProcessSearchVo sProcessSearchVo,

@@ -17,10 +17,10 @@ public class SProcessSearchVo {
     private Long corporationId;
 
     @ApiModelProperty("开始时间")
-    private String startTime;
+    private Date startTime;
 
     @ApiModelProperty("结束时间")
-    private String endTime;
+    private Date endTime;
 
     @ApiModelProperty("年3，月2，日1")
     private Short type;
@@ -35,28 +35,18 @@ public class SProcessSearchVo {
     }
 
     public Date getStartTime() {
-        try{
-            return DateKit.getDate(startTime,"yyyy-MM-dd");
-        }catch (ParseException e) {
-            e.printStackTrace();
-            return null;
-        }
+        return startTime;
     }
 
-    public void setStartTime(String startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
     public Date getEndTime() {
-        try{
-            return DateKit.getDate(endTime,"yyyy-MM-dd");
-        }catch (ParseException e) {
-            e.printStackTrace();
-            return null;
-        }
+        return endTime;
     }
 
-    public void setEndTime(String endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 
