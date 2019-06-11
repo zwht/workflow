@@ -1,10 +1,7 @@
 package com.zw.service.statistics;
 
 import com.zw.common.vo.ResponseVo;
-import com.zw.common.vo.TokenVo;
-import com.zw.dao.entity.Door;
-import com.zw.vo.door.DoorAddVo;
-import com.zw.vo.door.DoorSearchVo;
+import com.zw.vo.statistics.SProcessSearchVo;
 import com.zw.vo.statistics.STicketSearchVo;
 
 /**
@@ -14,9 +11,5 @@ import com.zw.vo.statistics.STicketSearchVo;
  */
 public interface StatisticsService {
     ResponseVo getTicketSum(STicketSearchVo sTicketSearchVo);
-    ResponseVo getById(Long id);
-    ResponseVo update(Door door);
-    ResponseVo getList(Integer pageNum, Integer pageSize, DoorSearchVo doorSearchVo);
-    ResponseVo del(Long id);
-    ResponseVo updateState(Long id, Short state);
+    ResponseVo getUserPriceSum(SProcessSearchVo sProcessSearchVo);
 }

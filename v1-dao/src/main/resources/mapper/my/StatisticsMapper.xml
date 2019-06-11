@@ -41,4 +41,14 @@
     GROUP BY DATE_FORMAT(create_time,#{arg0})
     ORDER BY d asc;
   </select>
+
+  <select id="getUserPriceSum" resultType="com.zw.vo.statistics.SProcessResponseVo">
+    SELECT  sum(price) as price,sum(price_add) as priceAdd,count(*) as cum,user_id as userId, DATE_FORMAT(update_time,#{arg0}) as d
+    FROM zs_process
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    GROUP BY user_id, DATE_FORMAT(update_time,#{arg0})
+    ORDER BY price desc;
+  </select>
 </mapper>

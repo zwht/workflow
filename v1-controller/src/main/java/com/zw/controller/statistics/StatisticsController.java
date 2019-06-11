@@ -7,6 +7,9 @@ import com.zw.dao.entity.Door;
 import com.zw.service.door.DoorService;
 import com.zw.service.statistics.StatisticsService;
 import com.zw.vo.door.DoorSearchVo;
+import com.zw.vo.statistics.SProcessResponseVo;
+import com.zw.vo.statistics.SProcessSearchVo;
+import com.zw.vo.statistics.STicketResponseVo;
 import com.zw.vo.statistics.STicketSearchVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -38,7 +41,7 @@ public class StatisticsController {
     @ApiOperation("根据条件查询工单数量")
     @PostMapping("/public/statistics/getTicketSum")
     @ResponseBody
-    public ResponseVo<PageVo<List<Door>>> getTicketSum(
+    public ResponseVo<List<STicketResponseVo>> getTicketSum(
             @ApiParam(value = "DoorSearchVo") @RequestBody STicketSearchVo sTicketSearchVo,
             HttpServletRequest request
     ) {
@@ -49,60 +52,18 @@ public class StatisticsController {
         return statisticsService.getTicketSum(sTicketSearchVo);
     }
 
-
-    @ApiOperation("详情")
-    @GetMapping("/statistics/getById")
+    @ApiOperation("根据条件查询员工工资")
+    @PostMapping("/public/statistics/getUserPriceSum")
     @ResponseBody
-    public ResponseVo<Door> selectByPrimaryKey(
-            @ApiParam(required = true, value = "用户Id") @RequestParam Long id
-    ) {
-        return doorService.getById(id);
-    }
-
-
-    @ApiOperation("更新")
-    @PostMapping("/statistics/update")
-    @ResponseBody
-    public ResponseVo update(
-            @ApiParam(required = true, value = "DoorUpdateVo") @RequestBody Door door
-    ) {
-        return doorService.update(door);
-    }
-
-    @ResponseBody
-    @PostMapping("/statistics/list")
-    @ApiOperation("查询列表")
-    public ResponseVo<PageVo<List<Door>>> getDoorList(
-            @ApiParam(required = true, value = "当前页面", defaultValue = "1") @RequestParam Integer pageNum,
-            @ApiParam(required = true, value = "每页显示条数", defaultValue = "10") @RequestParam Integer pageSize,
-            @ApiParam(value = "DoorSearchVo") @RequestBody DoorSearchVo doorSearchVo,
+    public ResponseVo<List<SProcessResponseVo>> getUserPriceSum(
+            @ApiParam(value = "DoorSearchVo") @RequestBody SProcessSearchVo sProcessSearchVo,
             HttpServletRequest request
     ) {
-        if (StringUtils.isEmpty(doorSearchVo.getCorporationId())) {
+        if (StringUtils.isEmpty(sProcessSearchVo.getCorporationId())) {
             TokenVo tokenVo = (TokenVo) request.getAttribute("tokenVo");
-            doorSearchVo.setCorporationId(tokenVo.getCorporationId());
+            sProcessSearchVo.setCorporationId(tokenVo.getCorporationId());
         }
-        return doorService.getList(pageNum, pageSize, doorSearchVo);
-    }
-
-
-    @ApiOperation("删除")
-    @GetMapping("/statistics/del")
-    @ResponseBody
-    public ResponseVo del(
-            @ApiParam(required = true, value = "id") @RequestParam Long id
-    ) {
-        return doorService.del(id);
-    }
-
-    @ApiOperation("修改状态")
-    @GetMapping("/statistics/updateState")
-    @ResponseBody
-    public ResponseVo updateState(
-            @ApiParam(required = true, value = "id") @RequestParam Long id,
-            @ApiParam(required = true, value = "state") @RequestParam Short state
-    ) {
-        return doorService.updateState(id, state);
+        return statisticsService.getUserPriceSum(sProcessSearchVo);
     }
 
 }
