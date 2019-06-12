@@ -4,7 +4,7 @@
 
   <sql id="Example_Where_Clause">
     <where>
-      <foreach collection="arg1.oredCriteria" item="criteria" separator="or">
+      <foreach collection="param2.oredCriteria" item="criteria" separator="or">
         <if test="criteria.valid">
           <trim prefix="(" prefixOverrides="and" suffix=")">
             <foreach collection="criteria.criteria" item="criterion">
@@ -33,12 +33,12 @@
   </sql>
 
   <select id="getTicketSum" resultType="com.zw.vo.statistics.STicketResponseVo">
-    SELECT DATE_FORMAT(create_time,#{arg0}) as d,count(*) as cum
+    SELECT DATE_FORMAT(create_time,#{param1}) as d,count(*) as cum
     FROM zs_ticket
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-    GROUP BY DATE_FORMAT(create_time,#{arg0})
+    GROUP BY DATE_FORMAT(create_time,#{param1})
     ORDER BY d asc;
   </select>
 
@@ -48,7 +48,7 @@
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-    GROUP BY user_id, DATE_FORMAT(update_time,#{arg0})
+    GROUP BY user_id, DATE_FORMAT(update_time,#{param1})
     ORDER BY price desc;
   </select>
 </mapper>
