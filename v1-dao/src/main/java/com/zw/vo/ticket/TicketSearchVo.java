@@ -3,6 +3,7 @@ package com.zw.vo.ticket;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author：zhaowei
@@ -11,8 +12,8 @@ import java.util.Date;
  */
 public class TicketSearchVo {
 
-    @ApiModelProperty("工序名")
-    public String name;
+    @ApiModelProperty("工单编号")
+    public String number;
 
     @ApiModelProperty("公司id")
     private Long corporationId;
@@ -32,20 +33,23 @@ public class TicketSearchVo {
     @ApiModelProperty("结束时间")
     private Date endTime;
 
-    public Date getStartTime() {
-        return startTime;
+    @ApiModelProperty("状态")
+    private List<Short> state;
+
+    public String getNumber() {
+        return number;
     }
 
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
-    public Date getEndTime() {
-        return endTime;
+    public Long getCorporationId() {
+        return corporationId;
     }
 
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
+    public void setCorporationId(Long corporationId) {
+        this.corporationId = corporationId;
     }
 
     public Long getDealersId() {
@@ -72,19 +76,27 @@ public class TicketSearchVo {
         this.editId = editId;
     }
 
-    public Long getCorporationId() {
-        return corporationId;
+    public Date getStartTime() {
+        return startTime;
     }
 
-    public void setCorporationId(Long corporationId) {
-        this.corporationId = corporationId;
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
     }
 
-    public String getName() {
-        return name;
+    public Date getEndTime() {
+        return endTime;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
+
+    public List<Short> getState() {
+        return state;
+    }
+
+    public void setState(List<Short> state) {
+        this.state = state;
     }
 }

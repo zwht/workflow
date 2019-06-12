@@ -130,8 +130,8 @@ public class TicketServiceImpl implements TicketService {
         example.setOrderByClause("`create_time` DESC");
         TicketExample.Criteria criteria = example.createCriteria();
         criteria.andFlagIsNull();
-        if (!StringUtils.isEmpty(ticketSearchVo.getName())) {
-            criteria.andNameLike("%" + ticketSearchVo.getName() + "%");
+        if (!StringUtils.isEmpty(ticketSearchVo.getNumber())) {
+            criteria.andNameLike("%" + ticketSearchVo.getNumber() + "%");
         }
         if (!StringUtils.isEmpty(ticketSearchVo.getCorporationId())) {
             criteria.andCorporationIdEqualTo(ticketSearchVo.getCorporationId());
@@ -144,6 +144,12 @@ public class TicketServiceImpl implements TicketService {
         }
         if (!StringUtils.isEmpty(ticketSearchVo.getEditId())) {
             criteria.andEditIdEqualTo(ticketSearchVo.getEditId());
+        }
+        if (!StringUtils.isEmpty(ticketSearchVo.getState())&&ticketSearchVo.getState().size()>0) {
+            criteria.andStateIn(ticketSearchVo.getState());
+        }
+        if (!StringUtils.isEmpty(ticketSearchVo.getStartTime())) {
+            criteria.andCreateTimeBetween(ticketSearchVo.getStartTime(),ticketSearchVo.getEndTime());
         }
         try {
             Page page = PageHelper.startPage(pageNum, pageSize);
@@ -181,8 +187,8 @@ public class TicketServiceImpl implements TicketService {
         example.setOrderByClause("`create_time` DESC");
         TicketExample.Criteria criteria = example.createCriteria();
         criteria.andFlagIsNull();
-        if (!StringUtils.isEmpty(ticketSearchVo.getName())) {
-            criteria.andNameLike("%" + ticketSearchVo.getName() + "%");
+        if (!StringUtils.isEmpty(ticketSearchVo.getNumber())) {
+            criteria.andNameLike("%" + ticketSearchVo.getNumber() + "%");
         }
         if (!StringUtils.isEmpty(ticketSearchVo.getCorporationId())) {
             criteria.andCorporationIdEqualTo(ticketSearchVo.getCorporationId());
@@ -201,6 +207,9 @@ public class TicketServiceImpl implements TicketService {
         }else{
             criteria.andCreateTimeBetween(getTimesMonthmorning(),getTimesMonthnight());
 
+        }
+        if (!StringUtils.isEmpty(ticketSearchVo.getState())&&ticketSearchVo.getState().size()>0) {
+            criteria.andStateIn(ticketSearchVo.getState());
         }
         try {
             Page page = PageHelper.startPage(1, 1);
