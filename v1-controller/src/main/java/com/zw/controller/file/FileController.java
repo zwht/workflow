@@ -107,8 +107,8 @@ public class FileController {
 
             File file = new File(fileUrl + file1.getType() + "/" + file1.getId() + file1.getFileType());
             if (file.exists()) {
-                response.setContentType("application/force-download");// 设置强制下载不打开
-                response.addHeader("Content-Disposition", "attachment;fileName=" + file1.getName());// 设置文件名
+                // response.setContentType("application/force-download");// 设置强制下载不打开
+                // response.addHeader("Content-Disposition", "attachment;fileName=" + file1.getName());// 设置文件名
                 byte[] buffer = new byte[1024];
                 FileInputStream fis = null;
                 BufferedInputStream bis = null;
