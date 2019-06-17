@@ -18,6 +18,8 @@
     <result column="arithmetic" jdbcType="VARCHAR" property="arithmetic" />
     <result column="sum" jdbcType="INTEGER" property="sum" />
     <result column="gx_params" jdbcType="VARCHAR" property="gxParams" />
+    <result column="unit_price" jdbcType="DECIMAL" property="unitPrice" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -79,7 +81,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, name, img, corporation_id, gx_ids, create_time, state, gx_values, number, colors, 
-    info_id, type, flag, arithmetic, sum, gx_params
+    info_id, type, flag, arithmetic, sum, gx_params, unit_price, unit
   </sql>
   <select id="selectByExample" parameterType="com.zw.dao.entity.DoorExample" resultMap="BaseResultMap">
     select
@@ -117,13 +119,15 @@
       state, gx_values, number, 
       colors, info_id, type, 
       flag, arithmetic, sum, 
-      gx_params)
+      gx_params, unit_price, unit
+      )
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}, 
       #{corporationId,jdbcType=BIGINT}, #{gxIds,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{state,jdbcType=SMALLINT}, #{gxValues,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, 
       #{colors,jdbcType=VARCHAR}, #{infoId,jdbcType=BIGINT}, #{type,jdbcType=SMALLINT}, 
       #{flag,jdbcType=SMALLINT}, #{arithmetic,jdbcType=VARCHAR}, #{sum,jdbcType=INTEGER}, 
-      #{gxParams,jdbcType=VARCHAR})
+      #{gxParams,jdbcType=VARCHAR}, #{unitPrice,jdbcType=DECIMAL}, #{unit,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.zw.dao.entity.Door">
     insert into bs_door
@@ -176,6 +180,12 @@
       <if test="gxParams != null">
         gx_params,
       </if>
+      <if test="unitPrice != null">
+        unit_price,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -225,6 +235,12 @@
       </if>
       <if test="gxParams != null">
         #{gxParams,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPrice != null">
+        #{unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -285,6 +301,12 @@
       <if test="record.gxParams != null">
         gx_params = #{record.gxParams,jdbcType=VARCHAR},
       </if>
+      <if test="record.unitPrice != null">
+        unit_price = #{record.unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.unit != null">
+        unit = #{record.unit,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -307,7 +329,9 @@
       flag = #{record.flag,jdbcType=SMALLINT},
       arithmetic = #{record.arithmetic,jdbcType=VARCHAR},
       sum = #{record.sum,jdbcType=INTEGER},
-      gx_params = #{record.gxParams,jdbcType=VARCHAR}
+      gx_params = #{record.gxParams,jdbcType=VARCHAR},
+      unit_price = #{record.unitPrice,jdbcType=DECIMAL},
+      unit = #{record.unit,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -360,6 +384,12 @@
       <if test="gxParams != null">
         gx_params = #{gxParams,jdbcType=VARCHAR},
       </if>
+      <if test="unitPrice != null">
+        unit_price = #{unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -379,7 +409,9 @@
       flag = #{flag,jdbcType=SMALLINT},
       arithmetic = #{arithmetic,jdbcType=VARCHAR},
       sum = #{sum,jdbcType=INTEGER},
-      gx_params = #{gxParams,jdbcType=VARCHAR}
+      gx_params = #{gxParams,jdbcType=VARCHAR},
+      unit_price = #{unitPrice,jdbcType=DECIMAL},
+      unit = #{unit,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

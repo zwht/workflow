@@ -56,6 +56,12 @@ public class Ticket {
 
     private String editName;
 
+    private BigDecimal earnest;
+
+    private BigDecimal payment;
+
+    private String backDescribe;
+
     public Long getId() {
         return id;
     }
@@ -262,5 +268,29 @@ public class Ticket {
 
     public void setEditName(String editName) {
         this.editName = editName == null ? null : editName.trim();
+    }
+
+    public BigDecimal getEarnest() {
+        return earnest;
+    }
+
+    public void setEarnest(BigDecimal earnest) {
+        this.earnest = earnest;
+    }
+
+    public BigDecimal getPayment() {
+        return payment;
+    }
+
+    public void setPayment(BigDecimal payment) {
+        this.payment = payment;
+    }
+
+    public String getBackDescribe() {
+        return backDescribe;
+    }
+
+    public void setBackDescribe(String backDescribe) {
+        this.backDescribe = backDescribe == null ? null : backDescribe.trim();
     }
 }

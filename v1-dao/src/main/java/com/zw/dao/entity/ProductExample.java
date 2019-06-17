@@ -1,5 +1,6 @@
 package com.zw.dao.entity;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -2762,6 +2763,196 @@ public class ProductExample {
 
         public Criteria andLineNotBetween(String value1, String value2) {
             addCriterion("line not between", value1, value2, "line");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitPriceIsNull() {
+            addCriterion("unit_price is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitPriceIsNotNull() {
+            addCriterion("unit_price is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitPriceEqualTo(BigDecimal value) {
+            addCriterion("unit_price =", value, "unitPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitPriceNotEqualTo(BigDecimal value) {
+            addCriterion("unit_price <>", value, "unitPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitPriceGreaterThan(BigDecimal value) {
+            addCriterion("unit_price >", value, "unitPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitPriceGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("unit_price >=", value, "unitPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitPriceLessThan(BigDecimal value) {
+            addCriterion("unit_price <", value, "unitPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitPriceLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("unit_price <=", value, "unitPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitPriceIn(List<BigDecimal> values) {
+            addCriterion("unit_price in", values, "unitPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitPriceNotIn(List<BigDecimal> values) {
+            addCriterion("unit_price not in", values, "unitPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitPriceBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("unit_price between", value1, value2, "unitPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitPriceNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("unit_price not between", value1, value2, "unitPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyIsNull() {
+            addCriterion("money is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyIsNotNull() {
+            addCriterion("money is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyEqualTo(BigDecimal value) {
+            addCriterion("money =", value, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyNotEqualTo(BigDecimal value) {
+            addCriterion("money <>", value, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyGreaterThan(BigDecimal value) {
+            addCriterion("money >", value, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("money >=", value, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyLessThan(BigDecimal value) {
+            addCriterion("money <", value, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("money <=", value, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyIn(List<BigDecimal> values) {
+            addCriterion("money in", values, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyNotIn(List<BigDecimal> values) {
+            addCriterion("money not in", values, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("money between", value1, value2, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("money not between", value1, value2, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitIsNull() {
+            addCriterion("unit is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitIsNotNull() {
+            addCriterion("unit is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitEqualTo(String value) {
+            addCriterion("unit =", value, "unit");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitNotEqualTo(String value) {
+            addCriterion("unit <>", value, "unit");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitGreaterThan(String value) {
+            addCriterion("unit >", value, "unit");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitGreaterThanOrEqualTo(String value) {
+            addCriterion("unit >=", value, "unit");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitLessThan(String value) {
+            addCriterion("unit <", value, "unit");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitLessThanOrEqualTo(String value) {
+            addCriterion("unit <=", value, "unit");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitLike(String value) {
+            addCriterion("unit like", value, "unit");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitNotLike(String value) {
+            addCriterion("unit not like", value, "unit");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitIn(List<String> values) {
+            addCriterion("unit in", values, "unit");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitNotIn(List<String> values) {
+            addCriterion("unit not in", values, "unit");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitBetween(String value1, String value2) {
+            addCriterion("unit between", value1, value2, "unit");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnitNotBetween(String value1, String value2) {
+            addCriterion("unit not between", value1, value2, "unit");
             return (Criteria) this;
         }
     }

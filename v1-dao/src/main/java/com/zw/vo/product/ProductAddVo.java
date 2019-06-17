@@ -2,6 +2,7 @@ package com.zw.vo.product;
 
 import io.swagger.annotations.ApiModelProperty;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -93,6 +94,33 @@ public class ProductAddVo {
     private String remarks;
 
     private String line;
+    private String unit;
+    private BigDecimal unitPrice;
+    private BigDecimal money;
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public BigDecimal getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(BigDecimal unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
+    public BigDecimal getMoney() {
+        return money;
+    }
+
+    public void setMoney(BigDecimal money) {
+        this.money = money;
+    }
 
     public Long getId() {
         return id;

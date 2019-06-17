@@ -58,7 +58,7 @@ public class TicketServiceImpl implements TicketService {
             if (tickets.size() == 0) {
                 ticket.setId(new SnowFlake(1, 1).nextId());
                 ticket.setCreateTime(new Timestamp(System.currentTimeMillis()));
-                ticket.setState(Short.parseShort("1501"));
+                ticket.setState(Short.parseShort("1500"));
                 ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
                 Validator validator = factory.getValidator();
                 Set<ConstraintViolation<Ticket>> constraintViolations = validator.validate(ticket);
@@ -93,7 +93,6 @@ public class TicketServiceImpl implements TicketService {
             TicketExample ticketExample = new TicketExample();
             TicketExample.Criteria criteria = ticketExample.createCriteria();
             criteria.andNameEqualTo(ticket.getName());
-            criteria.andStateNotEqualTo(Short.parseShort("1500"));
             criteria.andCorporationIdEqualTo(ticket.getCorporationId());
             criteria.andIdNotEqualTo(ticket.getId());
             // 查询是否有相同

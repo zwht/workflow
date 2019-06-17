@@ -534,6 +534,76 @@ public class GxExample {
             addCriterion("flag not between", value1, value2, "flag");
             return (Criteria) this;
         }
+
+        public Criteria andRelyOnIsNull() {
+            addCriterion("rely_on is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRelyOnIsNotNull() {
+            addCriterion("rely_on is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRelyOnEqualTo(String value) {
+            addCriterion("rely_on =", value, "relyOn");
+            return (Criteria) this;
+        }
+
+        public Criteria andRelyOnNotEqualTo(String value) {
+            addCriterion("rely_on <>", value, "relyOn");
+            return (Criteria) this;
+        }
+
+        public Criteria andRelyOnGreaterThan(String value) {
+            addCriterion("rely_on >", value, "relyOn");
+            return (Criteria) this;
+        }
+
+        public Criteria andRelyOnGreaterThanOrEqualTo(String value) {
+            addCriterion("rely_on >=", value, "relyOn");
+            return (Criteria) this;
+        }
+
+        public Criteria andRelyOnLessThan(String value) {
+            addCriterion("rely_on <", value, "relyOn");
+            return (Criteria) this;
+        }
+
+        public Criteria andRelyOnLessThanOrEqualTo(String value) {
+            addCriterion("rely_on <=", value, "relyOn");
+            return (Criteria) this;
+        }
+
+        public Criteria andRelyOnLike(String value) {
+            addCriterion("rely_on like", value, "relyOn");
+            return (Criteria) this;
+        }
+
+        public Criteria andRelyOnNotLike(String value) {
+            addCriterion("rely_on not like", value, "relyOn");
+            return (Criteria) this;
+        }
+
+        public Criteria andRelyOnIn(List<String> values) {
+            addCriterion("rely_on in", values, "relyOn");
+            return (Criteria) this;
+        }
+
+        public Criteria andRelyOnNotIn(List<String> values) {
+            addCriterion("rely_on not in", values, "relyOn");
+            return (Criteria) this;
+        }
+
+        public Criteria andRelyOnBetween(String value1, String value2) {
+            addCriterion("rely_on between", value1, value2, "relyOn");
+            return (Criteria) this;
+        }
+
+        public Criteria andRelyOnNotBetween(String value1, String value2) {
+            addCriterion("rely_on not between", value1, value2, "relyOn");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

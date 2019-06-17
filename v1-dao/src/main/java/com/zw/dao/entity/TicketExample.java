@@ -1745,6 +1745,196 @@ public class TicketExample {
             addCriterion("edit_name not between", value1, value2, "editName");
             return (Criteria) this;
         }
+
+        public Criteria andEarnestIsNull() {
+            addCriterion("earnest is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEarnestIsNotNull() {
+            addCriterion("earnest is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEarnestEqualTo(BigDecimal value) {
+            addCriterion("earnest =", value, "earnest");
+            return (Criteria) this;
+        }
+
+        public Criteria andEarnestNotEqualTo(BigDecimal value) {
+            addCriterion("earnest <>", value, "earnest");
+            return (Criteria) this;
+        }
+
+        public Criteria andEarnestGreaterThan(BigDecimal value) {
+            addCriterion("earnest >", value, "earnest");
+            return (Criteria) this;
+        }
+
+        public Criteria andEarnestGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("earnest >=", value, "earnest");
+            return (Criteria) this;
+        }
+
+        public Criteria andEarnestLessThan(BigDecimal value) {
+            addCriterion("earnest <", value, "earnest");
+            return (Criteria) this;
+        }
+
+        public Criteria andEarnestLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("earnest <=", value, "earnest");
+            return (Criteria) this;
+        }
+
+        public Criteria andEarnestIn(List<BigDecimal> values) {
+            addCriterion("earnest in", values, "earnest");
+            return (Criteria) this;
+        }
+
+        public Criteria andEarnestNotIn(List<BigDecimal> values) {
+            addCriterion("earnest not in", values, "earnest");
+            return (Criteria) this;
+        }
+
+        public Criteria andEarnestBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("earnest between", value1, value2, "earnest");
+            return (Criteria) this;
+        }
+
+        public Criteria andEarnestNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("earnest not between", value1, value2, "earnest");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentIsNull() {
+            addCriterion("payment is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentIsNotNull() {
+            addCriterion("payment is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentEqualTo(BigDecimal value) {
+            addCriterion("payment =", value, "payment");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentNotEqualTo(BigDecimal value) {
+            addCriterion("payment <>", value, "payment");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentGreaterThan(BigDecimal value) {
+            addCriterion("payment >", value, "payment");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("payment >=", value, "payment");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentLessThan(BigDecimal value) {
+            addCriterion("payment <", value, "payment");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("payment <=", value, "payment");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentIn(List<BigDecimal> values) {
+            addCriterion("payment in", values, "payment");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentNotIn(List<BigDecimal> values) {
+            addCriterion("payment not in", values, "payment");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("payment between", value1, value2, "payment");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("payment not between", value1, value2, "payment");
+            return (Criteria) this;
+        }
+
+        public Criteria andBackDescribeIsNull() {
+            addCriterion("back_describe is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBackDescribeIsNotNull() {
+            addCriterion("back_describe is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBackDescribeEqualTo(String value) {
+            addCriterion("back_describe =", value, "backDescribe");
+            return (Criteria) this;
+        }
+
+        public Criteria andBackDescribeNotEqualTo(String value) {
+            addCriterion("back_describe <>", value, "backDescribe");
+            return (Criteria) this;
+        }
+
+        public Criteria andBackDescribeGreaterThan(String value) {
+            addCriterion("back_describe >", value, "backDescribe");
+            return (Criteria) this;
+        }
+
+        public Criteria andBackDescribeGreaterThanOrEqualTo(String value) {
+            addCriterion("back_describe >=", value, "backDescribe");
+            return (Criteria) this;
+        }
+
+        public Criteria andBackDescribeLessThan(String value) {
+            addCriterion("back_describe <", value, "backDescribe");
+            return (Criteria) this;
+        }
+
+        public Criteria andBackDescribeLessThanOrEqualTo(String value) {
+            addCriterion("back_describe <=", value, "backDescribe");
+            return (Criteria) this;
+        }
+
+        public Criteria andBackDescribeLike(String value) {
+            addCriterion("back_describe like", value, "backDescribe");
+            return (Criteria) this;
+        }
+
+        public Criteria andBackDescribeNotLike(String value) {
+            addCriterion("back_describe not like", value, "backDescribe");
+            return (Criteria) this;
+        }
+
+        public Criteria andBackDescribeIn(List<String> values) {
+            addCriterion("back_describe in", values, "backDescribe");
+            return (Criteria) this;
+        }
+
+        public Criteria andBackDescribeNotIn(List<String> values) {
+            addCriterion("back_describe not in", values, "backDescribe");
+            return (Criteria) this;
+        }
+
+        public Criteria andBackDescribeBetween(String value1, String value2) {
+            addCriterion("back_describe between", value1, value2, "backDescribe");
+            return (Criteria) this;
+        }
+
+        public Criteria andBackDescribeNotBetween(String value1, String value2) {
+            addCriterion("back_describe not between", value1, value2, "backDescribe");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

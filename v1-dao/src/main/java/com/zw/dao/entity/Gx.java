@@ -17,6 +17,8 @@ public class Gx {
 
     private Short flag;
 
+    private String relyOn;
+
     public Long getId() {
         return id;
     }
@@ -71,5 +73,13 @@ public class Gx {
 
     public void setFlag(Short flag) {
         this.flag = flag;
+    }
+
+    public String getRelyOn() {
+        return relyOn;
+    }
+
+    public void setRelyOn(String relyOn) {
+        this.relyOn = relyOn == null ? null : relyOn.trim();
     }
 }

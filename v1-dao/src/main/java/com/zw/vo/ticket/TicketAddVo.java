@@ -61,6 +61,35 @@ public class TicketAddVo {
 
     private String editName;
 
+    private String backDescribe;
+
+    private BigDecimal earnest;
+    private BigDecimal payment;
+
+    public BigDecimal getEarnest() {
+        return earnest;
+    }
+
+    public void setEarnest(BigDecimal earnest) {
+        this.earnest = earnest;
+    }
+
+    public BigDecimal getPayment() {
+        return payment;
+    }
+
+    public void setPayment(BigDecimal payment) {
+        this.payment = payment;
+    }
+
+    public String getBackDescribe() {
+        return backDescribe;
+    }
+
+    public void setBackDescribe(String backDescribe) {
+        this.backDescribe = backDescribe;
+    }
+
     public String getEditName() {
         return editName;
     }

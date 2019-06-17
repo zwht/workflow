@@ -1,5 +1,6 @@
 package com.zw.dao.entity;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class Door {
@@ -34,6 +35,10 @@ public class Door {
     private Integer sum;
 
     private String gxParams;
+
+    private BigDecimal unitPrice;
+
+    private String unit;
 
     public Long getId() {
         return id;
@@ -161,5 +166,21 @@ public class Door {
 
     public void setGxParams(String gxParams) {
         this.gxParams = gxParams == null ? null : gxParams.trim();
+    }
+
+    public BigDecimal getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(BigDecimal unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit == null ? null : unit.trim();
     }
 }

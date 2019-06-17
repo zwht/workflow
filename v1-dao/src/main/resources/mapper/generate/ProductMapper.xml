@@ -44,6 +44,9 @@
     <result column="material_id" jdbcType="BIGINT" property="materialId" />
     <result column="remarks" jdbcType="VARCHAR" property="remarks" />
     <result column="line" jdbcType="VARCHAR" property="line" />
+    <result column="unit_price" jdbcType="DECIMAL" property="unitPrice" />
+    <result column="money" jdbcType="DECIMAL" property="money" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -108,7 +111,7 @@
     cover_width, cover_height, cover_depth, width, height, lb_width, lb_height, db_width, 
     db_height, color_id, line_id, line_sum, productcol, type, module_id, state, lb_sum, 
     db_sum, sum, line_length, ticket_id, index_key, flag, cover_size, door_size, lb_size, 
-    db_size, door, color, material, material_id, remarks, line
+    db_size, door, color, material, material_id, remarks, line, unit_price, money, unit
   </sql>
   <select id="selectByExample" parameterType="com.zw.dao.entity.ProductExample" resultMap="BaseResultMap">
     select
@@ -154,7 +157,8 @@
       index_key, flag, cover_size, 
       door_size, lb_size, db_size, 
       door, color, material, 
-      material_id, remarks, line
+      material_id, remarks, line, 
+      unit_price, money, unit
       )
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{doorId,jdbcType=BIGINT}, 
       #{processIds,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}, #{mark,jdbcType=VARCHAR}, 
@@ -169,7 +173,8 @@
       #{indexKey,jdbcType=SMALLINT}, #{flag,jdbcType=SMALLINT}, #{coverSize,jdbcType=VARCHAR}, 
       #{doorSize,jdbcType=VARCHAR}, #{lbSize,jdbcType=VARCHAR}, #{dbSize,jdbcType=VARCHAR}, 
       #{door,jdbcType=VARCHAR}, #{color,jdbcType=VARCHAR}, #{material,jdbcType=VARCHAR}, 
-      #{materialId,jdbcType=BIGINT}, #{remarks,jdbcType=VARCHAR}, #{line,jdbcType=VARCHAR}
+      #{materialId,jdbcType=BIGINT}, #{remarks,jdbcType=VARCHAR}, #{line,jdbcType=VARCHAR}, 
+      #{unitPrice,jdbcType=DECIMAL}, #{money,jdbcType=DECIMAL}, #{unit,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.zw.dao.entity.Product">
@@ -301,6 +306,15 @@
       <if test="line != null">
         line,
       </if>
+      <if test="unitPrice != null">
+        unit_price,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -428,6 +442,15 @@
       </if>
       <if test="line != null">
         #{line,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPrice != null">
+        #{unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -566,6 +589,15 @@
       <if test="record.line != null">
         line = #{record.line,jdbcType=VARCHAR},
       </if>
+      <if test="record.unitPrice != null">
+        unit_price = #{record.unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.money != null">
+        money = #{record.money,jdbcType=DECIMAL},
+      </if>
+      <if test="record.unit != null">
+        unit = #{record.unit,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -614,7 +646,10 @@
       material = #{record.material,jdbcType=VARCHAR},
       material_id = #{record.materialId,jdbcType=BIGINT},
       remarks = #{record.remarks,jdbcType=VARCHAR},
-      line = #{record.line,jdbcType=VARCHAR}
+      line = #{record.line,jdbcType=VARCHAR},
+      unit_price = #{record.unitPrice,jdbcType=DECIMAL},
+      money = #{record.money,jdbcType=DECIMAL},
+      unit = #{record.unit,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -745,6 +780,15 @@
       <if test="line != null">
         line = #{line,jdbcType=VARCHAR},
       </if>
+      <if test="unitPrice != null">
+        unit_price = #{unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -790,7 +834,10 @@
       material = #{material,jdbcType=VARCHAR},
       material_id = #{materialId,jdbcType=BIGINT},
       remarks = #{remarks,jdbcType=VARCHAR},
-      line = #{line,jdbcType=VARCHAR}
+      line = #{line,jdbcType=VARCHAR},
+      unit_price = #{unitPrice,jdbcType=DECIMAL},
+      money = #{money,jdbcType=DECIMAL},
+      unit = #{unit,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

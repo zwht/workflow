@@ -36,6 +36,28 @@ public class DoorAddVo {
     @ApiModelProperty("参数")
     private String gxParams;
 
+    @ApiModelProperty("单位")
+    private String unit;
+
+    @ApiModelProperty("单价")
+    private String unitPrice;
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public String getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(String unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
     public String getGxParams() {
         return gxParams;
     }

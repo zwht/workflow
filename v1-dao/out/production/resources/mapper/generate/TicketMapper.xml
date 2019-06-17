@@ -28,6 +28,9 @@
     <result column="summary" jdbcType="VARCHAR" property="summary" />
     <result column="remarks" jdbcType="VARCHAR" property="remarks" />
     <result column="edit_name" jdbcType="VARCHAR" property="editName" />
+    <result column="earnest" jdbcType="DECIMAL" property="earnest" />
+    <result column="payment" jdbcType="DECIMAL" property="payment" />
+    <result column="back_describe" jdbcType="VARCHAR" property="backDescribe" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -90,7 +93,8 @@
   <sql id="Base_Column_List">
     id, name, number, corporation_id, dealers_id, market_id, edit_id, brand_id, product_ids, 
     odd, address, state, type, priority, start_time, end_time, create_time, over_time, 
-    pay, sum_door, sum_taoban, sum_line, flag, summary, remarks, edit_name
+    pay, sum_door, sum_taoban, sum_line, flag, summary, remarks, edit_name, earnest, 
+    payment, back_describe
   </sql>
   <select id="selectByExample" parameterType="com.zw.dao.entity.TicketExample" resultMap="BaseResultMap">
     select
@@ -131,7 +135,8 @@
       end_time, create_time, over_time, 
       pay, sum_door, sum_taoban, 
       sum_line, flag, summary, 
-      remarks, edit_name)
+      remarks, edit_name, earnest, 
+      payment, back_describe)
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, 
       #{corporationId,jdbcType=BIGINT}, #{dealersId,jdbcType=BIGINT}, #{marketId,jdbcType=BIGINT}, 
       #{editId,jdbcType=BIGINT}, #{brandId,jdbcType=BIGINT}, #{productIds,jdbcType=VARCHAR}, 
@@ -140,7 +145,8 @@
       #{endTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{overTime,jdbcType=TIMESTAMP}, 
       #{pay,jdbcType=DECIMAL}, #{sumDoor,jdbcType=REAL}, #{sumTaoban,jdbcType=REAL}, 
       #{sumLine,jdbcType=REAL}, #{flag,jdbcType=SMALLINT}, #{summary,jdbcType=VARCHAR}, 
-      #{remarks,jdbcType=VARCHAR}, #{editName,jdbcType=VARCHAR})
+      #{remarks,jdbcType=VARCHAR}, #{editName,jdbcType=VARCHAR}, #{earnest,jdbcType=DECIMAL}, 
+      #{payment,jdbcType=DECIMAL}, #{backDescribe,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zw.dao.entity.Ticket">
     insert into zs_ticket
@@ -223,6 +229,15 @@
       <if test="editName != null">
         edit_name,
       </if>
+      <if test="earnest != null">
+        earnest,
+      </if>
+      <if test="payment != null">
+        payment,
+      </if>
+      <if test="backDescribe != null">
+        back_describe,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -302,6 +317,15 @@
       </if>
       <if test="editName != null">
         #{editName,jdbcType=VARCHAR},
+      </if>
+      <if test="earnest != null">
+        #{earnest,jdbcType=DECIMAL},
+      </if>
+      <if test="payment != null">
+        #{payment,jdbcType=DECIMAL},
+      </if>
+      <if test="backDescribe != null">
+        #{backDescribe,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -392,6 +416,15 @@
       <if test="record.editName != null">
         edit_name = #{record.editName,jdbcType=VARCHAR},
       </if>
+      <if test="record.earnest != null">
+        earnest = #{record.earnest,jdbcType=DECIMAL},
+      </if>
+      <if test="record.payment != null">
+        payment = #{record.payment,jdbcType=DECIMAL},
+      </if>
+      <if test="record.backDescribe != null">
+        back_describe = #{record.backDescribe,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -424,7 +457,10 @@
       flag = #{record.flag,jdbcType=SMALLINT},
       summary = #{record.summary,jdbcType=VARCHAR},
       remarks = #{record.remarks,jdbcType=VARCHAR},
-      edit_name = #{record.editName,jdbcType=VARCHAR}
+      edit_name = #{record.editName,jdbcType=VARCHAR},
+      earnest = #{record.earnest,jdbcType=DECIMAL},
+      payment = #{record.payment,jdbcType=DECIMAL},
+      back_describe = #{record.backDescribe,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -507,6 +543,15 @@
       <if test="editName != null">
         edit_name = #{editName,jdbcType=VARCHAR},
       </if>
+      <if test="earnest != null">
+        earnest = #{earnest,jdbcType=DECIMAL},
+      </if>
+      <if test="payment != null">
+        payment = #{payment,jdbcType=DECIMAL},
+      </if>
+      <if test="backDescribe != null">
+        back_describe = #{backDescribe,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -536,7 +581,10 @@
       flag = #{flag,jdbcType=SMALLINT},
       summary = #{summary,jdbcType=VARCHAR},
       remarks = #{remarks,jdbcType=VARCHAR},
-      edit_name = #{editName,jdbcType=VARCHAR}
+      edit_name = #{editName,jdbcType=VARCHAR},
+      earnest = #{earnest,jdbcType=DECIMAL},
+      payment = #{payment,jdbcType=DECIMAL},
+      back_describe = #{backDescribe,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
