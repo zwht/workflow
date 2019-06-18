@@ -1053,14 +1053,14 @@ ng-zorro-antd/cascader
 
 ng-zorro-antd/mention
 
-@ngx-translate/core
+@angular/forms
 MIT
 
 ng-zorro-antd/table
 
 @angular/cdk/scrolling
 
-@angular/forms
+@ngx-translate/core
 MIT
 
 zone.js
