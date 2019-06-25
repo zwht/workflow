@@ -47,7 +47,8 @@ public class ProcessServiceImpl implements ProcessService {
                     BeanUtils.copyProperties(processList[i], process);
                     process.setCorporationId(tokenVo.getCorporationId());
                     process.setId(new SnowFlake(1, 1).nextId());
-                    //process.setState(1601);
+                    process.setState(1601);
+                    process.setUserId(null);
                     ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
                     Validator validator = factory.getValidator();
                     Set<ConstraintViolation<Process>> constraintViolations = validator.validate(process);
@@ -63,8 +64,8 @@ public class ProcessServiceImpl implements ProcessService {
                     criteria1.andIdEqualTo(processList[i].getId());
                     Process process = processMapper.selectByPrimaryKey(processList[i].getId());
                     process.setPrice(processList[i].getPrice());
-                    process.setUserId(processList[i].getUserId());
-                    process.setState(processList[i].getState());
+                    //process.setUserId(processList[i].getUserId());
+                    //process.setState(processList[i].getState());
                     process.setPriceAdd(processList[i].getPriceAdd());
                     processMapper.updateByExampleSelective(process, example);
                 }
@@ -90,29 +91,18 @@ public class ProcessServiceImpl implements ProcessService {
     public ResponseVo update(Process process) {
         ResponseVo response = new ResponseVo();
         try {
-            ProcessExample processExample = new ProcessExample();
-            ProcessExample.Criteria criteria = processExample.createCriteria();
-            criteria.andCorporationIdEqualTo(process.getCorporationId());
-            criteria.andIdNotEqualTo(process.getId());
-            // 查询是否有相同
-            List<Process> corporations = processMapper.selectByExample(processExample);
-            if (corporations.size() == 0) {
-                ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-                Validator validator = factory.getValidator();
-                Set<ConstraintViolation<Process>> constraintViolations = validator.validate(process);
+            ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+            Validator validator = factory.getValidator();
+            Set<ConstraintViolation<Process>> constraintViolations = validator.validate(process);
 
-                if (constraintViolations.size() != 0) {
-                    return response.validation(constraintViolations);
-                } else {
-                    ProcessExample example = new ProcessExample();
-                    ProcessExample.Criteria criteria1 = example.createCriteria();
-                    criteria1.andIdEqualTo(process.getId());
-                    processMapper.updateByExampleSelective(process, example);
-                    return response.success("修改成功");
-                }
-
+            if (constraintViolations.size() != 0) {
+                return response.validation(constraintViolations);
             } else {
-                return response.failure(400, "数据重复！");
+                ProcessExample example = new ProcessExample();
+                ProcessExample.Criteria criteria1 = example.createCriteria();
+                criteria1.andIdEqualTo(process.getId());
+                processMapper.updateByExampleSelective(process, example);
+                return response.success("修改成功");
             }
         } catch (Exception e) {
             return response.failure(400, e.toString());
