@@ -47,7 +47,7 @@ public class ProcessServiceImpl implements ProcessService {
                     BeanUtils.copyProperties(processList[i], process);
                     process.setCorporationId(tokenVo.getCorporationId());
                     process.setId(new SnowFlake(1, 1).nextId());
-                    process.setState(1601);
+                    //process.setState(1601);
                     ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
                     Validator validator = factory.getValidator();
                     Set<ConstraintViolation<Process>> constraintViolations = validator.validate(process);
@@ -63,6 +63,8 @@ public class ProcessServiceImpl implements ProcessService {
                     criteria1.andIdEqualTo(processList[i].getId());
                     Process process = processMapper.selectByPrimaryKey(processList[i].getId());
                     process.setPrice(processList[i].getPrice());
+                    process.setUserId(processList[i].getUserId());
+                    process.setState(processList[i].getState());
                     process.setPriceAdd(processList[i].getPriceAdd());
                     processMapper.updateByExampleSelective(process, example);
                 }
