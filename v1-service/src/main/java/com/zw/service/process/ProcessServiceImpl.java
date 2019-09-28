@@ -48,7 +48,6 @@ public class ProcessServiceImpl implements ProcessService {
                     process.setCorporationId(tokenVo.getCorporationId());
                     process.setId(new SnowFlake(1, 1).nextId());
                     process.setState(1601);
-                    process.setUserId(null);
                     ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
                     Validator validator = factory.getValidator();
                     Set<ConstraintViolation<Process>> constraintViolations = validator.validate(process);
