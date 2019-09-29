@@ -1,1 +1,0 @@
-alter table bs_gx add rely_on varchar(500) DEFAULT NULL COMMENT '依赖工序';

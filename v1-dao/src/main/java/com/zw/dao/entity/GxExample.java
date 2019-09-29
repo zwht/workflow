@@ -604,6 +604,66 @@ public class GxExample {
             addCriterion("rely_on not between", value1, value2, "relyOn");
             return (Criteria) this;
         }
+
+        public Criteria andDefaultUserIdIsNull() {
+            addCriterion("default_user_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultUserIdIsNotNull() {
+            addCriterion("default_user_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultUserIdEqualTo(Long value) {
+            addCriterion("default_user_id =", value, "defaultUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultUserIdNotEqualTo(Long value) {
+            addCriterion("default_user_id <>", value, "defaultUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultUserIdGreaterThan(Long value) {
+            addCriterion("default_user_id >", value, "defaultUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultUserIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("default_user_id >=", value, "defaultUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultUserIdLessThan(Long value) {
+            addCriterion("default_user_id <", value, "defaultUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultUserIdLessThanOrEqualTo(Long value) {
+            addCriterion("default_user_id <=", value, "defaultUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultUserIdIn(List<Long> values) {
+            addCriterion("default_user_id in", values, "defaultUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultUserIdNotIn(List<Long> values) {
+            addCriterion("default_user_id not in", values, "defaultUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultUserIdBetween(Long value1, Long value2) {
+            addCriterion("default_user_id between", value1, value2, "defaultUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultUserIdNotBetween(Long value1, Long value2) {
+            addCriterion("default_user_id not between", value1, value2, "defaultUserId");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

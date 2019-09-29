@@ -1,24 +1,24 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : cfmy
+ Source Server         : localhost-密码：123456
  Source Server Type    : MySQL
- Source Server Version : 50718
- Source Host           : localhost
- Source Database       : cfmy1
+ Source Server Version : 50725
+ Source Host           : localhost:3306
+ Source Schema         : workflow
 
  Target Server Type    : MySQL
- Target Server Version : 50718
- File Encoding         : utf-8
+ Target Server Version : 50725
+ File Encoding         : 65001
 
- Date: 01/23/2019 21:11:47 PM
+ Date: 29/09/2019 09:49:00
 */
 
-SET NAMES utf8;
+SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
---  Table structure for `zs_ticket`
+-- Table structure for zs_ticket
 -- ----------------------------
 DROP TABLE IF EXISTS `zs_ticket`;
 CREATE TABLE `zs_ticket` (
@@ -48,6 +48,9 @@ CREATE TABLE `zs_ticket` (
   `summary` varchar(150) DEFAULT NULL COMMENT '总结',
   `remarks` varchar(150) DEFAULT NULL COMMENT '备注',
   `edit_name` varchar(20) DEFAULT NULL COMMENT '编辑人名字',
+  `earnest` decimal(20,4) DEFAULT NULL COMMENT '定金',
+  `payment` decimal(20,4) DEFAULT NULL COMMENT '尾款',
+  `back_describe` varchar(2000) DEFAULT NULL COMMENT '回单描述',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

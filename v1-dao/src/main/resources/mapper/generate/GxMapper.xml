@@ -10,6 +10,7 @@
     <result column="index_key" jdbcType="SMALLINT" property="indexKey" />
     <result column="flag" jdbcType="SMALLINT" property="flag" />
     <result column="rely_on" jdbcType="VARCHAR" property="relyOn" />
+    <result column="default_user_id" jdbcType="BIGINT" property="defaultUserId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -70,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, state, corporation_id, price, index_key, flag, rely_on
+    id, name, state, corporation_id, price, index_key, flag, rely_on, default_user_id
   </sql>
   <select id="selectByExample" parameterType="com.zw.dao.entity.GxExample" resultMap="BaseResultMap">
     select
@@ -105,10 +106,12 @@
   <insert id="insert" parameterType="com.zw.dao.entity.Gx">
     insert into bs_gx (id, name, state, 
       corporation_id, price, index_key, 
-      flag, rely_on)
+      flag, rely_on, default_user_id
+      )
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{state,jdbcType=SMALLINT}, 
       #{corporationId,jdbcType=BIGINT}, #{price,jdbcType=DECIMAL}, #{indexKey,jdbcType=SMALLINT}, 
-      #{flag,jdbcType=SMALLINT}, #{relyOn,jdbcType=VARCHAR})
+      #{flag,jdbcType=SMALLINT}, #{relyOn,jdbcType=VARCHAR}, #{defaultUserId,jdbcType=BIGINT}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.zw.dao.entity.Gx">
     insert into bs_gx
@@ -137,6 +140,9 @@
       <if test="relyOn != null">
         rely_on,
       </if>
+      <if test="defaultUserId != null">
+        default_user_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -162,6 +168,9 @@
       </if>
       <if test="relyOn != null">
         #{relyOn,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultUserId != null">
+        #{defaultUserId,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -198,6 +207,9 @@
       <if test="record.relyOn != null">
         rely_on = #{record.relyOn,jdbcType=VARCHAR},
       </if>
+      <if test="record.defaultUserId != null">
+        default_user_id = #{record.defaultUserId,jdbcType=BIGINT},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -212,7 +224,8 @@
       price = #{record.price,jdbcType=DECIMAL},
       index_key = #{record.indexKey,jdbcType=SMALLINT},
       flag = #{record.flag,jdbcType=SMALLINT},
-      rely_on = #{record.relyOn,jdbcType=VARCHAR}
+      rely_on = #{record.relyOn,jdbcType=VARCHAR},
+      default_user_id = #{record.defaultUserId,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -241,6 +254,9 @@
       <if test="relyOn != null">
         rely_on = #{relyOn,jdbcType=VARCHAR},
       </if>
+      <if test="defaultUserId != null">
+        default_user_id = #{defaultUserId,jdbcType=BIGINT},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -252,7 +268,8 @@
       price = #{price,jdbcType=DECIMAL},
       index_key = #{indexKey,jdbcType=SMALLINT},
       flag = #{flag,jdbcType=SMALLINT},
-      rely_on = #{relyOn,jdbcType=VARCHAR}
+      rely_on = #{relyOn,jdbcType=VARCHAR},
+      default_user_id = #{defaultUserId,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

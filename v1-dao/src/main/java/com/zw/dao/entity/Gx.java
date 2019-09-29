@@ -19,6 +19,8 @@ public class Gx {
 
     private String relyOn;
 
+    private Long defaultUserId;
+
     public Long getId() {
         return id;
     }
@@ -81,5 +83,13 @@ public class Gx {
 
     public void setRelyOn(String relyOn) {
         this.relyOn = relyOn == null ? null : relyOn.trim();
+    }
+
+    public Long getDefaultUserId() {
+        return defaultUserId;
+    }
+
+    public void setDefaultUserId(Long defaultUserId) {
+        this.defaultUserId = defaultUserId;
     }
 }
