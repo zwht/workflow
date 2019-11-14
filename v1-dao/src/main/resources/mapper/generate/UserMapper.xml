@@ -15,6 +15,10 @@
     <result column="img_id" jdbcType="VARCHAR" property="imgId" />
     <result column="flag" jdbcType="SMALLINT" property="flag" />
     <result column="gx_ids" jdbcType="VARCHAR" property="gxIds" />
+    <result column="invite_id" jdbcType="BIGINT" property="inviteId" />
+    <result column="brand_id" jdbcType="BIGINT" property="brandId" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="courier" jdbcType="VARCHAR" property="courier" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -76,7 +80,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, name, login_name, state, ability, roles, password, password_key, corporation_id, 
-    phone, img_id, flag, gx_ids
+    phone, img_id, flag, gx_ids, invite_id, brand_id, address, courier
   </sql>
   <select id="selectByExample" parameterType="com.zw.dao.entity.UserExample" resultMap="BaseResultMap">
     select
@@ -113,12 +117,14 @@
       state, ability, roles, 
       password, password_key, corporation_id, 
       phone, img_id, flag, 
-      gx_ids)
+      gx_ids, invite_id, brand_id, 
+      address, courier)
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, 
       #{state,jdbcType=SMALLINT}, #{ability,jdbcType=VARCHAR}, #{roles,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{passwordKey,jdbcType=VARCHAR}, #{corporationId,jdbcType=BIGINT}, 
       #{phone,jdbcType=VARCHAR}, #{imgId,jdbcType=VARCHAR}, #{flag,jdbcType=SMALLINT}, 
-      #{gxIds,jdbcType=VARCHAR})
+      #{gxIds,jdbcType=VARCHAR}, #{inviteId,jdbcType=BIGINT}, #{brandId,jdbcType=BIGINT}, 
+      #{address,jdbcType=VARCHAR}, #{courier,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zw.dao.entity.User">
     insert into cm_user
@@ -162,6 +168,18 @@
       <if test="gxIds != null">
         gx_ids,
       </if>
+      <if test="inviteId != null">
+        invite_id,
+      </if>
+      <if test="brandId != null">
+        brand_id,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="courier != null">
+        courier,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -202,6 +220,18 @@
       </if>
       <if test="gxIds != null">
         #{gxIds,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteId != null">
+        #{inviteId,jdbcType=BIGINT},
+      </if>
+      <if test="brandId != null">
+        #{brandId,jdbcType=BIGINT},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="courier != null">
+        #{courier,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -253,6 +283,18 @@
       <if test="record.gxIds != null">
         gx_ids = #{record.gxIds,jdbcType=VARCHAR},
       </if>
+      <if test="record.inviteId != null">
+        invite_id = #{record.inviteId,jdbcType=BIGINT},
+      </if>
+      <if test="record.brandId != null">
+        brand_id = #{record.brandId,jdbcType=BIGINT},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.courier != null">
+        courier = #{record.courier,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -272,7 +314,11 @@
       phone = #{record.phone,jdbcType=VARCHAR},
       img_id = #{record.imgId,jdbcType=VARCHAR},
       flag = #{record.flag,jdbcType=SMALLINT},
-      gx_ids = #{record.gxIds,jdbcType=VARCHAR}
+      gx_ids = #{record.gxIds,jdbcType=VARCHAR},
+      invite_id = #{record.inviteId,jdbcType=BIGINT},
+      brand_id = #{record.brandId,jdbcType=BIGINT},
+      address = #{record.address,jdbcType=VARCHAR},
+      courier = #{record.courier,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -316,6 +362,18 @@
       <if test="gxIds != null">
         gx_ids = #{gxIds,jdbcType=VARCHAR},
       </if>
+      <if test="inviteId != null">
+        invite_id = #{inviteId,jdbcType=BIGINT},
+      </if>
+      <if test="brandId != null">
+        brand_id = #{brandId,jdbcType=BIGINT},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="courier != null">
+        courier = #{courier,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -332,7 +390,11 @@
       phone = #{phone,jdbcType=VARCHAR},
       img_id = #{imgId,jdbcType=VARCHAR},
       flag = #{flag,jdbcType=SMALLINT},
-      gx_ids = #{gxIds,jdbcType=VARCHAR}
+      gx_ids = #{gxIds,jdbcType=VARCHAR},
+      invite_id = #{inviteId,jdbcType=BIGINT},
+      brand_id = #{brandId,jdbcType=BIGINT},
+      address = #{address,jdbcType=VARCHAR},
+      courier = #{courier,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -141,6 +141,11 @@ public class UserServiceImpl implements UserService {
             criteria.andLoginNameEqualTo(userSearchVo.getLoginName());
         }
         criteria.andRolesNotEqualTo("888888");
+        Integer s=userSearchVo.getInvite();
+
+        if(s!=null&&s==1){
+            example.setOrderByClause("`roles` ASC");
+        }
         try {
             Page page = PageHelper.startPage(pageNum, pageSize);
             List list = myUserMapper.selectByExample(example);

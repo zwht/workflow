@@ -9,7 +9,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 public class UserAddVo {
 
-    @ApiModelProperty("用户名")
+    @ApiModelProperty("用户名1")
     private String name;
 
     @ApiModelProperty("登录名")
@@ -33,22 +33,20 @@ public class UserAddVo {
     @ApiModelProperty("头像")
     private String avatar;
 
-    @ApiModelProperty("地址")
-    private String address;
-
-    @ApiModelProperty("地址Id")
-    private String addressId;
-
     @ApiModelProperty("工序ids")
     private String gxIds;
 
-    public String getGxIds() {
-        return gxIds;
-    }
+    @ApiModelProperty("邀请人id")
+    private Long inviteId;
 
-    public void setGxIds(String gxIds) {
-        this.gxIds = gxIds;
-    }
+    @ApiModelProperty("品牌id")
+    private Long brandId;
+
+    @ApiModelProperty("默认发货地址")
+    private String address;
+
+    @ApiModelProperty("默认快递")
+    private String courier;
 
     public String getName() {
         return name;
@@ -114,6 +112,30 @@ public class UserAddVo {
         this.avatar = avatar;
     }
 
+    public String getGxIds() {
+        return gxIds;
+    }
+
+    public void setGxIds(String gxIds) {
+        this.gxIds = gxIds;
+    }
+
+    public Long getInviteId() {
+        return inviteId;
+    }
+
+    public void setInviteId(Long inviteId) {
+        this.inviteId = inviteId;
+    }
+
+    public Long getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(Long brandId) {
+        this.brandId = brandId;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -122,11 +144,11 @@ public class UserAddVo {
         this.address = address;
     }
 
-    public String getAddressId() {
-        return addressId;
+    public String getCourier() {
+        return courier;
     }
 
-    public void setAddressId(String addressId) {
-        this.addressId = addressId;
+    public void setCourier(String courier) {
+        this.courier = courier;
     }
 }

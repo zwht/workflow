@@ -9,6 +9,15 @@ public class UserSearchVo {
     private String roles;
     private String name;
     private String loginName;
+    private Integer invite;
+
+    public Integer getInvite() {
+        return invite;
+    }
+
+    public void Integer(Integer invite) {
+        invite = invite;
+    }
 
     public Long getCorporationId() {
         return corporationId;

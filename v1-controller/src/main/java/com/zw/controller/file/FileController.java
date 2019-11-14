@@ -98,6 +98,9 @@ public class FileController {
         ResponseVo<com.zw.dao.entity.File> responseVo = fileService.getById(id);
         if (responseVo.getStatus() == 200) {
             com.zw.dao.entity.File file1 = responseVo.getResponse();
+            if(file1==null){
+                return "失败";
+            }
 
             String os2 = System.getProperty("os.name");
             String fileUrl = linuxFilePath;

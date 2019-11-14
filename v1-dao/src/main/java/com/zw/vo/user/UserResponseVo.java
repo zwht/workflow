@@ -45,38 +45,20 @@ public class UserResponseVo{
     @ApiModelProperty("头像")
     private String avatar;
 
-    @ApiModelProperty("地址")
-    private String address;
-
-    @ApiModelProperty("地址Id")
-    private String addressId;
-
     @ApiModelProperty("工序ids")
     private String gxIds;
 
-    public String getGxIds() {
-        return gxIds;
-    }
+    @ApiModelProperty("邀请人id")
+    private Long inviteId;
 
-    public void setGxIds(String gxIds) {
-        this.gxIds = gxIds;
-    }
+    @ApiModelProperty("品牌id")
+    private Long brandId;
 
-    public Corporation getCorporationVo() {
-        return corporationVo;
-    }
+    @ApiModelProperty("默认发货地址")
+    private String address;
 
-    public void setCorporationVo(Corporation corporationVo) {
-        this.corporationVo = corporationVo;
-    }
-
-    public List<CodeResponseVo> getRolesVo() {
-        return rolesVo;
-    }
-
-    public void setRolesVo(List<CodeResponseVo> rolesVo) {
-        this.rolesVo = rolesVo;
-    }
+    @ApiModelProperty("默认快递")
+    private String courier;
 
     public Long getId() {
         return id;
@@ -126,12 +108,28 @@ public class UserResponseVo{
         this.roles = roles;
     }
 
+    public List<CodeResponseVo> getRolesVo() {
+        return rolesVo;
+    }
+
+    public void setRolesVo(List<CodeResponseVo> rolesVo) {
+        this.rolesVo = rolesVo;
+    }
+
     public String getCorporationId() {
         return corporationId;
     }
 
     public void setCorporationId(String corporationId) {
         this.corporationId = corporationId;
+    }
+
+    public Corporation getCorporationVo() {
+        return corporationVo;
+    }
+
+    public void setCorporationVo(Corporation corporationVo) {
+        this.corporationVo = corporationVo;
     }
 
     public String getPhone() {
@@ -150,6 +148,30 @@ public class UserResponseVo{
         this.avatar = avatar;
     }
 
+    public String getGxIds() {
+        return gxIds;
+    }
+
+    public void setGxIds(String gxIds) {
+        this.gxIds = gxIds;
+    }
+
+    public Long getInviteId() {
+        return inviteId;
+    }
+
+    public void setInviteId(Long inviteId) {
+        this.inviteId = inviteId;
+    }
+
+    public Long getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(Long brandId) {
+        this.brandId = brandId;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -158,11 +180,11 @@ public class UserResponseVo{
         this.address = address;
     }
 
-    public String getAddressId() {
-        return addressId;
+    public String getCourier() {
+        return courier;
     }
 
-    public void setAddressId(String addressId) {
-        this.addressId = addressId;
+    public void setCourier(String courier) {
+        this.courier = courier;
     }
 }

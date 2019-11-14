@@ -27,6 +27,14 @@ public class User {
 
     private String gxIds;
 
+    private Long inviteId;
+
+    private Long brandId;
+
+    private String address;
+
+    private String courier;
+
     public Long getId() {
         return id;
     }
@@ -129,5 +137,37 @@ public class User {
 
     public void setGxIds(String gxIds) {
         this.gxIds = gxIds == null ? null : gxIds.trim();
+    }
+
+    public Long getInviteId() {
+        return inviteId;
+    }
+
+    public void setInviteId(Long inviteId) {
+        this.inviteId = inviteId;
+    }
+
+    public Long getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(Long brandId) {
+        this.brandId = brandId;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
+    }
+
+    public String getCourier() {
+        return courier;
+    }
+
+    public void setCourier(String courier) {
+        this.courier = courier == null ? null : courier.trim();
     }
 }
