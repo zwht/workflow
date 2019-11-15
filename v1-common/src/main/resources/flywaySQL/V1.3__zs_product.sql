@@ -64,6 +64,9 @@ CREATE TABLE `zs_product` (
   `material_id` bigint(20) DEFAULT NULL,
   `remarks` varchar(45) DEFAULT NULL,
   `line` varchar(1035) DEFAULT NULL,
+  `unit` varchar(1035) DEFAULT NULL COMMENT '单位',
+  `unit_price` decimal(10,2) DEFAULT NULL COMMENT '单价',
+  `money` decimal(10,2) DEFAULT NULL COMMENT '总价',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

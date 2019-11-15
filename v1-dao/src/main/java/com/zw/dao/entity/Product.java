@@ -1,5 +1,6 @@
 package com.zw.dao.entity;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class Product {
@@ -86,6 +87,12 @@ public class Product {
     private String remarks;
 
     private String line;
+
+    private String unit;
+
+    private BigDecimal unitPrice;
+
+    private BigDecimal money;
 
     public Long getId() {
         return id;
@@ -421,5 +428,29 @@ public class Product {
 
     public void setLine(String line) {
         this.line = line == null ? null : line.trim();
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit == null ? null : unit.trim();
+    }
+
+    public BigDecimal getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(BigDecimal unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
+    public BigDecimal getMoney() {
+        return money;
+    }
+
+    public void setMoney(BigDecimal money) {
+        this.money = money;
     }
 }
