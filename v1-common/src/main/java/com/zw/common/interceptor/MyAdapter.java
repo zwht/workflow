@@ -4,16 +4,16 @@ package com.zw.common.interceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 /**
  * @author：zhaowei
  * @Date：2018/12/19
- * @Time：上午10:56
+ * @Time：上午10:56 WebMvcConfigurerAdapter
  * @describe 继承WebMvcConfigureAdapter继承并重写addInterceptor方法用于添加配置拦截器
  */
 @Configuration
-public class MyAdapter extends WebMvcConfigurerAdapter {
+public class MyAdapter extends WebMvcConfigurationSupport {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

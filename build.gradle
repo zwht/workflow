@@ -13,9 +13,10 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
+
 }
 
-apply plugin: "java"
+apply plugin: "java-library"
 apply plugin: "idea"
 apply plugin: "org.springframework.boot"
 apply plugin: "io.spring.dependency-management"
@@ -36,7 +37,7 @@ repositories {
 
 ext {
     springBootVersion = "2.1.1.RELEASE"
-    swagger2Version = "3.0.2"
+    swagger2Version = "2.9.2"
     HikariCPVersion = "3.2.0"
     jooqVersion = "3.10.2"
     postgresqlVersion = "42.2.5"
@@ -55,33 +56,33 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
 
     // swagger2 API文档
-    implementation("io.springfox:springfox-swagger2:${swagger2Version}")
-    implementation("io.springfox:springfox-swagger-ui:${swagger2Version}")
+    api("io.springfox:springfox-swagger2:${swagger2Version}")
+    api("io.springfox:springfox-swagger-ui:${swagger2Version}")
     // swagger2 swagger-bootstrap-ui
-    implementation group: 'com.github.xiaoymin', name: 'swagger-bootstrap-ui', version: '1.8.8'
+    api group: 'com.github.xiaoymin', name: 'swagger-bootstrap-ui', version: '1.8.8'
     // swagger2转为离线文档 在controller里的test代码运行
-    implementation group: 'io.github.swagger2markup', name: 'swagger2markup', version: '1.3.3'
+    testImplementation group: 'io.github.swagger2markup', name: 'swagger2markup', version: '1.3.3'
 
     // 数据库连接池
-    implementation group: 'com.alibaba', name: 'druid', version: '1.1.12'
+    api group: 'com.alibaba', name: 'druid', version: '1.1.12'
 
     // jwt
-    implementation group: 'com.auth0', name: 'java-jwt', version: '2.2.0'
+    api group: 'com.auth0', name: 'java-jwt', version: '2.2.0'
 
     // 分页插件
-    implementation group: 'com.github.pagehelper', name: 'pagehelper-spring-boot-starter', version: '1.2.10'
+    api group: 'com.github.pagehelper', name: 'pagehelper-spring-boot-starter', version: '1.2.10'
 
     // Flyway是一款开源的数据库版本管理工具
-    implementation group: 'org.flywaydb', name: 'flyway-core', version: '5.2.4'
+    api group: 'org.flywaydb', name: 'flyway-core', version: '5.2.4'
 
     // base64
-    implementation group: 'commons-codec', name: 'commons-codec', version: '1.11'
+    api group: 'commons-codec', name: 'commons-codec', version: '1.11'
 
     // 文件后缀
-    implementation group: 'org.apache.tika', name: 'tika-core', version: '1.20'
+    api group: 'org.apache.tika', name: 'tika-core', version: '1.20'
 
     // json数据处理fastjson
-    implementation group: 'com.alibaba', name: 'fastjson', version: '1.2.54'
+    api group: 'com.alibaba', name: 'fastjson', version: '1.2.54'
 
 
 
@@ -92,5 +93,12 @@ allprojects {
     jar {
         enabled = true
     }
+//    gradle.projectsEvaluated {
+//        tasks.withType(JavaCompile) {
+//            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+//        }
+//    }
+
 }
+
 

@@ -48,7 +48,7 @@ public class ResponseVo<D> {
         return this;
     }
 
-    public ResponseVo failure(Integer status, List msgObj) {
+    public ResponseVo failure(Integer status, List<Map<String, String>> msgObj) {
         this.setMsg("验证错误");
         this.setMsgObj(msgObj);
         this.setStatus(status);
