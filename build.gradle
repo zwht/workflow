@@ -3,11 +3,12 @@ buildscript {
         springBootVersion = "2.1.1.RELEASE"
     }
     repositories {
-        maven { url "https://repo.spring.io/libs-milestone" }
-        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
-        jcenter()
-        mavenCentral()
         mavenLocal()
+        maven { url "https://maven.aliyun.com/nexus/content/groups/public/" }
+        maven {url "https://maven.google.com" }
+        maven { url "https://repo.spring.io/libs-milestone" }
+        mavenCentral()
+
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -25,18 +26,17 @@ sourceCompatibility = 1.8
 
 
 repositories {
-    maven { url "https://repo.spring.io/libs-milestone" }
-    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
-    jcenter()
-    google()
-    mavenCentral()
     mavenLocal()
+    maven { url "https://maven.aliyun.com/nexus/content/groups/public/" }
+    maven {url "https://maven.google.com" }
+    maven { url "https://repo.spring.io/libs-milestone" }
+    mavenCentral()
 }
 
 
 ext {
     springBootVersion = "2.1.1.RELEASE"
-    swagger2Version = "2.9.2"
+    swagger2Version = "3.0.2"
     HikariCPVersion = "3.2.0"
     jooqVersion = "3.10.2"
     postgresqlVersion = "42.2.5"
@@ -55,33 +55,33 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
 
     // swagger2 API文档
-    compile("io.springfox:springfox-swagger2:${swagger2Version}")
-    compile("io.springfox:springfox-swagger-ui:${swagger2Version}")
+    implementation("io.springfox:springfox-swagger2:${swagger2Version}")
+    implementation("io.springfox:springfox-swagger-ui:${swagger2Version}")
     // swagger2 swagger-bootstrap-ui
-    compile group: 'com.github.xiaoymin', name: 'swagger-bootstrap-ui', version: '1.8.8'
+    implementation group: 'com.github.xiaoymin', name: 'swagger-bootstrap-ui', version: '1.8.8'
     // swagger2转为离线文档 在controller里的test代码运行
-    testCompile group: 'io.github.swagger2markup', name: 'swagger2markup', version: '1.3.3'
+    implementation group: 'io.github.swagger2markup', name: 'swagger2markup', version: '1.3.3'
 
     // 数据库连接池
-    compile group: 'com.alibaba', name: 'druid', version: '1.1.12'
+    implementation group: 'com.alibaba', name: 'druid', version: '1.1.12'
 
     // jwt
-    compile group: 'com.auth0', name: 'java-jwt', version: '2.2.0'
+    implementation group: 'com.auth0', name: 'java-jwt', version: '2.2.0'
 
     // 分页插件
-    compile group: 'com.github.pagehelper', name: 'pagehelper-spring-boot-starter', version: '1.2.10'
+    implementation group: 'com.github.pagehelper', name: 'pagehelper-spring-boot-starter', version: '1.2.10'
 
     // Flyway是一款开源的数据库版本管理工具
-    compile group: 'org.flywaydb', name: 'flyway-core', version: '5.2.4'
+    implementation group: 'org.flywaydb', name: 'flyway-core', version: '5.2.4'
 
     // base64
-    compile group: 'commons-codec', name: 'commons-codec', version: '1.11'
+    implementation group: 'commons-codec', name: 'commons-codec', version: '1.11'
 
     // 文件后缀
-    compile group: 'org.apache.tika', name: 'tika-core', version: '1.20'
+    implementation group: 'org.apache.tika', name: 'tika-core', version: '1.20'
 
     // json数据处理fastjson
-    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.54'
+    implementation group: 'com.alibaba', name: 'fastjson', version: '1.2.54'
 
 
 

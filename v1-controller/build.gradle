@@ -78,5 +78,5 @@ bootJar {
 }
 
 dependencies {
-    compile project(":v1-service")
+    implementation project(":v1-service")
 }
