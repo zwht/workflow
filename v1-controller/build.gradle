@@ -20,11 +20,11 @@ task copyYAML(type: Copy) {
     }
     def profileFileName = ""
     if (profile == null) {
-        profileFileName = "application-dev.yml"
+        profileFileName = "application-prod.yml"
     } else {
         profileFileName = "application-${profile}.yml"
     }
-    println(profile + "运行打包命令===gradle bootWar -Dprofile=dev-----gradle build -Dprofile=local")
+    println(profile + "线上打包命令：gradle bootWar -Dprofile=prod 本地：gradle build -Dprofile=local")
 
     from file("${rootProject.projectDir}/v1-common/src/main/resources/${profileFileName}")
     into file("${rootProject.projectDir}/v1-controller/build/classes/java/main/")

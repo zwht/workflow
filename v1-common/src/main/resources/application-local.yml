@@ -1,8 +1,8 @@
 db:
   driverClassName: com.mysql.cj.jdbc.Driver
-  url: jdbc:mysql://localhost:3306/workflow?characterEncoding=utf-8
+  url: jdbc:mysql://106.13.47.223:3306/workflow?characterEncoding=utf-8
   username: root
-  password: 123456
+  password: nft98123
 
 
 #上传文件配置
