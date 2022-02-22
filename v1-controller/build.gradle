@@ -70,10 +70,10 @@ copyWar.finalizedBy clean
 
 bootWar {
     dependsOn copyYAML
-    archiveName="workflow.war"
+    archiveName "workflow.war"
 }
 bootJar {
-    archiveName="workflow.jar"
+    archiveName "workflow.jar"
 }
 
 dependencies {
