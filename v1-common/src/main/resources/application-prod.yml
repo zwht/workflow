@@ -3,11 +3,12 @@ db:
   url: jdbc:mysql://localhost:3306/workflow?characterEncoding=utf-8
   username: root
   password: nft9ue2544
-  Driver
+
+
 #上传文件配置
 web:
-  linuxFilePath: /opt/workflowImageDev/
-  windowsFilePath: C:/tmp/workflowImageDev
+  linuxFilePath: /opt/workflowImage/
+  windowsFilePath: C:/tmp/workflowImage
 
 spring:
   datasource:

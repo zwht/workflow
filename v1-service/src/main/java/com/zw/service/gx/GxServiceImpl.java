@@ -19,6 +19,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
 
@@ -43,6 +44,7 @@ public class GxServiceImpl implements GxService {
             GxExample gxExample = new GxExample();
             GxExample.Criteria criteria = gxExample.createCriteria();
             criteria.andNameEqualTo(gx.getName());
+            criteria.andIndexKeyEqualTo(gx.getIndexKey());
             criteria.andStateNotEqualTo(Short.parseShort("1200"));
             criteria.andCorporationIdEqualTo(gx.getCorporationId());
             // 查询是否有相同
@@ -50,6 +52,8 @@ public class GxServiceImpl implements GxService {
             if (gxs.size() == 0) {
                 gx.setId(new SnowFlake(1, 1).nextId());
                 gx.setState(Short.parseShort("1201"));
+                gx.setPrice( BigDecimal.valueOf(gxAddVo.getPrice()));
+
                 ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
                 Validator validator = factory.getValidator();
                 Set<ConstraintViolation<Gx>> constraintViolations = validator.validate(gx);

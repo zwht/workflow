@@ -24,7 +24,7 @@ task copyYAML(type: Copy) {
     } else {
         profileFileName = "application-${profile}.yml"
     }
-    println(profile + "线上打包命令：gradle bootWar -Dprofile=prod 本地：gradle build -Dprofile=local")
+    println(profile + "--:线上打包命令：gradle bootWar -Dprofile=prod 本地：gradle build -Dprofile=local")
 
     from file("${rootProject.projectDir}/v1-common/src/main/resources/${profileFileName}")
     into file("${rootProject.projectDir}/v1-controller/build/classes/java/main/")
@@ -37,7 +37,7 @@ task copyYAML(type: Copy) {
  **/
 task copyWar(type: Copy) {
     def profile = System.properties["profile"]
-
+    println('开始拷贝war包')
     Properties properties = new Properties();
     // 使用ClassLoader加载properties配置文件生成对应的输入流
     FileInputStream input = new FileInputStream("${rootProject.projectDir}/v1-controller/src/main/resources/application.properties")
@@ -45,11 +45,11 @@ task copyWar(type: Copy) {
     properties.load(input)
     def active=profile
     if(active == null){
-        properties.getProperty("spring.profiles.active")
+        active=properties.getProperty("spring.profiles.active")
     }
     //获取key对应的value值
     def warPath = properties.getProperty("warpath.${active}")
-
+    println(active)
     println(warPath)
     if (warPath == null) {
         warPath = "${rootProject.projectDir}"
@@ -66,7 +66,7 @@ project.bootWar.doFirst {
 }
 // 打包完成后copyWar，然后clean
 project.bootWar.finalizedBy copyWar
-copyWar.finalizedBy clean
+//copyWar.finalizedBy clean
 
 bootWar {
     dependsOn copyYAML
