@@ -47,6 +47,7 @@ public class DoorServiceImpl implements DoorService {
             DoorExample doorExample = new DoorExample();
             DoorExample.Criteria criteria = doorExample.createCriteria();
             criteria.andNameEqualTo(door.getName());
+            criteria.andFlagIsNull();
             criteria.andCorporationIdEqualTo(door.getCorporationId());
             // 查询是否有相同
             List<Door> doors = doorMapper.selectByExample(doorExample);

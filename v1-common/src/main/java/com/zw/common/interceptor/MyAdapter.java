@@ -55,7 +55,7 @@ public class MyAdapter extends WebMvcConfigurationSupport {
         serializeConfig.put(Long.class, ToStringSerializer.instance);
         serializeConfig.put(Long.TYPE, ToStringSerializer.instance);
         fastJsonConfig.setSerializeConfig(serializeConfig);
-        fastJsonConfig.setDateFormat("yyyy-HH-dd HH:mm:ss");
+//        fastJsonConfig.setDateFormat("yyyy-HH-dd HH:mm:ss");
         fastConverter.setFastJsonConfig(fastJsonConfig);
         List<MediaType> fastMediaTypes = new ArrayList<>();
         fastMediaTypes.add(MediaType.APPLICATION_JSON_UTF8);

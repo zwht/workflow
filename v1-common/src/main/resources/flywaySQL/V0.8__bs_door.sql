@@ -30,7 +30,7 @@ CREATE TABLE `bs_door` (
   `create_time` datetime DEFAULT NULL,
   `state` smallint(6) DEFAULT NULL,
   `gx_values` varchar(100) DEFAULT NULL,
-  `number` varchar(50) NOT NULL,
+  `number` varchar(50) DEFAULT NULL,
   `colors` varchar(250) DEFAULT NULL,
   `info_id` bigint(20) DEFAULT NULL,
   `type` smallint(6) DEFAULT NULL,
