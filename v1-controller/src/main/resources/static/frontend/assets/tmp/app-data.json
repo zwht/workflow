@@ -1,0 +1,242 @@
+{
+  "app": {
+    "name": "通用基础系统",
+    "description": "通用基础系统"
+  },
+  "menu": [{
+    "text": "系统01",
+    "group": false,
+    "hideInBreadcrumb": true,
+    "children": [{
+        "text": "仪表盘",
+        "link": "/admin/dashboard",
+        "hideInBreadcrumb": true,
+        "icon": "anticon anticon-appstore"
+      },
+      {
+        "text": "工单管理",
+        "icon": "anticon anticon-solution",
+        "permission": {
+          "roles": [
+            "888888",
+            "100",
+            "107"
+          ],
+          "ability": []
+        },
+        "children": [
+          {
+            "text": "新工单",
+            "link": "/admin/ticket/myTicket",
+            "permission": {
+              "roles": [
+                "100",
+                "107"
+              ],
+              "ability": []
+            }
+          },
+          {
+            "text": "待审核工单",
+            "link": "/admin/ticket/shTicket",
+            "permission": {
+              "roles": [
+                "100",
+                "107"
+              ],
+              "ability": []
+            }
+          },
+          {
+            "text": "待生产工单",
+            "link": "/admin/ticket/dscTicket",
+            "permission": {
+              "roles": [
+                "100",
+                "107"
+              ],
+              "ability": []
+            }
+          },
+          {
+            "text": "生产中工单",
+            "link": "/admin/ticket/scTicket",
+            "permission": {
+              "roles": [
+                "100",
+                "107"
+              ],
+              "ability": []
+            }
+          },
+          {
+            "text": "生产完成工单",
+            "link": "/admin/ticket/scwcTicket",
+            "permission": {
+              "roles": [
+                "100",
+                "107"
+              ],
+              "ability": []
+            }
+          },
+          {
+            "text": "已发货工单",
+            "link": "/admin/ticket/fhTicket",
+            "permission": {
+              "roles": [
+                "100",
+                "107"
+              ],
+              "ability": []
+            }
+          },
+          {
+            "text": "已完成工单",
+            "link": "/admin/ticket/overTicket",
+            "permission": {
+              "roles": [
+                "100",
+                "107"
+              ],
+              "ability": []
+            }
+          },
+          {
+            "text": "全部工单",
+            "link": "/admin/ticket/allTicket",
+            "permission": {
+              "roles": [
+                "100",
+                "107"
+              ],
+              "ability": []
+            }
+          }
+        ]
+      },
+      {
+        "text": "基础数据",
+        "icon": "anticon anticon-build",
+        "permission": {
+          "roles": [
+            "888888",
+            "100"
+          ],
+          "ability": []
+        },
+        "children": [{
+            "text": "型号列表",
+            "link": "/admin/baseCorporation/door",
+            "permission": {
+
+              "ability": []
+            }
+          },
+          {
+            "text": "颜色列表",
+            "link": "/admin/baseCorporation/color",
+            "permission": {
+
+              "ability": []
+            }
+          },
+          {
+            "text": "材质列表",
+            "link": "/admin/baseCorporation/material",
+            "permission": {
+
+              "ability": []
+            }
+          },
+          {
+            "text": "工序列表",
+            "link": "/admin/baseCorporation/gx",
+            "permission": {
+
+              "ability": []
+            }
+          },
+          {
+            "text": "品牌列表",
+            "link": "/admin/baseCorporation/brand",
+            "permission": {
+
+              "ability": []
+            }
+          }
+        ]
+      },
+      {
+        "text": "用户管理",
+        "icon": "anticon anticon-team",
+        "permission": {
+          "roles": [
+            "888888",
+            "100"
+          ],
+          "ability": []
+        },
+        "children": [{
+          "text": "用户列表",
+          "link": "/admin/user/index"
+        }]
+      },
+      {
+        "text": "基础数据模块",
+        "icon": "anticon anticon-build",
+        "permission": {
+          "roles": [
+            "888888"
+          ],
+          "ability": []
+        },
+        "children": [{
+            "text": "文件列表",
+            "link": "/admin/base/file",
+            "permission": {
+              "roles": [],
+              "ability": []
+            }
+          },
+          {
+            "text": "公司列表",
+            "link": "/admin/base/corporation",
+            "permission": {
+              "roles": [],
+              "ability": []
+            }
+          },
+          {
+            "text": "码表列表",
+            "link": "/admin/base/code",
+            "permission": {
+              "roles": [
+
+              ],
+              "ability": []
+            }
+          },
+          {
+            "text": "码表组列表",
+            "link": "/admin/base/codeGroup",
+            "permission": {
+              "roles": [
+
+              ],
+              "ability": []
+            }
+          },
+          {
+            "text": "icon图标",
+            "link": "/admin/base/icon",
+            "permission": {
+              "roles": [],
+              "ability": []
+            }
+          }
+        ]
+      }
+    ]
+  }]
+}

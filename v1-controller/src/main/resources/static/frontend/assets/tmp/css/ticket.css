@@ -1,0 +1,150 @@
+*{ box-sizing: border-box; font-size: 16px;}
+.printHide{ display: none !important;}
+.ant-calendar-picker-clear,.ant-calendar-picker-icon,
+.topTable .anticon,.ant-select-search{ display: none;}
+ngx-qrcode{ display: block; width: 100%; height: 120px; position: relative; overflow: hidden;
+}
+ngx-qrcode img{ height: 119px;}
+input {
+  font-size: 16px;
+  border: none;
+  padding: 0;
+  width: 100%;
+  border-radius: 0;
+  display: inline-block;
+  height: inherit;
+  text-align: center;
+  background: none;
+}
+input:hover {
+  background: #f1f1f1;
+}
+input:focus {
+  background: #cccab6;
+}
+textarea {
+  height: 26px; 
+  display: block;
+  background: none;
+}
+textarea,
+input,
+td,
+.gxTable {
+  font-size: 16px;
+}
+el-select {
+  width: 100%;
+  min-width: 120px;
+  background: none;
+}
+.ant-select-selection {
+  background: none;
+  border-radius: none;
+  border: none;
+}
+.rightB{ text-align: left;position: relative; padding-left: 86px;}
+.rightB .ant-calendar-picker{ width: 100%;}
+.rightB b{ position: absolute; top:3px; left: 8px;}
+nz-select{ text-align: left;}
+nz-select span{ display: none;}
+.rightB input{ text-align: left !important;}
+
+.ant-input{ padding: 0;}
+.ticketTable {
+  border: none;
+  width: 100%;
+  text-align: center;
+}
+.productItem td{position: relative;}
+.haderB{ font-weight: bold;}
+
+table,table tr th, table tr td { border:1px solid #333;
+  padding:0, }
+table { width: 100%; text-align: center; border-collapse: collapse;} 
+  
+
+.ticketTable .inputHeight {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+}
+.ticketTable .iconBtn {
+  font-size: 16px;
+  cursor: pointer;
+}
+.ticketTable .iconBtn:hover {
+  color: #099;
+}
+.ticketTable .productShow1 {
+  background: #f9f9f9;
+  color: #c00;
+}
+.jinebo{ padding: 4px 10px; color: #c00; font-weight: bold; text-align: left;}
+.jinebo input{ color: #c00; font-weight: bold; display: inline-block; width: 60px;}
+.jinebo span{ display: inline-block; margin-right: 50px;}
+  
+.msdBox{ margin-left: -1px; width: 100%; height: 100%; display: table;}
+.msditem{ width: 25%; display:table-cell; border-left: 1px solid #333;}
+.msditem h3{ min-height: 20px; border-bottom: 1px solid #333;}
+.msditem .imbo{ min-height: 20px; }
+.bg,.flex-middle{ display: none;}
+textarea{overflow:hidden; resize:none;}
+
+.msjos>div{ float: left; text-align: left; padding: 10px;
+  line-height: 26px;
+}
+.it87{ width: 50%;}
+.it84{ width: 25%;}
+
+.gxBox{ margin: 0 0 -1px -1px;}
+.gxBox:after {
+  content: " ";
+  height: 0;
+  width: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+}
+.gxBox > div {
+  border-bottom: 1px solid #333;
+  border-left: 1px solid #333;
+  text-align: center;
+  float: left;
+  width: 8.333%;
+}
+.gxBox > div .i1 {
+  height: 20px;
+  line-height: 18px;
+}
+.gxBox > div .i2 {
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+  height: 20px;
+  line-height: 18px;
+}
+.gxBox > div .i2 input{color: red;}
+.gxBox > div .i3 {
+  padding-top: 2px;
+  height: 20px;
+  line-height: 18px;
+}
+.gxBox > div .i3 .ant-select-selection-selected-value{
+  width: 100%; text-align: center;
+}
+.trGxBox {
+  margin: 0 -2px -2px 0;
+  font-size: 16px;
+  line-height: 18px;
+}
+.trGxBox input {
+  font-size: 16px;
+  line-height: 18px;
+}
+.printHide {
+  display: none !important;
+}
+.baseTdItem{width: 3.57%; height: 0; border: none !important;}
+.baseBox{ border-left: 1px solid #333;}
