@@ -28,3 +28,5 @@ reports/
 /nbdist/
 /.nb-gradle/
 /src/
+
+application-local.yml
