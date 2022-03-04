@@ -40,6 +40,12 @@ public class Door {
 
     private String unit;
 
+    private Integer depth;
+
+    private Long parentId;
+
+    private String special;
+
     public Long getId() {
         return id;
     }
@@ -182,5 +188,29 @@ public class Door {
 
     public void setUnit(String unit) {
         this.unit = unit == null ? null : unit.trim();
+    }
+
+    public Integer getDepth() {
+        return depth;
+    }
+
+    public void setDepth(Integer depth) {
+        this.depth = depth;
+    }
+
+    public Long getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
+    }
+
+    public String getSpecial() {
+        return special;
+    }
+
+    public void setSpecial(String special) {
+        this.special = special == null ? null : special.trim();
     }
 }

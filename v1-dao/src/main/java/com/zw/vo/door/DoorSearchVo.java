@@ -21,20 +21,18 @@ public class DoorSearchVo {
     @ApiModelProperty("类型")
     private String type;
 
-    public String getType() {
-        return type;
+    @ApiModelProperty("深度")
+    private Integer depth;
+
+    @ApiModelProperty("上级ID")
+    private Long parentId;
+
+    public String getName() {
+        return name;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Long getCorporationId() {
@@ -45,11 +43,35 @@ public class DoorSearchVo {
         this.corporationId = corporationId;
     }
 
-    public String getName() {
-        return name;
+    public String getNumber() {
+        return number;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Integer getDepth() {
+        return depth;
+    }
+
+    public void setDepth(Integer depth) {
+        this.depth = depth;
+    }
+
+    public Long getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
     }
 }

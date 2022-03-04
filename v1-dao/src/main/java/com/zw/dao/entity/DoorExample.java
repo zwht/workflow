@@ -1275,6 +1275,196 @@ public class DoorExample {
             addCriterion("unit not between", value1, value2, "unit");
             return (Criteria) this;
         }
+
+        public Criteria andDepthIsNull() {
+            addCriterion("depth is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepthIsNotNull() {
+            addCriterion("depth is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepthEqualTo(Integer value) {
+            addCriterion("depth =", value, "depth");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepthNotEqualTo(Integer value) {
+            addCriterion("depth <>", value, "depth");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepthGreaterThan(Integer value) {
+            addCriterion("depth >", value, "depth");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepthGreaterThanOrEqualTo(Integer value) {
+            addCriterion("depth >=", value, "depth");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepthLessThan(Integer value) {
+            addCriterion("depth <", value, "depth");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepthLessThanOrEqualTo(Integer value) {
+            addCriterion("depth <=", value, "depth");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepthIn(List<Integer> values) {
+            addCriterion("depth in", values, "depth");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepthNotIn(List<Integer> values) {
+            addCriterion("depth not in", values, "depth");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepthBetween(Integer value1, Integer value2) {
+            addCriterion("depth between", value1, value2, "depth");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepthNotBetween(Integer value1, Integer value2) {
+            addCriterion("depth not between", value1, value2, "depth");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentIdIsNull() {
+            addCriterion("parent_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentIdIsNotNull() {
+            addCriterion("parent_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentIdEqualTo(Long value) {
+            addCriterion("parent_id =", value, "parentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentIdNotEqualTo(Long value) {
+            addCriterion("parent_id <>", value, "parentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentIdGreaterThan(Long value) {
+            addCriterion("parent_id >", value, "parentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("parent_id >=", value, "parentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentIdLessThan(Long value) {
+            addCriterion("parent_id <", value, "parentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentIdLessThanOrEqualTo(Long value) {
+            addCriterion("parent_id <=", value, "parentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentIdIn(List<Long> values) {
+            addCriterion("parent_id in", values, "parentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentIdNotIn(List<Long> values) {
+            addCriterion("parent_id not in", values, "parentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentIdBetween(Long value1, Long value2) {
+            addCriterion("parent_id between", value1, value2, "parentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentIdNotBetween(Long value1, Long value2) {
+            addCriterion("parent_id not between", value1, value2, "parentId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecialIsNull() {
+            addCriterion("special is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecialIsNotNull() {
+            addCriterion("special is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecialEqualTo(String value) {
+            addCriterion("special =", value, "special");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecialNotEqualTo(String value) {
+            addCriterion("special <>", value, "special");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecialGreaterThan(String value) {
+            addCriterion("special >", value, "special");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecialGreaterThanOrEqualTo(String value) {
+            addCriterion("special >=", value, "special");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecialLessThan(String value) {
+            addCriterion("special <", value, "special");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecialLessThanOrEqualTo(String value) {
+            addCriterion("special <=", value, "special");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecialLike(String value) {
+            addCriterion("special like", value, "special");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecialNotLike(String value) {
+            addCriterion("special not like", value, "special");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecialIn(List<String> values) {
+            addCriterion("special in", values, "special");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecialNotIn(List<String> values) {
+            addCriterion("special not in", values, "special");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecialBetween(String value1, String value2) {
+            addCriterion("special between", value1, value2, "special");
+            return (Criteria) this;
+        }
+
+        public Criteria andSpecialNotBetween(String value1, String value2) {
+            addCriterion("special not between", value1, value2, "special");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

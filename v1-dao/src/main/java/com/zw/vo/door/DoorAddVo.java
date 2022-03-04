@@ -32,7 +32,6 @@ public class DoorAddVo {
     @ApiModelProperty("算法")
     private String arithmetic;
 
-
     @ApiModelProperty("参数")
     private String gxParams;
 
@@ -42,61 +41,14 @@ public class DoorAddVo {
     @ApiModelProperty("单价")
     private String unitPrice;
 
-    public String getUnit() {
-        return unit;
-    }
+    @ApiModelProperty("深度")
+    private Integer depth;
 
-    public void setUnit(String unit) {
-        this.unit = unit;
-    }
+    @ApiModelProperty("上级")
+    private Long parentId;
 
-    public String getUnitPrice() {
-        return unitPrice;
-    }
-
-    public void setUnitPrice(String unitPrice) {
-        this.unitPrice = unitPrice;
-    }
-
-    public String getGxParams() {
-        return gxParams;
-    }
-
-    public void setGxParams(String gxParams) {
-        this.gxParams = gxParams;
-    }
-
-    public String getArithmetic() {
-        return arithmetic;
-    }
-
-    public void setArithmetic(String arithmetic) {
-        this.arithmetic = arithmetic;
-    }
-
-    public Short getType() {
-        return type;
-    }
-
-    public void setType(Short type) {
-        this.type = type;
-    }
-
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
-    }
+    @ApiModelProperty("特殊属性json字符串")
+    private String special;
 
     public String getName() {
         return name;
@@ -128,5 +80,85 @@ public class DoorAddVo {
 
     public void setGxValues(String gxValues) {
         this.gxValues = gxValues;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public Short getType() {
+        return type;
+    }
+
+    public void setType(Short type) {
+        this.type = type;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getArithmetic() {
+        return arithmetic;
+    }
+
+    public void setArithmetic(String arithmetic) {
+        this.arithmetic = arithmetic;
+    }
+
+    public String getGxParams() {
+        return gxParams;
+    }
+
+    public void setGxParams(String gxParams) {
+        this.gxParams = gxParams;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public String getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(String unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
+    public Integer getDepth() {
+        return depth;
+    }
+
+    public void setDepth(Integer depth) {
+        this.depth = depth;
+    }
+
+    public Long getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
+    }
+
+    public String getSpecial() {
+        return special;
+    }
+
+    public void setSpecial(String special) {
+        this.special = special;
     }
 }

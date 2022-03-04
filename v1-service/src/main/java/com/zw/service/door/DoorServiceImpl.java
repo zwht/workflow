@@ -91,6 +91,7 @@ public class DoorServiceImpl implements DoorService {
             criteria.andNameEqualTo(door.getName());
             criteria.andCorporationIdEqualTo(door.getCorporationId());
             criteria.andIdNotEqualTo(door.getId());
+            criteria.andFlagIsNull();
             // 查询是否有相同
             List<Door> corporations = doorMapper.selectByExample(doorExample);
             if (corporations.size() == 0) {

@@ -25,7 +25,14 @@ def getDbProperties = {
 	properties
 }
 
+//使用数据库，自动创建dao，mapper
 task mybatisGenerate  {
+	// 先删除以前的dao
+	doFirst {
+		delete("${rootProject.projectDir}/v1-dao/src/main/java/com/zw/dao/entity")
+		delete("${rootProject.projectDir}/v1-dao/src/main/java/com/zw/dao/mapper/generate")
+		delete("${rootProject.projectDir}/v1-dao/src/main/resources/mapper/generate")
+	}
 	doLast{
 		def properties = getDbProperties()
 		ant.properties['targetProject'] = projectDir.path
@@ -59,5 +66,4 @@ task mybatisGenerate  {
 			}
 		}
 	}
-
 }

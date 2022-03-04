@@ -20,6 +20,9 @@
     <result column="gx_params" jdbcType="VARCHAR" property="gxParams" />
     <result column="unit_price" jdbcType="DECIMAL" property="unitPrice" />
     <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="depth" jdbcType="INTEGER" property="depth" />
+    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+    <result column="special" jdbcType="VARCHAR" property="special" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -81,7 +84,8 @@
   </sql>
   <sql id="Base_Column_List">
     id, name, img, corporation_id, gx_ids, create_time, state, gx_values, number, colors, 
-    info_id, type, flag, arithmetic, sum, gx_params, unit_price, unit
+    info_id, type, flag, arithmetic, sum, gx_params, unit_price, unit, depth, parent_id, 
+    special
   </sql>
   <select id="selectByExample" parameterType="com.zw.dao.entity.DoorExample" resultMap="BaseResultMap">
     select
@@ -119,14 +123,16 @@
       state, gx_values, number, 
       colors, info_id, type, 
       flag, arithmetic, sum, 
-      gx_params, unit_price, unit
+      gx_params, unit_price, unit, 
+      depth, parent_id, special
       )
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}, 
       #{corporationId,jdbcType=BIGINT}, #{gxIds,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{state,jdbcType=SMALLINT}, #{gxValues,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, 
       #{colors,jdbcType=VARCHAR}, #{infoId,jdbcType=BIGINT}, #{type,jdbcType=SMALLINT}, 
       #{flag,jdbcType=SMALLINT}, #{arithmetic,jdbcType=VARCHAR}, #{sum,jdbcType=INTEGER}, 
-      #{gxParams,jdbcType=VARCHAR}, #{unitPrice,jdbcType=DECIMAL}, #{unit,jdbcType=VARCHAR}
+      #{gxParams,jdbcType=VARCHAR}, #{unitPrice,jdbcType=DECIMAL}, #{unit,jdbcType=VARCHAR}, 
+      #{depth,jdbcType=INTEGER}, #{parentId,jdbcType=BIGINT}, #{special,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.zw.dao.entity.Door">
@@ -186,6 +192,15 @@
       <if test="unit != null">
         unit,
       </if>
+      <if test="depth != null">
+        depth,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="special != null">
+        special,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -241,6 +256,15 @@
       </if>
       <if test="unit != null">
         #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="depth != null">
+        #{depth,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="special != null">
+        #{special,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -307,6 +331,15 @@
       <if test="record.unit != null">
         unit = #{record.unit,jdbcType=VARCHAR},
       </if>
+      <if test="record.depth != null">
+        depth = #{record.depth,jdbcType=INTEGER},
+      </if>
+      <if test="record.parentId != null">
+        parent_id = #{record.parentId,jdbcType=BIGINT},
+      </if>
+      <if test="record.special != null">
+        special = #{record.special,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -331,7 +364,10 @@
       sum = #{record.sum,jdbcType=INTEGER},
       gx_params = #{record.gxParams,jdbcType=VARCHAR},
       unit_price = #{record.unitPrice,jdbcType=DECIMAL},
-      unit = #{record.unit,jdbcType=VARCHAR}
+      unit = #{record.unit,jdbcType=VARCHAR},
+      depth = #{record.depth,jdbcType=INTEGER},
+      parent_id = #{record.parentId,jdbcType=BIGINT},
+      special = #{record.special,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -390,6 +426,15 @@
       <if test="unit != null">
         unit = #{unit,jdbcType=VARCHAR},
       </if>
+      <if test="depth != null">
+        depth = #{depth,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="special != null">
+        special = #{special,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -411,7 +456,10 @@
       sum = #{sum,jdbcType=INTEGER},
       gx_params = #{gxParams,jdbcType=VARCHAR},
       unit_price = #{unitPrice,jdbcType=DECIMAL},
-      unit = #{unit,jdbcType=VARCHAR}
+      unit = #{unit,jdbcType=VARCHAR},
+      depth = #{depth,jdbcType=INTEGER},
+      parent_id = #{parentId,jdbcType=BIGINT},
+      special = #{special,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
