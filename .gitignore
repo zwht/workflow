@@ -30,3 +30,4 @@ reports/
 /src/
 
 application-local.yml
+config.properties
